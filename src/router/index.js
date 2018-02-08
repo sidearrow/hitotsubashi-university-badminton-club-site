@@ -1,15 +1,34 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Top from '@/components/Top';
+import Member from '@/components/Member';
+import BBSList from '@/components/BBSList';
+import BBSInput from '@/components/BBSInput';
+import Mizutori from '@/components/Mizutori';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      component: Top,
+    },
+    {
+      path: '/member',
+      component: Member,
+    },
+    {
+      path: '/bbs/list/:pagenum',
+      component: BBSList,
+    },
+    {
+      path: '/bbs/input/:type/:id',
+      component: BBSInput,
+    },
+    {
+      path: '/mizutori',
+      component: Mizutori,
     }
   ]
-})
+});
