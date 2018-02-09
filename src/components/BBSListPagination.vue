@@ -3,13 +3,13 @@
     <nav>
       <ul class="pagination">
         <li class="page-item">
-          <router-link class="page-link"></router-link>
+          <router-link class="page-link" to="/bbs/list/1"><<</router-link>
         </li>
         <li class="page-item" v-for="pageNum in pageNums">
-          <router-link class="page-link">{{ pageNum }}</router-link>
+          <router-link class="page-link" :to="'/bbs/list/' + pageNum">{{ pageNum }}</router-link>
         </li>
         <li class="page-item">
-          <router-link class="page-link">>></router-link>
+          <router-link class="page-link" to="/bbs/list/5">>></router-link>
         </li>
       </ul>
     </nav>
