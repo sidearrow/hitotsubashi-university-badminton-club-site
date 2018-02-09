@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="card" v-for="post in posts">
+    <div class="card mb-2" v-for="post in posts">
       <div class="card-header" id="headingOne">
         <div class="row">
           <div class="col-10" data-toggle="collapse" :data-target="'#post' + post.id">
-            <p>Title</p>
+            <p>{{ post.title }}</p>
             <p>
               <small>Data</small>
               <small>Name</small>
@@ -15,8 +15,8 @@
               <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
               <div class="dropdown-menu dropdown-menu-right">
                 <button class="dropdown-item" type="button">Reply</button>
-                <button class="dropdown-item" type="button" @click="clickFunction" :data-pageid="post.id" data-function="edit">Edit</button>
-                <button class="dropdown-item" type="button" @click="clickFunction" :data-pageid="post.id" data-function="delete">Delete</button>
+                <button class="dropdown-item" type="button" @click="clickFunction" data-toggle="modal" data-target="#inputPassModal" :data-post-id="post.id" :data-post-title="post.title" data-function="edit">Edit</button>
+                <button class="dropdown-item" type="button" @click="clickFunction" data-toggle="modal" data-target="#inputPassModal" :data-post-id="post.id" :data-post-title="post.title" data-function="delete">Delete</button>
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <pagination></pagination>
-    <modal :pageid="modal.pageId" :function="modal.function"></modal>
+    <modal :postid="modal.postId" :posttitle="modal.postTitle" :function="modal.function"></modal>
   </div>
 </template>
 
@@ -36,28 +36,30 @@ import Pagination from './BBSListPagination.vue';
 import Modal from './BBSListModal.vue';
 
 export default {
-  props: ['pageid', 'function'],
+  props: ['postid', 'posttitle', 'function'],
   components: {
     'pagination': Pagination,
     'modal': Modal,
   },
   methods: {
     clickFunction: function (event) {
-      this.modal.pageId = event.target.getAttribute('data-pageid');
+      this.modal.postId = event.target.getAttribute('data-post-id');
+      this.modal.postTitle = event.target.getAttribute('data-post-title');
       this.modal.function = event.target.getAttribute('data-function');
     }
   },
   data () {
     return {
       modal: {
-        pageId: '',
+        postId: '',
+        postTitle: '',
         function: '',
       },
       posts: [
-        {id: '10001', content: 'text'},
-        {id: '10002', content: 'text'},
-        {id: '10003', content: 'text'},
-        {id: '10004', content: 'text'},
+        {id: '10001', title: 'title', content: 'text'},
+        {id: '10002', title: 'title', content: 'text'},
+        {id: '10003', title: 'title', content: 'text'},
+        {id: '10004', title: 'title', content: 'text'},
       ],
     }
   },

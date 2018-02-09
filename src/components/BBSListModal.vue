@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="inputPassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -9,14 +9,11 @@
           </button>
         </div>
         <div class="modal-body">
+          <p>{{ this.text }}</p>
           <div class="input-group">
             <input type="password" class="form-control">
             <button class="btn append">OK</button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -24,5 +21,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  created () {
+    this.text = `投稿『${this.posttitle}』を` + (this.function === 'edit' ? '編集します。' : '削除します。');
+  },
+  data () {
+    return {
+      text: '',
+    };
+  },
+  props: {
+    pageid: {
+      type: String,
+    },
+    posttitle: {
+      type: String,
+    },
+    function: {
+      type: String,
+    },
+  },
+};
 </script>
