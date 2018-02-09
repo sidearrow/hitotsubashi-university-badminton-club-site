@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
+  <main style="margin-top:80px;">
     <router-view/>
-  </div>
+  </main>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+export default {}
 </script>
