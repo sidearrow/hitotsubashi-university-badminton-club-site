@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide mb-5" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -27,9 +27,9 @@
       </a>
     </div>
     <div>2017年7月現在、私達一橋大学バドミントン部は男子24名、女子7名の計31名で活動しています。男女・経験者大学始め関係なく、リーグ戦での4部への昇格を目指して日々練習に励んでいます。</div>
-    <div class="card-deck">
-      <div class="card">
-        <div class="card-header" style="backgroud-color:#ac2926">Practice</div>
+    <div class="card-deck mt-5">
+      <div class="card" style="border-color:#ac2926;">
+        <div class="card-header text-white" style="background-color:#ac2926">Practice</div>
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -57,8 +57,8 @@
           </ul>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">Detail</div>
+      <div class="card" style="border-color:#ac2926;">
+        <div class="card-header text-white" style="background-color:#ac2926">Detail</div>
         <div class="card-body">
           <div><span class="d-inline-block" style="width:100px">部長</span><span>高橋真弓</span></div>
           <div><span class="d-inline-block" style="width:100px">監督</span><span>小原貴文</span></div>

@@ -7,11 +7,12 @@
       <li class="nav-item"><span class="nav-link" @click="click" data-grade="4">4</span></li>
     </ul>
     <div class="row">
-      <div class="col-6" v-for="member in members">
+      <div class="col-6 col-lg-4" v-for="member in members">
         <div class="card mb-3 px-1">
           <div class="card-body p-2">
             <h5 class="card-title">{{ member.name }}</h5>
-            <p>{{ member.highSchool }}</p>
+            <p>{{ member.dep }}</p>
+            <p>{{ member.from }}</p>
             <p>{{ member.intro }}</p>
           </div>
         </div>

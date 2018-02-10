@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Header from './Header'
 import App from './App'
+import Footer from './Footer'
 import router from './router'
 
 import config from './Config';
@@ -22,4 +23,10 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
+});
+
+new Vue({
+  el: 'footer',
+  components: { Footer },
+  template: '<Footer/>'
 });
