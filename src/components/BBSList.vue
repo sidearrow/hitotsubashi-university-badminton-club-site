@@ -11,9 +11,9 @@
               <small>Name</small>
             </p>
           </div>
-          <div class="col-2">
+          <div class="col-2 text-right">
             <div class="btn-group">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
               <div class="dropdown-menu dropdown-menu-right">
                 <button class="dropdown-item" type="button">Reply</button>
                 <button class="dropdown-item" type="button" @click="clickFunction" data-toggle="modal" data-target="#inputPassModal" :data-post-id="post.id" :data-post-title="post.title" data-function="edit">Edit</button>
