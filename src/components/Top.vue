@@ -1,6 +1,74 @@
 <template>
   <div>
-    TOP
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="@/assets/img/topimage1.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="@/assets/img/topimage2.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="@/assets/img/topimage3.jpg" alt="Third slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div>2017年7月現在、私達一橋大学バドミントン部は男子24名、女子7名の計31名で活動しています。男女・経験者大学始め関係なく、リーグ戦での4部への昇格を目指して日々練習に励んでいます。</div>
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-header" style="backgroud-color:#ac2926">Practice</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <p><a href="http://www.hit-u.ac.jp/guide/campus/kodaira.html">小平国際キャンパス体育館</a><br>（西武多摩湖線一橋学園駅南口から徒歩7分）</p>
+            </li>
+            <li class="list-group-item">
+              <p>授業期</p>
+              <ul>
+                <li>月 …… 16:00 ~ 19:30</li>
+                <li>水 …… 16:00 ~ 19:00</li>
+                <li>金 …… 16:00 ~ 19:00</li>
+                <li>土 …… 14:00 ~ 18:30</li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <p>休業期</p>
+              <ul>
+                <li>月 ……  9:00 ~ 13:00</li>
+                <li>火 …… 14:00 ~ 18:00</li>
+                <li>水 …… 13:00 ~ 17:00</li>
+                <li>金 ……  9:00 ~ 13:30</li>
+                <li>土 …… 13:00 ~ 18:00</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Detail</div>
+        <div class="card-body">
+          <div><span class="d-inline-block" style="width:100px">部長</span><span>高橋真弓</span></div>
+          <div><span class="d-inline-block" style="width:100px">監督</span><span>小原貴文</span></div>
+          <div><span class="d-inline-block" style="width:100px">コーチ</span><span>中山朋子</span></div>
+          <div><span class="d-inline-block" style="width:100px">主将</span><span>青木純</span></div>
+          <div><span class="d-inline-block" style="width:100px">女子主将</span><span>古賀朱音</span></div>
+          <div><span class="d-inline-block" style="width:100px">主務</span><span>蜂谷隆太</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -36,7 +36,14 @@
 import Pagination from './BBSListPagination.vue';
 import Modal from './BBSListModal.vue';
 
+import {database} from '@/main.js';
+
 export default {
+  mounted () {
+    database.ref('/bbs').once('value', (snapshot) => {
+      console.log(snapshot.val());
+    });
+  },
   props: ['postid', 'posttitle', 'function'],
   components: {
     'pagination': Pagination,
