@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p><router-link to="/bbs/input">新規投稿</router-link></p>
     <div class="card mb-2" v-for="post in posts">
       <div class="card-header" id="headingOne">
         <div class="row">

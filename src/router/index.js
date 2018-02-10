@@ -23,6 +23,10 @@ export default new Router({
       component: BBSList,
     },
     {
+      path: '/bbs/input',
+      component: BBSInput,
+    },
+    {
       path: '/bbs/input/:type/:id',
       component: BBSInput,
     },
