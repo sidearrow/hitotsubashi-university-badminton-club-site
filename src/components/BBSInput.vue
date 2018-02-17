@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import {database} from '@/main.js';
+
 export default {
   methods: {
     clickPost: function (event) {
@@ -52,7 +54,7 @@ export default {
         document.querySelector('input[name=title]').classList.add('is-invalid');
         isError = true;
       }
-      if (content.length === 0 || content.length > 500) {
+      if (content.length === 0 || content.length > 2000) {
         document.querySelector('textarea[name=content]').classList.add('is-invalid');
         isError = true;
       }
@@ -61,12 +63,30 @@ export default {
         isError = true;
       }
 
+      // 入力エラー
       if (isError) {
         document.getElementById('error-msg').classList.remove('d-none');
         event.target.removeAttribute('disabled');
-      } else {
-        document.getElementById('success-msg').classList.remove('d-none');
+        return;
       }
+
+      // 入力成功
+      document.getElementById('success-msg').classList.remove('d-none');
+      
+      const date = new Date();
+      const format = (num) => {
+        return ('00' + num).slice(-2);
+      };
+      const formatDate = `${date.getFullYear()}/${format(date.getMonth())}/${format(date.getDate())} ${format(date.getHours())}:${format(date.getMinutes())}`;
+
+      database.ref('bbs/').push({
+        name: name,
+        date: formatDate,
+        title: title,
+        content: content,
+        password: password,
+        delete: false,
+      });
     },
   }
 };
