@@ -97,7 +97,6 @@ export default {
           pos: val.position,
         });
       });
-      console.log(this.member);
     }).catch((res) => {
       this.member.isError = true;
     });
