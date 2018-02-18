@@ -66,9 +66,9 @@
           <li class="list-group-item" v-for="(data, grade) in member">
             <h4>{{ grade }}年</h4>
             <ul class="col" v-for="val in data">
-              <li class="row align-bottom">
-                <span class="col-lg-4">{{ val.name }}<span class="badge badge-light pl-2">{{ val.fac }}</span></span>
-                <ul style="list-style:none;">
+              <li class="row align-bottom pb-2">
+                <span class="col-md-5">{{ val.name }}<span class="badge badge-light pl-2">{{ val.fac }}</span></span>
+                <ul class="pl-sm-3 pl-md-1" style="list-style:none;">
                   <li style="font-size:.8rem;">{{ val.hs }}</li>
                   <li style="font-size:.8rem;">{{ val.pos }}</li>
                 </ul>
