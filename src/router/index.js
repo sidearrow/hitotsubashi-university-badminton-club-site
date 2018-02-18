@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Top from '@/components/Top';
-import Member from '@/components/Member';
 import BBSList from '@/components/BBSList';
 import BBSInput from '@/components/BBSInput';
 import Mizutori from '@/components/Mizutori';
@@ -13,10 +12,6 @@ export default new Router({
     {
       path: '/',
       component: Top,
-    },
-    {
-      path: '/member',
-      component: Member,
     },
     {
       path: '/bbs/list/:pagenum',

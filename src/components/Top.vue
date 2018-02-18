@@ -58,14 +58,27 @@
         </div>
       </div>
       <div class="card" style="border-color:#ac2926;">
-        <div class="card-header text-white" style="background-color:#ac2926">Detail</div>
+        <div class="card-header text-white" style="background-color:#ac2926">Member</div>
         <div class="card-body">
-          <div><span class="d-inline-block" style="width:100px">部長</span><span>高橋真弓</span></div>
-          <div><span class="d-inline-block" style="width:100px">監督</span><span>小原貴文</span></div>
-          <div><span class="d-inline-block" style="width:100px">コーチ</span><span>中山朋子</span></div>
-          <div><span class="d-inline-block" style="width:100px">主将</span><span>青木純</span></div>
-          <div><span class="d-inline-block" style="width:100px">女子主将</span><span>古賀朱音</span></div>
-          <div><span class="d-inline-block" style="width:100px">主務</span><span>蜂谷隆太</span></div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div><span class="d-inline-block" style="width:100px">部長</span><span>高橋真弓</span></div>
+              <div><span class="d-inline-block" style="width:100px">監督</span><span>小原貴文</span></div>
+              <div><span class="d-inline-block" style="width:100px">コーチ</span><span>中山朋子</span></div>
+            </li>
+            <li class="list-group-item" v-for="(data, grade) in member">
+              <h4>{{ grade }}年</h4>
+              <ul class="col" v-for="val in data">
+                <li class="row align-bottom">
+                  <span class="col-lg-4">{{ val.name }}<span class="badge badge-light pl-2">{{ val.fac }}</span></span>
+                  <ul style="list-style:none;">
+                    <li style="font-size:.8rem;">{{ val.hs }}</li>
+                    <li style="font-size:.8rem;">{{ val.pos }}</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -73,5 +86,35 @@
 </template>
 
 <script>
-export default {};
+import config from '../Config.js';
+import axios from 'axios';
+
+export default {
+  created: function () {
+    axios.get(config.member).then((res) => {
+      res.data.forEach((val) => {
+        this.member[val.grade].push({
+          name: val.name,
+          sx: val.sx,
+          fac: val.faculty,
+          hs: `${val.school}（${val.prefec}）`,
+          pos: val.position,
+        });
+      });
+      console.log(this.member);
+    }).catch((res) => {
+      this.member.isError = true;
+    });
+  },
+  data: function () {
+    return {
+      member: {
+        4: [],
+        3: [],
+        2: [],
+        1: [],
+      }
+    }
+  }
+};
 </script>
