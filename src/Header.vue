@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg" style="background-color:#ac2926;">
-      <a class="navbar-brand" href="#">Hitotsubashi Badminton</a>
+      <router-link class="navbar-brand" to="/">Hitotsubashi Badminton</router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,9 +9,6 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <router-link class="nav-link text-white" to="/">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link text-white" to="/member">Member</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link text-white" to="/bbs/list/1">BBS</router-link>
