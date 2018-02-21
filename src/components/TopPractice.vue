@@ -1,19 +1,18 @@
 <template>
-  <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-    <div class="mdl-card__supporting-text">
+  <div class="mdc-card">
       <h4>Practice</h4>
-    </div>
-    <div class="mdl-card__supporting-text">
-      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <div class="mdl-tabs__tab-bar">
-          <a href="#panelA" class="mdl-tabs__tab is-active">Location</a>
-          <a href="#panelB" class="mdl-tabs__tab">Schedule</a>
-        </div>
-        <div class="mdl-tabs__panel is-active" id="panelA">
+    <div class="mdc-card__media">
+      <nav class="mdc-tab-bar">
+        <a href="#panelA" class="mdc-tab mdc-tab--active">Location</a>
+        <a href="#panelB" class="mdc-tab">Schedule</a>
+        <span class="mdc-tab-bar__indicator"></span>          
+      </nav>
+      <div class="panels">
+        <div class="panel active" id="panelA" aria-hidden="false">
           <p><a href="http://www.hit-u.ac.jp/guide/campus/kodaira.html">小平国際キャンパス体育館</a></p>
           <p>（西武多摩湖線一橋学園駅南口から徒歩7分）</p>
         </div>
-        <div class="mdl-tabs__panel" id="panelB">
+        <div class="panel" id="panelB" aria-hidden="true">
           <p>授業期</p>
           <ul>
             <li>月 …… 16:00 ~ 19:30</li>
