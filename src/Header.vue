@@ -5,7 +5,7 @@
         <router-link to="/" class="mdc-toolbar__title">一橋大学バドミントン部</router-link>
       </section>
     </div>
-    <nav class="mdc-tab-bar">
+    <nav class="mdc-tab-bar" id="header-tab">
       <router-link to="/" class="mdc-tab mdc-tab--active">Main</router-link>
       <router-link to="/bbs/list/1" class="mdc-tab">BBS</router-link>
       <router-link to="/bbs/Mizutori" class="mdc-tab">Mizutori</router-link>
@@ -15,12 +15,12 @@
 </div></template>
 
 <script>
-import { MDC } from '@/main';
+import {MDCTab, MDCTabFoundation} from '@material/tabs';
+import {MDCTabBar, MDCTabBarFoundation} from '@material/tabs';
 
 export default {
   mounted: function () {
-    const MDCTab = MDC.tabs.MDCTab;
-    const MDCTabFoundation = MDC.tabs.MDCTabFoundation;
+    const tabBar = new MDCTabBar(document.getElementById('header-tab'));
   }
 };
 </script>

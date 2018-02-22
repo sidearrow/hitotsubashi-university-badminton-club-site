@@ -1,37 +1,43 @@
 <template>
   <div>
-    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-      <div class="mdl-card__supporting-text">
-        <h4>Member</h4>
+    <div class="mdc-card mdc-card--stroked">
+      <div class="slf-card-article">
+        <p>Member</p>
       </div>
-      <div class="mdl-card__supporting-text">
-        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-          <div class="mdl-tabs__tab-bar">
-            <a href="#panelBA" class="mdl-tabs__tab is-active">TOP</a>
-            <a href="#panel-member-1" class="mdl-tabs__tab">1年</a>
-            <a href="#panel-member-2" class="mdl-tabs__tab">2年</a>
-            <a href="#panel-member-3" class="mdl-tabs__tab">3年</a>
-            <a href="#panel-member-4" class="mdl-tabs__tab">4年</a>
-          </div>
-          <div class="mdl-tabs__panel is-active" id="panelBA">
-            <ul>
-              <li><span style="width:100px">部長</span><span>高橋真弓</span></li>
-              <li><span style="width:100px">監督</span><span>小原貴文</span></li>
-              <li><span style="width:100px">コーチ</span><span>中山朋子</span></li>
-            </ul>
-          </div>
-          <div class="mdl-tabs__panel" :id="`panel-member-${grade}`" v-for="(data, grade) in member">
-            <h4>{{ grade }}年</h4>
-            <ul v-for="val in data">
-              <li>
-                <span>{{ val.name }}<span>{{ val.fac }}</span></span>
-                <ul style="list-style:none;">
-                  <li style="font-size:.8rem;">{{ val.hs }}</li>
-                  <li style="font-size:.8rem;">{{ val.pos }}</li>
+      <div class="slf-card-article">
+        <ul class="mdc-list">
+          <li class="mdc-list-item">部長……高橋真弓</li>
+          <li class="mdc-list-item">監督……小原貴文</li>
+          <li class="mdc-list-item">コーチ……中山朋子</li>
+        </ul>
+      </div>
+      <div class="slf-card-article">
+        <div>
+          <section>
+            <nav class="mdc-tab-bar" id="topmember-tab">
+              <a class="mdc-tab" data-tab="1" @click="clickTab">1年</a>
+              <a class="mdc-tab" data-tab="2" @click="clickTab">2年</a>
+              <a class="mdc-tab" data-tab="3" @click="clickTab">3年</a>
+              <a class="mdc-tab" data-tab="4" @click="clickTab">4年</a>
+              <span class="mdc-tab-bar__indicator"></span>          
+            </nav>
+          </section>
+          <section>
+            <div class="panels" id="topmember-panels">
+              <div class="panel" :data-tab="grade" v-for="(data, grade) in member">
+                <h4>{{ grade }}年</h4>
+                <ul v-for="val in data">
+                  <li>
+                    <span>{{ val.name }}<span class="mdc-typography--caption" style="margin-left:10px">{{ val.fac }}</span></span>
+                    <ul style="list-style:none;">
+                      <li style="font-size:.8rem;">{{ val.hs }}</li>
+                      <li style="font-size:.8rem;">{{ val.pos }}</li>
+                    </ul>
+                  </li>
                 </ul>
-              </li>
-            </ul>
-          </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -41,8 +47,15 @@
 <script>
 import config from '../Config.js';
 import axios from 'axios';
+import {MDCTabBar, MDCTabBarFoundation} from '@material/tabs';
+
+import {clickTab} from '../Functions';
 
 export default {
+  mounted: function () {
+    const tabBar = new MDCTabBar(document.getElementById('topmember-tab'));
+    document.querySelector('#topmember-panels > .panel:nth-child(1)').classList.add('active');
+  },
   created: function () {
     axios.get(config.member).then((res) => {
       res.data.forEach((val) => {
@@ -60,6 +73,7 @@ export default {
   },
   data: function () {
     return {
+      tabPos: 1,
       member: {
         4: [],
         3: [],
@@ -67,6 +81,11 @@ export default {
         1: [],
       }
     }
+  },
+  methods: {
+    clickTab: function (event) {
+      clickTab(event, document.getElementById('topmember-panels'));
+    },
   }
 };
 </script>

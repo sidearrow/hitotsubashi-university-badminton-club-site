@@ -4,10 +4,6 @@ import router from './router'
 
 import config from './Config';
 
-import * as mdc from 'material-components-web';
-
-export const MDC = mdc;
-
 Vue.config.productionTip = false
 
 firebase.initializeApp(config.firebase);

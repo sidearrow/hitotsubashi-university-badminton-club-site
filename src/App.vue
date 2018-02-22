@@ -9,14 +9,9 @@
 </template>
 
 <script>
-import { MDC } from '@/main';
-
 import Header from './Header';
 
 export default {
-  mounted: function () {
-    MDC.autoInit();
-  },
   components: {
     Header: Header,
   },
@@ -28,5 +23,16 @@ export default {
   --mdc-theme-primary: #ac2926;
   --mdc-theme-primary-light: #c46967;
   --mdc-theme-primary-dark: #b43e3b;
+}
+
+.slf-card-article {
+  padding: 16px;
+}
+
+.panel {
+  display: none;
+}
+.panel.active {
+  display: block;
 }
 </style>
