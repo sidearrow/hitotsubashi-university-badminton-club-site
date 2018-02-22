@@ -2,7 +2,7 @@
   <div>
     <ul class="mdc-list mdc-list--two-line">
       <li class="mdc-list-item"><router-link to="/bbs/input">新規投稿</router-link></li>
-      <li class="mdc-list-item" :data-post="key" v-for="(post, key) in posts" @click="clickList">
+      <li class="mdc-list-item" :data-post="key" v-for="(post, key) in posts">
         <span class="mdc-list-item__text">
           {{ post.title }}
           <span class="mdc-list-item__secondary-text">
@@ -10,6 +10,7 @@
             <span>{{ post.date }}</span>
           </span>
         </span>
+        <router-link :to="`/bbs/list/${key}`" class="mdc-list-item__meta material-icons" style="text-decoration:none">chevron_right</router-link>
       </li>
 
     </ul>
@@ -31,10 +32,6 @@ export default {
     'pagination': Pagination,
   },
   methods: {
-    clickList: function (event) {
-      const postId = event.target.getAttribute('data-post');
-      this.$router.push('/bbs/list/' + postId);
-    },
   },
   data () {
     return {
