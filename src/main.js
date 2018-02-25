@@ -8,6 +8,7 @@ Vue.config.productionTip = false
 
 firebase.initializeApp(config.firebase);
 export const database = firebase.database();
+export const storage = firebase.storage();
 
 new Vue({
   el: '#main',

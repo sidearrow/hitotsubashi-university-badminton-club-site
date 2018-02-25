@@ -1,29 +1,27 @@
 <template>
   <div>
-    <div class="mx-3">
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Name</label>
-        <input name="name" type="text" class="form-control form-control-sm col-sm-9">
-        <div class="invalid-feedback">文字列が入力されていないか、長すぎます。</div>
+    <div>
+      <div class="mdc-text-field">
+        <input type="text" class="mdc-text-field__input" required>
+        <label class="mdc-text-field__label">Name</label>
+        <div class="mdc-line-ripple"></div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Title</label>
-        <input name="title" type="text" class="form-control form-control-sm col-sm-9">
-        <div class="invalid-feedback">文字列が入力されていないか、長すぎます。</div>
+      <div class="mdc-text-field">
+        <input type="text" class="mdc-text-field__input" required>
+        <label class="mdc-text-field__label">Title</label>
+        <div class="mdc-line-ripple"></div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Content</label>
-        <textarea name="content" class="form-control form-control-sm col-sm-9" rows="10"></textarea>
-        <div class="invalid-feedback">文字列が入力されていないか、長すぎます。</div>
+      <div class="mdc-text-field mdc-text-field--textarea" required>
+        <textarea class="mdc-text-field__input" rows="10" required></textarea>
+        <label class="mdc-text-field__label">Content</label>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Password</label>
-        <input name="password" type="password" class="form-control form-control-sm col-sm-9">
-        <small class="form-text text-muted">4桁の半角数字で入力してください。</small>
+      <div class="mdc-text-field">
+        <input type="password" class="mdc-text-field__input" required>
+        <label class="mdc-text-field__label">Password</label>
       </div>
-      <div class="text-center mt-5">
-        <button class="btn btn-primary" @click="clickPost">投稿</button>
-        <button class="btn btn-secondary"><router-link to="/bbs/list/1" class="text-white">戻る</router-link></button>
+      <div class="slf-talign-center">
+        <button class="mdc-button" @click="clickPost">投稿</button>
+        <button class="mdc-button"><router-link to="/bbs/list/1" class="text-white">戻る</router-link></button>
       </div>
       <div id="success-msg" class="alert alert-success mt-3 d-none">投稿が完了しました。</div>
       <div id="error-msg" class="alert alert-danger mt-3 d-none">入力エラーがあります。</div>
@@ -34,7 +32,14 @@
 <script>
 import {database} from '@/main.js';
 
+import {MDCTextField} from '@material/textfield';
+
 export default {
+  mounted: function () {
+    document.querySelectorAll('.mdc-text-field').forEach((val) => {
+      MDCTextField.attachTo(val);
+    });
+  },
   methods: {
     clickPost: function (event) {
       event.target.setAttribute('disabled', '');
@@ -91,3 +96,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mdc-text-field {
+  width: 100%;
+  display: block;
+}
+</style>

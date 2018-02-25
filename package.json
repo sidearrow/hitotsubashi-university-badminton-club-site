@@ -14,7 +14,10 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@material/button": "^0.31.0",
+    "@material/form-field": "^0.31.0",
     "@material/tabs": "^0.31.0",
+    "@material/textfield": "^0.31.0",
     "@material/toolbar": "^0.30.0",
     "autoprefixer": "^7.1.2",
     "axios": "^0.17.1",

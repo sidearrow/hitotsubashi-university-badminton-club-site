@@ -25,6 +25,13 @@ export default {
   --mdc-theme-primary-dark: #b43e3b;
 }
 
+.slf-talign-center {
+  text-align: center;
+}
+.slf-talign-right {
+  text-align: right;
+}
+
 .slf-card-article {
   padding: 16px;
 }

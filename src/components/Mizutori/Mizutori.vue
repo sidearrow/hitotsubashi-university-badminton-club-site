@@ -1,15 +1,10 @@
 <template>
   <div>
     <div v-if="!isLogin">
-      <div class="input-group">
-        <input type="password" class="form-control" placeholder="password">
-        <button class="btn append" @click="clickSubmit" id="pass-submit">OK</button>
-      </div>
-      <div class="alert alert-danger mt-4 d-none" role="alert" id="pass-wrong">
-        <span>パスワードが間違っています。再度入力してください。</span>
-        <button type="button" class="close" @click="clickClose">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="mdc-text-field mdc-text-field--with-trailing-icon">
+        <input type="password" class="mdc-text-field__input" required>
+        <label class="mdc-text-field__label">Password</label>
+        <i class="material-icons mdc-text-field__icon">send</i>
       </div>
     </div>
     <mizutoricontent v-if="isLogin"></mizutoricontent>
@@ -17,16 +12,20 @@
 </template>
 
 <script>
+import {MDCTextField} from '@material/textfield';
 import MizutoriContent from './MizutoriContent';
 
 export default {
-  created: function () {
-    this.isLogin = window.sessionStorage.getItem('isLogin') === 'true';
+  mounted: function () {
+    if (!this.isLogin) {
+      this.isLogin = window.sessionStorage.getItem('isLogin') === 'true';
+      MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
+    }
   },
   data () {
     return {
       test: 'aaa',
-      isLogin: false,
+      isLogin: true,
     }
   },
   components: {
