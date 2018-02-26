@@ -5,19 +5,15 @@
     </p>
     <hr>
     <ContentPractice />
-    <hr>
-    <ContentMember />
   </div>
 </template>
 
 <script>
 import ContentPractice from './TopPractice';
-import ContentMember from './TopMember';
 
 export default {
   components: {
     ContentPractice: ContentPractice,
-    ContentMember: ContentMember,
   },
 };
 </script>

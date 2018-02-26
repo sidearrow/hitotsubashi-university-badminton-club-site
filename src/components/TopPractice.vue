@@ -1,23 +1,13 @@
 <template>
-  <div class="mdc-card mdc-card--stroked">
-    <div class="slf-card-article">
+    <div>
       <p>Practice</p>
-    </div>
-    <div class="slf-card-article">
       <section>
-        <nav class="mdc-tab-bar" id="toppractice-tab">
-          <a class="mdc-tab mdc-tab--active" data-tab="1" @click="clickTab">Location</a>
-          <a class="mdc-tab" data-tab="2" @click="clickTab">Schedule</a>
-          <span class="mdc-tab-bar__indicator"></span>          
-        </nav>
-      </section>
-      <section>
-        <div class="panels" id="toppractice-panels">
-          <div class="panel active" data-tab="1">
+        <div>
+          <div>
             <p><a href="http://www.hit-u.ac.jp/guide/campus/kodaira.html">小平国際キャンパス体育館</a></p>
             <p>（西武多摩湖線一橋学園駅南口から徒歩7分）</p>
           </div>
-          <div class="panel" data-tab="2">
+          <div>
             <p>授業期</p>
             <ul>
               <li>月 …… 16:00 ~ 19:30</li>
@@ -36,29 +26,9 @@
           </div>
         </div>
       </section>
-    </div>
   </div>
 </template>
 
 <script>
-import {MDCTabBar, MDCTabBarFoundation} from '@material/tabs';
-
-import {clickTab} from '../Functions';
-
-export default {
-  mounted: function () {
-    const tabBar = new MDCTabBar(document.getElementById('toppractice-tab'));
-  },
-  methods: {
-    clickTab: function (event) {
-      clickTab(event, document.getElementById('toppractice-panels'));
-    },
-  },
-};
+export default {};
 </script>
-
-<style>
-.mdl-tabs__tab-bar {
-  margin-bottom: 20px;
-}
-</style>

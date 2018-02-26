@@ -4,6 +4,9 @@
       <ul class="mdc-list mdc-list--two-line">
         <li class="mdc-list-item"><router-link to="/bbs/input">新規投稿</router-link></li>
         <li class="mdc-list-item" v-for="(post, key) in posts">
+          <span class="mdc-list-item__graphic">
+            <i class="material-icons">subject</i>
+          </span>
           <span class="mdc-list-item__text">
             {{ post.title }}
             <span class="mdc-list-item__secondary-text">
@@ -11,7 +14,7 @@
               <span>{{ post.date }}</span>
             </span>
           </span>
-          <a class="mdc-list-item__meta material-icons" @click="togglePageType" :data-post="key">chevron_right</a>
+          <a href="#" class="mdc-list-item__meta material-icons" @click="togglePageType" :data-post="key" style="text-decoration:none">chevron_right</a>
         </li>
       </ul>
       <!--<pagination></pagination>-->

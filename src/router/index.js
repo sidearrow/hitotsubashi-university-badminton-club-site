@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Top from '@/components/Top';
+import Member from '@/components/Member';
 import BBSList from '@/components/BBS/BBSList';
 import BBSInput from '@/components/BBS/BBSInput';
 import BBSDetail from '@/components/BBS/BBSDetail';
@@ -13,6 +14,10 @@ export default new Router({
     {
       path: '/',
       component: Top,
+    },
+    {
+      path: '/member',
+      component: Member,
     },
     {
       path: '/bbs/list',
