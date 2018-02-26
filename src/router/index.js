@@ -4,7 +4,6 @@ import Top from '@/components/Top';
 import Member from '@/components/Member';
 import BBSList from '@/components/BBS/BBSList';
 import BBSInput from '@/components/BBS/BBSInput';
-import BBSDetail from '@/components/BBS/BBSDetail';
 import Mizutori from '@/components/Mizutori/Mizutori';
 
 Vue.use(Router);
@@ -22,10 +21,6 @@ export default new Router({
     {
       path: '/bbs/list',
       component: BBSList,
-    },
-    {
-      path: '/bbs/list/:postid',
-      component: BBSDetail,
     },
     {
       path: '/bbs/input',

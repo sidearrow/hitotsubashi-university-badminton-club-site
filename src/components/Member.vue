@@ -48,7 +48,7 @@ export default {
     const tabBar = new MDCTabBar(document.getElementById('topmember-tab'));
     document.querySelector('#topmember-panels > .panel:nth-child(1)').classList.add('active');
   },
-  created: function () {
+  beforeCreate: function () {
     axios.get(config.member).then((res) => {
       res.data.forEach((val) => {
         this.member[val.grade].push({
