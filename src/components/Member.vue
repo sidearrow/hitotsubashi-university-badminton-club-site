@@ -2,9 +2,7 @@
   <div>
     <h1 class="mdc-typography--display1">部員紹介</h1>
     <ul class="mdc-list">
-      <li class="mdc-list-item">部長……高橋真弓</li>
-      <li class="mdc-list-item">監督……小原貴文</li>
-      <li class="mdc-list-item">コーチ……中山朋子</li>
+      <li class="mdc-list-item" v-for="list in lists"><i class="material-icons mdc-list-item__graphic">person</i>{{list}}</li>
     </ul>
     <div>
       <section>
@@ -19,14 +17,18 @@
       <section>
         <div class="panels" id="topmember-panels">
           <div class="panel" :data-tab="grade" v-for="(data, grade) in member">
-            <h4>{{ grade }}年</h4>
-            <ul v-for="val in data">
-              <li>
-                <span>{{ val.name }}<span class="mdc-typography--caption" style="margin-left:10px">{{ val.fac }}</span></span>
-                <ul style="list-style:none;">
-                  <li style="font-size:.8rem;">{{ val.hs }}</li>
-                  <li style="font-size:.8rem;">{{ val.pos }}</li>
-                </ul>
+            <h4 class="mdc-typography--subheading1">{{ grade }}年</h4>
+            <ul class="mdc-list" v-for="val in data">
+              <li class="mdc-list-item" style="height:auto;margin-bottom:8px">
+                <i class="material-icons mdc-list-item__graphic">person</i>
+                <div class="mdc-list-item__text">
+                  {{ val.name }}
+                  <div class="mdc-chip-set mdc-list-item__secondary-text" style="white-space:normal;font-size:0.8rem">
+                    <div class="mdc-chip"><div class="mdc-chip__text">{{ val.fac }}</div></div>
+                    <div class="mdc-chip"><div class="mdc-chip__text">{{ val.hs }}</div></div>
+                    <div class="mdc-chip" v-if="val.pos !== ''"><div class="mdc-chip__text">{{ val.pos }}</div></div>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -60,6 +62,11 @@ export default {
   },
   data: function () {
     return {
+      lists: {
+        a: '部長……高橋真弓',
+        b: '監督……小原貴文',
+        c: 'コーチ……中山朋子',
+      },
       member: {
         4: [],
         3: [],
