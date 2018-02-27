@@ -14,7 +14,7 @@
       </header>
       <nav class="mdc-drawer__content mdc-list">
         <router-link class="mdc-list-item mdc-list-item--activated" :to="menuItem.path" v-for="menuItem in menuItems" @click.native="closeDrawer">
-          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">label_outline</i>
+          <i class="material-icons mdc-list-item__graphic">label_outline</i>
           {{ menuItem.name }}
         </router-link>
       </nav>
@@ -43,7 +43,7 @@ export default {
       menuItems: {
         1: {name:'TOP', path: '/'},
         2: {name:'Member', path: '/member'},
-        3: {name:'BBS', path: '/bbs/list'},
+        3: {name:'BBS', path: '/bbs/list/1'},
         4: {name:'Mizutori', path: '/mizutori'},
       },
     }

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Top from '@/components/Top';
 import Member from '@/components/Member';
 import BBSList from '@/components/BBS/BBSList';
+import BBSDetail from '@/components/BBS/BBSDetail';
 import BBSInput from '@/components/BBS/BBSInput';
 import Mizutori from '@/components/Mizutori/Mizutori';
 
@@ -19,15 +20,15 @@ export default new Router({
       component: Member,
     },
     {
-      path: '/bbs/list',
+      path: '/bbs/list/:p',
       component: BBSList,
     },
     {
-      path: '/bbs/input',
-      component: BBSInput,
+      path: '/bbs/detail/:id',
+      component: BBSDetail,
     },
     {
-      path: '/bbs/input/:type/:id',
+      path: '/bbs/input',
       component: BBSInput,
     },
     {

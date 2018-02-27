@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>Member</h4>
+    <h1 class="mdc-typography--display1">部員紹介</h1>
     <ul class="mdc-list">
       <li class="mdc-list-item">部長……高橋真弓</li>
       <li class="mdc-list-item">監督……小原貴文</li>
@@ -37,35 +37,29 @@
 </template>
 
 <script>
-import config from '../Config.js';
-import axios from 'axios';
-import {MDCTabBar, MDCTabBarFoundation} from '@material/tabs';
-
+import {MDCTabBar} from '@material/tabs';
 import {clickTab} from '../Functions';
+
+import data from '@/assets/member.json'
 
 export default {
   mounted: function () {
     const tabBar = new MDCTabBar(document.getElementById('topmember-tab'));
     document.querySelector('#topmember-panels > .panel:nth-child(1)').classList.add('active');
   },
-  beforeCreate: function () {
-    axios.get(config.member).then((res) => {
-      res.data.forEach((val) => {
-        this.member[val.grade].push({
-          name: val.name,
-          sx: val.sx,
-          fac: val.faculty,
-          hs: `${val.school}（${val.prefec}）`,
-          pos: val.position,
-        });
+  created: function () {
+    data.forEach((val) => {
+      this.member[val.grade].push({
+        name: val.name,
+        sx: val.sx,
+        fac: val.faculty,
+        hs: `${val.school}（${val.prefec}）`,
+        pos: val.position,
       });
-    }).catch((res) => {
-      this.member.isError = true;
     });
   },
   data: function () {
     return {
-      tabPos: 1,
       member: {
         4: [],
         3: [],

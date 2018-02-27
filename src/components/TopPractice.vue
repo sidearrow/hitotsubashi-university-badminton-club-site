@@ -1,6 +1,6 @@
 <template>
     <div>
-      <p>Practice</p>
+      <h1 class="mdc-typography--display1">練習</h1>
       <section>
         <div>
           <div>

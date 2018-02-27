@@ -25,6 +25,19 @@ export default {
   --mdc-theme-primary-dark: #b43e3b;
 }
 
+body {
+  max-width: 720px;
+  margin-top: 70px !important;
+}
+
+a.material-icons {
+  text-decoration: none;
+}
+button > a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .slf-talign-center {
   text-align: center;
 }

@@ -1,97 +1,108 @@
 <template>
   <div>
     <div>
-      <div class="mdc-text-field">
-        <input type="text" class="mdc-text-field__input" required>
+      <div class="mdc-text-field" id="input-name">
+        <input type="text" class="mdc-text-field__input" :value="value.name" required maxlenght="50">
         <label class="mdc-text-field__label">Name</label>
         <div class="mdc-line-ripple"></div>
       </div>
-      <div class="mdc-text-field">
-        <input type="text" class="mdc-text-field__input" required>
+      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">50字以内で入力してください。</p>
+      <div class="mdc-text-field" id="input-title">
+        <input type="text" class="mdc-text-field__input" :value="value.title" required maxlength="50">
         <label class="mdc-text-field__label">Title</label>
         <div class="mdc-line-ripple"></div>
       </div>
-      <div class="mdc-text-field mdc-text-field--textarea" required>
-        <textarea class="mdc-text-field__input" rows="10" required></textarea>
+      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">50字以内で入力してください。</p>
+      <div class="mdc-text-field mdc-text-field--textarea" id="input-content">
+        <textarea class="mdc-text-field__input" rows="10" :value="value.content" required maxlength="2000"></textarea>
         <label class="mdc-text-field__label">Content</label>
       </div>
-      <div class="mdc-text-field">
-        <input type="password" class="mdc-text-field__input" required>
+      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">2000字以内で入力してください。</p>
+      <div class="mdc-text-field" id="input-password">
+        <input type="password" class="mdc-text-field__input" required pattern="[0-9]{4}">
         <label class="mdc-text-field__label">Password</label>
       </div>
+      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">4桁の半角数字で入力してください。</p>
       <div class="slf-talign-center">
-        <button class="mdc-button" @click="clickPost">投稿</button>
-        <button class="mdc-button"><router-link to="/bbs/list/1" class="text-white">戻る</router-link></button>
+        <button class="mdc-button mdc-button--raised" @click="clickPost">投稿</button>
+        <button class="mdc-button mdc-button--raised"><router-link to="/bbs/list/1" id="return">戻る</router-link></button>
       </div>
-      <div id="success-msg" class="alert alert-success mt-3 d-none">投稿が完了しました。</div>
-      <div id="error-msg" class="alert alert-danger mt-3 d-none">入力エラーがあります。</div>
     </div>
   </div>
 </template>
 
 <script>
 import {database} from '@/main.js';
-
 import {MDCTextField} from '@material/textfield';
 
 export default {
+  created: function () {
+    if (this.id !== null) {
+      database.ref(`/bbs/${this.id}`).once('value', (res) => {
+        const post = res.val();
+        this.value.name = post.name;
+        this.value.title = post.title;
+        this.value.content = post.content;
+      });
+      sessionStorage.removeItem('id');
+    }
+  },
   mounted: function () {
-    document.querySelectorAll('.mdc-text-field').forEach((val) => {
-      MDCTextField.attachTo(val);
-    });
+    this.input.name = new MDCTextField(document.getElementById('input-name'));
+    this.input.title = new MDCTextField(document.getElementById('input-title'));
+    this.input.content = new MDCTextField(document.getElementById('input-content'));
+    this.input.password = new MDCTextField(document.getElementById('input-password'));
+  },
+  data: function () {
+    return {
+      id: sessionStorage.getItem('id'),
+      input: {
+        name: {}, title: {}, content: {}, password: {},
+      },
+      value: {
+        name: '', title: '', content: '',
+      },
+    };
   },
   methods: {
     clickPost: function (event) {
       event.target.setAttribute('disabled', '');
 
-      let isError = false;
-
-      const name = document.querySelector('input[name=name]').value.trim();
-      const title = document.querySelector('input[name=title]').value.trim();
-      const content = document.querySelector('textarea[name=content]').value.trim();
-      const password = document.querySelector('input[name=password]').value.trim();
-
-      if (name.length === 0 || name.length > 30) {
-        document.querySelector('input[name=name]').classList.add('is-invalid');
-        isError = true;
-      }
-      if (title.length === 0 || title.length > 50) {
-        document.querySelector('input[name=title]').classList.add('is-invalid');
-        isError = true;
-      }
-      if (content.length === 0 || content.length > 2000) {
-        document.querySelector('textarea[name=content]').classList.add('is-invalid');
-        isError = true;
-      }
-      if (password.match(/^\d{4}$/) === null) {
-        document.querySelector('input[name=password]').classList.add('is-invalid');
-        isError = true;
-      }
-
       // 入力エラー
-      if (isError) {
-        document.getElementById('error-msg').classList.remove('d-none');
+      if (!(this.input.name.valid && this.input.title.valid && this.input.content.valid && this.input.password.valid)) {
         event.target.removeAttribute('disabled');
         return;
       }
 
-      // 入力成功
-      document.getElementById('success-msg').classList.remove('d-none');
-      
+      this.input.name.disabled = true;
+      this.input.title.disabled = true;
+      this.input.content.disabled = true;
+      this.input.password.disabled = true;
+
       const date = new Date();
       const format = (num) => {
         return ('00' + num).slice(-2);
       };
       const formatDate = `${date.getFullYear()}/${format(date.getMonth())}/${format(date.getDate())} ${format(date.getHours())}:${format(date.getMinutes())}`;
 
-      database.ref('bbs/').push({
-        name: name,
+      const data = {
+        name: this.input.name.value,
         date: formatDate,
-        title: title,
-        content: content,
-        password: password,
+        title: this.input.title.value,
+        content: this.input.content.value,
+        password: this.input.password.value,
         delete: false,
-      });
+      };
+
+      if (this.id === null) {
+        database.ref('bbs/').push(data);
+      } else {
+        let updates = {};
+        updates[`bbs/${this.id}`] = data;
+        database.ref().update(updates);
+      }
+
+      document.getElementById('return').innerHTML = '完了';
     },
   }
 };

@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 src/Config.js
-src/assets/img
+src/assets
 src/components/MemberData.js
 
 # Editor directories and files
