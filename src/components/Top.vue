@@ -11,6 +11,9 @@
 import ContentPractice from './TopPractice';
 
 export default {
+  beforeCreate: function () {
+    document.title = 'TOP - 一橋バド';
+  },
   components: {
     ContentPractice: ContentPractice,
   },

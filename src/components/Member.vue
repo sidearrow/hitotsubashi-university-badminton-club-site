@@ -45,6 +45,9 @@ import {clickTab} from '../Functions';
 import data from '@/assets/member.json'
 
 export default {
+  beforeCreate: function () {
+    document.title = '部員紹介 - 一橋バド';
+  },
   mounted: function () {
     const tabBar = new MDCTabBar(document.getElementById('topmember-tab'));
     document.querySelector('#topmember-panels > .panel:nth-child(1)').classList.add('active');

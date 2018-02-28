@@ -40,6 +40,9 @@ import {MDCTextField} from '@material/textfield';
 import {database} from '@/main.js';
 
 export default {
+  beforeCreate: function () {
+    document.title = '掲示板 - 一橋バド';
+  },
   created: function () {
     database.ref(`/bbs/${this.id}`).once('value', (res) => {
       this.post = res.val();

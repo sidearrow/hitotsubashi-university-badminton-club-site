@@ -1,10 +1,15 @@
 <template>
   <div>
-    <ul class="mdc-list mdc-list--non-interactive">
-      <li class="mdc-list-item" v-for="(val, key) in obMsg">
-        <a :href="val" target="_blank">{{ key }}</a>
-      </li>
-    </ul>
+    <div v-if="!isLogin">
+      準備中
+    </div>
+    <div v-else>
+      <ul class="mdc-list mdc-list--non-interactive">
+        <li class="mdc-list-item" v-for="(val, key) in obMsg">
+          <a :href="val" target="_blank">{{ key }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -14,6 +19,9 @@ import config from '@/Config.js';
 import axios from 'axios';
 
 export default {
+  beforeCreate: function () {
+    document.title = 'みずとり会 - 一橋バド';
+  },
   mounted: function () {
     axios.get(config.obmsg).then((res) => {
       res.data.forEach((val) => {
@@ -23,6 +31,7 @@ export default {
   },
   data: function () {
     return {
+      isLogin: false,
       obMsg: {},
     }
   }

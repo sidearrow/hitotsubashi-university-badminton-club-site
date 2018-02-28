@@ -27,6 +27,7 @@ import {database} from '@/main.js';
 
 export default {
   beforeCreate () {
+    document.title = '掲示板 - 一橋バド';
     database.ref('/bbs/').once('value', (res) => {
       this.posts = res.val();
     });
