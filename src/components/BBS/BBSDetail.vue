@@ -9,7 +9,7 @@
         <button class="mdc-button mdc-button--raised" data-func="edit" @click="openModal"><i class="material-icons mdc-button__icon">mode_edit</i>Edit</button>
         <button class="mdc-button mdc-button--raised" data-func="delete" @click="openModal"><i class="material-icons mdc-button__icon">delete</i>Delete</button>
       </p>
-      <p class="slf-ws-pre-wrap">{{post.content}}</p>
+      <p class="slf-ws-pre-wrap slf-fontsize-09">{{post.content}}</p>
       <Comment/>
     </div>
     <aside class="mdc-dialog">

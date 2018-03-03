@@ -53,6 +53,10 @@ button > a {
   padding: 16px;
 }
 
+.slf-fontsize-09 {
+  font-size: 0.9rem;
+}
+
 .panel {
   display: none;
 }

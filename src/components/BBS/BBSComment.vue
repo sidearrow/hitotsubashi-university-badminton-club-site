@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <div id="disqus_thread"></div>
-  </div>
+  <div id="disqus_thread"></div>
 </template>
 
 <script>
@@ -16,3 +14,9 @@ export default {
   },
 }
 </script>
+
+<style>
+#disqus_thread {
+  margin-top: 40px;
+}
+</style>

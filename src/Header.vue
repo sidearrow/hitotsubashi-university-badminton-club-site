@@ -40,12 +40,14 @@ export default {
   data: function () {
     return {
       mdcDrawer: {},
-      menuItems: {
-        1: {name:'TOP', path: '/'},
-        2: {name:'Member', path: '/member'},
-        3: {name:'BBS', path: '/bbs/list/1'},
-        4: {name:'Mizutori', path: '/mizutori'},
-      },
+      menuItems: [
+        {name:'TOP', path: '/'},
+        {name:'Member', path: '/member'},
+        {name:'Result', path: '/result'},
+        {name:'Santama', path: '/santama'},
+        {name:'BBS', path: '/bbs/list/1'},
+        {name:'Mizutori', path: '/mizutori'},
+      ],
     }
   },
 };
