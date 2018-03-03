@@ -45,6 +45,10 @@ button > a {
   text-align: right;
 }
 
+.slf-ws-pre-wrap {
+  white-space: pre-wrap;
+}
+
 .slf-card-article {
   padding: 16px;
 }

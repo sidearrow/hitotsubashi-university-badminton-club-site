@@ -2,14 +2,15 @@
   <div>
     <div>
       <p><router-link to="/bbs/list/1">投稿一覧に戻る</router-link></p>
-      <h4>{{post.title}}</h4>
-      <p>{{post.name}}</p>
-      <p>{{post.date}}</p>
+      <h1 class="mdc-typography--headline">{{post.title}}</h1>
+      <p class="slf-talign-right">{{post.name}}</p>
+      <p class="slf-talign-right">{{post.date}}</p>
       <p class="slf-talign-right">
         <button class="mdc-button mdc-button--raised" data-func="edit" @click="openModal"><i class="material-icons mdc-button__icon">mode_edit</i>Edit</button>
         <button class="mdc-button mdc-button--raised" data-func="delete" @click="openModal"><i class="material-icons mdc-button__icon">delete</i>Delete</button>
       </p>
-      <p>{{post.content}}</p>
+      <p class="slf-ws-pre-wrap">{{post.content}}</p>
+      <Comment/>
     </div>
     <aside class="mdc-dialog">
       <div class="mdc-dialog__surface">
@@ -35,6 +36,7 @@
 </template>
 
 <script>
+import BBSComment from './BBSComment';
 import {MDCDialog} from '@material/dialog';
 import {MDCTextField} from '@material/textfield';
 import {database} from '@/main.js';
@@ -64,6 +66,9 @@ export default {
       sessionStorage.setItem('id', this.id);
       this.$router.push('/bbs/input');
     },
+  },
+  components: {
+    Comment: BBSComment,
   },
   data: function () {
     return {
