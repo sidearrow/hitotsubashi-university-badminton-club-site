@@ -14,7 +14,7 @@ import config from '@/Config';
 
 export default {
   beforeCreate: function () {
-    const contentfulClient = contentful.createClient(config.contentful);
+    const contentfulClient = contentful.createClient(config.contentful.token);
     contentfulClient.getEntries({
       content_type: 'santama',
     }).then((res) => {

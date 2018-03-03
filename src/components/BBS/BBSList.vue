@@ -1,8 +1,12 @@
 <template>
   <div>
     <h1 class="mdc-typography--display1">掲示板</h1>
-    <ul class="mdc-list mdc-list--two-line">
+    <ul class="mdc-list">
+      <li class="mdc-list-item"><a :href="bbsUrl.old_a" target="_blank">旧掲示板１</a></li>
+      <li class="mdc-list-item"><a :href="bbsUrl.old_b" target="_blank">旧掲示板２</a></li>
       <li class="mdc-list-item"><router-link to="/bbs/input">新規投稿</router-link></li>
+    </ul>
+    <ul class="mdc-list mdc-list--two-line">
       <li class="mdc-list-item" v-for="(post, key) in posts">
         <span class="mdc-list-item__graphic">
           <i class="material-icons">subject</i>
@@ -24,6 +28,7 @@
 <script>
 import Pagination from './BBSListPagination.vue';
 import {database} from '@/main.js';
+import config from '@/Config';
 
 export default {
   beforeCreate () {
@@ -38,6 +43,7 @@ export default {
   data: function () {
     return {
       posts: [],
+      bbsUrl: config.bbs,
     }
   },
 }
