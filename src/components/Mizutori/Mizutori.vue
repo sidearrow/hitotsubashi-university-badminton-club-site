@@ -1,11 +1,11 @@
 <template>
   <div>
     <div v-if="!isLogin">
-      <div class="mdc-text-field mdc-text-field--with-trailing-icon">
+      <div class="mdc-text-field">
         <input type="password" class="mdc-text-field__input" required>
         <label class="mdc-text-field__label">Password</label>
-        <i class="material-icons mdc-text-field__icon">send</i>
       </div>
+      <i class="material-icons" @click="clickSubmit">send</i>
     </div>
     <mizutoricontent v-if="isLogin"></mizutoricontent>
   </div>
@@ -14,18 +14,19 @@
 <script>
 import {MDCTextField} from '@material/textfield';
 import MizutoriContent from './MizutoriContent';
+import config from '@/Config';
 
 export default {
   mounted: function () {
     if (!this.isLogin) {
       this.isLogin = window.sessionStorage.getItem('isLogin') === 'true';
-      MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
+      this.passInput = new MDCTextField(document.querySelector('.mdc-text-field'));
     }
   },
   data () {
     return {
-      test: 'aaa',
-      isLogin: true,
+      isLogin: false,
+      passInput: {},
     }
   },
   components: {
@@ -33,18 +34,10 @@ export default {
   },
   methods: {
     'clickSubmit': function (event) {
-      event.target.setAttribute('disabled', true);
-      const inputPass = document.querySelector('input[type=password]').value;
-      if (inputPass === 'password') {
+      if (document.querySelector('input[type=password]').value === config.mizutoriPassword) {
         this.isLogin = true;
         window.sessionStorage.setItem('isLogin', 'true');
-      } else {
-        document.getElementById('pass-wrong').classList.remove('d-none');
       }
-    },
-    'clickClose': function (event) {
-      document.getElementById('pass-submit').removeAttribute('disabled');
-      document.getElementById('pass-wrong').classList.add('d-none');
     },
   }
 };

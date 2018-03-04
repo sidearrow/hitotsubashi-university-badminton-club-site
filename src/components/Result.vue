@@ -14,6 +14,7 @@ import config from '@/Config';
 
 export default {
   beforeCreate: function () {
+    document.title = '大会結果 - 一橋バド';
     const contentfulClient = contentful.createClient(config.contentful.token);
     contentfulClient.getEntry(config.contentful.id.result).then((res) => {
       this.items = res.fields.result;
