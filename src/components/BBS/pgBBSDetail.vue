@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <content-title :title="post.title"/>
+  <main>
     <article>
       <section class="mdc-card">
         <div>
-          <p><router-link to="/bbs/list/1">投稿一覧に戻る</router-link></p>
           <h1 class="mdc-typography--headline">{{post.title}}</h1>
           <p class="slf-talign-right">{{post.name}}</p>
           <p class="slf-talign-right">{{post.date}}</p>
           <p class="slf-talign-right">
-            <button class="mdc-button mdc-button--raised" data-func="edit" @click="openModal"><i class="material-icons mdc-button__icon">mode_edit</i>Edit</button>
-            <button class="mdc-button mdc-button--raised" data-func="delete" @click="openModal"><i class="material-icons mdc-button__icon">delete</i>Delete</button>
+            <button class="mdc-button mdc-button--dense mdc-button--raised" data-func="edit" @click="openModal"><i class="material-icons mdc-button__icon">mode_edit</i>Edit</button>
+            <button class="mdc-button mdc-button--dense mdc-button--raised" data-func="delete" @click="openModal"><i class="material-icons mdc-button__icon">delete</i>Delete</button>
           </p>
           <p class="slf-ws-pre-wrap slf-fontsize-09">{{post.content}}</p>
-          <Comment/>
         </div>
+      </section>
+      <section class="mdc-card">
+        <p><router-link to="/bbs/list/1">投稿一覧に戻る</router-link></p>
+      </section>
+      <section class="mdc-card">
+        <Comment/>
       </section>
     </article>
 
@@ -38,7 +41,7 @@
       </div>
       <div class="mdc-dialog__backdrop"></div>
     </aside>
-  </div>
+  </main>
 </template>
 
 <script>

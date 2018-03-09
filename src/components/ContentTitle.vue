@@ -1,6 +1,6 @@
 <template>
   <header class="mdc-elevation--z4" id="content-title">
-    <h1>{{title}}</h1>
+    <h1 class="mdc-typography--display2">{{title}}</h1>
   </header>
 </template>
 
