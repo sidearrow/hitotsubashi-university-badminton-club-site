@@ -1,34 +1,36 @@
 <template>
-  <div>
-    <div>
-      <div class="mdc-text-field" id="input-name">
-        <input type="text" class="mdc-text-field__input" :value="value.name" required maxlenght="50">
-        <label class="mdc-text-field__label">Name</label>
-        <div class="mdc-line-ripple"></div>
-      </div>
-      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">50字以内で入力してください。</p>
-      <div class="mdc-text-field" id="input-title">
-        <input type="text" class="mdc-text-field__input" :value="value.title" required maxlength="50">
-        <label class="mdc-text-field__label">Title</label>
-        <div class="mdc-line-ripple"></div>
-      </div>
-      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">50字以内で入力してください。</p>
-      <div class="mdc-text-field mdc-text-field--textarea" id="input-content">
-        <textarea class="mdc-text-field__input" rows="10" :value="value.content" required maxlength="2000"></textarea>
-        <label class="mdc-text-field__label">Content</label>
-      </div>
-      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">2000字以内で入力してください。</p>
-      <div class="mdc-text-field" id="input-password">
-        <input type="password" class="mdc-text-field__input" required pattern="[0-9]{4}">
-        <label class="mdc-text-field__label">Password</label>
-      </div>
-      <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">4桁の半角数字で入力してください。</p>
-      <div class="slf-talign-center">
-        <button class="mdc-button mdc-button--raised" @click="clickPost">投稿</button>
-        <button class="mdc-button mdc-button--raised"><router-link to="/bbs/list/1" id="return">戻る</router-link></button>
-      </div>
-    </div>
-  </div>
+  <main>
+    <article>
+      <section class="mdc-card">
+        <div class="mdc-text-field" id="input-name">
+          <input type="text" class="mdc-text-field__input" :value="value.name" required maxlenght="50">
+          <label class="mdc-text-field__label">Name</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">50字以内で入力してください。</p>
+        <div class="mdc-text-field" id="input-title">
+          <input type="text" class="mdc-text-field__input" :value="value.title" required maxlength="50">
+          <label class="mdc-text-field__label">Title</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">50字以内で入力してください。</p>
+        <div class="mdc-text-field mdc-text-field--textarea" id="input-content">
+          <textarea class="mdc-text-field__input" rows="10" :value="value.content" required maxlength="2000"></textarea>
+          <label class="mdc-text-field__label">Content</label>
+        </div>
+        <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">2000字以内で入力してください。</p>
+        <div class="mdc-text-field" id="input-password">
+          <input type="password" class="mdc-text-field__input" required pattern="[0-9]{4}">
+          <label class="mdc-text-field__label">Password</label>
+        </div>
+        <p class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">4桁の半角数字で入力してください。</p>
+        <div class="slf-talign-center">
+          <button class="mdc-button mdc-button--raised" @click="clickPost">投稿</button>
+          <button class="mdc-button mdc-button--raised"><router-link to="/bbs/list/1" id="return">戻る</router-link></button>
+        </div>
+      </section>
+    </article>
+  </main>
 </template>
 
 <script>

@@ -1,40 +1,46 @@
 <template>
   <main>
-    <h1 class="mdc-typography--display1">部員紹介</h1>
-    <ul class="mdc-list">
-      <li class="mdc-list-item" v-for="list in lists"><i class="material-icons mdc-list-item__graphic">person</i>{{list}}</li>
-    </ul>
-    <div>
-      <section>
-        <nav class="mdc-tab-bar" id="topmember-tab">
-          <a class="mdc-tab" data-tab="1" @click="clickTab">1年</a>
-          <a class="mdc-tab" data-tab="2" @click="clickTab">2年</a>
-          <a class="mdc-tab" data-tab="3" @click="clickTab">3年</a>
-          <a class="mdc-tab" data-tab="4" @click="clickTab">4年</a>
-          <span class="mdc-tab-bar__indicator"></span>          
-        </nav>
+    <article>
+      <section class="mdc-card">
+        <ul class="mdc-list">
+          <li class="mdc-list-item" v-for="list in lists"><i class="material-icons mdc-list-item__graphic">person</i>{{list}}</li>
+        </ul>
       </section>
-      <section>
-        <div class="panels" id="topmember-panels">
-          <div class="panel" :data-tab="grade" v-for="(data, grade) in member">
-            <h4 class="mdc-typography--subheading1">{{ grade }}年</h4>
-            <ul class="mdc-list" v-for="val in data">
-              <li class="mdc-list-item" style="height:auto;margin-bottom:8px">
-                <i class="material-icons mdc-list-item__graphic">person</i>
-                <div class="mdc-list-item__text">
-                  {{ val.name }}
-                  <div class="mdc-chip-set mdc-list-item__secondary-text" style="white-space:normal;font-size:0.8rem">
-                    <div class="mdc-chip"><div class="mdc-chip__text">{{ val.fac }}</div></div>
-                    <div class="mdc-chip"><div class="mdc-chip__text">{{ val.hs }}</div></div>
-                    <div class="mdc-chip" v-if="val.pos !== ''"><div class="mdc-chip__text">{{ val.pos }}</div></div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+      <section class="mdc-card">
+        <div>
+          <section>
+            <nav class="mdc-tab-bar" id="topmember-tab">
+              <a class="mdc-tab" data-tab="1" @click="clickTab">1年</a>
+              <a class="mdc-tab" data-tab="2" @click="clickTab">2年</a>
+              <a class="mdc-tab" data-tab="3" @click="clickTab">3年</a>
+              <a class="mdc-tab" data-tab="4" @click="clickTab">4年</a>
+              <span class="mdc-tab-bar__indicator"></span>          
+            </nav>
+          </section>
+          <section>
+            <div class="panels" id="topmember-panels">
+              <div class="panel" :data-tab="grade" v-for="(data, grade) in member">
+                <ul class="mdc-list" v-for="val in data">
+                  <li class="mdc-list-item" style="height:auto;margin-bottom:8px">
+                    <i class="material-icons mdc-list-item__graphic">person</i>
+                    <div class="mdc-list-item__text">
+                      {{ val.name }}
+                      <div class="mdc-chip-set mdc-list-item__secondary-text" style="white-space:normal;font-size:0.8rem">
+                        <div class="mdc-chip"><div class="mdc-chip__text">{{ val.fac }}</div></div>
+                        <div class="mdc-chip"><div class="mdc-chip__text">{{ val.hs }}</div></div>
+                        <div class="mdc-chip" v-if="val.pos !== ''"><div class="mdc-chip__text">{{ val.pos }}</div></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
-    </div>
+    </article>
+
+
   </main>
 </template>
 

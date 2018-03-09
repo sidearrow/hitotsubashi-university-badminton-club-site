@@ -1,13 +1,17 @@
 <template>
   <main>
-    <div v-if="!isLogin">
-      <div class="mdc-text-field">
-        <input type="password" class="mdc-text-field__input" required>
-        <label class="mdc-text-field__label">Password</label>
-      </div>
-      <i class="material-icons" @click="clickSubmit">send</i>
-    </div>
-    <mizutoricontent v-if="isLogin"></mizutoricontent>
+    <article>
+      <section class="mdc-card">
+        <div v-if="!isLogin">
+          <div class="mdc-text-field">
+            <input type="password" class="mdc-text-field__input" required>
+            <label class="mdc-text-field__label">Password</label>
+          </div>
+          <i class="material-icons" @click="clickSubmit">send</i>
+        </div>
+        <mizutoricontent v-if="isLogin"></mizutoricontent>
+      </section>
+    </article>
   </main>
 </template>
 

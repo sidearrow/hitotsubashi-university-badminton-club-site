@@ -1,9 +1,13 @@
 <template>
   <main>
-    <div v-for="item in items">
-      <h1 class="mdc-typography--headline">{{ item.title }}</h1>
-      <div v-html="item.text"></div>
-    </div>
+    <article>
+      <section class="mdc-card">
+        <div v-for="item in items">
+          <h1 class="mdc-typography--headline">{{ item.title }}</h1>
+          <div v-html="item.text"></div>
+        </div>
+      </section>
+    </article>
   </main>
 </template>
 

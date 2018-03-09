@@ -1,10 +1,14 @@
 <template>
   <main>
-    <dl v-for="item in items">
-      <dt>{{ item.season }}</dt>
-      <dd>男子：{{ item.m }}</dd>
-      <dd>女子：{{ item.f }}</dd>
-    </dl>
+    <article>
+      <section class="mdc-card" v-for="item in items">
+        <dl>
+          <dt>{{ item.season }}</dt>
+          <dd>男子：{{ item.m }}</dd>
+          <dd>女子：{{ item.f }}</dd>
+        </dl>
+      </section>
+    </article>
   </main>
 </template>
 
