@@ -1,19 +1,16 @@
 <template>
   <div>
-    <Header />
-    <main>
-      <router-view />
-    </main>
-    </div>
+    <nav-bar/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Header from './Header';
+import NavBar from './components/NavBar';
 
 export default {
   components: {
-    Header: Header,
+    'nav-bar': NavBar,
   },
 }
 </script>

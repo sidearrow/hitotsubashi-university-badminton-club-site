@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <div v-if="!isLogin">
       <div class="mdc-text-field">
         <input type="password" class="mdc-text-field__input" required>
@@ -8,7 +8,7 @@
       <i class="material-icons" @click="clickSubmit">send</i>
     </div>
     <mizutoricontent v-if="isLogin"></mizutoricontent>
-  </div>
+  </main>
 </template>
 
 <script>

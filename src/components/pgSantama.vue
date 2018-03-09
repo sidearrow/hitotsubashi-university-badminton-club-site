@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <main>
     <div v-for="item in items">
       <h1 class="mdc-typography--headline">{{ item.title }}</h1>
       <div v-html="item.text"></div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

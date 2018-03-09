@@ -1,4 +1,4 @@
-<template><div>
+<template>
   <header class="mdc-toolbar mdc-toolbar--fixed">
     <div class="mdc-toolbar__row">
       <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
@@ -6,21 +6,21 @@
         <span class="mdc-toolbar__title">一橋大学バドミントン部</span>
       </section>
     </div>
-  </header>
-  <aside class="mdc-drawer mdc-drawer--temporary mdc-typography">
-    <nav class="mdc-drawer__drawer">
-      <header class="mdc-drawer__header">
-        <div class="mdc-drawer__header-content">Hitotsubashi Badminton Club</div>
-      </header>
-      <nav class="mdc-drawer__content mdc-list">
-        <router-link class="mdc-list-item" :to="menuItem.path" v-for="menuItem in menuItems" :key="menuItem.name" @click.native="closeDrawer">
-          <i class="material-icons mdc-list-item__graphic">label_outline</i>
-          {{ menuItem.name }}
-        </router-link>
+    <aside class="mdc-drawer mdc-drawer--temporary mdc-typography">
+      <nav class="mdc-drawer__drawer">
+        <header class="mdc-drawer__header">
+          <div class="mdc-drawer__header-content">Hitotsubashi Badminton Club</div>
+        </header>
+        <nav class="mdc-drawer__content mdc-list">
+          <router-link class="mdc-list-item" :to="menuItem.path" v-for="menuItem in menuItems" :key="menuItem.name" @click.native="closeDrawer">
+            <i class="material-icons mdc-list-item__graphic">label_outline</i>
+            {{ menuItem.name }}
+          </router-link>
+        </nav>
       </nav>
-    </nav>
-  </aside>
-</div></template>
+    </aside>
+  </header>
+</template>
 
 <script>
 import {MDCTemporaryDrawer} from '@material/drawer';

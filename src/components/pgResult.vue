@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <main>
     <dl v-for="item in items">
       <dt>{{ item.season }}</dt>
       <dd>男子：{{ item.m }}</dd>
       <dd>女子：{{ item.f }}</dd>
     </dl>
-  </div>
+  </main>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <h1 class="mdc-typography--display1">部員紹介</h1>
     <ul class="mdc-list">
       <li class="mdc-list-item" v-for="list in lists"><i class="material-icons mdc-list-item__graphic">person</i>{{list}}</li>
@@ -35,7 +35,7 @@
         </div>
       </section>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
