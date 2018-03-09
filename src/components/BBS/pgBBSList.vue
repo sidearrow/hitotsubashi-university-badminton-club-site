@@ -1,5 +1,6 @@
 <template>
   <main>
+    <content-title title="BBS"/>
     <article>
       <section class="mdc-card">
         <ul class="mdc-list">
@@ -26,6 +27,7 @@
 </template>
 
 <script>
+import ContentTitle from '../ContentTitle';
 import {database} from '@/main.js';
 import config from '@/Config';
 
@@ -35,6 +37,9 @@ export default {
     database.ref('/bbs/').once('value', (res) => {
       this.posts = res.val();
     });
+  },
+  components: {
+    'content-title': ContentTitle,
   },
   data: function () {
     return {

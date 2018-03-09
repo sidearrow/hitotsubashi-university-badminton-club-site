@@ -1,5 +1,6 @@
 <template>
   <main>
+    <content-title title="三多摩地区学生バドミントン選手権大会"/>
     <article>
       <section class="mdc-card">
         <div v-for="item in items">
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import ContentTitle from './ContentTitle';
 const contentful = require('contentful');
 const marked = require('marked');
 import config from '@/Config';
@@ -31,6 +33,9 @@ export default {
       });
       this.items = tmp;
     });
+  },
+  components: {
+    'content-title': ContentTitle,
   },
   data: function () {
     return {

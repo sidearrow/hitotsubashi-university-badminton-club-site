@@ -1,5 +1,6 @@
 <template>
   <main>
+    <content-title title="部員紹介"/>
     <article>
       <section class="mdc-card">
         <ul class="mdc-list">
@@ -45,6 +46,7 @@
 </template>
 
 <script>
+import ContentTitle from './ContentTitle';
 import {MDCTabBar} from '@material/tabs';
 import {clickTab} from '../Functions';
 
@@ -68,6 +70,9 @@ export default {
         pos: val.position,
       });
     });
+  },
+  components: {
+    'content-title': ContentTitle,
   },
   data: function () {
     return {

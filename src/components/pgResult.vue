@@ -1,5 +1,6 @@
 <template>
   <main>
+    <content-title title="大会結果"/>
     <article>
       <section class="mdc-card" v-for="item in items">
         <dl>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import ContentTitle from './ContentTitle';
 const contentful = require('contentful');
 import config from '@/Config';
 
@@ -23,6 +25,9 @@ export default {
     contentfulClient.getEntry(config.contentful.id.result).then((res) => {
       this.items = res.fields.result;
     });
+  },
+  components: {
+    'content-title': ContentTitle,
   },
   data: function () {
     return {

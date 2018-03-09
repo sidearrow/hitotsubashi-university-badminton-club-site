@@ -1,6 +1,7 @@
 <template>
   <main>
     <article>
+      <content-title/>
       <section class="mdc-card">
         <div class="mdc-text-field" id="input-name">
           <input type="text" class="mdc-text-field__input" :value="value.name" required maxlenght="50">
@@ -34,6 +35,7 @@
 </template>
 
 <script>
+import ContentTitle from '../ContentTitle';
 import {database} from '@/main.js';
 import {MDCTextField} from '@material/textfield';
 
@@ -57,6 +59,9 @@ export default {
     this.input.title = new MDCTextField(document.getElementById('input-title'));
     this.input.content = new MDCTextField(document.getElementById('input-content'));
     this.input.password = new MDCTextField(document.getElementById('input-password'));
+  },
+  components: {
+    'content-title': ContentTitle,
   },
   data: function () {
     return {

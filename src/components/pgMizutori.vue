@@ -1,5 +1,6 @@
 <template>
   <main>
+    <content-title title="みずとり会"/>
     <article>
       <section class="mdc-card">
         <div v-if="!isLogin">
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import ContentTitle from './ContentTitle';
 import {MDCTextField} from '@material/textfield';
 import MizutoriContent from './MizutoriContent';
 import config from '@/Config';
@@ -35,6 +37,7 @@ export default {
   },
   components: {
     'mizutoricontent': MizutoriContent,
+    'content-title': ContentTitle,
   },
   methods: {
     'clickSubmit': function (event) {
