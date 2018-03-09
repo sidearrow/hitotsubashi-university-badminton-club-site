@@ -13,7 +13,7 @@
         <div class="mdc-drawer__header-content">Hitotsubashi Badminton Club</div>
       </header>
       <nav class="mdc-drawer__content mdc-list">
-        <router-link class="mdc-list-item mdc-list-item--activated" :to="menuItem.path" v-for="menuItem in menuItems" @click.native="closeDrawer">
+        <router-link class="mdc-list-item" :to="menuItem.path" v-for="menuItem in menuItems" :key="menuItem.name" @click.native="closeDrawer">
           <i class="material-icons mdc-list-item__graphic">label_outline</i>
           {{ menuItem.name }}
         </router-link>
