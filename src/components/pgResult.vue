@@ -2,28 +2,21 @@
   <main>
     <content-title title="大会結果"/>
     <article>
-      <section class="mdc-card" v-for="item in items">
-        <dl>
-          <dt>{{ item.season }}</dt>
-          <dd>男子：{{ item.m }}</dd>
-          <dd>女子：{{ item.f }}</dd>
-        </dl>
-      </section>
+      <section class="mdc-card" v-html="content"></section>
     </article>
   </main>
 </template>
 
 <script>
+import axios from 'axios';
 import ContentTitle from './ContentTitle';
-const contentful = require('contentful');
 import config from '@/Config';
 
 export default {
   beforeCreate: function () {
     document.title = '大会結果 - 一橋バド';
-    const contentfulClient = contentful.createClient(config.contentful.token);
-    contentfulClient.getEntry(config.contentful.id.result).then((res) => {
-      this.items = res.fields.result;
+    axios.get(config.ghBaseUrl + 'result.json').then((res) => {
+      this.content = res.data.html;
     });
   },
   components: {
@@ -31,7 +24,7 @@ export default {
   },
   data: function () {
     return {
-      items: [],
+      content: '',
     };
   }
 };
