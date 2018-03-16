@@ -2,7 +2,9 @@
   <main>
     <content-title title="TOP"/>
     <article>
-      <section class="mdc-card" v-html="content"></section>
+      <section class="mdc-card">
+        <div class="markdown-body" v-html="content"></div>
+      </section>
     </article>
   </main>
 </template>
