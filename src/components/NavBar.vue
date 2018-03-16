@@ -13,7 +13,6 @@
         </header>
         <nav class="mdc-drawer__content mdc-list">
           <router-link class="mdc-list-item" :to="menuItem.path" v-for="menuItem in menuItems" :key="menuItem.name" @click.native="closeDrawer">
-            <i class="material-icons mdc-list-item__graphic">label_outline</i>
             {{ menuItem.name }}
           </router-link>
         </nav>
