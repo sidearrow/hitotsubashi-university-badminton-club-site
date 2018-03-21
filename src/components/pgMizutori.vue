@@ -8,7 +8,9 @@
             <input type="password" class="mdc-text-field__input" required>
             <label class="mdc-text-field__label">Password</label>
           </div>
-          <i class="material-icons" @click="clickSubmit">send</i>
+          <button class="mdc-button">
+            <i class="material-icons mdc-button__icon" @click="clickSubmit">send</i>
+          </button>
         </div>
         <mizutoricontent v-if="isLogin"></mizutoricontent>
       </section>
