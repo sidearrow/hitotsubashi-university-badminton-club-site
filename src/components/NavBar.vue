@@ -44,7 +44,7 @@ export default {
         {name:'Member', path: '/member'},
         {name:'Result', path: '/result'},
         {name:'Santama', path: '/santama'},
-        {name:'BBS', path: '/bbs/list/1'},
+        {name:'BBS', path: '/bbs/list'},
         {name:'Mizutori', path: '/mizutori'},
       ],
     }
