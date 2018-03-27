@@ -10,6 +10,12 @@
         </ul>
       </section>
       <section class="mdc-card">
+        <div>
+          <router-link to="/bbs/list/2018">2018</router-link>
+          <router-link to="/bbs/list/2017">2017</router-link>
+        </div>
+      </section>
+      <section class="mdc-card">
         <div v-for="(post, key) in posts">
           <p><router-link :to="`/bbs/detail/${key}`">{{ post.title }}</router-link></p>
           <span class="mdc-list-item__secondary-text">
@@ -18,15 +24,6 @@
           </span>
           <hr class="mdc-list-divider slf-bbs-post-hr">
         </div>
-        <div class="slf-talign-center">
-          <button class="mdc-button" @click="prev">
-            <i class="material-icons mdc-button__icon">navigate_before</i>
-          </button>
-          <button class="mdc-button">{{ pageNum }}</button>
-          <button class="mdc-button" @click="next">
-            <i class="material-icons mdc-button__icon">navigate_next</i>
-          </button>
-        </div>
       </section>
     </article>
   </main>
@@ -34,39 +31,15 @@
 
 <script>
 import ContentTitle from '../ContentTitle';
-import {database} from '@/main.js';
+import axios from 'axios';
 import config from '@/Config';
 
 export default {
   beforeCreate () {
     document.title = '掲示板 - 一橋バド';
-    database.ref('/bbs/').once('value', (res) => {
-      const data = [];
-      const tmp = res.val();
-      for (let key in tmp) {
-        data.push(tmp[key]);
-      }
-      this.allPosts = data.reverse();
-      this.calc();
+    axios.get(config.firebase.databaseURL + '/bbs.json').then((res) => {
+      this.posts = res.data;
     });
-  },
-  watch: {
-    pageNum: function () {
-      this.calc();
-    }
-  },
-  methods: {
-    prev: function () {
-      if (this.pageNum !== 1) {
-        this.pageNum--;
-      }
-    },
-    next: function () {
-      this.pageNum++;
-    },
-    calc: function () {
-      this.posts = this.allPosts.slice((this.pageNum - 1) * 20, this.pageNum * 20 + 1);
-    }
   },
   components: {
     'content-title': ContentTitle,
@@ -74,7 +47,6 @@ export default {
   data: function () {
     return {
       pageNum: 1,
-      allPosts: [],
       posts: [],
       bbsUrl: config.bbs,
     }

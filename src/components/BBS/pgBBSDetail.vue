@@ -49,15 +49,16 @@ import ContentTitle from '../ContentTitle';
 import BBSComment from './BBSComment';
 import {MDCDialog} from '@material/dialog';
 import {MDCTextField} from '@material/textfield';
-import {database} from '@/main.js';
+import axios from 'axios';
+import config from '@/Config';
 
 export default {
   beforeCreate: function () {
     document.title = '掲示板 - 一橋バド';
   },
   created: function () {
-    database.ref(`/bbs/${this.id}`).once('value', (res) => {
-      this.post = res.val();
+    axios.get(config.firebase.databaseURL + `/bbs/${this.id}.json`).then((res) => {
+      this.post = res.data;
     });
   },
   mounted: function () {

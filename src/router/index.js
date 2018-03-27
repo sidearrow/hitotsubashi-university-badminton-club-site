@@ -9,7 +9,7 @@ export default new Router({
     { path: '/member',         component: () => import('@/components/pgMember') },
     { path: '/result',         component: () => import('@/components/pgResult') },
     { path: '/santama',        component: () => import('@/components/pgSantama') },
-    { path: '/bbs/list',       component: () => import('@/components/BBS/pgBBSList') },
+    { path: '/bbs/list/:year', component: () => import('@/components/BBS/pgBBSList') },
     { path: '/bbs/detail/:id', component: () => import('@/components/BBS/pgBBSDetail') },
     { path: '/bbs/input',      component: () => import('@/components/BBS/pgBBSInput') },
     { path: '/mizutori',       component: () => import('@/components/pgMizutori') },
