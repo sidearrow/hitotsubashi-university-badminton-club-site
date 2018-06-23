@@ -32,7 +32,6 @@ export default {
     memberData.forEach((v) => {
       this.memberData[v.grade].push(v);
     });
-    console.log(this.memberData);
   },
   mounted: function () {
   },

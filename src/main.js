@@ -13,8 +13,6 @@ import {
   MdToolbar,
 } from 'vue-material/dist/components';
 
-import 'vue-material/dist/vue-material.min.css';
-
 Vue.use(MdApp);
 Vue.use(MdButton);
 Vue.use(MdCard);

@@ -9,7 +9,9 @@
 
 html,
 body,
-body > div,
-body > div > div {
+body > div {
   height: 100%;
+}
+body > div > div {
+  min-height: 100%;
 }
