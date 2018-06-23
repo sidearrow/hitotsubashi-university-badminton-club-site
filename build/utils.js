@@ -18,12 +18,12 @@ exports.cssLoaders = function (options) {
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      sourceMap: options.sourceMap,
+      sourceMap: options.sourceMap
     }
   }
 
   const postcssLoader = {
-    loader: 'postss-loader',
+    loader: 'postcss-loader',
     options: {
       sourceMap: options.sourceMap
     }
@@ -38,7 +38,7 @@ exports.cssLoaders = function (options) {
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
           includePaths: [path.resolve(__dirname, '../node_modules')],
-          sourceMap: options.sourceMap,
+          sourceMap: options.sourceMap
         })
       })
     }
