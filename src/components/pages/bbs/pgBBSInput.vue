@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import ContentTitle from '../ContentTitle';
+import ContentTitle from '@/components/ContentTitle';
 import {database} from '@/main.js';
 import {MDCTextField} from '@material/textfield';
 

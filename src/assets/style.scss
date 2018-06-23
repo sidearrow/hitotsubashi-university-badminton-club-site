@@ -1,84 +1,15 @@
-$mdc-theme-primary: #ac2926;
-$mdc-theme-primary-light: #c46967;
-$mdc-theme-primary-dark: #b43e3b;
+@import "~vue-material/dist/theme/engine";
 
-//@import "~@material/line-ripple/mdc-line-ripple";
-@import "~@material/button/mdc-button";
-@import "~@material/card/mdc-card";
-//@import "~@material/checkbox/mdc-checkbox";
-//@import "~@material/chips/mdc-chips";
-@import "~@material/dialog/mdc-dialog";
-@import "~@material/drawer/mdc-drawer";
-@import "~@material/elevation/mdc-elevation";
-//@import "~@material/fab/mdc-fab";
-//@import "~@material/form-field/mdc-form-field";
-//@import "~@material/grid-list/mdc-grid-list";
-//@import "~@material/icon-toggle/mdc-icon-toggle";
-@import "~@material/layout-grid/mdc-layout-grid";
-//@import "~@material/linear-progress/mdc-linear-progress";
-@import "~@material/list/mdc-list";
-//@import "~@material/menu/mdc-menu";
-//@import "~@material/radio/mdc-radio";
-//@import "~@material/ripple/mdc-ripple";
-//@import "~@material/select/mdc-select";
-//@import "~@material/slider/mdc-slider";
-//@import "~@material/snackbar/mdc-snackbar";
-//@import "~@material/switch/mdc-switch";
-//@import "~@material/tabs/mdc-tabs";
-@import "~@material/textfield/mdc-text-field";
-@import "~@material/theme/mdc-theme";
-@import "~@material/toolbar/mdc-toolbar";
-@import "~@material/typography/mdc-typography";
+@include md-register-theme("default", (
+  primary: #ac2926,
+  accent: #26a9ac
+));
 
-@import "scss/github-markdown-css";
+@import "~vue-material/dist/theme/all";
 
-html {
-  font-size: 14px;
-  min-height: 100%;
-  background-color: #f0f0f0;
-}
-
-main {
-  margin-top: 70px !important;
-  max-width: 600px;
-  margin: auto;
-}
-
-.mdc-card {
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-a.material-icons {
-  text-decoration: none;
-}
-button > a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.slf-talign-center {
-  text-align: center;
-}
-.slf-talign-right {
-  text-align: right;
-}
-
-.slf-ws-pre-wrap {
-  white-space: pre-wrap;
-}
-
-.slf-card-article {
-  padding: 16px;
-}
-
-.slf-fontsize-09 {
-  font-size: 0.9rem;
-}
-
-.panel {
-  display: none;
-}
-.panel.active {
-  display: block;
+html,
+body,
+body > div,
+body > div > div {
+  height: 100%;
 }

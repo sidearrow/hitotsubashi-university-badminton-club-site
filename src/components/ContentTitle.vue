@@ -1,7 +1,5 @@
 <template>
-  <header class="mdc-card" id="content-title">
-    <h1 class="mdc-typography--display1">{{title}}</h1>
-  </header>
+  <h1 class="md-display-2">{{ title }}</h1>
 </template>
 
 <script>
@@ -13,8 +11,16 @@ export default {
 </script>
 
 <style>
-#content-title {
-  background-color: #c46967;
-  color: white;
+h1 {
+  display: inline;
+}
+h1:before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(/static/img/shuttle.svg);
+  background-size: contain;
+  margin-right: 10px;
 }
 </style>

@@ -1,17 +1,31 @@
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vue from 'vue';
+import App from './App';
+import router from './router';
 
-import config from './Config';
+import {
+  MdApp,
+  MdButton,
+  MdCard,
+  MdContent,
+  MdDrawer,
+  MdIcon,
+  MdList,
+  MdToolbar,
+} from 'vue-material/dist/components';
 
-Vue.config.productionTip = false
+import 'vue-material/dist/vue-material.min.css';
 
-firebase.initializeApp(config.firebase);
-export const database = firebase.database();
-export const storage = firebase.storage();
+Vue.use(MdApp);
+Vue.use(MdButton);
+Vue.use(MdCard);
+Vue.use(MdContent);
+Vue.use(MdDrawer);
+Vue.use(MdIcon);
+Vue.use(MdList);
+Vue.use(MdToolbar);
 
 new Vue({
-  el: '#main',
+  el: '#app',
   router,
   components: { App },
   template: '<App/>',

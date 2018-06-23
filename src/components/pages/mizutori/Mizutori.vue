@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import ContentTitle from './ContentTitle';
+import ContentTitle from '@/components/ContentTitle';
 import {MDCTextField} from '@material/textfield';
 import MizutoriContent from './MizutoriContent';
 import config from '@/Config';

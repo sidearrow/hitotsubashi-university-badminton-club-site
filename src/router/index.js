@@ -5,13 +5,29 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    { path: '/',               component: () => import('@/components/pgTop') },
-    { path: '/member',         component: () => import('@/components/pgMember') },
-    { path: '/result',         component: () => import('@/components/pgResult') },
-    { path: '/santama',        component: () => import('@/components/pgSantama') },
-    { path: '/bbs/list/:year', component: () => import('@/components/BBS/pgBBSList') },
-    { path: '/bbs/detail/:id', component: () => import('@/components/BBS/pgBBSDetail') },
-    { path: '/bbs/input',      component: () => import('@/components/BBS/pgBBSInput') },
-    { path: '/mizutori',       component: () => import('@/components/pgMizutori') },
+    {
+      path: '/',
+      component: () => import('@/components/pages/top/Top')
+    },
+    {
+      path: '/member',
+      component: () => import('@/components/pages/member/Member')
+    },
+    {
+      path: '/result',
+      component: () => import('@/components/pages/result/Result')
+    },
+    {
+      path: '/santama',
+      component: () => import('@/components/pages/santama/Santama')
+    },
+    {
+      path: '/bbs',
+      component: () => import('@/components/pages/BBS/pgBBSList')
+    },
+    {
+      path: '/mizutori',
+      component: () => import('@/components/pages/mizutori/Mizutori')
+    },
   ]
 });

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import ContentTitle from '../ContentTitle';
+import ContentTitle from '@/components/ContentTitle';
 import BBSComment from './BBSComment';
 import {MDCDialog} from '@material/dialog';
 import {MDCTextField} from '@material/textfield';

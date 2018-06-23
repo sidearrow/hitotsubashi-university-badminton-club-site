@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import ContentTitle from '../ContentTitle';
+import ContentTitle from '@/components/ContentTitle';
 import axios from 'axios';
 import config from '@/Config';
 
