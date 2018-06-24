@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       path: '/bbs',
-      component: () => import('@/components/pages/BBS/pgBBSList')
+      component: () => import('@/components/pages/bbs/BBS')
     },
     {
       path: '/mizutori',

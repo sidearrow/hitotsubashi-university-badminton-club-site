@@ -65,6 +65,10 @@ export default {
           href: '/santama',
         },
         {
+          text: 'BBS',
+          href: '/bbs',
+        },
+        {
           text: 'Mizutori',
           href: '/mizutori',
         },
