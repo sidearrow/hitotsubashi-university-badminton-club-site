@@ -13,6 +13,7 @@
               <span>{{ m.highschool }}</span>
               <span>（{{ m.prefecture }}）</span>
             </div>
+            <div>{{ m.position }}</div>
           </md-card-content>
         </md-card>
       </section>

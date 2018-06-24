@@ -10,6 +10,7 @@ import {
   MdDrawer,
   MdIcon,
   MdList,
+  MdTable,
   MdToolbar,
 } from 'vue-material/dist/components';
 
@@ -20,6 +21,7 @@ Vue.use(MdContent);
 Vue.use(MdDrawer);
 Vue.use(MdIcon);
 Vue.use(MdList);
+Vue.use(MdTable);
 Vue.use(MdToolbar);
 
 new Vue({

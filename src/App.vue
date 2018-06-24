@@ -80,4 +80,10 @@ export default {
 .md-drawer {
   width: 230px;
 }
+
+.md-app-content {
+  max-width: 720px;
+  margin: 0 auto;
+  border: none;
+}
 </style>

@@ -11,9 +11,6 @@ export default {
 </script>
 
 <style>
-h1 {
-  display: inline;
-}
 h1:before {
   content: '';
   display: inline-block;
