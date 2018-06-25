@@ -11,6 +11,7 @@
             <router-link :to="menuItem.href" class="md-list-item-text">{{ menuItem.text }}</router-link>
           </md-list-item>
         </md-list>
+        <slf-app-menu-content/>
       </md-app-drawer>
 
       <!-- SP -->
@@ -26,6 +27,7 @@
             <router-link :to="menuItem.href" class="md-list-item-text">{{ menuItem.text }}</router-link>
           </md-list-item>
         </md-list>
+        <slf-app-menu-content/>
       </md-app-drawer>
 
       <md-app-content>
@@ -36,11 +38,16 @@
 </template>
 
 <script>
+import AppMenuContent from '@/components/AppMenuContent';
+
 export default {
   mounted() {
     window.addEventListener('resize', () => {
       this.isPC = window.innerWidth >= 600;
     });
+  },
+  components: {
+    'slf-app-menu-content': AppMenuContent,
   },
   data: function () {
     return {
