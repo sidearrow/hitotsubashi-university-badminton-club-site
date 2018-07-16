@@ -1,17 +1,17 @@
-@import "~vue-material/dist/theme/engine";
+@import "scss/mdc";
 
-@include md-register-theme("default", (
-  primary: #ac2926,
-  accent: #26a9ac
-));
-
-@import "~vue-material/dist/theme/all";
-
-html,
-body,
-body > div {
-  height: 100%;
+body {
+  margin: 0;
 }
-body > div > div {
-  min-height: 100%;
+
+#main {
+  display: inline-flex;
+  width: 100%;
+}
+
+main {
+  display: block;
+  max-width: 720px;
+  margin: auto;
+  margin-top: 80px;
 }

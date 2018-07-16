@@ -4,17 +4,17 @@
 
     <!-- 未ログイン -->
     <article v-if="!isLogin">
-      <md-field>
-        <label>Password</label>
-        <md-input type="password"></md-input>
-      </md-field>
-      <md-button class="md-raised md-primary" @click="clickLogin">Login</md-button>
+      <div class="mdc-text-field">
+        <label class="mdc-floating-label" for="input-password">Password</label>
+        <input type="password" class="mdc-text-field__input" id="input-password">
+      </div>
+      <button class="mdc-button mdc-button--raised" @click="clickLogin">Login</button>
     </article>
 
     <!-- ログイン -->
     <article v-else>
       <p>みずとり会会員ページにログインしております。</p>
-      <md-button class="md-raised md-primary" @click="clickLogout">Logout</md-button>
+      <button class="mdc-button mdc-button--raised" @click="clickLogout">Logout</button>
       <mizutori-content/>
     </article>
   </div>
@@ -25,12 +25,11 @@ import ContentTitle from '@/components/ContentTitle';
 import MizutoriContent from '@/components/pages/mizutori/MizutoriContent';
 import Config from '@/Config';
 
+import { MDCTextField } from '@material/textfield';
+
 export default {
-  mounted: function () {
-    //if (!this.isLogin) {
-    //  this.isLogin = window.sessionStorage.getItem('isLogin') === 'true';
-    //}
-    console.log(this.isLogin);
+  mounted () {
+    const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
   },
   data () {
     return {

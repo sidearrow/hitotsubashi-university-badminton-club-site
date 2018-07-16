@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div>
     <content-title title="BBS"/>
     <article>
       <section>
@@ -9,7 +9,7 @@
         </ul>
       </section>
     </article>
-  </main>
+  </div>
 </template>
 
 <script>

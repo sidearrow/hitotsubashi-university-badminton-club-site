@@ -1,24 +1,20 @@
 <template>
-  <main>
+  <div>
     <content-title title="部員紹介"/>
     <article>
       <section v-for="v in grade">
-        <h2 class="md-title">{{ v }}年生</h2>
-        <md-card v-for="m in memberData[v]" class="member-card">
-          <md-card-header>
-            <div class="md-title">{{ m.name }}</div>
-          </md-card-header>
-          <md-card-content>
-            <div>
-              <span>{{ m.highschool }}</span>
-              <span>（{{ m.prefecture }}）</span>
-            </div>
-            <div>{{ m.position }}</div>
-          </md-card-content>
-        </md-card>
+        <h2 class="mdc-typography--headline4">{{ v }}年生</h2>
+        <div v-for="m in memberData[v]">
+          <div class="mdc-typography--headline5">{{ m.name }}</div>
+          <div>
+            <span>{{ m.highschool }}</span>
+            <span>（{{ m.prefecture }}）</span>
+          </div>
+          <div>{{ m.position }}</div>
+        </div>
       </section>
     </article>
-  </main>
+  </div>
 </template>
 
 <script>

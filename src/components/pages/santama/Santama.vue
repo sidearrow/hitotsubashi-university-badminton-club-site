@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div>
     <content-title title="三多摩大会"/>
     <p>三多摩地区学生バドミントン選手権大会</p>
     <article>
@@ -17,7 +17,7 @@
         </div>
       </section>
     </article>
-  </main>
+  </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="md-display-2">{{ title }}</h1>
+  <h1 class="mdc-typography--headline3">{{ title }}</h1>
 </template>
 
 <script>

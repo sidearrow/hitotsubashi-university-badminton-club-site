@@ -1,50 +1,52 @@
 <template>
-  <div>
-    <md-app>
-      <!-- PC -->
-      <md-app-toolbar class="md-primary" v-if="isPC">
-        <span class="md-title">{{ navTitle }}</span>
-      </md-app-toolbar>
-      <md-app-drawer md-permanent="clipped" v-if="isPC">
-        <md-list>
-          <md-list-item v-for="menuItem in menuItems">
-            <router-link :to="menuItem.href" class="md-list-item-text">{{ menuItem.text }}</router-link>
-          </md-list-item>
-        </md-list>
-        <slf-app-menu-content/>
-      </md-app-drawer>
+  <div id="main">
+    <header class="mdc-top-app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <a class="material-icons mdc-top-app-bar__navigation-icon" v-if="!isPC" @click="clickMenu()">menu</a>
+          <span class="mdc-top-app-bar__title">{{ navTitle }}</span>
+        </section>
+      </div>
+    </header>
 
-      <!-- SP -->
-      <md-app-toolbar class="md-primary" v-if="!isPC">
-        <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-          <md-icon>menu</md-icon>
-        </md-button>
-        <span class="md-title">{{ navTitle }}</span>
-      </md-app-toolbar>
-      <md-app-drawer :md-active.sync="menuVisible" v-if="!isPC">
-        <md-list>
-          <md-list-item v-for="menuItem in menuItems" @click="menuVisible = !menuVisible">
-            <router-link :to="menuItem.href" class="md-list-item-text">{{ menuItem.text }}</router-link>
-          </md-list-item>
-        </md-list>
-        <slf-app-menu-content/>
-      </md-app-drawer>
+    <!-- PC -->
+    <nav class="mdc-drawer mdc-drawer--permanent mdc-typography" v-if="isPC">
+      <div class="mdc-drawer__toolbar-spacer"></div>
+      <div class="mdc-drawer__content mdc-list">
+        <router-link class="mdc-list-item" :to="v.href" v-for="v in menuItems">{{ v.text }}</router-link>
+      </div>
+    </nav>
 
-      <md-app-content>
-        <router-view/>
-      </md-app-content>
-    </md-app>
+    <!-- SP -->
+    <nav class="mdc-drawer mdc-drawer--temporary mdc-typography" v-else>
+      <div class="mdc-drawer__drawer">
+        <div class="mdc-drawer__content mdc-list">
+          <router-link class="mdc-list-item" :to="v.href" v-for="v in menuItems">{{ v.text }}</router-link>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <router-view/>
+    </main>
   </div>
 </template>
 
 <script>
 import AppMenuContent from '@/components/AppMenuContent';
 
+import {MDCTemporaryDrawer} from '@material/drawer';
+
 export default {
-  mounted() {
-    window.addEventListener('resize', () => {
-      this.isPC = window.innerWidth >= 600;
-    });
+  mounted () {
+    if (!this.isPC) {
+      this.mdcDrawer = new MDCTemporaryDrawer(document.querySelector('.mdc-drawer--temporary'));
+    }
+  },
+  methods: {
+    clickMenu: function () {
+      this.mdcDrawer.open = true;
+    }
   },
   components: {
     'slf-app-menu-content': AppMenuContent,
@@ -52,8 +54,8 @@ export default {
   data: function () {
     return {
       isPC: window.innerWidth >= 600,
-      menuVisible: false,
       navTitle: '一橋大学 バドミントン部',
+      mdcDrawer: {},
       menuItems: [
         {
           text: 'TOP',
@@ -87,14 +89,4 @@ export default {
 
 <style lang="scss">
 @import './assets/style';
-
-.md-drawer {
-  width: 230px;
-}
-
-.md-app-content {
-  max-width: 720px;
-  margin: 0 auto;
-  border: none;
-}
 </style>
