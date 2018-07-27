@@ -26,7 +26,7 @@
       </div>
     </nav>
 
-    <main>
+    <main class="mdc-layout-grid">
       <router-view/>
     </main>
   </div>
@@ -53,7 +53,7 @@ export default {
   },
   data: function () {
     return {
-      isPC: window.innerWidth >= 600,
+      isPC: window.innerWidth >= 720,
       navTitle: '一橋大学 バドミントン部',
       mdcDrawer: {},
       menuItems: [

@@ -4,13 +4,16 @@
     <article>
       <section v-for="v in grade">
         <h2 class="mdc-typography--headline4">{{ v }}年生</h2>
-        <div v-for="m in memberData[v]">
+        <div
+          v-for="m in memberData[v]"
+          class="mdc-layout-grid"
+        >
           <div class="mdc-typography--headline5">{{ m.name }}</div>
-          <div>
+          <div class="slf-member-sub">
             <span>{{ m.highschool }}</span>
             <span>（{{ m.prefecture }}）</span>
           </div>
-          <div>{{ m.position }}</div>
+          <div class="slf-member-sub">{{ m.position }}</div>
         </div>
       </section>
     </article>
@@ -50,7 +53,7 @@ export default {
 </script>
 
 <style>
-.member-card {
-  margin-bottom: 20px;
+.slf-member-sub {
+  margin-left: 20px;
 }
 </style>
