@@ -26,6 +26,10 @@ export default new Router({
       component: () => import('@/components/pages/bbs/BBS')
     },
     {
+      path: '/bbs/input',
+      component: () => import('@/components/pages/bbs/input/BBSInput')
+    },
+    {
       path: '/mizutori',
       component: () => import('@/components/pages/mizutori/Mizutori')
     },
