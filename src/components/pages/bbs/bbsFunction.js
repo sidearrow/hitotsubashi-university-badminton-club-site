@@ -1,11 +1,24 @@
 import { firestore } from "@/main";
 
 export default {
-  get: function () {
-    firestore.collection('bbs').get().then((res) => {
-      console.log(res);
-      return res;
-    })
+  get: function (cb) {
+    firestore
+      .collection('bbs')
+      .orderBy('date', 'desc')
+      .limit(20)
+      .get()
+      .then((res) => {
+      cb(res);
+    });
+  },
+  getOne: function (key, cb) {
+    firestore
+      .collection('bbs')
+      .doc(key)
+      .get()
+      .then((res) => {
+        cb(res.data());
+      })
   },
   set: function (data) {
     firestore.collection('bbs').add(data);
@@ -40,7 +53,10 @@ export default {
       this.password = password;
 
       const date = new Date();
-      this.date = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+      const format = (str) => {
+        return ('0' + str).substr(-2);
+      }
+      this.date = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${format(date.getHours())}:${format(date.getMinutes())}`;
     }
 
     get() {

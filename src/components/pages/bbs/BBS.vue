@@ -10,6 +10,20 @@
         </ul>
       </section>
       <section>
+        <ul class="mdc-list mdc-list--two-line">
+          <li class="mdc-list-item" v-for="(v, k) in posts">
+            <span class="mdc-list-item__text">
+              <router-link
+                class="mdc-list-item__primary-text"
+                :to="'/bbs/' + k"
+              >{{ v.title }}</router-link>
+              <span class="mdc-list-item__secondary-text">
+                <span>{{ v.date }}</span>
+                <span>{{ v.name }}</span>
+              </span>
+            </span>
+          </li>
+        </ul>
       </section>
     </article>
   </div>
@@ -26,8 +40,11 @@ export default {
     document.title = '掲示板 - 一橋バド';
   },
   created () {
-    this.posts = bbsFunction.get();
-    console.log(this.posts);
+    bbsFunction.get((res) => {
+      res.forEach((doc) => {
+        this.$set(this.posts, doc.id, doc.data());
+      });
+    });
   },
   components: {
     'content-title': ContentTitle,
@@ -35,7 +52,7 @@ export default {
   data: function () {
     return {
       pageNum: 1,
-      posts: [],
+      posts: {},
       bbsUrl: config.bbs,
     }
   },
