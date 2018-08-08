@@ -3,6 +3,7 @@ import { firestore } from "@/main";
 export default {
   get: function () {
     firestore.collection('bbs').get().then((res) => {
+      console.log(res);
       return res;
     })
   },

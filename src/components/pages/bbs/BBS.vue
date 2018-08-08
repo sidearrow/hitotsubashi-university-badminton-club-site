@@ -9,6 +9,8 @@
           <li><a :href="bbsUrl.old_b" target="_blank">旧掲示板２</a></li>
         </ul>
       </section>
+      <section>
+      </section>
     </article>
   </div>
 </template>
@@ -17,11 +19,15 @@
 import ContentTitle from '@/components/ContentTitle';
 import config from '@/Config';
 
+import bbsFunction from '@/components/pages/bbs/bbsFunction';
 
 export default {
   beforeCreate () {
     document.title = '掲示板 - 一橋バド';
-    //bbsFunction.set(new bbsFunction.data(['aa', 'aa', 'aa', 'aa']).get());
+  },
+  created () {
+    this.posts = bbsFunction.get();
+    console.log(this.posts);
   },
   components: {
     'content-title': ContentTitle,
