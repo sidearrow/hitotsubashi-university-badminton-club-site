@@ -2,7 +2,7 @@
   <div>
     <content-title title="大会結果"/>
     <article>
-      <table>
+      <table class="mdl-data-table">
         <tr>
           <th></th>
           <th>男子</th>
