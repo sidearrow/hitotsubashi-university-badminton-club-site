@@ -56,7 +56,7 @@ export default {
       const format = (str) => {
         return ('0' + str).substr(-2);
       }
-      this.date = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${format(date.getHours())}:${format(date.getMinutes())}`;
+      this.date = `${date.getFullYear()}/${format(date.getMonth() + 1)}/${format(date.getDate())} ${format(date.getHours())}:${format(date.getMinutes())}`;
     }
 
     get() {
