@@ -3,18 +3,22 @@
     <content-title title="部員紹介"/>
     <article>
       <section v-for="v in grade">
-        <h2 class="mdc-typography--headline4">{{ v }}年生</h2>
-        <div
+        <h2 class="mdc-typography--headline5">{{ v }}年生</h2>
+        <ul
           v-for="m in memberData[v]"
-          class="mdc-layout-grid"
+          class="mdc-list mdc-list--two-line"
         >
-          <div class="mdc-typography--headline5">{{ m.name }}</div>
-          <div class="slf-member-sub">
-            <span>{{ m.highschool }}</span>
-            <span>（{{ m.prefecture }}）</span>
-          </div>
-          <div class="slf-member-sub">{{ m.position }}</div>
-        </div>
+          <li class="mdc-list-item">
+            <span class="mdc-list-item__text">
+              <span class="mdc-list-item__primary-text">{{ m.name }}</span>
+              <span class="mdc-list-item__secondary-text">
+                <span>{{ m.highschool }}</span>
+                <span>（{{ m.prefecture }}）</span>
+              </span>
+              <span class="mdc-list-item__secondary-text">{{ m.position }}</span>
+            </span>
+          </li>
+        </ul>
       </section>
     </article>
   </div>
@@ -53,7 +57,4 @@ export default {
 </script>
 
 <style>
-.slf-member-sub {
-  margin-left: 20px;
-}
 </style>

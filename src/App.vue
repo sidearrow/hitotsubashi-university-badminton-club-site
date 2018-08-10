@@ -14,6 +14,7 @@
       <div class="mdc-drawer__toolbar-spacer"></div>
       <div class="mdc-drawer__content mdc-list">
         <router-link class="mdc-list-item" :to="v.href" v-for="v in menuItems">{{ v.text }}</router-link>
+        <slf-app-menu-content/>
       </div>
     </nav>
 
@@ -21,7 +22,8 @@
     <nav class="mdc-drawer mdc-drawer--temporary mdc-typography" v-else>
       <div class="mdc-drawer__drawer">
         <div class="mdc-drawer__content mdc-list">
-          <router-link class="mdc-list-item" :to="v.href" v-for="v in menuItems">{{ v.text }}</router-link>
+          <router-link class="mdc-list-item" :to="v.href" v-for="v in menuItems" @click.native="clickMenu()">{{ v.text }}</router-link>
+          <slf-app-menu-content/>
         </div>
       </div>
     </nav>
@@ -45,7 +47,7 @@ export default {
   },
   methods: {
     clickMenu: function () {
-      this.mdcDrawer.open = true;
+      this.mdcDrawer.open = !this.mdcDrawer.open;
     }
   },
   components: {

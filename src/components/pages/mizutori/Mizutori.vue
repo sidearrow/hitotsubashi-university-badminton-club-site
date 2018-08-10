@@ -29,7 +29,9 @@ import { MDCTextField } from '@material/textfield';
 
 export default {
   mounted () {
-    const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
+    if (!this.isLogin) {
+      const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
+    }
   },
   data () {
     return {
