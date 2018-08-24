@@ -13,4 +13,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-/src/Config.js
+slf-config.js

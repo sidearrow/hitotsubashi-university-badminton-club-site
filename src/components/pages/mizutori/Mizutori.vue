@@ -23,7 +23,6 @@
 <script>
 import ContentTitle from '@/components/ContentTitle';
 import MizutoriContent from '@/components/pages/mizutori/MizutoriContent';
-import Config from '@/Config';
 
 import { MDCTextField } from '@material/textfield';
 

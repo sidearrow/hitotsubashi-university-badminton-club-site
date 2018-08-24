@@ -4,21 +4,19 @@
     <article>
       <section v-for="v in grade">
         <h2 class="mdc-typography--headline5">{{ v }}年生</h2>
-        <ul
+        <div
           v-for="m in memberData[v]"
           class="mdc-list mdc-list--two-line"
         >
-          <li class="mdc-list-item">
-            <span class="mdc-list-item__text">
-              <span class="mdc-list-item__primary-text">{{ m.name }}</span>
-              <span class="mdc-list-item__secondary-text">
-                <span>{{ m.highschool }}</span>
-                <span>（{{ m.prefecture }}）</span>
-              </span>
-              <span class="mdc-list-item__secondary-text">{{ m.position }}</span>
-            </span>
-          </li>
-        </ul>
+          <p>
+            <div>{{ m.name }}</div>
+            <div>
+              <span>{{ m.highschool }}</span>
+              <span>（{{ m.prefecture }}）</span>
+              <span>{{ m.position }}</span>
+            </div>
+          </p>
+        </div>
       </section>
     </article>
   </div>

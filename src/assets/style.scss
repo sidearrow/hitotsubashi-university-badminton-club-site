@@ -1,46 +1,12 @@
-@import "scss/mdc";
-@import "scss/mdl";
-
-body {
-  margin: 0;
+@import "scss/bootstrap";
+html {
+  font-weight: 300;
 }
 
-#main {
-  display: inline-flex;
-  width: 100%;
+a {
+  cursor: pointer;
 }
 
-main {
-  display: block;
-  width: 720px;
-  margin: auto;
-  margin-top: 50px !important;
-}
-
-@media (max-width:719px) {
-  main {
-    width: 100%;
-  }
-}
-
-@media (min-width:720px) and (max-width:960px) {
-  main {
-    width: calc(100% - 240px);
-  }
-}
-
-.slf-dblock {
-  display: block;
-}
-
-.slf-talign-center {
-  text-align: center
-}
-
-.slf-talign-right {
-  text-align: right
-}
-
-.slf-mtop-20 {
-  margin-top: 20px;
+.bg-main {
+  background-color: #ac2926;
 }

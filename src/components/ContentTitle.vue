@@ -1,23 +1,24 @@
 <template>
-  <h1 class="mdc-typography--headline4">{{ title }}</h1>
+  <div>
+    <h1 class="mdc-typography--headline4">{{ title }}</h1>
+    <div>
+      <ol class="breadcrumb bg-transparent">
+        <li class="breadcrumb-item active">
+          <router-link to="/">Home</router-link>
+        </li>
+        <li
+          class="breadcrumb-item active"
+          v-for="v in items"
+        >
+          <router-link :to="v.path">{{ v.text }}</router-link>
+        </li>
+      </ol>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  mounted: function () {
-  },
-  props: ['title'],
+  props: ['title', 'items'],
 };
 </script>
-
-<style>
-h1:before {
-  content: '';
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background-image: url(/static/img/shuttle.svg);
-  background-size: contain;
-  margin-right: 10px;
-}
-</style>

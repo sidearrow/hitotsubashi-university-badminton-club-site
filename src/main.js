@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 
-import Config from './Config';
+import config from '../slf-config';
 
 new Vue({
   el: '#app',
@@ -11,6 +11,6 @@ new Vue({
   template: '<App/>',
 });
 
-firebase.initializeApp(Config.firebase);
+firebase.initializeApp(config.firebase);
 
 export const firestore = firebase.firestore();

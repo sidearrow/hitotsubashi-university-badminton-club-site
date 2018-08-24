@@ -31,7 +31,7 @@
 
 <script>
 import ContentTitle from '@/components/ContentTitle';
-import config from '@/Config';
+import config from '@/config';
 
 import bbsFunction from '@/components/pages/bbs/bbsFunction';
 
