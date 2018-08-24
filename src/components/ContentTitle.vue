@@ -3,14 +3,15 @@
     <h1 class="mdc-typography--headline4">{{ title }}</h1>
     <div>
       <ol class="breadcrumb bg-transparent">
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item">
           <router-link to="/">Home</router-link>
         </li>
         <li
-          class="breadcrumb-item active"
-          v-for="v in items"
+          :class="'breadcrumb-item' + ((i === items.length-1) ? ' active' : '')"
+          v-for="(v, i) in items"
         >
-          <router-link :to="v.path">{{ v.text }}</router-link>
+          <span v-if="i === items.length-1">{{ v[0] }}</span>
+          <router-link :to="v[1]" v-else>{{ v[0] }}</router-link>
         </li>
       </ol>
     </div>
@@ -19,6 +20,9 @@
 
 <script>
 export default {
-  props: ['title', 'items'],
+  props: {
+    title: String,
+    items: Array,
+  },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="部員紹介"/>
+    <content-title title="部員紹介" :items="titleItems"/>
     <article>
       <section v-for="v in grade">
         <h2 class="mdc-typography--headline5">{{ v }}年生</h2>
@@ -25,6 +25,7 @@
 <script>
 import ContentTitle from '@/components/ContentTitle';
 import memberData from '@/assets/member.json';
+import config from '@/config';
 
 export default {
   beforeCreate: function () {
@@ -35,13 +36,12 @@ export default {
       this.memberData[v.grade].push(v);
     });
   },
-  mounted: function () {
-  },
   components: {
     'content-title': ContentTitle,
   },
   data: function () {
     return {
+      titleItems: [config.pageList.member],
       memberData: {
         1: [],
         2: [],

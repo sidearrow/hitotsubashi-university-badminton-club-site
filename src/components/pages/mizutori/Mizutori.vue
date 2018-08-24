@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="みずとり会"/>
+    <content-title title="みずとり会" :items="titleItems"/>
 
     <!-- 未ログイン -->
     <article v-if="!isLogin">
@@ -23,17 +23,12 @@
 <script>
 import ContentTitle from '@/components/ContentTitle';
 import MizutoriContent from '@/components/pages/mizutori/MizutoriContent';
-
-import { MDCTextField } from '@material/textfield';
+import config from '@/config';
 
 export default {
-  mounted () {
-    if (!this.isLogin) {
-      const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
-    }
-  },
   data () {
     return {
+      titleItems: [config.pageList.mizutori],
       isLogin: window.sessionStorage.getItem('isLogin') === 'true',
     }
   },

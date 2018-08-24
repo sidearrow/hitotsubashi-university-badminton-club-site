@@ -7,15 +7,17 @@
         <router-link
           v-for="v in menuItems"
           class="dropdown-item"
-          :to="v.href"
+          :to="v[1]"
           @click.native="toggleMenu"
-        >{{ v.text }}</router-link>
+        >{{ v[0] }}</router-link>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import config from '@/config'
+
 export default {
   methods: {
     toggleMenu: function () {
@@ -30,12 +32,12 @@ export default {
   data: function () {
     return {
       menuItems: [
-        { text: 'TOP',      href: '/' },
-        { text: 'Member',   href: '/member' },
-        { text: 'Result',   href: '/result' },
-        { text: 'Santama',  href: '/santama' },
-        { text: 'BBS',      href: '/bbs' },
-        { text: 'Mizutori', href: '/mizutori' },
+        config.pageList.top,
+        config.pageList.member,
+        config.pageList.result,
+        config.pageList.santama,
+        config.pageList.bbs,
+        config.pageList.mizutori,
       ],
     }
   }

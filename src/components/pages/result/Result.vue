@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="大会結果"/>
+    <content-title title="大会結果" :items="titleItems"/>
     <article>
       <table class="table">
         <tr>
@@ -36,6 +36,7 @@
 <script>
 import ContentTitle from '@/components/ContentTitle';
 import resultData from '@/assets/result.json';
+import config from '@/config';
 
 export default {
   beforeCreate: function () {
@@ -46,6 +47,7 @@ export default {
   },
   data: function () {
     return {
+      titleItems: [config.pageList.result],
       resultData: resultData,
     };
   }

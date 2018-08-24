@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="BBS"/>
+    <content-title title="BBS" :items="titleItems"/>
     <article>
       <section>
         <p><router-link to="/bbs/input">新規投稿</router-link></p>
@@ -51,6 +51,7 @@ export default {
   },
   data: function () {
     return {
+      titleItems: [config.pageList.bbs],
       pageNum: 1,
       posts: {},
       bbsUrl: config.bbs,
