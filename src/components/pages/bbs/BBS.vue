@@ -10,20 +10,16 @@
         </ul>
       </section>
       <section>
-        <ul class="mdc-list mdc-list--two-line">
-          <li class="mdc-list-item" v-for="(v, k) in posts">
-            <span class="mdc-list-item__text">
-              <router-link
-                class="mdc-list-item__primary-text"
-                :to="'/bbs/' + k"
-              >{{ v.title }}</router-link>
-              <span class="mdc-list-item__secondary-text">
-                <span>{{ v.date }}</span>
-                <span>{{ v.name }}</span>
-              </span>
-            </span>
-          </li>
-        </ul>
+        <details v-for="(v, k) in posts">
+          <summary>
+            <span>{{ v.title }}</span>
+            <span class="ml-2">{{ v.name }}</span>
+          </summary>
+          <div>
+            <p class="text-right">{{ v.date }}</p>
+            <div style="white-space:pre-line">{{ v.content }}</div>
+          </div>
+        </details>
       </section>
     </article>
   </div>
