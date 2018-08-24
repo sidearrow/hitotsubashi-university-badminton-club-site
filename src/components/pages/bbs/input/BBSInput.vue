@@ -23,7 +23,7 @@
         <p v-for="v in errMsg">{{ v }}</p>
       </div>
       <div class="text-center mt-2">
-        <button class="mdc-button mdc-button--raised" @click="clickSubmit()">投稿</button>
+        <button class="btn bg-main text-white" @click="clickSubmit()">投稿</button>
       </div>
       <div class="mt-2">
         <router-link to="/bbs">←戻る</router-link>

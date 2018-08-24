@@ -4,17 +4,21 @@
 
     <!-- 未ログイン -->
     <article v-if="!isLogin">
-      <div class="mdc-text-field">
-        <label class="mdc-floating-label" for="input-password">Password</label>
-        <input type="password" class="mdc-text-field__input" id="input-password">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Password</span>
+        </div>
+        <input type="password" class="form-control" id="input-password">
+        <div class="input-group-append">
+          <button class="btn bg-main text-white" @click="clickLogin">Login</button>
+        </div>
       </div>
-      <button class="mdc-button mdc-button--raised" @click="clickLogin">Login</button>
     </article>
 
     <!-- ログイン -->
     <article v-else>
       <p>みずとり会会員ページにログインしております。</p>
-      <button class="mdc-button mdc-button--raised" @click="clickLogout">Logout</button>
+      <button class="btn bg-main text-white" @click="clickLogout">Logout</button>
       <mizutori-content/>
     </article>
   </div>
@@ -24,6 +28,7 @@
 import ContentTitle from '@/components/ContentTitle';
 import MizutoriContent from '@/components/pages/mizutori/MizutoriContent';
 import config from '@/config';
+import { getPassword } from '@/database';
 
 export default {
   data () {
@@ -34,10 +39,12 @@ export default {
   },
   methods: {
     clickLogin: function () {
-      if (document.querySelector('input[type=password]').value === Config.mizutoriPassword) {
-        this.isLogin = true;
-        window.sessionStorage.setItem('isLogin', 'true');
-      }
+      getPassword((res) => {
+        if (document.querySelector('input[type=password]').value === res.password) {
+          this.isLogin = true;
+          window.sessionStorage.setItem('isLogin', 'true');
+        }
+      })
     },
     clickLogout: function () {
       this.isLogin = false;
