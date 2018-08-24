@@ -14,11 +14,16 @@
           <summary>
             <span>{{ v.title }}</span>
             <span class="ml-2">{{ v.name }}</span>
+            <span class="ml-2">{{ v.date }}</span>
           </summary>
           <div>
-            <p class="text-right">{{ v.date }}</p>
+            <p class="text-right">
+              <a><i class="material-icons" @click="click(k, 'e')">edit</i></a>
+              <a><i class="material-icons" @click="click(k, 'd')">delete</i></a>
+            </p>
             <div style="white-space:pre-line">{{ v.content }}</div>
           </div>
+          </details>
         </details>
       </section>
     </article>
@@ -41,6 +46,12 @@ export default {
         this.$set(this.posts, doc.id, doc.data());
       });
     });
+  },
+  methods: {
+    click: function (id, e) {
+      const input = window.prompt('パスワードを入力してください');
+      console.log(id);
+    }
   },
   components: {
     'content-title': ContentTitle,
