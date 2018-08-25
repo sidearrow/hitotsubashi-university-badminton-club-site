@@ -17,8 +17,10 @@
 
     <!-- ログイン -->
     <article v-else>
-      <p>みずとり会会員ページにログインしております。</p>
-      <button class="btn bg-main text-white" @click="clickLogout">Logout</button>
+      <p>
+        <span>みずとり会会員ページにログインしております。</span>
+        <button class="btn bg-main text-white" @click="clickLogout">Logout</button>
+      </p>
       <mizutori-content/>
     </article>
   </div>
