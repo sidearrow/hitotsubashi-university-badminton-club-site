@@ -38,5 +38,9 @@ export default new Router({
       path: '/mizutori',
       component: () => import('@/components/pages/mizutori/Mizutori')
     },
+    {
+      path: '/manage',
+      component: () => import('@/components/pages/manage/Manage')
+    }
   ]
 });

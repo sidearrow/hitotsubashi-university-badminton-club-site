@@ -10,6 +10,8 @@
           :to="v[1]"
           @click.native="toggleMenu"
         >{{ v[0] }}</router-link>
+        <div class="dropdown-divider"></div>
+        <router-link class="dropdown-item" to="/manage">Manage</router-link>
       </div>
     </div>
   </nav>
