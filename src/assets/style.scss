@@ -3,10 +3,18 @@ body {
   font-weight: 200;
 }
 
+main {
+  max-width: 720px !important;
+}
+
 a {
   cursor: pointer;
 }
 
 .bg-main {
   background-color: #ac2926;
+}
+
+.badge {
+  font-weight: 300;
 }

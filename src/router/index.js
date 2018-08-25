@@ -30,10 +30,12 @@ export default new Router({
       path: '/bbs/input',
       component: () => import('@/components/pages/bbs/input/BBSInput')
     },
+    /*
     {
       path: '/bbs/:id',
       component: () => import('@/components/pages/bbs/detail/BBSDetail')
     },
+    */
     {
       path: '/mizutori',
       component: () => import('@/components/pages/mizutori/Mizutori')

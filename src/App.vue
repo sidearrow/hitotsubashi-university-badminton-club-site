@@ -1,7 +1,7 @@
 <template>
   <div>
     <slf-cmp-navbar/>
-    <main class="container">
+    <main class="container mb-5">
       <router-view/>
     </main>
   </div>

@@ -1,15 +1,21 @@
 import { firestore } from "@/main";
 
 export default {
-  get: function (cb) {
-    firestore
-      .collection('bbs')
-      .orderBy('date', 'desc')
-      .limit(20)
-      .get()
-      .then((res) => {
-      cb(res);
-    });
+  selectAll: function (start) {
+    if (typeof start === 'undefined') {
+      return firestore
+               .collection('bbs')
+               .orderBy('date', 'desc')
+               .limit(20)
+               .get();
+    } else {
+      return firestore
+               .collection('bbs')
+               .orderBy('date', 'desc')
+               .startAfter(start)
+               .limit(20)
+               .get();
+    }
   },
   select: function (key, cb) {
     firestore
@@ -27,8 +33,12 @@ export default {
     firestore.collection('bbs').doc(key).update(data);
   },
   delete: function (key, data) {
-    firestore.collection('bbs').doc(key).delete();
-    firestore.collection('bbs-delete').add(data);
+    firestore.collection('bbs').doc(key).delete().then(() => {
+      firestore.collection('bbs-delete').add(data).then(() => {
+        window.alert('削除が完了しました。');
+        location.reload();
+      });
+    });
   },
   data: class{
     constructor([name, title, content, password]) {
