@@ -3,20 +3,20 @@
     <article>
       <section>
         <div class="form-group">
-          <label for="slf-bbs-input-name">名前</label>
-          <input type="text" class="form-control" id="slf-bbs-input-name">
+          <label>名前</label>
+          <input type="text" class="form-control" v-model="input.name">
         </div>
         <div class="form-group">
-          <label for="slf-bbs-input-title">タイトル</label>
-          <input type="text" class="form-control" id="slf-bbs-input-title">
+          <label>タイトル</label>
+          <input type="text" class="form-control" v-model="input.title">
         </div>
         <div class="form-group">
-          <label for="slf-bbs-input-content">本文</label>
-          <textarea class="form-control" rows="20" cols="60" id="slf-bbs-input-content" style="font-size:12px;line-height:1.1;"></textarea>
+          <label>本文</label>
+          <textarea class="form-control" rows="20" cols="60" v-model="input.content" style="font-size:12px;line-height:1.1;"></textarea>
         </div>
         <div class="form-group">
-          <label for="slf-bbs-input-password">パスワード</label>
-          <input type="password" class="form-control" id="slf-bbs-input-password">
+          <label>パスワード</label>
+          <input type="password" class="form-control" v-model="input.password">
         </div>
       </section>
       <div class="mt-2">
@@ -36,25 +36,54 @@
 import bbsFunction from '@/components/pages/bbs/bbsFunction';
 
 export default {
+  mounted: function () {
+    const tmp = sessionStorage.getItem('password');
+    if (tmp === null) {
+      return;
+    }
+
+    this.id = this.$route.query.id;
+    bbsFunction.select(this.id, (res) => {
+      if (res.password === tmp) {
+        this.input.name = res.name;
+        this.input.title = res.title;
+        this.input.content = res.content;
+        this.input.password = res.password;
+      }
+      this.isEdit = true;
+    });
+  },
   methods: {
     clickSubmit: function () {
       const data = new bbsFunction.data([
-        document.getElementById('slf-bbs-input-name').value,
-        document.getElementById('slf-bbs-input-title').value,
-        document.getElementById('slf-bbs-input-content').value,
-        document.getElementById('slf-bbs-input-password').value,
+        this.input.name,
+        this.input.title,
+        this.input.content,
+        this.input.password,
       ]);
 
       if (data.isError) {
         this.errMsg = data.errorMsg;
       } else {
-        bbsFunction.set(data.get());
+        if (this.isEdit) {
+          bbsFunction.update(this.id, data.get());
+        } else {
+          bbsFunction.set(data.get());
+        }
         this.$router.push({path: '/bbs'});
       }
     }
   },
   data: function () {
     return {
+      isEdit: false,
+      id: null,
+      input: {
+        name: '',
+        title: '',
+        content: '',
+        password: '',
+      },
       errMsg: [],
     }
   }

@@ -17,7 +17,7 @@ import bbsFunction from '@/components/pages/bbs/bbsFunction';
 
 export default {
   created () {
-    bbsFunction.getOne(this.$route.params.id, (res) => {
+    bbsFunction.select(this.$route.params.id, (res) => {
       this.post = res;
     });
   },

@@ -11,7 +11,7 @@ export default {
       cb(res);
     });
   },
-  getOne: function (key, cb) {
+  select: function (key, cb) {
     firestore
       .collection('bbs')
       .doc(key)
@@ -22,6 +22,13 @@ export default {
   },
   set: function (data) {
     firestore.collection('bbs').add(data);
+  },
+  update: function (key, data) {
+    firestore.collection('bbs').doc(key).update(data);
+  },
+  delete: function (key, data) {
+    firestore.collection('bbs').doc(key).delete();
+    firestore.collection('bbs-delete').add(data);
   },
   data: class{
     constructor([name, title, content, password]) {

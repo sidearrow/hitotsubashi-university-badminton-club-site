@@ -16,7 +16,7 @@
             <span class="ml-2">{{ v.name }}</span>
             <span class="ml-2">{{ v.date }}</span>
           </summary>
-          <div>
+          <div class="ml-2">
             <p class="text-right">
               <a><i class="material-icons" @click="click(k, 'e')">edit</i></a>
               <a><i class="material-icons" @click="click(k, 'd')">delete</i></a>
@@ -49,8 +49,18 @@ export default {
   },
   methods: {
     click: function (id, e) {
-      const input = window.prompt('パスワードを入力してください');
-      console.log(id);
+      const tmp = window.prompt('パスワードを入力してください');
+      if (tmp === this.posts[id].password) {
+        if (e === 'e') {
+          sessionStorage.password = tmp;
+          this.$router.push(`bbs/input?id=${id}`);
+        } else {
+          bbsFunction.delete(id, this.posts[id]);
+          this.$router.push(this.$route.fullPath);
+        }
+      } else if (tmp !== null) {
+        window.alert('パスワードが間違っています');
+      }
     }
   },
   components: {
