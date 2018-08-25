@@ -3,7 +3,7 @@
     <div v-for="(v, key) in obMsg">
       <div>{{ key }}年</div>
       <span class="ml-2" v-for="v2 in v">
-        <a :href="v2.url">{{ v2.name }}</a>
+        <a :href="v2.url" target="__blank">{{ v2.name }}</a>
       </span>
     </div>
   </div>
@@ -14,16 +14,11 @@ import { firestore } from '@/main';
 
 export default {
   created: async function () {
-    const res = (await firestore.collection('mizutori').doc('ob-msg').get()).data();
-    for (let key in res) {
-      this.obMsg[res[key].year].push(res[key]);
-    }
+    this.obMsg = (await firestore.collection('mizutori').doc('ob-msg').get()).data();
   },
   data: function () {
     return {
-      obMsg: {
-        2018: [],
-      },
+      obMsg: {},
     }
   }
 };
