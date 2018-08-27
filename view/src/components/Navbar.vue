@@ -2,7 +2,7 @@
   <nav class="navbar bg-main mb-3">
     <span class="navbar-brand text-white">
       <span>一橋大学バドミントン部</span></br>
-      <small>Hitotsubashi Univ. Badminton Club</small>
+      <small style="font-size:0.85rem">Hitotsubashi Univ. Badminton Club</small>
     </span>
     <div class="dropdown">
       <button class="btn dropdown-toggle bg-main text-white" @click="toggleMenu"></button>
