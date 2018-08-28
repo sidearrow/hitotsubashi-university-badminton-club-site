@@ -3,9 +3,12 @@ package controller
 import (
 	"fmt"
 	"net/http"
+
+	"../model"
 )
 
 func BBSIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	fmt.Fprint(w, "hello")
+	data := model.SelectAll()
+	fmt.Fprint(w, data)
 }
