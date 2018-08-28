@@ -2,12 +2,12 @@ package main
 
 import (
 	"net/http"
+
+	"./controller"
 )
 
 func main() {
-	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
-		print("hello")
-	})
+	http.HandleFunc("/", controller.BBSIndex)
 
 	http.ListenAndServe(":8080", nil)
 }
