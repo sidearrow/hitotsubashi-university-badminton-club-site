@@ -8,6 +8,7 @@ services:
       - "db"
     volumes:
       - "./api:/go/src"
+    tty: true
   db:
     image: postgres:latest
     ports: 
