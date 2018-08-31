@@ -8,7 +8,7 @@ services:
     links:
       - "db"
     volumes:
-      - "./api:/go/src/hit_u_bad"
+      - "./api:/go/src"
     tty: true
   db:
     image: postgres:latest
