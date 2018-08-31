@@ -4,11 +4,6 @@ import (
 	"encoding/json"
 )
 
-type Bbs struct {
-	Id    int 
-	Title string
-}
-
 func SelectAll() (string) {
 	db := Connect()
 
