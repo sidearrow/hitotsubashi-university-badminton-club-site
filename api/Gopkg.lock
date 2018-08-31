@@ -2,49 +2,11 @@
 
 
 [[projects]]
-  digest = "1:b62a3c5b37db602bf1158e921da1a762315a4c37855fd418a14498aa87a342d5"
-  name = "cloud.google.com/go"
-  packages = ["civil"]
-  pruneopts = "UT"
-  revision = "64a2037ec6be8a4b0c1d1f706ed35b428b989239"
-  version = "v0.26.0"
-
-[[projects]]
-  branch = "master"
-  digest = "1:7478b05c27d1b2f14d7188471cc2726baddb5720bcfce508ce6dbb77ffe08e9f"
-  name = "github.com/denisenkom/go-mssqldb"
-  packages = [
-    ".",
-    "internal/cp",
-  ]
-  pruneopts = "UT"
-  revision = "8fac8b954edb5b2b4ade733422de37ced41823c8"
-
-[[projects]]
-  branch = "master"
-  digest = "1:c3350d654d335f3bd199e44805f79da6d5a29b254a3457b83ac399210824c89b"
-  name = "github.com/erikstmartin/go-testdb"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "8d10e4a1bae52cd8b81ffdec3445890d6dccab3d"
-
-[[projects]]
-  digest = "1:adea5a94903eb4384abef30f3d878dc9ff6b6b5b0722da25b82e5169216dfb61"
-  name = "github.com/go-sql-driver/mysql"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "d523deb1b23d913de5bdada721a6071e71283618"
-  version = "v1.4.0"
-
-[[projects]]
-  digest = "1:4d28d632da146ec6e632bdd29676a95e0874f1ad837fff06aef6610b3b6b4728"
+  digest = "1:6895fbe5a10c5aebd1965cac6f6905dcdb21bee01e08912d3ba6a805c2485f6a"
   name = "github.com/jinzhu/gorm"
   packages = [
     ".",
-    "dialects/mssql",
-    "dialects/mysql",
     "dialects/postgres",
-    "dialects/sqlite",
   ]
   pruneopts = "UT"
   revision = "6ed508ec6a4ecb3531899a69cbc746ccf65a4166"
@@ -59,12 +21,12 @@
   revision = "04140366298a54a039076d798123ffa108fff46c"
 
 [[projects]]
-  branch = "master"
-  digest = "1:55011902fbefd825fd286f47e1783e2f5e0316eac7be414d28f8f5dd82156b0f"
-  name = "github.com/jinzhu/now"
+  digest = "1:70e697d67ccaec45e16bac3a32380ebcd9e7e071079c60d0171d42cf1cf9748a"
+  name = "github.com/joho/godotenv"
   packages = ["."]
   pruneopts = "UT"
-  revision = "ed742868f2aebdb1c0c437bf4f7257f88834b66f"
+  revision = "a79fa1e548e2c689c241d10173efd51e5d689d5b"
+  version = "v1.2.0"
 
 [[projects]]
   digest = "1:b18ffc558326ebaed3b4a175617f1e12ed4e3f53d6ebfe5ba372a3de16d22278"
@@ -78,48 +40,13 @@
   revision = "4ded0e9383f75c197b3a2aaa6d590ac52df6fd79"
   version = "v1.0.0"
 
-[[projects]]
-  digest = "1:3cafc6a5a1b8269605d9df4c6956d43d8011fc57f266ca6b9d04da6c09dee548"
-  name = "github.com/mattn/go-sqlite3"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "25ecb14adfc7543176f7d85291ec7dba82c6f7e4"
-  version = "v1.9.0"
-
-[[projects]]
-  branch = "master"
-  digest = "1:7d80d5561efbfcfdc3e4720bf5e331d574fd6f1e531b115ecf568aab3e2b656d"
-  name = "golang.org/x/crypto"
-  packages = ["md4"]
-  pruneopts = "UT"
-  revision = "182538f80094b6a8efaade63a8fd8e0d9d5843dd"
-
-[[projects]]
-  digest = "1:c25289f43ac4a68d88b02245742347c94f1e108c534dda442188015ff80669b3"
-  name = "google.golang.org/appengine"
-  packages = ["cloudsql"]
-  pruneopts = "UT"
-  revision = "b1f26356af11148e710935ed1ac8a7f5702c7612"
-  version = "v1.1.0"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/denisenkom/go-mssqldb",
-    "github.com/erikstmartin/go-testdb",
-    "github.com/go-sql-driver/mysql",
     "github.com/jinzhu/gorm",
-    "github.com/jinzhu/gorm/dialects/mssql",
-    "github.com/jinzhu/gorm/dialects/mysql",
     "github.com/jinzhu/gorm/dialects/postgres",
-    "github.com/jinzhu/gorm/dialects/sqlite",
-    "github.com/jinzhu/inflection",
-    "github.com/jinzhu/now",
-    "github.com/lib/pq",
-    "github.com/lib/pq/hstore",
-    "github.com/lib/pq/oid",
-    "github.com/mattn/go-sqlite3",
+    "github.com/joho/godotenv",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

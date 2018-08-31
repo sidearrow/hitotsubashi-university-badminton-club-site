@@ -1,19 +1,21 @@
 package model
 
 import (
+	"os"
 	"fmt"
 
+	"github.com/joho/godotenv"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 func Connect() *gorm.DB {
 	const (
-		host = "db"
-		port = "5432"
-		user = "postgres"
-		pass = "mysecretpassword"
-		dbname = "hit_u_bad"
+		host = os.Getenv("DB_HOST")//db
+		port = os.Getenv("DB_PORT")//"5432"
+		user = os.Getenv("DB_USER")//"postgres"
+		pass = os.Getenv("DB_PASSWORD") //"mysecretpassword"
+		dbname = os.Getenv("DB_DBNAME")//"hit_u_bad"
 	)
 
 	dns := "host="+host+" port="+port+" user="+user+" password="+pass+" dbname="+dbname+" sslmode=disable"
