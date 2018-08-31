@@ -1,13 +1,14 @@
 version: '3'
 services:
   web:
+    image: golang:latest
     build: api
     ports:
       - "8080:8080"
     links:
       - "db"
     volumes:
-      - "./api:/go/src"
+      - "./api:/go/src/hit_u_bad"
     tty: true
   db:
     image: postgres:latest

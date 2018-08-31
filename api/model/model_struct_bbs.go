@@ -1,8 +1,7 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"time"
 )
 
 type Bbs struct {
@@ -11,5 +10,7 @@ type Bbs struct {
 	Contributor string
 	Content     string
 	Password    string `gorm:"type:varchar(4)"`
-	gorm.Model
+	IsDelete    bool
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
 }
