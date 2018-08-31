@@ -1,1 +1,2 @@
-github.com
+/github.com/*
+!/github.com/hit_u_bad

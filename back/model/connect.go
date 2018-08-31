@@ -10,13 +10,13 @@ import (
 )
 
 func Connect() *gorm.DB {
-	const (
-		host = os.Getenv("DB_HOST")//db
-		port = os.Getenv("DB_PORT")//"5432"
-		user = os.Getenv("DB_USER")//"postgres"
-		pass = os.Getenv("DB_PASSWORD") //"mysecretpassword"
-		dbname = os.Getenv("DB_DBNAME")//"hit_u_bad"
-	)
+	godotenv.Load()
+
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	user := os.Getenv("DB_USER")
+	pass := os.Getenv("DB_PASSWORD")
+	dbname := os.Getenv("DB_NAME")
 
 	dns := "host="+host+" port="+port+" user="+user+" password="+pass+" dbname="+dbname+" sslmode=disable"
 
@@ -24,8 +24,6 @@ func Connect() *gorm.DB {
 	if err != nil {
 		fmt.Println(err)	
 	}
-
-	db.LogMode(true)
 
 	return db
 }
