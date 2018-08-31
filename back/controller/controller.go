@@ -12,3 +12,7 @@ func BBSIndex(w http.ResponseWriter, r *http.Request) {
 	data := model.SelectAll()
 	fmt.Fprint(w, data)
 }
+
+func BBSInsert(w http.ResponseWriter, r *http.Request) {
+	model.Insert(r)
+}
