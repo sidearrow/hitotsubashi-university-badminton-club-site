@@ -1,7 +1,7 @@
-package model_bbs
+package model
 
 import (
-	//"time"
+	"time"
 	"net/http"
 	"encoding/json"
 )

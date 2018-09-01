@@ -1,30 +1,14 @@
 package main
 
 import (
-	"fmt"
 	"encoding/json"
-	//"time"
-	//"model"
+	"time"
+	"model"
 	"io/ioutil"
 )
 
 func main() {
 	seed()
-	//db := model.Connect()
-
-	//db.CreateTable(&model.Bbs{})
-	/*
-	bbs := model.Bbs{
-		Title: "title",
-		Contributor: "name",
-		Content: "adfafdg",
-		Password: "1111",
-		IsDelete: false,
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
-	}
-	db.Create(&bbs)
-	*/
 }
 
 func seed() {
@@ -38,8 +22,19 @@ func seed() {
 
 	var input []Input
 	file, _ := ioutil.ReadFile("database/data/bbs-data.json")
-	err := json.Unmarshal(file, &input)
-	fmt.Println(err)
+	json.Unmarshal(file, &input)
 
-	fmt.Println(input)
+	db := model.Connect()
+	for _, v := range input {
+		tmpDate, _ := time.Parse("2006/01/02 15:04:05", v.Date)
+		db.Create(&model.Bbs{
+			Title      : v.Title,
+			Contributor: v.Contributor,
+			Content    : v.Content,
+			Password   : v.Password,
+			IsDelete   : false,
+			CreatedAt  : tmpDate,
+			UpdatedAt  : tmpDate,
+		})
+	}
 }

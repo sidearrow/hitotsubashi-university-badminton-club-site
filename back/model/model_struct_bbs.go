@@ -1,4 +1,4 @@
-package model_bbs
+package model
 
 import (
 	"time"
