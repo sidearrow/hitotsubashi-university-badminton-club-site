@@ -10,7 +10,3 @@ new Vue({
   components: { App },
   template: '<App/>',
 });
-
-firebase.initializeApp(config.firebase);
-
-export const firestore = firebase.firestore();
