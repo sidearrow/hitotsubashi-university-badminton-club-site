@@ -1,20 +1,21 @@
 package model
 
 import (
+	"fmt"
 	"time"
 	"net/http"
 	"encoding/json"
 )
 
-func SelectAll() (string) {
+func SelectAll(pageNum int) (string) {
 	db := Connect()
 
 	var bbs []Bbs
-	db.Find(&bbs)
+	//db.Model(&Bbs{}).Where("is_delete = ?", "false").Count(&res.count)
+	db.Where("is_delete = ?", "false").Order("updated_at asc").Limit(20).Offset((pageNum-1)*20).Find(&bbs)
 
-	print(db.HasTable("bbs"))
-
-	jsonBytes, _ := json.Marshal(bbs)
+	jsonBytes, err := json.Marshal(bbs)
+	fmt.Println(err)
 
 	return string(jsonBytes)
 }
