@@ -13,7 +13,7 @@ func BBSIndex(w http.ResponseWriter, r *http.Request) {
 
 	pageNum, err := strconv.Atoi(r.URL.Query().Get("page"))
 	if err == nil {
-		data := model.SelectAll(pageNum)
+		data := model.Select(pageNum)
 		fmt.Fprint(w, data)
 	} else {
 		w.WriteHeader(http.StatusBadRequest)
@@ -21,5 +21,34 @@ func BBSIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func BBSInsert(w http.ResponseWriter, r *http.Request) {
-	model.Insert(r)
+	w.Header().Set("Content-Type", "application/json")
+
+	title       := r.FormValue("title")
+	contributor := r.FormValue("contributor")
+	content     := r.FormValue("content")
+	password    := r.FormValue("password")
+
+	isErr := r.Method != "POST" || title == "" || contributor == "" || content == "" || password == ""
+
+	if isErr {
+		w.WriteHeader(http.StatusBadRequest)
+	} else {
+		model.Insert([]string{title, contributor, content, password})
+	}
+}
+
+func BBSDelete(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	id       := r.FormValue("id")
+	password := r.FormValue("password")
+
+	isErr := id == "" || password == ""
+
+	if isErr {
+		w.WriteHeader(http.StatusBadRequest)
+	} else {
+		data := model.Delete(id, password)
+		w.WriteHeader(w, data)
+	}
 }
