@@ -5,7 +5,7 @@ export default {
     result  : ['Result',   '/result'],
     santama : ['Santama',  '/santama'],
     bbs     : ['BBS',      '/bbs/pages/1'],
-      bbs_input: ['Input' , '/bbs/input'],
+    bbs_input: ['Input' , '/bbs/input'],
     mizutori: ['Mizutori', '/mizutori'],
   },
   bbs: {
@@ -13,4 +13,5 @@ export default {
     old_b: 'http://bbs.mottoki.com/?bbs=ikkyo_bad',
   },
   apiBase: 'https://hit-u-bad.herokuapp.com/api/',
+  apiBaseDev: 'http://localhost:8080/api',
 }

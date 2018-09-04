@@ -8,35 +8,35 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/components/pages/top/Top')
+      component: () => import('@/pages/top/Index')
     },
     {
       path: '/member',
-      component: () => import('@/components/pages/member/Member')
+      component: () => import('@/pages/member/Index')
     },
     {
       path: '/result',
-      component: () => import('@/components/pages/result/Result')
+      component: () => import('@/pages/result/Index')
     },
     {
       path: '/santama',
-      component: () => import('@/components/pages/santama/Santama')
+      component: () => import('@/pages/santama/Index')
     },
     {
       path: '/bbs/pages/:page',
-      component: () => import('@/components/pages/bbs/BBS')
+      component: () => import('@/pages/bbs/pages/Index')
     },
     {
       path: '/bbs/input',
-      component: () => import('@/components/pages/bbs/input/BBSInput')
+      component: () => import('@/pages/bbs/input/Index')
     },
     {
       path: '/mizutori',
-      component: () => import('@/components/pages/mizutori/Mizutori')
+      component: () => import('@/pages/mizutori/Index')
     },
     {
       path: '/manage',
-      component: () => import('@/components/pages/manage/Manage')
+      component: () => import('@/pages/manage/Index')
     }
   ]
 });

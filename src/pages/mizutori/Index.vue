@@ -30,7 +30,7 @@
 import axios from 'axios'
 import { buildUrl } from '@/util'
 import ContentTitle from '@/components/ContentTitle'
-import MizutoriContent from '@/components/pages/mizutori/MizutoriContent'
+import MizutoriContent from '@/pages/mizutori/MizutoriContent'
 import config from '@/config'
 
 export default {

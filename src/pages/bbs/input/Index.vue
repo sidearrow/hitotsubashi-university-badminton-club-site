@@ -35,7 +35,7 @@
 <script>
 import axios from 'axios'
 import { buildUrl } from '@/util'
-import bbsFunction from '@/components/pages/bbs/bbsFunction';
+import bbsFunction from '@/pages/bbs/bbsFunction';
 
 export default {
   mounted: function () {
