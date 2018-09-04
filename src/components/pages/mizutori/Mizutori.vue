@@ -8,7 +8,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Password</span>
         </div>
-        <input type="password" class="form-control" id="input-password">
+        <input type="password" class="form-control" v-model="inputPassword">
         <div class="input-group-append">
           <button class="btn bg-main text-white" @click="clickLogin">Login</button>
         </div>
@@ -27,25 +27,26 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/ContentTitle';
-import MizutoriContent from '@/components/pages/mizutori/MizutoriContent';
-import config from '@/config';
-import { getPassword } from '@/database';
+import axios from 'axios'
+import { buildUrl } from '@/util'
+import ContentTitle from '@/components/ContentTitle'
+import MizutoriContent from '@/components/pages/mizutori/MizutoriContent'
+import config from '@/config'
 
 export default {
   data () {
     return {
       titleItems: [config.pageList.mizutori],
       isLogin: window.sessionStorage.getItem('isLogin') === 'true',
+      inputPassword: '',
     }
   },
   methods: {
     clickLogin: function () {
-      getPassword((res) => {
-        if (document.querySelector('input[type=password]').value === res.password) {
-          this.isLogin = true;
-          window.sessionStorage.setItem('isLogin', 'true');
-        }
+      axios.get(buildUrl('mizutori'), {password: this.inputPassword}).then((res) => {
+        console.log(res)
+        window.sessionStorage.setItem('isLogin', 'true')
+        this.isLogin = true;
       })
     },
     clickLogout: function () {

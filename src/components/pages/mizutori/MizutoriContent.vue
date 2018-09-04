@@ -10,11 +10,8 @@
 </template>
 
 <script>
-import { firestore } from '@/main';
-
 export default {
-  created: async function () {
-    this.obMsg = (await firestore.collection('mizutori').doc('ob-msg').get()).data();
+  created: function () {
   },
   data: function () {
     return {

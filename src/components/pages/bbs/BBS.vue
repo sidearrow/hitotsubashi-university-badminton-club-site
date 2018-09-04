@@ -62,17 +62,23 @@ export default {
   },
   methods: {
     clickFunc: function (id, e) {
-      const tmp = window.prompt('パスワードを入力してください');
+      const inputPassword = window.prompt('パスワードを入力してください');
       axios
-        .get(buildUrl(`bbs/posts/${id}`, {password: tmp}))
+        .get(buildUrl(`bbs/posts/${id}`, {password: inputPassword}))
         .then((res) => {
           if (res.data.body.auth) {
             if (e === 'e') {
               // edit
-              // sessionStorage.password = tmp;
-              // this.$router.push(`bbs/input?id=${id}`);
+              sessionStorage.edit = 1
+              sessionStorage.password = inputPassword
+              sessionStorage.id = id
+              sessionStorage.title = res.data.body.post.title
+              sessionStorage.content = res.data.body.post.content
+              sessionStorage.contributor = res.data.body.post.contributor
+              this.$router.push(`bbs/input`);
             } else {
               // delete
+              axios.delete(buildUrl(`bbs/posts/${id}`))
             }
           } else {
             window.alert('パスワードが間違っています');

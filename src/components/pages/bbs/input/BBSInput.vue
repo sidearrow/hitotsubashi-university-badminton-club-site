@@ -4,19 +4,19 @@
       <section>
         <div class="form-group">
           <label>名前</label>
-          <input type="text" class="form-control" v-model="input.contributor">
+          <input type="text" class="form-control" v-model="post.contributor">
         </div>
         <div class="form-group">
           <label>タイトル</label>
-          <input type="text" class="form-control" v-model="input.title">
+          <input type="text" class="form-control" v-model="post.title">
         </div>
         <div class="form-group">
           <label>本文</label>
-          <textarea class="form-control" rows="20" cols="60" v-model="input.content" style="font-size:12px;line-height:1.1;"></textarea>
+          <textarea class="form-control" rows="20" cols="60" v-model="post.content" style="font-size:12px;line-height:1.1;"></textarea>
         </div>
         <div class="form-group">
           <label>パスワード</label>
-          <input type="password" class="form-control" v-model="input.password">
+          <input type="password" class="form-control" v-model="post.password">
         </div>
       </section>
       <div class="mt-2">
@@ -26,7 +26,7 @@
         <button class="btn bg-main text-white" @click="clickSubmit()">投稿</button>
       </div>
       <div class="mt-2">
-        <router-link to="/bbs">←戻る</router-link>
+        <router-link to="/bbs/pages/1">←戻る</router-link>
       </div>
     </article>
   </div>
@@ -39,59 +39,49 @@ import bbsFunction from '@/components/pages/bbs/bbsFunction';
 
 export default {
   mounted: function () {
-    const tmp = sessionStorage.getItem('password');
-    if (tmp === null) {
-      return;
-    }
-
-    this.id = this.$route.query.id;
-    bbsFunction.select(this.id, (res) => {
-      if (res.password === tmp) {
-        this.input.name = res.name;
-        this.input.title = res.title;
-        this.input.content = res.content;
-        this.input.password = res.password;
-      }
+    if (sessionStorage.getItem('edit') === '1') {
+      this.post.opassword = sessionStorage.getItem('password');
+      this.post.id = sessionStorage.getItem('id');
+      this.post.title = sessionStorage.getItem('title');
+      this.post.contributor = sessionStorage.getItem('contributor');
+      this.post.content = sessionStorage.getItem('content');
       this.isEdit = true;
-    });
+    }
   },
   methods: {
     clickSubmit: function () {
       const data = new bbsFunction.data([
-        this.input.contributor,
-        this.input.title,
-        this.input.content,
-        this.input.password, 
+        this.post.contributor,
+        this.post.title,
+        this.post.content,
+        this.post.password, 
       ])
 
       if (data.isError) {
         this.errMsg = data.errorMsg;
       } else {
-        let params = data.get()
         if (this.isEdit) {
-          bbsFunction.update(this.id, data.get());
+          axios.patch(buildUrl(`bbs/posts/${this.id}`, data.getPatchData(this.opassword)));
         } else {
-          axios.post(buildUrl('bbs/posts', params))
+          axios.post(buildUrl('bbs/posts', data.getPostData()))
         }
-        //this.$router.push({path: '/bbs'});
+        this.$router.push({path: '/bbs/pages/1'});
       }
     }
   },
   data: function () {
     return {
       isEdit: false,
-      id: null,
-      input: {
+      post: {
+        id: '',
         contributor: '',
         title: '',
         content: '',
         password: '',
+        opassword: '',
       },
       errMsg: [],
     }
   }
 }
 </script>
-
-<style>
-</style>

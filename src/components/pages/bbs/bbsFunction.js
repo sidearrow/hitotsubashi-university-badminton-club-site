@@ -1,45 +1,4 @@
-import { firestore } from "@/main";
-
 export default {
-  selectAll: function (start) {
-    if (typeof start === 'undefined') {
-      return firestore
-               .collection('bbs')
-               .orderBy('date', 'desc')
-               .limit(20)
-               .get();
-    } else {
-      return firestore
-               .collection('bbs')
-               .orderBy('date', 'desc')
-               .startAfter(start)
-               .limit(20)
-               .get();
-    }
-  },
-  select: function (key, cb) {
-    firestore
-      .collection('bbs')
-      .doc(key)
-      .get()
-      .then((res) => {
-        cb(res.data());
-      })
-  },
-  set: function (data) {
-    firestore.collection('bbs').add(data);
-  },
-  update: function (key, data) {
-    firestore.collection('bbs').doc(key).update(data);
-  },
-  delete: function (key, data) {
-    firestore.collection('bbs').doc(key).delete().then(() => {
-      firestore.collection('bbs-delete').add(data).then(() => {
-        window.alert('削除が完了しました。');
-        location.reload();
-      });
-    });
-  },
   data: class {
     constructor([contributor, title, content, password]) {
       var isError = false;
@@ -69,13 +28,21 @@ export default {
       this.content = content;
       this.password = password;
     }
-
-    get() {
+    getPostData() {
       return {
         contributor: this.contributor,
         title: this.title,
         content: this.content,
         password: this.password,
+      }
+    }
+    getPatchData(opassword) {
+      return {
+        contributor: this.contributor,
+        title: this.title,
+        content: this.content,
+        npassword: this.password,
+        opassword: opassword,
       }
     }
   },
