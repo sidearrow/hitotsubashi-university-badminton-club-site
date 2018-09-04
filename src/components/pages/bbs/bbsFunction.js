@@ -40,11 +40,11 @@ export default {
       });
     });
   },
-  data: class{
-    constructor([name, title, content, password]) {
+  data: class {
+    constructor([contributor, title, content, password]) {
       var isError = false;
       var errorMsg = [];
-      if (name.trim().length === 0 || !name.length > 50) {
+      if (contributor.trim().length === 0 || !name.length > 50) {
         isError = true;
         errorMsg.push("名前は50字以内で入力してください");
       }
@@ -64,22 +64,15 @@ export default {
       this.isError = isError;
       this.errorMsg = errorMsg;
 
-      this.name = name;
+      this.contributor = contributor;
       this.title = title;
       this.content = content;
       this.password = password;
-
-      const date = new Date();
-      const format = (str) => {
-        return ('0' + str).substr(-2);
-      }
-      this.date = `${date.getFullYear()}/${format(date.getMonth() + 1)}/${format(date.getDate())} ${format(date.getHours())}:${format(date.getMinutes())}`;
     }
 
     get() {
       return {
-        name: this.name,
-        date: this.date,
+        contributor: this.contributor,
         title: this.title,
         content: this.content,
         password: this.password,

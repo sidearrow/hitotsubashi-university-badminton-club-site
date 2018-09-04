@@ -23,19 +23,13 @@ export default new Router({
       component: () => import('@/components/pages/santama/Santama')
     },
     {
-      path: '/bbs',
+      path: '/bbs/pages/:page',
       component: () => import('@/components/pages/bbs/BBS')
     },
     {
       path: '/bbs/input',
       component: () => import('@/components/pages/bbs/input/BBSInput')
     },
-    /*
-    {
-      path: '/bbs/:id',
-      component: () => import('@/components/pages/bbs/detail/BBSDetail')
-    },
-    */
     {
       path: '/mizutori',
       component: () => import('@/components/pages/mizutori/Mizutori')

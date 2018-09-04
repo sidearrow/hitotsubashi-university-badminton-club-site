@@ -4,7 +4,7 @@
       <section>
         <div class="form-group">
           <label>名前</label>
-          <input type="text" class="form-control" v-model="input.name">
+          <input type="text" class="form-control" v-model="input.contributor">
         </div>
         <div class="form-group">
           <label>タイトル</label>
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { buildUrl } from '@/util'
 import bbsFunction from '@/components/pages/bbs/bbsFunction';
 
 export default {
@@ -56,21 +58,22 @@ export default {
   methods: {
     clickSubmit: function () {
       const data = new bbsFunction.data([
-        this.input.name,
+        this.input.contributor,
         this.input.title,
         this.input.content,
-        this.input.password,
-      ]);
+        this.input.password, 
+      ])
 
       if (data.isError) {
         this.errMsg = data.errorMsg;
       } else {
+        let params = data.get()
         if (this.isEdit) {
           bbsFunction.update(this.id, data.get());
         } else {
-          bbsFunction.set(data.get());
+          axios.post(buildUrl('bbs/posts', params))
         }
-        this.$router.push({path: '/bbs'});
+        //this.$router.push({path: '/bbs'});
       }
     }
   },
@@ -79,7 +82,7 @@ export default {
       isEdit: false,
       id: null,
       input: {
-        name: '',
+        contributor: '',
         title: '',
         content: '',
         password: '',
