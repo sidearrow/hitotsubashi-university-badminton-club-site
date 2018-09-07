@@ -46,41 +46,38 @@
 import ContentTitle from '@/components/ContentTitle'
 import config from '@/config'
 import xhr from '@/xhr'
-import axios from 'axios'
 
 export default {
   beforeCreate () {
     document.title = '掲示板 - 一橋バド';
   },
   created: function () {
-    xhr.get(`bbs/pages/${this.$route.params.page}`, (res) => {
+    xhr.get(`bbs/pages/${this.$route.params.page}`, null,(res) => {
       this.posts = res.body.posts
     })
   },
   methods: {
     clickFunc: function (id, e) {
       const inputPassword = window.prompt('パスワードを入力してください');
-      axios
-        .get(buildApiPath(`bbs/posts/${id}`), {params: {password: inputPassword}})
-        .then((res) => {
-          if (res.data.body.auth) {
-            if (e === 'e') {
-              // edit
-              sessionStorage.edit = 1
-              sessionStorage.password = inputPassword
-              sessionStorage.id = id
-              sessionStorage.title = res.data.body.post.title
-              sessionStorage.content = res.data.body.post.content
-              sessionStorage.contributor = res.data.body.post.contributor
-              this.$router.push(`bbs/input`);
-            } else {
-              // delete
-              axios.delete(buildApiPath(`bbs/posts/${id}`))
-            }
+      xhr.get(`bbs/posts/${id}`, {password: inputPassword}, (res) => {
+        if (res.data.body.auth) {
+          if (e === 'e') {
+            // edit
+            sessionStorage.edit = 1
+            sessionStorage.password = inputPassword
+            sessionStorage.id = id
+            sessionStorage.title = res.data.body.post.title
+            sessionStorage.content = res.data.body.post.content
+            sessionStorage.contributor = res.data.body.post.contributor
+            this.$router.push(`bbs/input`);
           } else {
-            window.alert('パスワードが間違っています');
+            // delete
+            xhr.delete(buildApiPath(`bbs/posts/${id}`))
           }
-        })
+        } else {
+          window.alert('パスワードが間違っています');
+        }
+      })
     },
   },
   components: {

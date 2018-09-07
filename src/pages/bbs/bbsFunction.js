@@ -1,9 +1,9 @@
 export default {
   data: class {
-    constructor([contributor, title, content, password]) {
+    constructor([author, title, content, password]) {
       var isError = false;
       var errorMsg = [];
-      if (contributor.trim().length === 0 || !name.length > 50) {
+      if (author.trim().length === 0 || !name.length > 50) {
         isError = true;
         errorMsg.push("名前は50字以内で入力してください");
       }
@@ -23,14 +23,14 @@ export default {
       this.isError = isError;
       this.errorMsg = errorMsg;
 
-      this.contributor = contributor;
+      this.author = author;
       this.title = title;
       this.content = content;
       this.password = password;
     }
     getPostData() {
       return {
-        contributor: this.contributor,
+        author: this.author,
         title: this.title,
         content: this.content,
         password: this.password,
@@ -38,7 +38,7 @@ export default {
     }
     getPatchData(opassword) {
       return {
-        contributor: this.contributor,
+        author: this.author,
         title: this.title,
         content: this.content,
         npassword: this.password,
