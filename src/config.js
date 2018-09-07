@@ -13,5 +13,5 @@ export default {
     old_b: 'http://bbs.mottoki.com/?bbs=ikkyo_bad',
   },
   apiBase: 'https://hit-u-bad.herokuapp.com/api/',
-  apiBaseDev: 'http://localhost:8080/api',
+  apiBaseDev: 'http://localhost:8080/api/',
 }

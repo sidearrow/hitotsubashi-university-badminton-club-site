@@ -34,7 +34,7 @@
 
 <script>
 import axios from 'axios'
-import { buildUrl } from '@/util'
+import { buildApiPath } from '@/util'
 import bbsFunction from '@/pages/bbs/bbsFunction';
 
 export default {
@@ -61,9 +61,9 @@ export default {
         this.errMsg = data.errorMsg;
       } else {
         if (this.isEdit) {
-          axios.patch(buildUrl(`bbs/posts/${this.id}`, data.getPatchData(this.opassword)));
+          axios.put(buildApiPath(`bbs/posts/${this.id}`), data.getPatchData(this.opassword));
         } else {
-          axios.post(buildUrl('bbs/posts', data.getPostData()))
+          axios.post(buildApiPath('bbs/posts'), data.getPostData())
         }
         this.$router.push({path: '/bbs/pages/1'});
       }

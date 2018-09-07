@@ -17,7 +17,7 @@
                 <details>
                   <summary>
                     <span>{{ v.title }}</span>
-                    <span class="ml-2 badge bg-main text-white">{{ v.contributor }}</span>
+                    <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
                     <div class="text-right text-secondary">
                       <span class="ml-2"><small>{{ v.update_at }}</small></span>
                     </div>
@@ -43,28 +43,25 @@
 </template>
 
 <script>
-import axios from "axios"
-import ContentTitle from '@/components/ContentTitle';
-import config from '@/config';
-
-import { buildUrl } from '@/util'
+import ContentTitle from '@/components/ContentTitle'
+import config from '@/config'
+import xhr from '@/xhr'
+import axios from 'axios'
 
 export default {
   beforeCreate () {
     document.title = '掲示板 - 一橋バド';
   },
   created: function () {
-    axios
-      .get(`${config.apiBase}bbs/pages/${this.$route.params.page}`)
-      .then((res) => {
-        this.posts = res.data.body.posts
-      })
+    xhr.get(`bbs/pages/${this.$route.params.page}`, (res) => {
+      this.posts = res.body.posts
+    })
   },
   methods: {
     clickFunc: function (id, e) {
       const inputPassword = window.prompt('パスワードを入力してください');
       axios
-        .get(buildUrl(`bbs/posts/${id}`, {password: inputPassword}))
+        .get(buildApiPath(`bbs/posts/${id}`), {params: {password: inputPassword}})
         .then((res) => {
           if (res.data.body.auth) {
             if (e === 'e') {
@@ -78,7 +75,7 @@ export default {
               this.$router.push(`bbs/input`);
             } else {
               // delete
-              axios.delete(buildUrl(`bbs/posts/${id}`))
+              axios.delete(buildApiPath(`bbs/posts/${id}`))
             }
           } else {
             window.alert('パスワードが間違っています');

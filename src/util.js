@@ -1,10 +1,5 @@
-export const buildUrl = function (path, params) {
-  let res = `https://hit-u-bad.herokuapp.com/api/${path}?`
-  if (typeof params !== 'undefined') {
-    for (let key in params) {
-      res += `${key}=${params[key]}&`
-    }
-  }
+import config from '@/config'
 
-  return res.slice(0, -1)
+export const buildApiPath = function (path) {
+  return config.apiBaseDev + path
 }
