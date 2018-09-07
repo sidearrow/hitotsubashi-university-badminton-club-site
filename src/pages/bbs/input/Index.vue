@@ -61,7 +61,7 @@ export default {
         this.errMsg = data.errorMsg;
       } else {
         if (this.isEdit) {
-          axios.put(buildApiPath(`bbs/posts/${this.id}`), data.getPatchData(this.opassword));
+          xhr.put(`bbs/posts/${this.id}`, data.getPatchData(this.opassword));
         } else {
           xhr.post('bbs/posts', data.getPostData())
         }
