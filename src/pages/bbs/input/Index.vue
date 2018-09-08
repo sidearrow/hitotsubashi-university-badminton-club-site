@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import xhr from '@/xhr'
 import bbsFunction from '@/pages/bbs/bbsFunction';
 
