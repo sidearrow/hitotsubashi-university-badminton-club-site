@@ -52,7 +52,6 @@ export default {
     document.title = '掲示板 - 一橋バド';
   },
   created: function () {
-    console.log(process.env)
     xhr.get(`/api/bbs/pages/${this.$route.params.page}`, null, (res) => {
       this.posts = res.body.posts
     })

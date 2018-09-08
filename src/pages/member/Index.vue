@@ -3,17 +3,21 @@
     <content-title title="部員紹介" :items="titleItems"/>
     <article>
       <section v-for="v in grade">
-        <h2 class="mdc-typography--headline5">{{ v }}年生</h2>
+        <h2>{{ v }}年生</h2>
         <div
           v-for="m in memberData[v]"
-          class="mdc-list mdc-list--two-line"
         >
           <p>
             <div>{{ m.name }}</div>
-            <div>
+            <div class="badge bg-sub text-white">
               <span>{{ m.highschool }}</span>
               <span>（{{ m.prefecture }}）</span>
-              <span>{{ m.position }}</span>
+            </div>
+            <div>
+              <span
+                v-for="p in m.position"
+                class="badge bg-main text-white mr-1"
+              >{{ p }}</span>
             </div>
           </p>
         </div>
@@ -23,18 +27,16 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/ContentTitle';
-import memberData from '@/assets/member.json';
-import config from '@/config';
+import ContentTitle from '@/components/ContentTitle'
+import memberData from '@/assets/json/member.json'
+import config from '@/config'
 
 export default {
   beforeCreate: function () {
     document.title = '部員紹介 - 一橋バド';
   },
   created: function () {
-    memberData.forEach((v) => {
-      this.memberData[v.grade].push(v);
-    });
+    this.memberData = memberData
   },
   components: {
     'content-title': ContentTitle,
@@ -42,12 +44,7 @@ export default {
   data: function () {
     return {
       titleItems: [config.pageList.member],
-      memberData: {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-      },
+      memberData: {},
       grade: [4, 3, 2, 1],
     }
   },

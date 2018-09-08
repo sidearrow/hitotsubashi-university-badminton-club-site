@@ -35,7 +35,7 @@
 
 <script>
 import ContentTitle from '@/components/ContentTitle';
-import resultData from '@/assets/result.json';
+import resultData from '@/assets/json/result.json';
 import config from '@/config';
 
 export default {
