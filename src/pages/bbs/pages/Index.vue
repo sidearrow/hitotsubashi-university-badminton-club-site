@@ -52,27 +52,27 @@ export default {
     document.title = '掲示板 - 一橋バド';
   },
   created: function () {
-    xhr.get(`bbs/pages/${this.$route.params.page}`, (res) => {
+    xhr.get(`/api/bbs/pages/${this.$route.params.page}`, null, (res) => {
       this.posts = res.body.posts
     })
   },
   methods: {
     clickFunc: function (id, e) {
       const inputPassword = window.prompt('パスワードを入力してください');
-      xhr.get(`bbs/posts/${id}?password=${inputPassword}`, (res) => {
+      xhr.get(`/api/bbs/posts/${id}`, { password: inputPassword }, (res) => {
         if (res.body.auth) {
           if (e === 'e') {
             // edit
             sessionStorage.edit = 1
             sessionStorage.password = inputPassword
             sessionStorage.id = id
-            sessionStorage.title = res.data.body.post.title
-            sessionStorage.content = res.data.body.post.content
-            sessionStorage.contributor = res.data.body.post.contributor
-            this.$router.push(`bbs/input`);
+            sessionStorage.title = res.body.post.title
+            sessionStorage.content = res.body.post.content
+            sessionStorage.author = res.body.post.author
+            this.$router.push('/bbs/input');
           } else {
             // delete
-            xhr.delete(`bbs/posts/${id}?password=${inputPassword}`)
+            xhr.delete(`/api/bbs/posts/${id}`, { password: inputPassword })
           }
         } else {
           window.alert('パスワードが間違っています');

@@ -36,7 +36,7 @@ export default {
         password: this.password,
       }
     }
-    getPatchData(opassword) {
+    getPutData(opassword) {
       return {
         author: this.author,
         title: this.title,

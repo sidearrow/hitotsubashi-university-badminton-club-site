@@ -27,8 +27,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { buildUrl } from '@/util'
+import xhr from '@/xhr'
 import ContentTitle from '@/components/ContentTitle'
 import MizutoriContent from '@/pages/mizutori/MizutoriContent'
 import config from '@/config'
@@ -43,8 +42,7 @@ export default {
   },
   methods: {
     clickLogin: function () {
-      axios.get(buildUrl('mizutori'), {password: this.inputPassword}).then((res) => {
-        console.log(res)
+      xhr.get('/api/mizutori', {password: this.inputPassword}, (res) => {
         window.sessionStorage.setItem('isLogin', 'true')
         this.isLogin = true;
       })

@@ -40,6 +40,7 @@ import bbsFunction from '@/pages/bbs/bbsFunction';
 export default {
   mounted: function () {
     if (sessionStorage.getItem('edit') === '1') {
+      window.sessionStorage.removeItem('edit')
       this.post.opassword = sessionStorage.getItem('password');
       this.post.id = sessionStorage.getItem('id');
       this.post.title = sessionStorage.getItem('title');
@@ -61,11 +62,14 @@ export default {
         this.errMsg = data.errorMsg;
       } else {
         if (this.isEdit) {
-          xhr.put(`bbs/posts/${this.id}`, data.getPatchData(this.opassword));
+          xhr.put(`/api/bbs/posts/${this.post.id}`, data.getPutData(this.post.opassword), () => {
+            this.$router.push({path: '/bbs/pages/1'})
+          })
         } else {
-          xhr.post('bbs/posts', data.getPostData())
+          xhr.post('/api/bbs/posts', data.getPostData(), () => {
+            this.$router.push({path: '/bbs/pages/1'})
+          })
         }
-        this.$router.push({path: '/bbs/pages/1'});
       }
     }
   },
