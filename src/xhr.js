@@ -3,7 +3,7 @@ import config from '@/config'
 export default {
   main: function (methods, path, params, cb) {
     const xhr = new XMLHttpRequest();
-    xhr.open(methods, config.baseDev + path)
+    xhr.open(methods, config.base + path)
     xhr.onload = () => {
       if (typeof cb !== 'undefined') {
         if (xhr.response === '') {
