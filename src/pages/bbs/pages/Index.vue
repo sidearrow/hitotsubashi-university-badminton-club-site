@@ -34,9 +34,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="text-center mt-3">
-          <button class="btn bg-main text-white">More</button>
-        </div>
+        <cmp-pagination :count="count" :pageNum="pageNum"/>
       </section>
     </article>
   </div>
@@ -44,6 +42,7 @@
 
 <script>
 import ContentTitle from '@/components/ContentTitle'
+import CmpPagination from './Pagination'
 import config from '@/config'
 import xhr from '@/xhr'
 
@@ -52,11 +51,16 @@ export default {
     document.title = '掲示板 - 一橋バド';
   },
   created: function () {
-    xhr.get(`/api/bbs/pages/${this.$route.params.page}`, null, (res) => {
-      this.posts = res.body.posts
-    })
+    this.setPage()
   },
   methods: {
+    setPage: function () {
+      this.pageNum = this.$route.params.page
+      xhr.get(`/api/bbs/pages/${this.pageNum}`, null, (res) => {
+        this.count = res.body.count
+        this.posts = res.body.posts
+      })
+    },
     clickFunc: function (id, e) {
       const inputPassword = window.prompt('パスワードを入力してください');
       xhr.get(`/api/bbs/posts/${id}`, { password: inputPassword }, (res) => {
@@ -82,11 +86,18 @@ export default {
   },
   components: {
     'content-title': ContentTitle,
+    'cmp-pagination': CmpPagination,
+  },
+  watch: {
+    '$route.params.page': function () {
+      this.setPage()
+    }
   },
   data: function () {
     return {
+      pageNum: 0,
       titleItems: [config.pageList.bbs],
-      pageNum: 1,
+      count: '',
       posts: [],
       bbsUrl: config.bbs,
     }
