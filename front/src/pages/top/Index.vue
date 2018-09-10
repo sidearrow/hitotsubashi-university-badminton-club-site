@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="alert alert-warning">
+      <span>こちらはβ版になります。<br/>最新の情報は以下リンク先でご確認下さい。<br/><a href="http://jfn.josuikai.net/circle/sports/badminton/" target="__blank">http://jfn.josuikai.net/circle/sports/badminton/</a></span>
+    </div>
     <slf-cmp-top-carousel/>
     <div class="jumbotron mt-3">
       <h1 class="text-nowrap">一橋大学<wbr>バドミントン部</h1>
