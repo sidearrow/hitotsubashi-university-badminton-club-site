@@ -28,7 +28,7 @@ const post = {
 }
 
 function modelPostsGet (req, res) {
-  database.collection('bbs').limit(20).get().then((qs) => {
+  database.collection('bbs').orderBy('createdAt', 'desc').limit(20).get().then((qs) => {
     let data = {}
     qs.forEach((doc) => {
       const tmp = doc.data()
@@ -46,7 +46,22 @@ function modelPostsPost (req, res) {
   })
 }
 
-function modelPostsPut (req, res) {
+function modelPostsPIdGet (req, res) {
+  const id = req.params.id
+  database.collection('bbs').doc(id).get().then((doc) => {
+    database.collection('bbs').orderBy('createdAt', 'desc').startAfter(doc).limit(20).get().then((qs) => {
+      let data = {}
+      qs.forEach((v) => {
+        const tmp = v.data()
+        delete tmp.password
+        data[v.id] = tmp
+      })
+      res.json(data)
+    })
+  })
+}
+
+function modelPostsPIdPut (req, res) {
   const data = post.setUpdate(req.body.title, req.body.author, req.body.content, req.body.password)
   const id = req.params.id
   database.collection(collectionName).doc(id).update(data).then(() => {
@@ -54,7 +69,7 @@ function modelPostsPut (req, res) {
   })
 }
 
-function modelPostsDelete (req, res) {
+function modelPostsPIdDelete (req, res) {
   database.collection(collectionName).doc(req.params.id).get().then((doc) => {
     if (doc.exists) {
       database.collection(collectionName).doc(req.params.id).delete()
@@ -65,7 +80,7 @@ function modelPostsDelete (req, res) {
   })
 }
 
-function modelPostsAuthGet (req, res) {
+function modelPostsPIdAuthGet (req, res) {
   const id = req.params.id
   const password = req.query.password
   database.collection(collectionName).doc(id).get().then((doc) => {
@@ -84,7 +99,8 @@ function modelPostsAuthGet (req, res) {
 module.exports = {
   modelPostsGet: modelPostsGet,
   modelPostsPost: modelPostsPost,
-  modelPostsPut: modelPostsPut,
-  modelPostsDelete: modelPostsDelete,
-  modelPostsAuthGet: modelPostsAuthGet
+  modelPostsPIdGet: modelPostsPIdGet,
+  modelPostsPIdPut: modelPostsPIdPut,
+  modelPostsPIdDelete: modelPostsPIdDelete,
+  modelPostsPIdAuthGet: modelPostsPIdAuthGet
 }

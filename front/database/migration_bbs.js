@@ -13,8 +13,7 @@ const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 
 json.forEach((v) => {
   const tmp = new Date(v.date)
-  const key = String(tmp.getTime())
-  db.collection('bbs').doc(key).set({
+  db.collection('bbs').add({
     title: v.title,
     author: v.name,
     content: v.content,
