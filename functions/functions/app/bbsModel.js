@@ -1,7 +1,7 @@
 const database = require('./database').database
 
-//const collectionName = 'bbs'
-const collectionName = 'bbs-test'
+const collectionName = 'bbs'
+//const collectionName = 'bbs-test'
 
 const post = {
   setCreate: (title, author, content, password) => {

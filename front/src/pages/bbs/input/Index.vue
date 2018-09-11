@@ -62,11 +62,11 @@ export default {
       } else {
         if (this.isEdit) {
           xhr.put(`/api/bbs/posts/${this.post.id}`, data.getPutData(this.post.opassword), () => {
-            this.$router.push({path: '/bbs/pages/1'})
+            this.$router.push({path: '/bbs/pages'})
           })
         } else {
           xhr.post('/api/bbs/posts', data.getPostData(), () => {
-            this.$router.push({path: '/bbs/pages/1'})
+            this.$router.push({path: '/bbs/pages'})
           })
         }
       }

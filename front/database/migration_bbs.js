@@ -12,7 +12,7 @@ const filePath = __dirname + '/bbs-data.json'
 const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 
 json.forEach((v) => {
-  const tmp = new Date(v.date)
+  const tmp = new Date((new Date(v.date)).getTime() + 36000000)
   db.collection('bbs').add({
     title: v.title,
     author: v.name,

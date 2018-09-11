@@ -19,7 +19,7 @@
                     <span>{{ v.title }}</span>
                     <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
                     <div class="text-right text-secondary">
-                      <span class="ml-2"><small>{{ v.update_at }}</small></span>
+                      <span class="ml-2 text-monospace"><small>{{ formatDate(v.updatedAt._seconds) }}</small></span>
                     </div>
                   </summary>
                   <div class="ml-2">
@@ -27,22 +27,23 @@
                       <a><i class="material-icons" @click="clickFunc(v.id, 'e')">edit</i></a>
                       <a><i class="material-icons" @click="clickFunc(v.id, 'd')">delete</i></a>
                     </p>
-                    <div style="white-space:pre-line">{{ v.content }}</div>
+                    <div class="ws-preline text-08rem">{{ v.content }}</div>
                   </div>
                 </details>
               </td>
             </tr>
           </tbody>
         </table>
-        <cmp-pagination :count="count" :pageNum="pageNum"/>
       </section>
+      <div class="text-center">
+        <button class="btn bg-main text-white" @click="fetchBBSData(lastPostId)">More</button>
+      </div>
     </article>
   </div>
 </template>
 
 <script>
 import ContentTitle from '@/components/ContentTitle'
-import CmpPagination from './Pagination'
 import config from '@/config'
 import xhr from '@/xhr'
 
@@ -51,17 +52,32 @@ export default {
     document.title = '掲示板 - 一橋バド';
   },
   created: function () {
-    this.setPage()
+    this.fetchBBSData()
   },
   methods: {
-    setPage: function () {
-      this.pageNum = this.$route.params.page
-      xhr.get(`/api/bbs/pages/${this.pageNum}`, null, (res) => {
-        this.count = res.body.count
-        this.posts = res.body.posts
+    formatDate: function (sec) {
+      const d = new Date(sec * 1000)
+      const f = (int) => {
+        return ('0' + String(int)).substr(-2)
+      }
+      return `${d.getFullYear()}/${f(d.getMonth()+1)}/${f(d.getDate())} ${f(d.getHours())}:${f(d.getMinutes())}`
+    },
+    fetchBBSData: function (id) {
+      let url = '/api/bbs/posts'
+      if (typeof id !== 'undefined') {
+        url += '/' + id
+      }
+
+      xhr.get(url, null, (res) => {
+        for (let key in res) {
+          res[key].id = key
+          this.posts.push(res[key])
+        }
+        this.lastPostId = this.posts[this.posts.length - 1].id
       })
     },
     clickFunc: function (id, e) {
+      return
       const inputPassword = window.prompt('パスワードを入力してください');
       xhr.get(`/api/bbs/posts/${id}`, { password: inputPassword }, (res) => {
         if (res.body.auth) {
@@ -86,7 +102,6 @@ export default {
   },
   components: {
     'content-title': ContentTitle,
-    'cmp-pagination': CmpPagination,
   },
   watch: {
     '$route.params.page': function () {
@@ -95,9 +110,8 @@ export default {
   },
   data: function () {
     return {
-      pageNum: 0,
+      lastPostId: '',
       titleItems: [config.pageList.bbs],
-      count: '',
       posts: [],
       bbsUrl: config.bbs,
     }
