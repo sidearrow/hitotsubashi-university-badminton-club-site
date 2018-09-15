@@ -1,5 +1,5 @@
 <?php
-$filepath = __DIR__ . '/raw/member.csv';
+$filepath = __DIR__ . '/member.csv';
 
 $file = new SplFileObject($filepath);
 $file->setFlags(SplFileObject::READ_CSV);
@@ -30,6 +30,6 @@ foreach ($file as $line) {
     ];
 }
 
-$outputFilePath = __DIR__ . '/res/member.json';
+$outputFilePath = __DIR__ . '/member.json';
 
 file_put_contents($outputFilePath, json_encode($data, JSON_UNESCAPED_UNICODE));
