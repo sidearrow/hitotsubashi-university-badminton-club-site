@@ -1,14 +1,14 @@
 <template>
   <nav class="navbar bg-main mb-3">
     <span class="navbar-brand text-white">
-      <span>一橋大学バドミントン部</span></br>
+      <span>一橋大学バドミントン部</span><br/>
       <small style="font-size:0.85rem">Hitotsubashi Univ. Badminton Club</small>
     </span>
     <div class="dropdown">
       <button class="btn dropdown-toggle bg-main text-white" @click="toggleMenu"></button>
       <div class="dropdown-menu dropdown-menu-right" id="menu">
         <router-link
-          v-for="v in menuItems"
+          v-for="(v, i) in menuItems" :key="i"
           class="dropdown-item"
           :to="v[1]"
           @click.native="toggleMenu"
