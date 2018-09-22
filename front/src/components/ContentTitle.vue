@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mdc-typography--headline4">{{ title }}</h1>
+    <h1>{{ title }}</h1>
     <div>
       <ol class="breadcrumb bg-transparent">
         <li class="breadcrumb-item">

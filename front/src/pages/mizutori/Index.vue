@@ -13,6 +13,7 @@
           <button class="btn bg-main text-white" @click="clickLogin">Login</button>
         </div>
       </div>
+      <div v-if="isError" class="alert alert-danger mt-3">パスワードが間違っています。</div>
     </article>
 
     <!-- ログイン -->
@@ -37,14 +38,20 @@ export default {
     return {
       titleItems: [config.pageList.mizutori],
       isLogin: window.sessionStorage.getItem('isLogin') === 'true',
+      isError: false,
       inputPassword: '',
     }
   },
   methods: {
     clickLogin: function () {
       xhr.get('/api/mizutori', {password: this.inputPassword}, (res) => {
+        if (!res.auth) {
+          this.isError = true
+          return
+        }
+        this.isError = false
+        this.isLogin = true
         window.sessionStorage.setItem('isLogin', 'true')
-        this.isLogin = true;
       })
     },
     clickLogout: function () {
