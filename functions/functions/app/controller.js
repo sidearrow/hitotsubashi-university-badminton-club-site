@@ -14,6 +14,7 @@ bbsRouter.delete('/posts/:id', bbsModel.modelPostsPIdDelete)
 bbsRouter.get('/posts/:id/auth', bbsModel.modelPostsPIdAuthGet)
 
 const mizutoriRouter = express.Router()
+mizutoriRouter.get('/', mizutoriModel.modelIndexGet)
 mizutoriRouter.get('/obmsg', mizutoriModel.modelObmsgGet)
 
 app.use(bodyParser.urlencoded({ extended: true }))
