@@ -10,30 +10,22 @@
         </ul>
       </section>
       <section>
-        <table class="table">
-          <tbody>
-            <tr v-for="v in posts">
-              <td>
-                <details>
-                  <summary>
-                    <span>{{ v.title }}</span>
-                    <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
-                    <div class="text-right text-secondary">
-                      <span class="ml-2 text-monospace"><small>{{ formatDate(v.updatedAt._seconds) }}</small></span>
-                    </div>
-                  </summary>
-                  <div class="ml-2">
-                    <p class="text-right">
-                      <a><i class="material-icons" @click="clickFunc(v.id, 'e')">edit</i></a>
-                      <a><i class="material-icons" @click="clickFunc(v.id, 'd')">delete</i></a>
-                    </p>
-                    <div class="ws-preline text-08rem">{{ v.content }}</div>
-                  </div>
-                </details>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <details v-for="(v, i) in posts" :key="i">
+          <summary>
+            <span>{{ v.title }}</span>
+            <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
+            <div class="text-right text-secondary">
+              <span class="ml-2 text-monospace"><small>{{ formatDate(v.updatedAt._seconds) }}</small></span>
+            </div>
+          </summary>
+          <div class="ml-2">
+            <p class="text-right">
+              <a><i class="material-icons" @click="clickFunc(v.id, 'e')">edit</i></a>
+              <a><i class="material-icons" @click="clickFunc(v.id, 'd')">delete</i></a>
+            </p>
+            <div class="ws-preline text-08rem">{{ v.content }}</div>
+          </div>
+        </details>
       </section>
       <div class="text-center">
         <button class="btn bg-main text-white" @click="fetchBBSData(lastPostId)">More</button>

@@ -5,14 +5,14 @@
     <article>
       <h2>結果</h2>
       <section>
-        <div v-for="(v, k) in result">
-          <span>{{ k }}年</span>
-          <span v-for="v_ in v">
+        <div v-for="(v, k) in result" :key="k">
+          <span class="mr-2">{{ k }}年</span>
+          <span v-for="(v2, i2) in v" :key="i2">
             <a
-              :href="`/static/pdf/${k}/${k + v_}_re.pdf`"
+              :href="`/static/pdf/${k}/${k + v2}_re.pdf`"
               class="result-link"
               target="_blank"
-            >{{ v_ }}</a>
+            >{{ v2 }}</a>
           </span>
         </div>
       </section>

@@ -2,24 +2,22 @@
   <div>
     <content-title title="部員紹介" :items="titleItems"/>
     <article>
-      <section v-for="v in grade">
-        <h2>{{ v }}年生</h2>
+      <section v-for="(gradev, gradei) in grade" :key="gradei">
+        <h2>{{ gradev }}年生</h2>
         <div
-          v-for="m in memberData[v]"
+          v-for="(memberv, memberi) in memberData[gradev]" :key="memberi"
         >
-          <p>
-            <div>{{ m.name }}</div>
-            <div class="badge bg-sub text-white">
-              <span>{{ m.highschool }}</span>
-              <span>（{{ m.prefecture }}）</span>
-            </div>
-            <div>
-              <span
-                v-for="p in m.position"
-                class="badge bg-main text-white mr-1"
-              >{{ p }}</span>
-            </div>
-          </p>
+          <div>{{ memberv.name }}</div>
+          <div class="badge bg-sub text-white">
+            <span>{{ memberv.highschool }}</span>
+            <span>（{{ memberv.prefecture }}）</span>
+          </div>
+          <div class="mb-3">
+            <span
+              v-for="(posv, posi) in memberv.position" :key="posi"
+              class="badge bg-main text-white mr-1"
+            >{{ posv }}</span>
+          </div>
         </div>
       </section>
     </article>

@@ -9,7 +9,7 @@
           <th>女子</th>
         </tr>
 
-        <tr v-for="v in resultData">
+        <tr v-for="(v, i) in resultData" :key="i">
           <td>{{ v.year }} {{ v.season }}</td>
 
           <td v-if="!(v.year === 2011 && v.season === '春')">
