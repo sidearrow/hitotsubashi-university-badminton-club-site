@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const bbsModel = require('./bbsModel')
+const mizutoriModel = require('./mizutoriModel')
 
 const app = express()
 
@@ -12,6 +13,9 @@ bbsRouter.put('/posts/:id', bbsModel.modelPostsPIdPut)
 bbsRouter.delete('/posts/:id', bbsModel.modelPostsPIdDelete)
 bbsRouter.get('/posts/:id/auth', bbsModel.modelPostsPIdAuthGet)
 
+const mizutoriRouter = express.Router()
+mizutoriRouter.get('/obmsg', mizutoriModel.modelObmsgGet)
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -22,5 +26,6 @@ app.use((req, res, next) => {
 })
 
 app.use('/bbs', bbsRouter)
+app.use('/mizutori', mizutoriRouter)
 
 exports.app = app
