@@ -63,10 +63,7 @@ export default {
       }
 
       xhr.get(url, null, (res) => {
-        for (let key in res) {
-          res[key].id = key
-          this.posts.push(res[key])
-        }
+        this.posts = res
         this.lastPostId = this.posts[this.posts.length - 1].id
       })
     },

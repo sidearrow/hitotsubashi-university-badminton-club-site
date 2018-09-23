@@ -25,18 +25,18 @@ export default {
     toggleDropdown: function () {
       this.isShow = !this.isShow
     },
+    clickReply: function (id) {
+      this.$router.push(`/bbs/input/${id}`)
+    },
     clickFunc: function (id, e) {
       const inputPassword = window.prompt('パスワードを入力してください');
-      xhr.get(`/api/bbs/posts/${id}/auth`, { password: inputPassword }, (res) => {
+      xhr.get(`/api/bbs/post/${id}`, { password: inputPassword }, (res) => {
         if (res.auth) {
           if (e === 'e') {
-            const tmp = res.data
-            tmp[password] = inputPassword
-            this.$store.commit('bbsInputPost/setEdit', res.id, tmp)
+            this.$store.commit('bbsInputPost/setEdit', res.data)
             this.$router.push('/bbs/input');
           } else {
-            // delete
-            xhr.delete(`/api/bbs/posts/${id}`, { password: inputPassword })
+            xhr.delete(`/api/bbs/post/${id}`, { password: inputPassword })
           }
         } else {
           window.alert('パスワードが間違っています');
