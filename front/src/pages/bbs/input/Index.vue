@@ -39,15 +39,20 @@ import xhr from '@/xhr'
 import bbsFunction from '@/pages/bbs/bbsFunction';
 
 export default {
-  mounted: function () {
-    if (sessionStorage.getItem('edit') === '1') {
-      window.sessionStorage.removeItem('edit')
-      this.post.opassword = sessionStorage.getItem('password');
-      this.post.id = sessionStorage.getItem('id');
-      this.post.title = sessionStorage.getItem('title');
-      this.post.author = sessionStorage.getItem('author');
-      this.post.content = sessionStorage.getItem('content');
-      this.isEdit = true;
+  created: function () {
+    if (this.isNew) {
+      console.log(this.$store.state.bbsInputPost)
+      return
+    }
+    if (this.isEdit) {
+      const editPost = this.$store.state.bbsInputPost
+      this.post.opassword = editPost.data.password
+      this.post.id = editPost.Id
+      this.post.title = editPost.data.title
+      this.post.author = editPost.data.author
+      this.post.content = editPost.datacontent
+    } else {
+      console.log('reply')
     }
   },
   methods: {
@@ -76,7 +81,8 @@ export default {
   },
   data: function () {
     return {
-      isEdit: false,
+      isNew: this.$store.getters['bbsInputPost/isNew'],
+      isEdit: this.$store.getters['bbsInputPost/isEdit'],
       post: {
         id: '',
         author: '',

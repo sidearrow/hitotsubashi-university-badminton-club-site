@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import xhr from '@/xhr'
+
 export default {
   props: {
     postId: String
@@ -25,7 +27,8 @@ export default {
     },
     clickFunc: function (id, e) {
       const inputPassword = window.prompt('パスワードを入力してください');
-      xhr.get(`/api/bbs/posts/${id}`, { password: inputPassword }, (res) => {
+      xhr.get(`/api/bbs/posts/${id}/auth`, { password: inputPassword }, (res) => {
+        console.log(res)
         if (res.body.auth) {
           if (e === 'e') {
             // edit

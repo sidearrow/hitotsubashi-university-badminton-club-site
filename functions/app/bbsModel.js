@@ -86,12 +86,12 @@ function modelPostsPIdAuthGet (req, res) {
   database.collection(collectionName).doc(id).get().then((doc) => {
     if (doc.exists) {
       if (doc.data().password === parseInt(password)) {
-        res.json('true')
+        res.json({'auth': true})
       } else {
-        res.json('false')
+        res.json({'auth': false})
       }
     } else {
-      console.log('false')
+      res.json({'auth': false})
     }
   })
 }
