@@ -4,7 +4,7 @@ export default {
     member  : ['Member',   '/member'],
     result  : ['Result',   '/result'],
     santama : ['Santama',  '/santama'],
-    bbs     : ['BBS',      '/bbs/pages'],
+    bbs     : ['BBS',      '/bbs/posts'],
     bbs_input: ['Input' , '/bbs/input'],
     mizutori: ['Mizutori', '/mizutori'],
   },

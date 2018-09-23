@@ -10,7 +10,10 @@
         </ul>
       </section>
       <section>
-        <details v-for="(v, i) in posts" :key="i">
+        <details
+          v-for="(v, i) in posts" :key="i"
+          class="mb-4"
+        >
           <summary>
             <span>{{ v.title }}</span>
             <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
