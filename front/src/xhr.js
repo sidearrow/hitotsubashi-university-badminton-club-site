@@ -9,12 +9,13 @@ export default {
         if (xhr.response === '') {
           cb()
         } else {
+          let res
           try {
-            const res = JSON.parse(xhr.response)
-            cb(res)
+            res = JSON.parse(xhr.response)
           } catch (e) {
-            cb({error: true})
+            res = {error: true}
           }
+          cb(res)
         }
       }
     }

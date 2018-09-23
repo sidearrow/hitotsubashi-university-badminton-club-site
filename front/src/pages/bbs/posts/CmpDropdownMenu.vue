@@ -13,6 +13,9 @@
 import xhr from '@/xhr'
 
 export default {
+  created: function () {
+    console.log(this.$store)
+  },
   props: {
     postId: String
   },
@@ -28,10 +31,10 @@ export default {
     clickFunc: function (id, e) {
       const inputPassword = window.prompt('パスワードを入力してください');
       xhr.get(`/api/bbs/posts/${id}/auth`, { password: inputPassword }, (res) => {
-        console.log(res)
-        if (res.body.auth) {
+        if (res.auth) {
           if (e === 'e') {
             // edit
+            console.log(this.$store.mutations)
             sessionStorage.edit = 1
             sessionStorage.password = inputPassword
             sessionStorage.id = id
