@@ -31,6 +31,10 @@ export default new Router({
       component: () => import('@/pages/bbs/input/Index')
     },
     {
+      path: '/bbs/input/:id',
+      component: () => import('@/pages/bbs/input/Index')
+    },
+    {
       path: '/mizutori',
       component: () => import('@/pages/mizutori/Index')
     },

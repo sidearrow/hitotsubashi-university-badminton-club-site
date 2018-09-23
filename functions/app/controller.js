@@ -5,14 +5,22 @@ const mizutoriModel = require('./mizutoriModel')
 
 const app = express()
 
+/*
+ * /bbs
+ */
 const bbsRouter = express.Router()
-bbsRouter.get('/posts', bbsModel.modelPostsGet)
-bbsRouter.post('/posts', bbsModel.modelPostsPost)
-bbsRouter.get('/posts/:id', bbsModel.modelPostsPIdGet)
-bbsRouter.put('/posts/:id', bbsModel.modelPostsPIdPut)
-bbsRouter.delete('/posts/:id', bbsModel.modelPostsPIdDelete)
-bbsRouter.get('/posts/:id/auth', bbsModel.modelPostsPIdAuthGet)
+bbsRouter.post('/post', bbsModel.modelPostPost)
 
+bbsRouter.get('/post/:id', bbsModel.modelPostGet)
+bbsRouter.put('/post/:id', bbsModel.modelPostPut)
+bbsRouter.delete('/post/:id', bbsModel.modelPostDelete)
+
+bbsRouter.get('/posts', bbsModel.modelPostsGet)
+bbsRouter.get('/posts/:id', bbsModel.modelPostsGet)
+
+/*
+ * /mizutori
+ */
 const mizutoriRouter = express.Router()
 mizutoriRouter.get('/', mizutoriModel.modelIndexGet)
 mizutoriRouter.get('/obmsg', mizutoriModel.modelObmsgGet)

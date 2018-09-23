@@ -19,21 +19,21 @@ const getters = {
 }
 
 const mutations = {
-  setNew: function () {
+  setNew: function (state) {
     state.mode = 'NEW'
     state.id = null
     state.data = {}
     state.rootId = null
     state.rootData = {}
   },
-  setEdit: function (postId, postData) {
+  setEdit: function (state, postId, postData) {
     state.mode = 'EDIT'
     state.id = postId
     state.data = postData
     state.rootId = null
     state.rootData = {}
   },
-  setReply: function (rootId, rootData) {
+  setReply: function (state, rootId, rootData) {
     state.mode = 'REPLY'
     state.id = null
     state.data = {}

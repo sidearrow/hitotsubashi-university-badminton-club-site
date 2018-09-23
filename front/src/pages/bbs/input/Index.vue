@@ -2,21 +2,38 @@
   <div>
     <article>
       <section>
-        <div class="form-group">
-          <label>名前</label>
-          <input type="text" class="form-control" v-model="post.author">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text width-70px">Name</span>
+          </div>
+          <input
+            type="text" class="form-control"
+            v-model="post.author"
+          >
         </div>
-        <div class="form-group">
-          <label>タイトル</label>
-          <input type="text" class="form-control" v-model="post.title">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text width-70px">Title</span>
+          </div>
+          <input
+            type="text" class="form-control"
+            v-model="post.title"
+          >
         </div>
-        <div class="form-group">
-          <label>本文</label>
-          <textarea class="form-control" rows="20" cols="60" v-model="post.content" style="font-size:12px;line-height:1.1;"></textarea>
+        <div class="mb-2">
+          <textarea
+            class="form-control" rows="20" cols="60" placeholder="Content"
+            v-model="post.content"
+          ></textarea>
         </div>
-        <div class="form-group">
-          <label>パスワード</label>
-          <input type="password" class="form-control" v-model="post.password">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text width-100px">Password</span>
+          </div>
+          <input
+            type="password" class="form-control"
+            v-model="post.password"
+          >
         </div>
       </section>
       <div class="mt-2">
@@ -40,8 +57,8 @@ import bbsFunction from '@/pages/bbs/bbsFunction';
 
 export default {
   created: function () {
+    console.log(this.isReply)
     if (this.isNew) {
-      console.log(this.$store.state.bbsInputPost)
       return
     }
     if (this.isEdit) {
@@ -50,7 +67,7 @@ export default {
       this.post.id = editPost.Id
       this.post.title = editPost.data.title
       this.post.author = editPost.data.author
-      this.post.content = editPost.datacontent
+      this.post.content = editPost.data.content
     } else {
       console.log('reply')
     }
@@ -83,6 +100,7 @@ export default {
     return {
       isNew: this.$store.getters['bbsInputPost/isNew'],
       isEdit: this.$store.getters['bbsInputPost/isEdit'],
+      isReply: typeof this.$route.params.id !== 'undefined',
       post: {
         id: '',
         author: '',
@@ -96,3 +114,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.width-70px {
+  width: 70px;
+}
+.width-100px {
+  width: 100px;
+}
+</style>
