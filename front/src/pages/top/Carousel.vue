@@ -3,7 +3,7 @@
     <div class="carousel slide">
       <div class="carousel-inner">
         <div
-          v-for="i in 3"
+          v-for="i in 3" :key="i"
           :class="'carousel-item' + ((i === 1) ? ' active' : '')"
           :id="`img-${i}`"
         >

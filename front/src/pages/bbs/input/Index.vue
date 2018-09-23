@@ -20,7 +20,9 @@
         </div>
       </section>
       <div class="mt-2">
-        <p v-for="v in errMsg">{{ v }}</p>
+        <p
+          v-for="(v, i) in errMsg" :key="i"
+        >{{ v }}</p>
       </div>
       <div class="text-center mt-2">
         <button class="btn bg-main text-white" @click="clickSubmit()">投稿</button>
