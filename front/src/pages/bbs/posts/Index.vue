@@ -10,25 +10,23 @@
         </ul>
       </section>
       <section>
-        <details
+        <div
           v-for="(v, i) in posts" :key="i"
           class="mb-4"
         >
-          <summary>
+          <div>
             <span>{{ v.title }}</span>
             <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
             <div class="text-right text-secondary">
+              <cmp-dropdown-menu :postId="v.id"/>
               <span class="ml-2 text-monospace"><small>{{ formatDate(v.updatedAt._seconds) }}</small></span>
             </div>
-          </summary>
+          </div>
           <div class="ml-2">
-            <p class="text-right">
-              <a><i class="material-icons" @click="clickFunc(v.id, 'e')">edit</i></a>
-              <a><i class="material-icons" @click="clickFunc(v.id, 'd')">delete</i></a>
-            </p>
             <div class="ws-preline text-08rem">{{ v.content }}</div>
           </div>
-        </details>
+          <hr/>
+        </div>
       </section>
       <div class="text-center">
         <button class="btn bg-main text-white" @click="fetchBBSData(lastPostId)">More</button>
@@ -39,6 +37,7 @@
 
 <script>
 import ContentTitle from '@/components/ContentTitle'
+import cmpDropdownMenu from './CmpDropdownMenu.vue'
 import config from '@/config'
 import xhr from '@/xhr'
 
@@ -71,37 +70,10 @@ export default {
         this.lastPostId = this.posts[this.posts.length - 1].id
       })
     },
-    clickFunc: function (id, e) {
-      return
-      const inputPassword = window.prompt('パスワードを入力してください');
-      xhr.get(`/api/bbs/posts/${id}`, { password: inputPassword }, (res) => {
-        if (res.body.auth) {
-          if (e === 'e') {
-            // edit
-            sessionStorage.edit = 1
-            sessionStorage.password = inputPassword
-            sessionStorage.id = id
-            sessionStorage.title = res.body.post.title
-            sessionStorage.content = res.body.post.content
-            sessionStorage.author = res.body.post.author
-            this.$router.push('/bbs/input');
-          } else {
-            // delete
-            xhr.delete(`/api/bbs/posts/${id}`, { password: inputPassword })
-          }
-        } else {
-          window.alert('パスワードが間違っています');
-        }
-      })
-    },
   },
   components: {
     'content-title': ContentTitle,
-  },
-  watch: {
-    '$route.params.page': function () {
-      this.setPage()
-    }
+    'cmp-dropdown-menu': cmpDropdownMenu,
   },
   data: function () {
     return {

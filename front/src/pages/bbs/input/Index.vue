@@ -28,7 +28,7 @@
         <button class="btn bg-main text-white" @click="clickSubmit()">投稿</button>
       </div>
       <div class="mt-2">
-        <router-link to="/bbs/pages/1">←戻る</router-link>
+        <router-link to="/bbs/posts">←戻る</router-link>
       </div>
     </article>
   </div>
@@ -64,11 +64,11 @@ export default {
       } else {
         if (this.isEdit) {
           xhr.put(`/api/bbs/posts/${this.post.id}`, data.getPutData(this.post.opassword), () => {
-            this.$router.push({path: '/bbs/pages'})
+            this.$router.push({path: '/bbs/posts'})
           })
         } else {
           xhr.post('/api/bbs/posts', data.getPostData(), () => {
-            this.$router.push({path: '/bbs/pages'})
+            this.$router.push({path: '/bbs/posts'})
           })
         }
       }
