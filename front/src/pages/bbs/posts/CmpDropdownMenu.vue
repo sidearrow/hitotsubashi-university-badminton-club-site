@@ -3,8 +3,8 @@
     <a class="btn bg-white dropdown-toggle" @click="toggleDropdown"></a>
     <div :class="`dropdown-menu${(isShow) ? ' show' : ''} text-08rem`">
       <a class="dropdown-item" @click="clickReply(postId)">Reply</a>
-      <a class="dropdown-item" @click="clickFunc(postId, 'e')">Edit</a>
-      <a class="dropdown-item" @click="clickFunc(postId, 'd')">Delete</a>
+      <a class="dropdown-item" @click="clickEdit(postId)">Edit</a>
+      <a class="dropdown-item" @click="clickDelete(postId)">Delete</a>
     </div>
   </div>
 </template>
@@ -26,9 +26,13 @@ export default {
       this.isShow = !this.isShow
     },
     clickReply: function (id) {
-      this.$router.push(`/bbs/input/${id}`)
+      this.$router.push(`/bbs/reply/${id}`)
     },
-    clickFunc: function (id, e) {
+    clickEdit: function () {
+      this.$router.push(`/bbs/edit/${id}`)
+    },
+    clickDelete: function (id) {
+      return
       const inputPassword = window.prompt('パスワードを入力してください');
       xhr.get(`/api/bbs/post/${id}`, { password: inputPassword }, (res) => {
         if (res.auth) {

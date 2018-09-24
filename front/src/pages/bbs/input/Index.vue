@@ -1,6 +1,6 @@
 <template>
   <article>
-    <cmp-root-post v-if="isReply"/>
+    <cmp-root-post v-if="mode === 'reply'"/>
     <section>
       <div class="input-group mb-2">
         <div class="input-group-prepend">
@@ -58,6 +58,8 @@ import cmpRootPost from '@/pages/bbs/input/CmpRootPost'
 
 export default {
   created: function () {
+    this.mode = this.$route.path.split('/')[2]
+
     if (this.isNew) {
       return
     }
@@ -98,9 +100,7 @@ export default {
   },
   data: function () {
     return {
-      isNew: this.$store.getters['bbsInputPost/isNew'],
-      isEdit: this.$store.getters['bbsInputPost/isEdit'],
-      isReply: typeof this.$route.params.id !== 'undefined',
+      mode: 'new',
       post: {
         id: '',
         author: '',

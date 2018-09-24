@@ -27,11 +27,15 @@ export default new Router({
       component: () => import('@/pages/bbs/posts/Index')
     },
     {
-      path: '/bbs/input',
+      path: '/bbs/new',
       component: () => import('@/pages/bbs/input/Index')
     },
     {
-      path: '/bbs/input/:id',
+      path: '/bbs/edit/:id',
+      component: () => import('@/pages/bbs/input/Index')
+    },
+    {
+      path: '/bbs/reply/:id',
       component: () => import('@/pages/bbs/input/Index')
     },
     {
