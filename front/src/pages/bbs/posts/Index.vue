@@ -18,7 +18,10 @@
             <span>{{ v.title }}</span>
             <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
             <div class="text-right text-secondary">
-              <cmp-dropdown-menu :postId="v.id"/>
+              <cmp-dropdown-menu
+                :postId="v.id"
+                @childs-event="openInputPasswordModal"
+              />
               <span class="ml-2 text-monospace"><small>{{ formatDate(v.updatedAt._seconds) }}</small></span>
             </div>
           </div>
@@ -32,7 +35,11 @@
         <button class="btn bg-main text-white" @click="fetchBBSData(lastPostId)">More</button>
       </div>
     </article>
-    <cmp-input-password-modal/>
+    <cmp-input-password-modal
+      :isOpen="isOpenInputPasswordModal"
+      :id="modalTargetId"
+      @child-event="closeInputPasswordModal"
+    />
   </div>
 </template>
 
@@ -69,6 +76,13 @@ export default {
         this.lastPostId = this.posts[this.posts.length - 1].id
       })
     },
+    openInputPasswordModal: function (id) {
+      this.modalTargetId = id
+      this.isOpenInputPasswordModal = true
+    },
+    closeInputPasswordModal: function () {
+      this.isOpenInputPasswordModal = false
+    }
   },
   components: {
     'content-title': ContentTitle,
@@ -81,6 +95,8 @@ export default {
       titleItems: [config.pageList.bbs],
       posts: [],
       bbsUrl: config.bbs,
+      isOpenInputPasswordModal: false,
+      modalTargetId: '',
     }
   },
 }

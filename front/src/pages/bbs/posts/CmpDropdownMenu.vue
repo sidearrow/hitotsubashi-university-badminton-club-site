@@ -28,10 +28,11 @@ export default {
     clickReply: function (id) {
       this.$router.push(`/bbs/reply/${id}`)
     },
-    clickEdit: function () {
+    clickEdit: function (id) {
       this.$router.push(`/bbs/edit/${id}`)
     },
     clickDelete: function (id) {
+      this.$emit('childs-event', id)
       return
       const inputPassword = window.prompt('パスワードを入力してください');
       xhr.get(`/api/bbs/post/${id}`, { password: inputPassword }, (res) => {
