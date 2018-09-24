@@ -1,7 +1,10 @@
 const database = require('./database').database
 
-const collectionName = 'bbs'
-//const collectionName = 'bbs-test'
+console.log()
+
+const getCollectionName = () => {
+  return (process.env.ENV === 'TEST') ? 'test-bbs' : 'bbs'
+}
 
 const post = {
   setCreate: (title, author, content, password) => {
@@ -29,14 +32,14 @@ const post = {
 
 function modelPostPost (req, res) {
   const data = post.setCreate(req.body.title, req.body.author, req.body.content, req.body.password)
-  database.collection(collectionName).add(data).then((docRef) => {
-    console.log(docRef.id)
+  database.collection(getCollectionName()).add(data).then((docRef) => {
+    res.json({id: docRef.id})
   })
 }
 
 function modelPostGet (req, res) {
   const id = req.params.id
-  database.collection('bbs').doc(id).get().then((doc) => {
+  database.collection(getCollectionName()).doc(id).get().then((doc) => {
     if (doc.exists) {
       const tmp = doc.data()
       tmp.auth = (typeof req.query.password !== 'undefined' && parseInt(req.query.password) === tmp.password)
@@ -51,19 +54,20 @@ function modelPostGet (req, res) {
 function modelPostPut (req, res) {
   const data = post.setUpdate(req.body.title, req.body.author, req.body.content, req.body.password)
   const id = req.params.id
-  database.collection(collectionName).doc(id).update(data).then(() => {
-    console.log('true')
+  database.collection(getCollectionName()).doc(id).update(data).then((docRef) => {
+    res.json({id: docRef.id})
   })
 }
 
 function modelPostDelete (req, res) {
   const id = req.params.id
-  database.collection(collectionName).doc(id).get().then((doc) => {
+  database.collection(getCollectionName()).doc(id).get().then((doc) => {
     if (doc.exists) {
-      database.collection(collectionName).doc(id).delete()
+      database.collection(getCollectionName()).doc(id).delete()
       database.collection('bbs-delete').add(doc.data())
+      res.json({isSuccess: true})
     } else {
-      console.log('false')
+      res.json({isSuccess: false})
     }
   })
 }
@@ -82,10 +86,10 @@ function modelPostsGet (req, res) {
   }
 
   if (typeof req.params.id === 'undefined') {
-    database.collection('bbs').orderBy('createdAt', 'desc').limit(20).get().then(response)
+    database.collection(getCollectionName()).orderBy('createdAt', 'desc').limit(20).get().then(response)
   } else {
     database.collection('bbs').doc(req.params.id).get().then((doc) => {
-      database.collection('bbs').orderBy('createdAt', 'desc').startAfter(doc).limit(20).get().then(response)
+      database.collection(getCollectionName()).orderBy('createdAt', 'desc').startAfter(doc).limit(20).get().then(response)
     })
   }
 }
