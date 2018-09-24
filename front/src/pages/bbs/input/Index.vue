@@ -60,18 +60,13 @@ export default {
   created: function () {
     this.mode = this.$route.path.split('/')[2]
 
-    if (this.isNew) {
-      return
-    }
-    if (this.isEdit) {
+    if (this.mode === 'edit') {
       const editPost = this.$store.state.bbsInputPost
       this.post.opassword = editPost.data.password
       this.post.id = editPost.Id
       this.post.title = editPost.data.title
       this.post.author = editPost.data.author
       this.post.content = editPost.data.content
-    } else {
-      console.log('reply')
     }
   },
   methods: {

@@ -3,7 +3,7 @@
     <content-title title="BBS" :items="titleItems"/>
     <article>
       <section>
-        <p><router-link to="/bbs/input">新規投稿</router-link></p>
+        <p><router-link to="/bbs/new">新規投稿</router-link></p>
         <ul>
           <li><a :href="bbsUrl.old_a" target="_blank">旧掲示板１</a></li>
           <li><a :href="bbsUrl.old_b" target="_blank">旧掲示板２</a></li>
@@ -32,12 +32,14 @@
         <button class="btn bg-main text-white" @click="fetchBBSData(lastPostId)">More</button>
       </div>
     </article>
+    <cmp-input-password-modal/>
   </div>
 </template>
 
 <script>
 import ContentTitle from '@/components/ContentTitle'
 import cmpDropdownMenu from './CmpDropdownMenu.vue'
+import CmpInputPasswordModal from '../CmpInputPasswordModal.vue'
 import config from '@/config'
 import xhr from '@/xhr'
 
@@ -71,6 +73,7 @@ export default {
   components: {
     'content-title': ContentTitle,
     'cmp-dropdown-menu': cmpDropdownMenu,
+    'cmp-input-password-modal': CmpInputPasswordModal,
   },
   data: function () {
     return {
