@@ -9,8 +9,6 @@
     </div>
     <slf-cmp-top-carousel/>
     <div class="jumbotron mt-3">
-      <h1 class="text-nowrap">一橋大学<wbr>バドミントン部</h1>
-      <hr class="my-4">
       <p>
         <span>2017年7月現在、私達一橋大学バドミントン部は男子24名、女子7名の計31名で活動しています。</span>
         <br/>
