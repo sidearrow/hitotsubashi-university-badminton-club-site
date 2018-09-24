@@ -2,7 +2,6 @@ const test = require('firebase-functions-test')()
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
-//const sinon = require('sinon')
 
 const assert = chai.assert
 const expect = chai.expect
