@@ -5,7 +5,7 @@ export default {
     result  : ['Result',   '/result'],
     santama : ['Santama',  '/santama'],
     bbs     : ['BBS',      '/bbs/posts'],
-    bbs_input: ['Input' , '/bbs/input'],
+    bbsNew  : ['New', '/bbs/new'],
     mizutori: ['Mizutori', '/mizutori'],
   },
   bbs: {
