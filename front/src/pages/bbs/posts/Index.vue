@@ -38,7 +38,8 @@
     <cmp-input-password-modal
       :isOpen="isOpenInputPasswordModal"
       :id="modalTargetId"
-      @child-event="closeInputPasswordModal"
+      @close-modal="closeInputPasswordModal"
+      @done-auth="deletePost"
     />
   </div>
 </template>
@@ -82,6 +83,9 @@ export default {
     },
     closeInputPasswordModal: function () {
       this.isOpenInputPasswordModal = false
+    },
+    deletePost: function () {
+      console.log('deletePost')
     }
   },
   components: {

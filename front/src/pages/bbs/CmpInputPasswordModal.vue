@@ -4,18 +4,31 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">パスワードを入力してください</h5>
             <button
               class="close"
               @click="close"
             ><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <div
+              v-if="isError"
+              class="alert alert-danger"
+            >パスワードが間違っています</div>
+            <input
+              type="password" class="form-control" placeholder="Enter password ..."
+              v-model="inputPassword"
+            >
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button
+              class="btn btn-secondary"
+              @click="close"
+            >Cancel</button>
+            <button
+              type="button" class="btn btn-primary"
+              @click="fetchPostData"
+            >OK</button>
           </div>
         </div>
       </div>
@@ -25,6 +38,8 @@
 </template>
 
 <script>
+import xhr from '@/xhr'
+
 export default {
   mounted: function () {
     document.getElementById('slf-modal-back').style.display = 'none'
@@ -35,20 +50,35 @@ export default {
   },
   methods: {
     close: function () {
-      this.$emit('child-event')
+      this.$emit('close-modal')
+    },
+    fetchPostData: function () {
+      xhr.get(`/api/bbs/post/${this.id}`, {password: this.inputPassword}, (res) => {
+        this.isError = !res.auth
+        if (res.auth) {
+          this.$emit('done-auth')
+        }
+      })
+    }
+  },
+  data: function () {
+    return {
+      isError: false,
+      inputPassword: '',
     }
   },
   watch: {
     'isOpen': function () {
-      console.log(this.id)
       if (this.isOpen) {
         document.body.classList.add('modal-open')
         document.getElementById('slf-modal').style.display = 'block'
         document.getElementById('slf-modal-back').classList.add('show')
+        document.getElementById('slf-modal-back').style.display = 'block'
       } else {
         document.body.classList.remove('modal-open')
         document.getElementById('slf-modal').style.display = 'none'
         document.getElementById('slf-modal-back').classList.remove('show')
+        document.getElementById('slf-modal-back').style.display = 'none'
       }
     }
   }
