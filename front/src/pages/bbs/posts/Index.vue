@@ -89,8 +89,8 @@ export default {
     closeInputPasswordModal: function () {
       this.isOpenInputPasswordModal = false
     },
-    deletePost: function () {
-      console.log('deletePost')
+    deletePost: function (inputPassword) {
+      xhr.delete(`/api/bbs/post/${this.modalTargetId}`, {password: inputPassword})
     }
   },
   components: {

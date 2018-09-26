@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     closeInputPasswordModal: function () {
-      this.$router.push('/bbs/pages')
+      this.$router.push('/bbs/posts')
     },
     setForm: function (_, res) {
       this.isOpenInputPasswordModal = false
@@ -95,7 +95,7 @@ export default {
       if (data.isError) {
         this.errMsg = data.errorMsg;
       } else {
-        if (this.isEdit) {
+        if (this.mode === 'edit') {
           xhr.put(`/api/bbs/post/${this.post.id}`, data.getPutData(this.post.opassword), () => {
             this.$router.push({path: '/bbs/posts'})
           })

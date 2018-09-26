@@ -42,7 +42,7 @@ function modelPostGet (req, res) {
   database.collection(getCollectionName()).doc(id).get().then((doc) => {
     if (doc.exists) {
       const tmp = doc.data()
-      tmp.auth = (typeof req.query.password !== 'undefined' && parseInt(req.query.password) === tmp.password)
+      tmp.auth = (typeof req.query.password !== 'undefined' && parseInt(req.query.password) === parseInt(tmp.password))
       tmp.id = doc.id
       delete tmp.password
   
