@@ -9,7 +9,8 @@
           <li><a :href="bbsUrl.old_b" target="_blank">旧掲示板２</a></li>
         </ul>
       </section>
-      <section>
+      <cmp-now-loading v-if="isNowLoading"/>
+      <section v-else>
         <div
           v-for="(v, i) in posts" :key="i"
           class="mb-4"
@@ -46,6 +47,7 @@
 
 <script>
 import ContentTitle from '@/components/ContentTitle'
+import CmpNowLoading from '@/components/NowLoading'
 import cmpDropdownMenu from './CmpDropdownMenu.vue'
 import CmpInputPasswordModal from '../CmpInputPasswordModal.vue'
 import config from '@/config'
@@ -73,7 +75,10 @@ export default {
       }
 
       xhr.get(url, null, (res) => {
-        this.posts = res
+        this.isNowLoading = false
+        res.forEach((v) => {
+          this.posts.push(v)
+        })
         this.lastPostId = this.posts[this.posts.length - 1].id
       })
     },
@@ -90,11 +95,13 @@ export default {
   },
   components: {
     'content-title': ContentTitle,
+    'cmp-now-loading': CmpNowLoading,
     'cmp-dropdown-menu': cmpDropdownMenu,
     'cmp-input-password-modal': CmpInputPasswordModal,
   },
   data: function () {
     return {
+      isNowLoading: true,
       lastPostId: '',
       titleItems: [config.pageList.bbs],
       posts: [],

@@ -1,5 +1,11 @@
 <template>
   <article>
+    <cmp-input-password-modal
+      :isOpen="isOpenInputPasswordModal"
+      :id="modalTargetId"
+      @close-modal="closeInputPasswordModal"
+      @done-auth="setForm"
+    />
     <cmp-root-post v-if="mode === 'reply'"/>
     <section>
       <div class="input-group mb-2">
@@ -36,10 +42,13 @@
         >
       </div>
     </section>
-    <div class="mt-2">
-      <p
+    <div
+      class="alert alert-danger mt-2"
+      v-if="errMsg.length > 0"
+    >
+      <div
         v-for="(v, i) in errMsg" :key="i"
-      >{{ v }}</p>
+      >{{ v }}</div>
     </div>
     <div class="text-center mt-2">
       <button class="btn bg-main text-white" @click="clickSubmit()">投稿</button>
@@ -55,21 +64,26 @@ import xhr from '@/xhr'
 import bbsFunction from '@/pages/bbs/bbsFunction'
 
 import cmpRootPost from '@/pages/bbs/input/CmpRootPost'
+import CmpInputPasswordModal from '../CmpInputPasswordModal.vue'
 
 export default {
-  created: function () {
+  mounted: function () {
     this.mode = this.$route.path.split('/')[2]
 
     if (this.mode === 'edit') {
-      const editPost = this.$store.state.bbsInputPost
-      this.post.opassword = editPost.data.password
-      this.post.id = editPost.Id
-      this.post.title = editPost.data.title
-      this.post.author = editPost.data.author
-      this.post.content = editPost.data.content
+      this.isOpenInputPasswordModal = true
     }
   },
   methods: {
+    closeInputPasswordModal: function () {
+      this.$router.push('/bbs/pages')
+    },
+    setForm: function (_, res) {
+      this.isOpenInputPasswordModal = false
+      this.post.author = res.author
+      this.post.title = res.title
+      this.post.content = res.content
+    },
     clickSubmit: function () {
       const data = new bbsFunction.data([
         this.post.author,
@@ -95,6 +109,8 @@ export default {
   },
   data: function () {
     return {
+      isOpenInputPasswordModal: false,
+      modalTargetId: this.$route.params.id,
       mode: 'new',
       post: {
         id: '',
@@ -108,7 +124,8 @@ export default {
     }
   },
   components: {
-    'cmp-root-post': cmpRootPost
+    'cmp-root-post': cmpRootPost,
+    'cmp-input-password-modal': CmpInputPasswordModal,
   }
 }
 </script>
