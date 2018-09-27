@@ -85,6 +85,7 @@ function modelPostCommentPost (req, res) {
           author: req.body.author,
           content: req.body.content,
           password: req.body.password,
+          createdAt: new Date(Date.now()),
           isDelete: false
         })
         database
@@ -110,6 +111,11 @@ function modelPostCommentDelete (req, res) {
           .collection(getCollectionName())
           .doc(id)
           .update({comments: commentsData})
+          .then(() => {
+            res.json({isSuccess: true})
+          })
+      } else {
+        res.json({isSuccess: true})
       }
     })
 }

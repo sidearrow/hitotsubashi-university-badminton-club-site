@@ -17,7 +17,10 @@
           v-model="post.author"
         >
       </div>
-      <div class="input-group mb-2">
+      <div
+        v-if="mode !== 'reply'"
+        class="input-group mb-2"
+      >
         <div class="input-group-prepend">
           <span class="input-group-text width-70px">Title</span>
         </div>
@@ -28,7 +31,8 @@
       </div>
       <div class="mb-2">
         <textarea
-          class="form-control" rows="20" cols="60" placeholder="Content"
+          class="form-control" cols="60" placeholder="Content"
+          :rows="(mode === 'reply') ? 5 : 20"
           v-model="post.content"
         ></textarea>
       </div>
@@ -99,6 +103,17 @@ export default {
           xhr.put(`/api/bbs/post/${this.post.id}`, data.getPutData(this.post.opassword), () => {
             this.$router.push({path: '/bbs/posts'})
           })
+        } else if (this.mode === 'reply') {
+          xhr.post(
+            `/api/bbs/post/${this.post.id}/comment`,
+            {
+              author: this.post.author,
+              content: this.post.content,
+              password: this.post.password
+            }),
+            () => {
+              this.$router.push({path: '/bbs/posts'})
+            }
         } else {
           xhr.post('/api/bbs/post', data.getPostData(), () => {
             this.$router.push({path: '/bbs/posts'})

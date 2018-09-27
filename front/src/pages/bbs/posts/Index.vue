@@ -29,6 +29,17 @@
           <div class="ml-2">
             <div class="ws-preline text-08rem">{{ v.content }}</div>
           </div>
+          <div
+            v-for="(vComment, i) in v.comments" :key="i"
+            v-if="i > 0"
+            class="mt-2 text-08rem"<div
+          >
+            <div>
+              <span>{{ vComment.author }}</span>
+              <span>{{ formatDate(vComment.createdAt._seconds) }}</span>
+            </div>
+            <div>{{ vComment.content }}</div>
+          </div>
           <hr/>
         </div>
       </section>
