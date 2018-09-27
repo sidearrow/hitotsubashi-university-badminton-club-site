@@ -93,6 +93,9 @@ function modelPostCommentPost (req, res) {
           .collection(getCollectionName())
           .doc(id)
           .update({comments: commentsData})
+          .then(() => {
+            res.json({isSuccess: true})
+          })
       }
     })
 }
