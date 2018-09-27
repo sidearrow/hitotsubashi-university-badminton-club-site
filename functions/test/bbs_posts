@@ -12,3 +12,7 @@ curl -X PUT http://localhost:5000/hit-u-bad/us-central1/route/bbs/posts/FxH57yai
 
 DELETE
 curl -X DELETE http://localhost:5000/hit-u-bad/us-central1/route/bbs/posts/1111
+
+curl -X POST http://localhost:5000/hit-u-bad/us-central1/api/bbs/post/0000/comment -H "Content-type: application/json" -d @test/test.json
+
+curl -X DELETE http://localhost:5000/hit-u-bad/us-central1/api/bbs/post/0000/comment/1?password=1111

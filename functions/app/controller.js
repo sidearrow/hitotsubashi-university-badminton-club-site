@@ -15,6 +15,9 @@ bbsRouter.get('/post/:id', bbsModel.modelPostGet)
 bbsRouter.put('/post/:id', bbsModel.modelPostPut)
 bbsRouter.delete('/post/:id', bbsModel.modelPostDelete)
 
+bbsRouter.post('/post/:id/comment', bbsModel.modelPostCommentPost)
+bbsRouter.delete('/post/:id/comment/:cid', bbsModel.modelPostCommentDelete)
+
 bbsRouter.get('/posts', bbsModel.modelPostsGet)
 bbsRouter.get('/posts/:id', bbsModel.modelPostsGet)
 
@@ -31,6 +34,7 @@ app.use(bodyParser.json())
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS')
   next()
 })
 

@@ -72,6 +72,48 @@ function modelPostDelete (req, res) {
   })
 }
 
+function modelPostCommentPost (req, res) {
+  const id = req.params.id
+  database
+    .collection(getCollectionName())
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        let commentsData = doc.data().comments
+        commentsData.push({
+          author: req.body.author,
+          content: req.body.content,
+          password: req.body.password,
+          isDelete: false
+        })
+        database
+          .collection(getCollectionName())
+          .doc(id)
+          .update({comments: commentsData})
+      }
+    })
+}
+
+function modelPostCommentDelete (req, res) {
+  const id = req.params.id
+  const cid = req.params.cid
+  database
+    .collection(getCollectionName())
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists && doc.data().comments[cid].password === req.query.password) {
+        let commentsData = doc.data().comments
+        commentsData[cid].isDelete = true
+        database
+          .collection(getCollectionName())
+          .doc(id)
+          .update({comments: commentsData})
+      }
+    })
+}
+
 function modelPostsGet (req, res) {
   const response = function (qs) {
     let data = []
@@ -99,5 +141,7 @@ module.exports = {
   modelPostGet: modelPostGet,
   modelPostPut: modelPostPut,
   modelPostDelete: modelPostDelete,
+  modelPostCommentPost: modelPostCommentPost,
+  modelPostCommentDelete: modelPostCommentDelete,
   modelPostsGet: modelPostsGet,
 }
