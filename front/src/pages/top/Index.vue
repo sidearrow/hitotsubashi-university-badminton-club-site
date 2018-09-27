@@ -3,9 +3,7 @@
     <div class="alert alert-warning">
       <span>こちらはβ版になります。</span>
       <br/>
-      <span>最新の情報は以下リンク先でご確認下さい。</span>
-      <br/>
-      <a href="http://jfn.josuikai.net/circle/sports/badminton/" target="__blank">http://jfn.josuikai.net/circle/sports/badminton/</a>
+      <span>最新の情報は<a href="http://jfn.josuikai.net/circle/sports/badminton/" target="__blank">こちら</a>からご確認下さい。</span>
     </div>
     <slf-cmp-top-carousel/>
     <div class="jumbotron mt-3">

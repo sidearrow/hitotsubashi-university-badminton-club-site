@@ -32,7 +32,7 @@
           <div
             v-for="(vComment, i) in v.comments" :key="i"
             v-if="i > 0"
-            class="mt-2 text-08rem"<div
+            class="mt-2 text-08rem"
           >
             <div>
               <span>{{ vComment.author }}</span>
@@ -101,7 +101,12 @@ export default {
       this.isOpenInputPasswordModal = false
     },
     deletePost: function (inputPassword) {
-      xhr.delete(`/api/bbs/post/${this.modalTargetId}`, {password: inputPassword})
+      xhr.delete(`/api/bbs/post/${this.modalTargetId}`, {password: inputPassword}, () => {
+        this.closeInputPasswordModal()
+        this.posts = []
+        this.isNowLoading = true
+        this.fetchBBSData()
+      })
     }
   },
   components: {

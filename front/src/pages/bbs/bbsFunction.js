@@ -1,13 +1,13 @@
 export default {
   data: class {
-    constructor([author, title, content, password]) {
+    constructor([author, title, content, password], mode) {
       var isError = false;
       var errorMsg = [];
       if (author.trim().length === 0 || !name.length > 50) {
         isError = true;
         errorMsg.push("名前は50字以内で入力してください");
       }
-      if (title.trim().length === 0 || !title.length > 50) {
+      if (mode !== 'reply' && (title.trim().length === 0 || !title.length > 50)) {
         isError = true;
         errorMsg.push("タイトルは50字以内で入力してください");
       }

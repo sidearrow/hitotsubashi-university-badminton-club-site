@@ -94,18 +94,18 @@ export default {
         this.post.title,
         this.post.content,
         this.post.password, 
-      ])
+      ], this.mode)
 
       if (data.isError) {
         this.errMsg = data.errorMsg;
       } else {
         if (this.mode === 'edit') {
-          xhr.put(`/api/bbs/post/${this.post.id}`, data.getPutData(this.post.opassword), () => {
+          xhr.put(`/api/bbs/post/${this.$route.params.id}`, data.getPutData(this.post.opassword), () => {
             this.$router.push({path: '/bbs/posts'})
           })
         } else if (this.mode === 'reply') {
           xhr.post(
-            `/api/bbs/post/${this.post.id}/comment`,
+            `/api/bbs/post/${this.$route.params.id}/comment`,
             {
               author: this.post.author,
               content: this.post.content,

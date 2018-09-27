@@ -54,7 +54,6 @@ export default {
     },
     fetchPostData: function () {
       xhr.get(`/api/bbs/post/${this.id}`, {password: this.inputPassword}, (res) => {
-        console.log(res)
         this.isError = !res.auth
         if (res.auth) {
           this.$emit('done-auth', this.inputPassword, res)

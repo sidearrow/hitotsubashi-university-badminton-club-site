@@ -1,7 +1,5 @@
 const database = require('./database').database
 
-console.log()
-
 const getCollectionName = () => {
   return (process.env.ENV === 'TEST') ? 'test-bbs' : 'bbs'
 }
@@ -14,6 +12,9 @@ const post = {
       author   : author,
       content  : content,
       password : password,
+      comments : [
+        {keep: 0}
+      ],
       createdAt: now,
       updatedAt: now,
     }
