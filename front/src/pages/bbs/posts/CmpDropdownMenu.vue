@@ -2,9 +2,17 @@
   <div class="dropdown d-inline-block">
     <a class="btn bg-white dropdown-toggle" @click="toggleDropdown"></a>
     <div :class="`dropdown-menu${(isShow) ? ' show' : ''} text-08rem`">
-      <a class="dropdown-item" @click="clickReply(postId)">Reply</a>
-      <a class="dropdown-item" @click="clickEdit(postId)">Edit</a>
-      <a class="dropdown-item" @click="clickDelete(postId)">Delete</a>
+      <a
+        class="dropdown-item"
+        v-if="!isComment"
+        @click="clickReply(postId)">Reply</a>
+      <a
+        class="dropdown-item"
+        v-if="!isComment"
+        @click="clickEdit(postId)">Edit</a>
+      <a
+        class="dropdown-item"
+        @click="clickDelete(postId)">Delete</a>
     </div>
   </div>
 </template>
@@ -14,7 +22,8 @@ import xhr from '@/xhr'
 
 export default {
   props: {
-    postId: String
+    postId: String,
+    isComment: Boolean
   },
   data: function () {
     return {
@@ -32,21 +41,7 @@ export default {
       this.$router.push(`/bbs/edit/${id}`)
     },
     clickDelete: function (id) {
-      this.$emit('childs-event', id)
-      return
-      const inputPassword = window.prompt('パスワードを入力してください');
-      xhr.get(`/api/bbs/post/${id}`, { password: inputPassword }, (res) => {
-        if (res.auth) {
-          if (e === 'e') {
-            this.$store.commit('bbsInputPost/setEdit', res.data)
-            this.$router.push('/bbs/input');
-          } else {
-            xhr.delete(`/api/bbs/post/${id}`, { password: inputPassword })
-          }
-        } else {
-          window.alert('パスワードが間違っています');
-        }
-      })
+      this.$emit('childs-event', id, this.isComment)
     },
   }
 }

@@ -21,6 +21,7 @@
             <div class="text-right text-secondary">
               <cmp-dropdown-menu
                 :postId="v.id"
+                :isComment="false"
                 @childs-event="openInputPasswordModal"
               />
               <span class="ml-2 text-monospace"><small>{{ formatDate(v.updatedAt._seconds) }}</small></span>
@@ -28,17 +29,25 @@
           </div>
           <div class="ml-2">
             <div class="ws-preline text-08rem">{{ v.content }}</div>
-          </div>
-          <div
-            v-for="(vComment, i) in v.comments" :key="i"
-            v-if="i > 0"
-            class="mt-2 text-08rem"
-          >
-            <div>
-              <span>{{ vComment.author }}</span>
-              <span>{{ formatDate(vComment.createdAt._seconds) }}</span>
+            <div
+              v-for="(vComment, i) in v.comments" :key="i"
+              v-if="i > 0"
+              class="mt-2 text-08rem"
+            >
+              <hr/>
+              <div>
+                <span class="badge bg-main text-white">{{ vComment.author }}</span>
+              </div>
+              <div class="text-right text-secondary">
+                <cmp-dropdown-menu
+                  :postId="v.id"
+                  :isComment="true"
+                  @childs-event="openInputPasswordModal"
+                />
+                <span class="ml-2 text-monospace"><small>{{ formatDate(vComment.createdAt._seconds) }}</small></span>
+              </div>
+              <div class="ml-2">{{ vComment.content }}</div>
             </div>
-            <div>{{ vComment.content }}</div>
           </div>
           <hr/>
         </div>
@@ -93,7 +102,8 @@ export default {
         this.lastPostId = this.posts[this.posts.length - 1].id
       })
     },
-    openInputPasswordModal: function (id) {
+    openInputPasswordModal: function (id, isComment) {
+      this.modalTargetIsComment = isComment
       this.modalTargetId = id
       this.isOpenInputPasswordModal = true
     },
@@ -101,12 +111,17 @@ export default {
       this.isOpenInputPasswordModal = false
     },
     deletePost: function (inputPassword) {
-      xhr.delete(`/api/bbs/post/${this.modalTargetId}`, {password: inputPassword}, () => {
-        this.closeInputPasswordModal()
-        this.posts = []
-        this.isNowLoading = true
-        this.fetchBBSData()
-      })
+      if (this.modalTargetIsComment) {
+        xhr.delete(`/api/bbs/post/${this.modalTargetId}/comment/${this.modalTargetCommentId}`, {password: inputPassword})
+
+      } else {
+        xhr.delete(`/api/bbs/post/${this.modalTargetId}`, {password: inputPassword}, () => {
+          this.closeInputPasswordModal()
+          this.posts = []
+          this.isNowLoading = true
+          this.fetchBBSData()
+        })
+      }
     }
   },
   components: {
@@ -123,7 +138,9 @@ export default {
       posts: [],
       bbsUrl: config.bbs,
       isOpenInputPasswordModal: false,
+      modalTargetIsComment: false,
       modalTargetId: '',
+      modalTargetCommentId: 0,
     }
   },
 }

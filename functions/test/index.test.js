@@ -11,7 +11,7 @@ const testData = require('./testdata/bbs-post')
 
 process.env.ENV = 'TEST'
 
-describe('API testing', function () {
+describe('掲示板API', function () {
   this.timeout(10000)
 
   let id;
