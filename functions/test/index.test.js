@@ -1,4 +1,3 @@
-const test = require('firebase-functions-test')()
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
@@ -24,9 +23,8 @@ describe('API testing', function () {
       .set('content-type', 'application/json')
       .send(JSON.stringify(testData.case1))
       .end(function (err, res) {
-        expect(res).to.be.json
-        expect(res.body).to.have.property('id')
-        expect(res.body).to.have.property('isSuccess')
+        assert.property(res.body, 'id')
+        assert.equal(res.body.isSuccess, true)
 
         id = res.body.id
         done()
@@ -38,7 +36,7 @@ describe('API testing', function () {
       .request(app)
       .get('/bbs/posts')
       .end(function (err, res) {
-        assert(res.body[0].id, id)
+        assert.equal(res.body[0].id, id)
 
         done()
       })
@@ -51,9 +49,7 @@ describe('API testing', function () {
       .set('content-type', 'application/json')
       .send(JSON.stringify(testData.case2))
       .end(function (err, res) {
-        expect(res).to.be.json
-        console.log(res.body)
-        //expect(res.body).to.have.property('id')
+        assert.equal(res.body.isSuccess, true)
 
         done()
       })
@@ -64,21 +60,91 @@ describe('API testing', function () {
       .request(app)
       .get(`/bbs/post/${id}`)
       .end(function (err, res) {
-        console.log(res.body)
-        expect(res.body.title).to.equal(testData.case2.title)
-        expect(res.body.createdAt).to.not.equal(res.body.updatedAt)
+        assert.equal(res.body.title, testData.case2.title)
+        assert.notEqual(res.body.createdAt, res.body.updatedAt)
 
         done()
       })
   })
 
-  it('投稿削除', function (done) {
+  it('コメント投稿', function (done) {
+    chai
+      .request(app)
+      .post(`/bbs/post/${id}/comment`)
+      .set('content-type', 'application/json')
+      .send(JSON.stringify(testData.caseComment1))
+      .end(function (_, res) {
+        assert.equal(res.body.isSuccess, true)
+
+        done()
+      })
+  })
+
+  it('コメント投稿確認', function (done) {
+    chai
+      .request(app)
+      .get(`/bbs/post/${id}`)
+      .end(function (_, res) {
+        assert.equal(res.body.comments[0].author, testData.caseComment1.author)
+
+        done()
+      })
+  })
+
+  it('コメント削除（失敗）', function (done) {
+    chai
+      .request(app)
+      .delete(`/bbs/post/${id}/comment/0`)
+      .query({password: '9999'})
+      .end(function (_, res) {
+        assert.equal(res.body.isSuccess, false)
+
+        done()
+      })
+  })
+
+  it('コメント削除（成功）', function (done) {
+    chai
+      .request(app)
+      .delete(`/bbs/post/${id}/comment/0`)
+      .query({password: testData.caseComment1.password})
+      .end(function (_, res) {
+        assert.equal(res.body.isSuccess, true)
+
+        done()
+      })
+  })
+
+  it('コメント削除確認', function (done) {
+    chai
+      .request(app)
+      .get(`/bbs/post/${id}`)
+      .end(function (_, res) {
+        assert.equal(res.body.comments[0].isDelete, true)
+
+        done()
+      })
+  })
+
+  it('投稿削除（失敗）', function (done) {
     chai
       .request(app)
       .delete(`/bbs/post/${id}`)
-      .send({password: testData.case2.password})
+      .query({password: '9999'})
       .end(function (err, res) {
-        console.log(res.body)
+        assert.equal(res.body.isSuccess, false)
+
+        done()
+      })
+  })
+
+  it('投稿削除（成功）', function (done) {
+    chai
+      .request(app)
+      .delete(`/bbs/post/${id}`)
+      .query({password: testData.case1.password})
+      .end(function (err, res) {
+        assert.equal(res.body.isSuccess, true)
 
         done()
       })

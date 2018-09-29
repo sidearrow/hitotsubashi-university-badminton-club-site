@@ -4,38 +4,19 @@ const getCollectionName = () => {
   return (process.env.ENV === 'TEST') ? 'test-bbs' : 'bbs'
 }
 
-const post = {
-  setCreate: (title, author, content, password) => {
-    const now = new Date(Date.now())
-    return {
-      title    : title,
-      author   : author,
-      content  : content,
-      password : password,
-      comments : [
-        {keep: 0}
-      ],
-      createdAt: now,
-      updatedAt: now,
-    }
-  },
-  setUpdate: (title, author, content, password) => {
-    const now = new Date(Date.now())
-    return {
-      title    : title,
-      author   : author,
-      content  : content,
-      password : password,
-      updatedAt: now,
-    }
-  }
-}
-
 function modelPostPost (req, res) {
-  const data = post.setCreate(req.body.title, req.body.author, req.body.content, req.body.password)
+  const now = new Date(Date.now())
   database
     .collection(getCollectionName())
-    .add(data)
+    .add({
+      title    : req.body.title,
+      author   : req.body.author,
+      content  : req.body.content,
+      password : req.body.password,
+      comments : [],
+      createdAt: now,
+      updatedAt: now,
+    })
     .then((docRef) => {
       res.json({
         isSuccess: true,
@@ -64,12 +45,17 @@ function modelPostGet (req, res) {
 }
 
 function modelPostPut (req, res) {
-  const data = post.setUpdate(req.body.title, req.body.author, req.body.content, req.body.password)
   const id = req.params.id
   database
     .collection(getCollectionName())
     .doc(id)
-    .update(data)
+    .update({
+      title    : req.body.title,
+      author   : req.body.author,
+      content  : req.body.content,
+      password : req.body.password,
+      updatedAt: new Date(Date.now()),
+    })
     .then((docRef) => {
       res.json({
         isSuccess: true,
@@ -85,7 +71,7 @@ function modelPostDelete (req, res) {
     .doc(id)
     .get()
     .then((doc) => {
-      if (doc.exists) {
+      if (doc.exists && (doc.data().password === req.query.password)) {
         database
           .collection(getCollectionName())
           .doc(id)
@@ -139,7 +125,7 @@ function modelPostCommentDelete (req, res) {
     .doc(id)
     .get()
     .then((doc) => {
-      if (doc.exists && doc.data().comments[cid].password === req.query.password) {
+      if (doc.exists && (doc.data().comments[cid].password === req.query.password)) {
         let commentsData = doc.data().comments
         commentsData[cid].isDelete = true
         database
