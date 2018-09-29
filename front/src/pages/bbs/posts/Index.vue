@@ -89,18 +89,15 @@ export default {
       return `${d.getFullYear()}/${f(d.getMonth()+1)}/${f(d.getDate())} ${f(d.getHours())}:${f(d.getMinutes())}`
     },
     fetchBBSData: function (id) {
-      let url = '/api/bbs/posts'
-      if (typeof id !== 'undefined') {
-        url += '/' + id
-      }
-
-      xhr.get(url, null, (res) => {
-        this.isNowLoading = false
-        res.forEach((v) => {
-          this.posts.push(v)
+      this.$http
+        .get(`${this.$config.apiUrlBase}/bbs/posts${(typeof id === 'undefined') ? '' : '/' + id}`)
+        .then((res) => {
+          this.isNowLoading = false
+          res.data.forEach((v) => {
+            this.posts.push(v)
+          })
+          this.lastPostId = this.posts[this.posts.length - 1].id
         })
-        this.lastPostId = this.posts[this.posts.length - 1].id
-      })
     },
     openInputPasswordModal: function (id, isComment) {
       this.modalTargetIsComment = isComment
@@ -112,15 +109,23 @@ export default {
     },
     deletePost: function (inputPassword) {
       if (this.modalTargetIsComment) {
-        xhr.delete(`/api/bbs/post/${this.modalTargetId}/comment/${this.modalTargetCommentId}`, {password: inputPassword})
-
+        this.$http
+          .delete(
+            `/api/bbs/post/${this.modalTargetId}/comment/${this.modalTargetCommentId}`,
+            {params: {password: inputPassword}}
+          )
       } else {
-        xhr.delete(`/api/bbs/post/${this.modalTargetId}`, {password: inputPassword}, () => {
-          this.closeInputPasswordModal()
-          this.posts = []
-          this.isNowLoading = true
-          this.fetchBBSData()
-        })
+        this.$http
+          .delete(
+            `/api/bbs/post/${this.modalTargetId}`,
+            {params: {password: inputPassword}}
+          )
+          .then(() => {
+            this.closeInputPasswordModal()
+            this.posts = []
+            this.isNowLoading = true
+            this.fetchBBSData()
+          })
       }
     }
   },

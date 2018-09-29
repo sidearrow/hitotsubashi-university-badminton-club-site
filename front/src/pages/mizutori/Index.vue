@@ -44,15 +44,20 @@ export default {
   },
   methods: {
     clickLogin: function () {
-      xhr.get('/api/mizutori', {password: this.inputPassword}, (res) => {
-        if (!res.auth) {
-          this.isError = true
-          return
-        }
-        this.isError = false
-        this.isLogin = true
-        window.sessionStorage.setItem('isLogin', 'true')
-      })
+      this.$http
+        .get(
+          `${this.$config.apiUrlBase}/mizutori`,
+          {params: {password: this.inputPassword}}
+        )
+        .then((res) => {
+          if (!res.data.auth) {
+            this.isError = true
+            return
+          }
+          this.isError = false
+          this.isLogin = true
+          window.sessionStorage.setItem('isLogin', 'true')
+        })
     },
     clickLogout: function () {
       this.isLogin = false;

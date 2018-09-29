@@ -12,6 +12,6 @@ export default {
     old_a: 'http://hitotsubashibad.bbs.fc2.com/',
     old_b: 'http://bbs.mottoki.com/?bbs=ikkyo_bad',
   },
-  base: 'https://us-central1-hit-u-bad.cloudfunctions.net',
+  apiUrlBase: 'https://us-central1-hit-u-bad.cloudfunctions.net/api',
   baseDev: 'http://localhost:8080',
 }

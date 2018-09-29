@@ -25,9 +25,12 @@ import cmpNowLoading from '@/components/NowLoading'
 
 export default {
   created: function () {
-    xhr.get('/api/mizutori/obmsg', null, (res) => {
+    this.$http.get(
+      `${this.$config.apiUrlBase}/mizutori/obmsg`
+    )
+    .then((res) => {
       this.isNowLoading = false
-      this.obmsg = res
+      this.obmsg = res.data
     })
   },
   data: function () {
