@@ -1,16 +1,8 @@
 import { assert } from 'chai'
-import { shallowMount, createLocalVue } from '@vue/test-utils'
 import CmpNavBar from '@/components/cmp-navbar.vue'
-import VueRouter from 'vue-router'
+import { wrapperShallowMount } from './before'
 
-const localVue = createLocalVue()
-localVue.use(VueRouter)
-const router = new VueRouter()
-
-const wrapper = shallowMount(CmpNavBar,{
-  localVue,
-  router,
-})
+const wrapper = wrapperShallowMount(CmpNavBar)
 
 const wrpMenuButton = wrapper.find('button.dropdown-toggle')
 const wrpMenu = wrapper.find('div.dropdown-menu')
