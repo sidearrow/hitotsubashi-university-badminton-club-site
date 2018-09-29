@@ -33,9 +33,15 @@ const post = {
 
 function modelPostPost (req, res) {
   const data = post.setCreate(req.body.title, req.body.author, req.body.content, req.body.password)
-  database.collection(getCollectionName()).add(data).then((docRef) => {
-    res.json({id: docRef.id})
-  })
+  database
+    .collection(getCollectionName())
+    .add(data)
+    .then((docRef) => {
+      res.json({
+        isSuccess: true,
+        id: docRef.id
+      })
+    })
 }
 
 function modelPostGet (req, res) {
@@ -43,11 +49,16 @@ function modelPostGet (req, res) {
   database.collection(getCollectionName()).doc(id).get().then((doc) => {
     if (doc.exists) {
       const tmp = doc.data()
-      tmp.auth = (typeof req.query.password !== 'undefined' && parseInt(req.query.password) === parseInt(tmp.password))
+      tmp.auth = (
+        typeof req.query.password !== 'undefined' &&
+        req.query.password === tmp.password
+      )
       tmp.id = doc.id
       delete tmp.password
   
       res.json(tmp)
+    } else {
+      res.json({auth: false})
     }
   })
 }
@@ -55,22 +66,40 @@ function modelPostGet (req, res) {
 function modelPostPut (req, res) {
   const data = post.setUpdate(req.body.title, req.body.author, req.body.content, req.body.password)
   const id = req.params.id
-  database.collection(getCollectionName()).doc(id).update(data).then((docRef) => {
-    res.json({id: docRef.id})
-  })
+  database
+    .collection(getCollectionName())
+    .doc(id)
+    .update(data)
+    .then((docRef) => {
+      res.json({
+        isSuccess: true,
+        id: docRef.id
+      })
+    })
 }
 
 function modelPostDelete (req, res) {
   const id = req.params.id
-  database.collection(getCollectionName()).doc(id).get().then((doc) => {
-    if (doc.exists) {
-      database.collection(getCollectionName()).doc(id).delete()
-      database.collection('bbs-delete').add(doc.data())
-      res.json({isSuccess: true})
-    } else {
-      res.json({isSuccess: false})
-    }
-  })
+  database
+    .collection(getCollectionName())
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        database
+          .collection(getCollectionName())
+          .doc(id)
+          .delete()
+          .then(() => {
+            res.json({isSuccess: true})
+          })
+        database
+          .collection('bbs-delete')
+          .add(doc.data())
+      } else {
+        res.json({isSuccess: false})
+      }
+    })
 }
 
 function modelPostCommentPost (req, res) {
@@ -96,6 +125,8 @@ function modelPostCommentPost (req, res) {
           .then(() => {
             res.json({isSuccess: true})
           })
+      } else {
+        res.json({isSuccess: false})
       }
     })
 }
@@ -119,7 +150,7 @@ function modelPostCommentDelete (req, res) {
             res.json({isSuccess: true})
           })
       } else {
-        res.json({isSuccess: true})
+        res.json({isSuccess: false})
       }
     })
 }
@@ -138,10 +169,25 @@ function modelPostsGet (req, res) {
   }
 
   if (typeof req.params.id === 'undefined') {
-    database.collection(getCollectionName()).orderBy('createdAt', 'desc').limit(20).get().then(response)
+    database
+      .collection(getCollectionName())
+      .orderBy('createdAt', 'desc')
+      .limit(20)
+      .get()
+      .then(response)
   } else {
-    database.collection('bbs').doc(req.params.id).get().then((doc) => {
-      database.collection(getCollectionName()).orderBy('createdAt', 'desc').startAfter(doc).limit(20).get().then(response)
+    database
+      .collection('bbs')
+      .doc(req.params.id)
+      .get()
+      .then((doc) => {
+        database
+          .collection(getCollectionName())
+          .orderBy('createdAt', 'desc')
+          .startAfter(doc)
+          .limit(20)
+          .get()
+          .then(response)
     })
   }
 }
