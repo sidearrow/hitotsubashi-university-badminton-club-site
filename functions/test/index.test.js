@@ -26,6 +26,7 @@ describe('API testing', function () {
       .end(function (err, res) {
         expect(res).to.be.json
         expect(res.body).to.have.property('id')
+        expect(res.body).to.have.property('isSuccess')
 
         id = res.body.id
         done()
