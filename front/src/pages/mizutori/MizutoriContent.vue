@@ -21,7 +21,7 @@
 
 <script>
 import xhr from '@/xhr'
-import cmpNowLoading from '@/components/NowLoading'
+import cmpNowLoading from '@/components/cmp-now-loading'
 
 export default {
   created: function () {

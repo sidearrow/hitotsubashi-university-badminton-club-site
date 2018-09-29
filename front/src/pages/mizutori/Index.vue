@@ -29,7 +29,7 @@
 
 <script>
 import xhr from '@/xhr'
-import ContentTitle from '@/components/ContentTitle'
+import ContentTitle from '@/components/cmp-content-title'
 import MizutoriContent from '@/pages/mizutori/MizutoriContent'
 import config from '@/config'
 

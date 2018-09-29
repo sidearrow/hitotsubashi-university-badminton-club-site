@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/ContentTitle';
+import ContentTitle from '@/components/cmp-content-title';
 import result from './santama_result.js';
 import config from '@/config';
 

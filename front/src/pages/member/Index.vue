@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/ContentTitle'
+import ContentTitle from '@/components/cmp-content-title'
 import memberData from '@/assets/json/member.json'
 import config from '@/config'
 

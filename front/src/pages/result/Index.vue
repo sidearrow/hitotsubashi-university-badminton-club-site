@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/ContentTitle';
+import CmpContentTitle from '@/components/cmp-content-title';
 import resultData from '@/assets/json/result.json';
 import config from '@/config';
 
@@ -43,7 +43,7 @@ export default {
     document.title = '大会結果 - 一橋バド';
   },
   components: {
-    'content-title': ContentTitle,
+    'content-title': CmpContentTitle,
   },
   data: function () {
     return {

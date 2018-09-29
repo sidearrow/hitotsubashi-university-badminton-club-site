@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slf-cmp-navbar/>
+    <cmp-navbar/>
     <main class="container mb-5">
       <router-view/>
     </main>
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar';
-import AppMenuContent from '@/components/AppMenuContent';
+import CmpNavbar from '@/components/cmp-navbar';
+import CmpAppMenuContent from '@/components/cmp-app-menu-content';
 
 export default {
   components: {
-    'slf-cmp-navbar': Navbar,
-    'slf-app-menu-content': AppMenuContent,
+    'cmp-navbar': CmpNavbar,
+    'cmp-app-menu-content': CmpAppMenuContent,
   },
 }
 </script>

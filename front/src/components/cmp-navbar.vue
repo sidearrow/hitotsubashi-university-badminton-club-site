@@ -6,7 +6,7 @@
     </span>
     <div class="dropdown">
       <button class="btn dropdown-toggle bg-main text-white" @click="toggleMenu"></button>
-      <div class="dropdown-menu dropdown-menu-right" id="menu">
+      <div :class="`dropdown-menu dropdown-menu-right${(isShowMenu ? ' show' : '')}`">
         <router-link
           v-for="(v, i) in menuItems" :key="i"
           class="dropdown-item"
@@ -26,16 +26,12 @@ import config from '@/config'
 export default {
   methods: {
     toggleMenu: function () {
-      const target = document.getElementById('menu');
-      if (target.classList.contains('show')) {
-        target.classList.remove('show');
-      } else {
-        target.classList.add('show');
-      }
+      this.isShowMenu = !this.isShowMenu
     }
   },
   data: function () {
     return {
+      isShowMenu: false,
       menuItems: [
         config.pageList.top,
         config.pageList.member,

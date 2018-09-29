@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/ContentTitle'
-import CmpNowLoading from '@/components/NowLoading'
+import ContentTitle from '@/components/cmp-content-title'
+import CmpNowLoading from '@/components/cmp-now-loading'
 import cmpDropdownMenu from './CmpDropdownMenu.vue'
 import CmpInputPasswordModal from '../CmpInputPasswordModal.vue'
 import config from '@/config'
