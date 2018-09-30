@@ -15,10 +15,7 @@ db
         .collection('bbs')
         .doc(v.id)
         .update({
-          password: '1111',
-          comments: [{
-            'keep': 0
-          }]
+          comments: []
         })
     })
 })

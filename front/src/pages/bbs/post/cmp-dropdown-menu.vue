@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown d-inline-block">
-    <a class="btn bg-white dropdown-toggle" @click="toggleDropdown"></a>
-    <div :class="`dropdown-menu${(isShow) ? ' show' : ''} text-08rem`">
+    <a class="btn btn-sm bg-white dropdown-toggle" @click="toggleDropdown"></a>
+    <div :class="`dropdown-menu dropdown-menu-right${(isShow) ? ' show' : ''} text-08rem`">
       <a
         class="dropdown-item"
         v-if="!isComment"
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import xhr from '@/xhr'
-
 export default {
   props: {
     postId: String,

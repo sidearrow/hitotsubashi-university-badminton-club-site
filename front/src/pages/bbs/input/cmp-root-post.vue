@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import xhr from '@/xhr'
-
 export default {
   created: function () {
     this.$http

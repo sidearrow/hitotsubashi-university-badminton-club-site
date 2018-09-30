@@ -23,6 +23,10 @@ export default new Router({
       component: () => import('@/pages/santama/index')
     },
     {
+      path: '/bbs/post/:id',
+      component: () => import('@/pages/bbs/post/index')
+    },
+    {
       path: '/bbs/posts',
       component: () => import('@/pages/bbs/posts/index')
     },

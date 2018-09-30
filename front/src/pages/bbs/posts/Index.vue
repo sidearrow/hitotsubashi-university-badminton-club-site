@@ -16,59 +16,27 @@
           class="mb-4"
         >
           <div>
-            <span>{{ v.title }}</span>
+            <span>
+              <router-link :to="`/bbs/post/${v.id}`">{{ v.title }}</router-link>
+            </span>
             <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
             <div class="text-right text-secondary">
-              <cmp-dropdown-menu
-                :postId="v.id"
-                :isComment="false"
-                @childs-event="openInputPasswordModal"
-              />
-              <span class="ml-2 text-monospace"><small>{{ formatDate(v.updatedAt._seconds) }}</small></span>
+              <span class="ml-2 text-monospace"><small>{{ v.updatedAt }}</small></span>
             </div>
           </div>
-          <div class="ml-2">
-            <div class="ws-preline text-08rem">{{ v.content }}</div>
-            <div
-              v-for="(vComment, i) in v.comments" :key="i"
-              v-if="i > 0"
-              class="mt-2 text-08rem"
-            >
-              <hr/>
-              <div>
-                <span class="badge bg-main text-white">{{ vComment.author }}</span>
-              </div>
-              <div class="text-right text-secondary">
-                <cmp-dropdown-menu
-                  :postId="v.id"
-                  :isComment="true"
-                  @childs-event="openInputPasswordModal"
-                />
-                <span class="ml-2 text-monospace"><small>{{ formatDate(vComment.createdAt._seconds) }}</small></span>
-              </div>
-              <div class="ml-2">{{ vComment.content }}</div>
-            </div>
-          </div>
-          <hr/>
         </div>
       </section>
       <div class="text-center">
         <button class="btn bg-main text-white" @click="fetchBBSData(lastPostId)">More</button>
       </div>
     </article>
-    <cmp-input-password-modal
-      ref="inputPasswordModal"
-      :id="modalTargetId"
-      @done-auth="deletePost"
-    />
+
   </div>
 </template>
 
 <script>
 import ContentTitle from '@/components/cmp-content-title'
 import CmpNowLoading from '@/components/cmp-now-loading'
-import CmpDropdownMenu from './cmp-dropdown-menu'
-import CmpInputPasswordModal from '../cmp-input-password-modal'
 
 export default {
   beforeCreate () {
@@ -78,13 +46,6 @@ export default {
     this.fetchBBSData()
   },
   methods: {
-    formatDate: function (sec) {
-      const d = new Date(sec * 1000)
-      const f = (int) => {
-        return ('0' + String(int)).substr(-2)
-      }
-      return `${d.getFullYear()}/${f(d.getMonth()+1)}/${f(d.getDate())} ${f(d.getHours())}:${f(d.getMinutes())}`
-    },
     fetchBBSData: function (id) {
       this.$http
         .get(`${this.$config.apiUrlBase}/bbs/posts${(typeof id === 'undefined') ? '' : '/' + id}`)
@@ -96,41 +57,10 @@ export default {
           this.lastPostId = this.posts[this.posts.length - 1].id
         })
     },
-    openInputPasswordModal: function (id, isComment) {
-      this.modalTargetIsComment = isComment
-      this.modalTargetId = id
-      this.$refs.inputPasswordModal.open()
-    },
-    closeInputPasswordModal: function () {
-      this.$refs.inputPasswordModal.close()
-    },
-    deletePost: function (inputPassword) {
-      if (this.modalTargetIsComment) {
-        this.$http
-          .delete(
-            `/api/bbs/post/${this.modalTargetId}/comment/${this.modalTargetCommentId}`,
-            { params: { password: inputPassword }}
-          )
-      } else {
-        this.$http
-          .delete(
-            `/api/bbs/post/${this.modalTargetId}`,
-            {params: {password: inputPassword}}
-          )
-          .then(() => {
-            this.closeInputPasswordModal()
-            this.posts = []
-            this.isNowLoading = true
-            this.fetchBBSData()
-          })
-      }
-    }
   },
   components: {
     'content-title': ContentTitle,
     'cmp-now-loading': CmpNowLoading,
-    'cmp-dropdown-menu': CmpDropdownMenu,
-    'cmp-input-password-modal': CmpInputPasswordModal,
   },
   data: function () {
     return {
@@ -138,10 +68,6 @@ export default {
       lastPostId: '',
       titleItems: [this.$config.pageList.bbs],
       posts: [],
-      isOpenInputPasswordModal: false,
-      modalTargetIsComment: false,
-      modalTargetId: '',
-      modalTargetCommentId: 0,
     }
   },
 }
