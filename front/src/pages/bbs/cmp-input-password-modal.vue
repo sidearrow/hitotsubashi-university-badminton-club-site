@@ -1,8 +1,7 @@
 <template>
   <div>
     <div
-      class="modal"
-      :style="`display:${(isOpen ? 'block' : 'none')}`"
+      :class="`modal ${(isOpen ? 'd-block' : 'd-none')}`"
     >
       <div class="modal-dialog">
         <div class="modal-content">
@@ -37,20 +36,23 @@
       </div>
     </div>
     <div
-      :class="`modal-backdrop fade${isOpen && 'show'}`"
-      :style="`display:${(isOpen ? 'block' : 'none')}`"
+      :class="`modal-backdrop fade ${isOpen ? 'show d-block' : 'd-none'}`"
     ></div>
   </div>
 </template>
 
 <script>
-import xhr from '@/xhr'
-
 export default {
   props: {
     id: String
   },
   methods: {
+    open: function () {
+      this.isOpen = true
+    },
+    close: function () {
+      this.isOpen = false
+    },
     fetchPostData: function () {
       this.$http.get(
         `${this.$config.apiUrlBase}/bbs/post/${this.id}`,

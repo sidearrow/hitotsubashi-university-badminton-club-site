@@ -8,7 +8,7 @@ const wrpMenuButton = wrapper.find('button.dropdown-toggle')
 const wrpMenu = wrapper.find('div.dropdown-menu')
 const wrpMenuItem = wrapper.find('router-link-stub.dropdown-item')
 
-describe('components/NavBar.vue', () => {
+describe('components/cmp-navbar.vue', () => {
   it('click the menu button to open the menu', () => {
     wrpMenuButton.trigger('click')
     assert.include(wrpMenu.classes(), 'show')

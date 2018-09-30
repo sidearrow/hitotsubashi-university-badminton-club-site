@@ -57,6 +57,7 @@
       </div>
     </article>
     <cmp-input-password-modal
+      ref="inputPasswordModal"
       :id="modalTargetId"
       @done-auth="deletePost"
     />
@@ -98,10 +99,10 @@ export default {
     openInputPasswordModal: function (id, isComment) {
       this.modalTargetIsComment = isComment
       this.modalTargetId = id
-      this.isOpenInputPasswordModal = true
+      this.$refs.inputPasswordModal.open()
     },
     closeInputPasswordModal: function () {
-      this.isOpenInputPasswordModal = false
+      this.$refs.inputPasswordModal.close()
     },
     deletePost: function (inputPassword) {
       if (this.modalTargetIsComment) {
@@ -135,9 +136,8 @@ export default {
     return {
       isNowLoading: true,
       lastPostId: '',
-      titleItems: [config.pageList.bbs],
+      titleItems: [this.$config.pageList.bbs],
       posts: [],
-      bbsUrl: config.bbs,
       isOpenInputPasswordModal: false,
       modalTargetIsComment: false,
       modalTargetId: '',
