@@ -5,10 +5,6 @@
       <a
         class="dropdown-item"
         v-if="!isComment"
-        @click="clickReply(postId)">Reply</a>
-      <a
-        class="dropdown-item"
-        v-if="!isComment"
         @click="clickEdit(postId)">Edit</a>
       <a
         class="dropdown-item"

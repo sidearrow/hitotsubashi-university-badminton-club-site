@@ -15,17 +15,33 @@
           @childs-event="openInputPasswordModal"
         />
       </div>
-      <section class="ws-preline">{{ post.content }}</section>
+      <section class="ws-preline mb-3">{{ post.content }}</section>
+
       <div>
         <div
           v-for="(v, i) in post.comments" :key="i"
-        >{{ v }}</div>
+        >
+          <hr/>
+          <div>
+            <span>{{ v.author }}</span>
+            <span class="ml-2 text-monospace">
+              <small>{{ v.createdAt }}</small>
+            </span>
+          </div>
+          <div class="text-right">
+            <cmp-dropdown-menu/>
+          </div>
+          <p class="ws-preline"> {{ v.content }}</p>
+        </div>
       </div>
+      <cmp-input-comment
+        @done-post="fetchData"
+      />
       <div class="mt-3">
         <router-link to="/bbs/posts">一覧へ</router-link>
       </div>
     </article>
-    <cmp-input-comment/>
+
     <cmp-input-password-modal
       ref="inputPasswordModal"
       :id="post.id"
@@ -41,14 +57,17 @@ import CmpInputPasswordModal from '../cmp-input-password-modal'
 
 export default {
   created () {
-    this.$http
-      .get(`${this.$config.apiUrlBase}/bbs/post/${this.$route.params.id}`)
-      .then((res) => {
-        console.log(res.data)
-        this.post = res.data
-      })
+    this.fetchData()
   },
   methods: {
+    fetchData: function () {
+      this.$http
+        .get(`${this.$config.apiUrlBase}/bbs/post/${this.$route.params.id}`)
+        .then((res) => {
+          console.log(res.data)
+          this.post = res.data
+        })
+    },
     openInputPasswordModal: function (id, isComment) {
       this.modalTargetIsComment = isComment
       this.modalTargetId = id
