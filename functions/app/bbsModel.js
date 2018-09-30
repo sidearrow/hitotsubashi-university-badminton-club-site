@@ -4,6 +4,14 @@ const getCollectionName = () => {
   return (process.env.ENV === 'TEST') ? 'test-bbs' : 'bbs'
 }
 
+const formatDate = (rowDate) => {
+  const d = new Date(rowDate._seconds * 1000)
+  const f = (input) => {
+    return ('0' + String(input)).substr(-2)
+  }
+  return `${d.getFullYear()}/${f(d.getMonth()+1)}/${f(d.getDate())} ${f(d.getHours())}:${f(d.getMinutes())}`
+}
+
 function modelPostPost (req, res) {
   const now = new Date(Date.now())
   database
@@ -24,7 +32,6 @@ function modelPostPost (req, res) {
       })
     })
 }
-
 function modelPostGet (req, res) {
   const id = req.params.id
   database.collection(getCollectionName()).doc(id).get().then((doc) => {
@@ -35,6 +42,14 @@ function modelPostGet (req, res) {
         req.query.password === tmp.password
       )
       tmp.id = doc.id
+      tmp.createdAtRaw = tmp.createdAt
+      tmp.updatedAtRaw = tmp.updatedAt
+      tmp.createdAt = formatDate(tmp.createdAt)
+      tmp.updatedAt = formatDate(tmp.updatedAt)
+      tmp.comments.forEach((v, i) => {
+        tmp.comments[i].createdAtRaw = v.createdAt
+        tmp.comments[i].createdAt = formatDate(v.createdAt)
+      })
       delete tmp.password
   
       res.json(tmp)
@@ -146,8 +161,14 @@ function modelPostsGet (req, res) {
     let data = []
     qs.forEach((v) => {
       let tmp = v.data()
-      delete tmp.password
       tmp['id'] = v.id
+      tmp.createdAtRaw = tmp.createdAt
+      tmp.updatedAtRaw = tmp.updatedAt
+      tmp.createdAt = formatDate(tmp.createdAt)
+      tmp.updatedAt = formatDate(tmp.updatedAt)
+      tmp.commentNum = tmp.comments.length
+      delete tmp.password
+      delete tmp.comments
       data.push(tmp)
     })
 

@@ -31,12 +31,64 @@ describe('掲示板API', function () {
       })
   })
 
-  it('投稿確認', function (done) {
+  it('複数投稿確認', function (done) {
     chai
       .request(app)
       .get('/bbs/posts')
       .end(function (err, res) {
         assert.equal(res.body[0].id, id)
+        assert.hasAllKeys(
+          res.body[0],
+          [
+            'id',
+            'title',
+            'author',
+            'content',
+            'createdAt',
+            'updatedAt',
+            'createdAtRaw',
+            'updatedAtRaw',
+            'commentNum',
+          ]
+        )
+
+        done()
+      })
+  })
+
+  it('投稿取得', function (done) {
+    chai
+      .request(app)
+      .get(`/bbs/post/${id}`)
+      .end(function (_, res) {
+        assert.equal(res.body.auth, false)
+        assert.hasAllKeys(
+          res.body,
+          [
+            'auth',
+            'id',
+            'title',
+            'author',
+            'content',
+            'createdAt',
+            'updatedAt',
+            'createdAtRaw',
+            'updatedAtRaw',
+            'comments',
+          ]
+        )
+
+        done()
+      })
+  })
+
+  it('投稿取得（パスワード入力）', function (done) {
+    chai
+      .request(app)
+      .get(`/bbs/post/${id}`)
+      .query({ password: '1111' })
+      .end(function (_, res) {
+        assert.equal(res.body.auth, true)
 
         done()
       })
@@ -61,7 +113,7 @@ describe('掲示板API', function () {
       .get(`/bbs/post/${id}`)
       .end(function (err, res) {
         assert.equal(res.body.title, testData.case2.title)
-        assert.notEqual(res.body.createdAt, res.body.updatedAt)
+        assert.notEqual(res.body.createdAtRaw, res.body.updatedAtRaw)
 
         done()
       })
@@ -86,6 +138,17 @@ describe('掲示板API', function () {
       .get(`/bbs/post/${id}`)
       .end(function (_, res) {
         assert.equal(res.body.comments[0].author, testData.caseComment1.author)
+        assert.hasAllDeepKeys(
+          res.body.comments[0],
+          [
+            'author',
+            'content',
+            'password',
+            'isDelete',
+            'createdAt',
+            'createdAtRaw'
+          ]
+        )
 
         done()
       })
