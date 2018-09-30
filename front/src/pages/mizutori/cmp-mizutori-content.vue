@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import xhr from '@/xhr'
 import cmpNowLoading from '@/components/cmp-now-loading'
 
 export default {

@@ -8,10 +8,6 @@ export default {
     bbsNew  : ['New', '/bbs/new'],
     mizutori: ['Mizutori', '/mizutori'],
   },
-  bbs: {
-    old_a: 'http://hitotsubashibad.bbs.fc2.com/',
-    old_b: 'http://bbs.mottoki.com/?bbs=ikkyo_bad',
-  },
   apiUrlBase: 'https://us-central1-hit-u-bad.cloudfunctions.net/api',
   baseDev: 'http://localhost:8080',
 }

@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div class="modal" id="slf-modal">
-      <div class="modal-dialog" role="document">
+    <div
+      class="modal"
+      :style="`display:${(isOpen ? 'block' : 'none')}`"
+    >
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">パスワードを入力してください</h5>
@@ -33,7 +36,10 @@
         </div>
       </div>
     </div>
-    <div class="modal-backdrop fade" id="slf-modal-back"></div>
+    <div
+      :class="`modal-backdrop fade${isOpen && 'show'}`"
+      :style="`display:${(isOpen ? 'block' : 'none')}`"
+    ></div>
   </div>
 </template>
 
@@ -41,21 +47,18 @@
 import xhr from '@/xhr'
 
 export default {
-  mounted: function () {
-    document.getElementById('slf-modal-back').style.display = 'none'
-  },
   props: {
-    isOpen: Boolean,
     id: String
   },
   methods: {
-    close: function () {
-      this.$emit('close-modal')
-    },
     fetchPostData: function () {
-      xhr.get(`/api/bbs/post/${this.id}`, {password: this.inputPassword}, (res) => {
-        this.isError = !res.auth
-        if (res.auth) {
+      this.$http.get(
+        `${this.$config.apiUrlBase}/bbs/post/${this.id}`,
+        { params: { password: this.inputPassword }}
+      )
+      .then((res) => {
+        this.isError = !res.data.auth
+        if (!this.isError) {
           this.$emit('done-auth', this.inputPassword, res)
         }
       })
@@ -63,6 +66,7 @@ export default {
   },
   data: function () {
     return {
+      isOpen: false,
       isError: false,
       inputPassword: '',
     }
@@ -71,14 +75,8 @@ export default {
     'isOpen': function () {
       if (this.isOpen) {
         document.body.classList.add('modal-open')
-        document.getElementById('slf-modal').style.display = 'block'
-        document.getElementById('slf-modal-back').classList.add('show')
-        document.getElementById('slf-modal-back').style.display = 'block'
       } else {
         document.body.classList.remove('modal-open')
-        document.getElementById('slf-modal').style.display = 'none'
-        document.getElementById('slf-modal-back').classList.remove('show')
-        document.getElementById('slf-modal-back').style.display = 'none'
       }
     }
   }

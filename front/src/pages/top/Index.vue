@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Carousel from './Carousel'
+import Carousel from '@/pages/top/cmp-carousel'
 
 export default {
   beforeCreate: function () {

@@ -8,43 +8,43 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/pages/top/Index')
+      component: () => import('@/pages/top/index')
     },
     {
       path: '/member',
-      component: () => import('@/pages/member/Index')
+      component: () => import('@/pages/member/index')
     },
     {
       path: '/result',
-      component: () => import('@/pages/result/Index')
+      component: () => import('@/pages/result/index')
     },
     {
       path: '/santama',
-      component: () => import('@/pages/santama/Index')
+      component: () => import('@/pages/santama/index')
     },
     {
       path: '/bbs/posts',
-      component: () => import('@/pages/bbs/posts/Index')
+      component: () => import('@/pages/bbs/posts/index')
     },
     {
       path: '/bbs/new',
-      component: () => import('@/pages/bbs/input/Index')
+      component: () => import('@/pages/bbs/input/index')
     },
     {
       path: '/bbs/edit/:id',
-      component: () => import('@/pages/bbs/input/Index')
+      component: () => import('@/pages/bbs/input/index')
     },
     {
       path: '/bbs/reply/:id',
-      component: () => import('@/pages/bbs/input/Index')
+      component: () => import('@/pages/bbs/input/index')
     },
     {
       path: '/mizutori',
-      component: () => import('@/pages/mizutori/Index')
+      component: () => import('@/pages/mizutori/index')
     },
     {
       path: '/manage',
-      component: () => import('@/pages/manage/Index')
+      component: () => import('@/pages/manage/index')
     }
   ]
 });

@@ -5,8 +5,8 @@
       <section>
         <p><router-link to="/bbs/new">新規投稿</router-link></p>
         <ul>
-          <li><a :href="bbsUrl.old_a" target="_blank">旧掲示板１</a></li>
-          <li><a :href="bbsUrl.old_b" target="_blank">旧掲示板２</a></li>
+          <li><a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">旧掲示板１</a></li>
+          <li><a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板２</a></li>
         </ul>
       </section>
       <cmp-now-loading v-if="isNowLoading"/>
@@ -57,9 +57,7 @@
       </div>
     </article>
     <cmp-input-password-modal
-      :isOpen="isOpenInputPasswordModal"
       :id="modalTargetId"
-      @close-modal="closeInputPasswordModal"
       @done-auth="deletePost"
     />
   </div>
@@ -68,10 +66,8 @@
 <script>
 import ContentTitle from '@/components/cmp-content-title'
 import CmpNowLoading from '@/components/cmp-now-loading'
-import cmpDropdownMenu from './CmpDropdownMenu.vue'
-import CmpInputPasswordModal from '../CmpInputPasswordModal.vue'
-import config from '@/config'
-import xhr from '@/xhr'
+import CmpDropdownMenu from './cmp-dropdown-menu'
+import CmpInputPasswordModal from '../cmp-input-password-modal'
 
 export default {
   beforeCreate () {
@@ -112,7 +108,7 @@ export default {
         this.$http
           .delete(
             `/api/bbs/post/${this.modalTargetId}/comment/${this.modalTargetCommentId}`,
-            {params: {password: inputPassword}}
+            { params: { password: inputPassword }}
           )
       } else {
         this.$http
@@ -132,7 +128,7 @@ export default {
   components: {
     'content-title': ContentTitle,
     'cmp-now-loading': CmpNowLoading,
-    'cmp-dropdown-menu': cmpDropdownMenu,
+    'cmp-dropdown-menu': CmpDropdownMenu,
     'cmp-input-password-modal': CmpInputPasswordModal,
   },
   data: function () {

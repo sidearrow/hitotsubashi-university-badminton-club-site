@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import xhr from '@/xhr'
-
 export default {
   beforeCreate: function () {
   }

@@ -13,9 +13,11 @@ import xhr from '@/xhr'
 
 export default {
   created: function () {
-    xhr.get(`/api/bbs/post/${this.$route.params.id}`, null,(res) => {
-      this.post = res
-    })
+    this.$http
+      .get(`/api/bbs/post/${this.$route.params.id}`)
+      .then((res) => {
+        this.post = res.data
+      })
   },
   props: {
     id: String,

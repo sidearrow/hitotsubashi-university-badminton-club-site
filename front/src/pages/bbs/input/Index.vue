@@ -64,11 +64,10 @@
 </template>
 
 <script>
-import xhr from '@/xhr'
 import bbsFunction from '@/pages/bbs/bbsFunction'
 
-import cmpRootPost from '@/pages/bbs/input/CmpRootPost'
-import CmpInputPasswordModal from '../CmpInputPasswordModal.vue'
+import CmpRootPost from '@/pages/bbs/input/cmp-root-post'
+import CmpInputPasswordModal from '@/pages/bbs/cmp-input-password-modal'
 
 export default {
   mounted: function () {
@@ -139,7 +138,7 @@ export default {
     }
   },
   components: {
-    'cmp-root-post': cmpRootPost,
+    'cmp-root-post': CmpRootPost,
     'cmp-input-password-modal': CmpInputPasswordModal,
   }
 }
