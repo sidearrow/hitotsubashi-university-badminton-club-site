@@ -10,9 +10,8 @@
       </div>
       <div class="text-right">
         <cmp-dropdown-menu
-          :postId="post.id"
           :isComment="false"
-          @childs-event="openInputPasswordModal"
+          @click-delete="openInputPasswordModal(-1)"
         />
       </div>
       <section class="ws-preline mb-3">{{ post.content }}</section>
@@ -23,15 +22,18 @@
         >
           <hr/>
           <div>
-            <span>{{ v.author }}</span>
+            <span>{{ v.isDelete ? '----' : v.author }}</span>
             <span class="ml-2 text-monospace">
               <small>{{ v.createdAt }}</small>
             </span>
           </div>
           <div class="text-right">
-            <cmp-dropdown-menu/>
+            <cmp-dropdown-menu
+              :isComment="true"
+              @click-delete="openInputPasswordModal(i)"
+            />
           </div>
-          <p class="ws-preline"> {{ v.content }}</p>
+          <p class="ws-preline">{{ v.isDelete ? 'このコメントは削除されました' : v.content }}</p>
         </div>
       </div>
       <cmp-input-comment
@@ -44,8 +46,10 @@
 
     <cmp-input-password-modal
       ref="inputPasswordModal"
-      :id="post.id"
-      @done-auth="deletePost"
+      :id="postId"
+      :cid="modalTargetCommentId"
+      :isDelete="true"
+      @done="deletePost"
     />
   </div>
 </template>
@@ -62,49 +66,31 @@ export default {
   methods: {
     fetchData: function () {
       this.$http
-        .get(`${this.$config.apiUrlBase}/bbs/post/${this.$route.params.id}`)
+        .get(`${this.$config.apiUrlBase}/bbs/post/${this.postId}`)
         .then((res) => {
-          console.log(res.data)
           this.post = res.data
         })
     },
-    openInputPasswordModal: function (id, isComment) {
-      this.modalTargetIsComment = isComment
-      this.modalTargetId = id
+    openInputPasswordModal: function (commentId) {
+      this.modalTargetCommentId = commentId
       this.$refs.inputPasswordModal.open()
     },
     closeInputPasswordModal: function () {
       this.$refs.inputPasswordModal.close()
     },
     deletePost: function (inputPassword) {
-      if (this.modalTargetIsComment) {
-        this.$http
-          .delete(
-            `/api/bbs/post/${this.modalTargetId}/comment/${this.modalTargetCommentId}`,
-            { params: { password: inputPassword }}
-          )
+      if (this.modalTargetCommentId === -1) {
+        this.$router.push('/bbs/posts')
       } else {
-        this.$http
-          .delete(
-            `/api/bbs/post/${this.modalTargetId}`,
-            {params: {password: inputPassword}}
-          )
-          .then(() => {
-            this.closeInputPasswordModal()
-            this.posts = []
-            this.isNowLoading = true
-            this.fetchBBSData()
-          })
+        this.fetchData()
       }
     }
   },
   data () {
     return {
       post: {},
-      isOpenInputPasswordModal: false,
-      modalTargetIsComment: false,
-      modalTargetId: '',
-      modalTargetCommentId: 0,
+      postId: this.$route.params.id,
+      modalTargetCommentId: -1,
     };
   },
   components: {

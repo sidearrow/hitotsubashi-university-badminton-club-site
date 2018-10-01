@@ -29,7 +29,7 @@
             >Cancel</button>
             <button
               type="button" class="btn btn-primary"
-              @click="fetchPostData"
+              @click="clickSubmit"
             >OK</button>
           </div>
         </div>
@@ -44,7 +44,9 @@
 <script>
 export default {
   props: {
-    id: String
+    id: String,
+    cid: Number,
+    isDelete: Boolean
   },
   methods: {
     open: function () {
@@ -53,17 +55,30 @@ export default {
     close: function () {
       this.isOpen = false
     },
-    fetchPostData: function () {
-      this.$http.get(
-        `${this.$config.apiUrlBase}/bbs/post/${this.id}`,
-        { params: { password: this.inputPassword }}
-      )
-      .then((res) => {
-        this.isError = !res.data.auth
-        if (!this.isError) {
-          this.$emit('done-auth', this.inputPassword, res)
-        }
-      })
+    clickSubmit: function () {
+      if (this.isDelete) {
+        const url = `${this.$config.apiUrlBase}/bbs/post/${this.id + (this.cid === -1 ? '' : '/comment/' + this.cid)}`
+
+        this.$http
+          .delete(url, { params: { password: this.inputPassword }})
+          .then((res) => {
+            this.isError = !res.data.isSuccess
+            if (!this.isError) {
+              this.$emit('done')
+            }
+          })
+      } else {
+        this.$http.get(
+          `${this.$config.apiUrlBase}/bbs/post/${this.id}`,
+          { params: { password: this.inputPassword }}
+        )
+        .then((res) => {
+          this.isError = !res.data.auth
+          if (!this.isError) {
+            this.$emit('done', this.inputPassword, res)
+          }
+        })
+      }
     }
   },
   data: function () {

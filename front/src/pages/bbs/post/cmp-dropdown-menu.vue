@@ -28,14 +28,11 @@ export default {
     toggleDropdown: function () {
       this.isShow = !this.isShow
     },
-    clickReply: function (id) {
-      this.$router.push(`/bbs/reply/${id}`)
-    },
     clickEdit: function (id) {
       this.$router.push(`/bbs/edit/${id}`)
     },
-    clickDelete: function (id) {
-      this.$emit('childs-event', id, this.isComment)
+    clickDelete: function () {
+      this.$emit('click-delete')
     },
   }
 }
