@@ -10,6 +10,7 @@
       </div>
       <div class="text-right">
         <cmp-dropdown-menu
+          :id="postId"
           :isComment="false"
           @click-delete="openInputPasswordModal(-1)"
         />
@@ -29,6 +30,7 @@
           </div>
           <div class="text-right">
             <cmp-dropdown-menu
+              :id="postId"
               :isComment="true"
               @click-delete="openInputPasswordModal(i)"
             />

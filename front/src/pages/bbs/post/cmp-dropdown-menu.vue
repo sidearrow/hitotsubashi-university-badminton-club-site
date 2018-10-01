@@ -5,10 +5,10 @@
       <a
         class="dropdown-item"
         v-if="!isComment"
-        @click="clickEdit(postId)">Edit</a>
+        @click="clickEdit()">Edit</a>
       <a
         class="dropdown-item"
-        @click="clickDelete(postId)">Delete</a>
+        @click="clickDelete()">Delete</a>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@
 <script>
 export default {
   props: {
-    postId: String,
+    id: String,
     isComment: Boolean
   },
   data: function () {
@@ -28,8 +28,8 @@ export default {
     toggleDropdown: function () {
       this.isShow = !this.isShow
     },
-    clickEdit: function (id) {
-      this.$router.push(`/bbs/edit/${id}`)
+    clickEdit: function () {
+      this.$router.push(`/bbs/edit/${this.id}`)
     },
     clickDelete: function () {
       this.$emit('click-delete')
