@@ -234,3 +234,18 @@ describe('BBS API Test', function () {
       })
   })
 })
+
+describe('Mizutori API test', function () {
+  this.timeout(10000)
+
+  it('get obmsg', function (done) {
+    chai
+      .request(app)
+      .get('/dev/mizutori/obmsg')
+      .end(function (_, res) {
+        assert.equal(res.body[0].year, '2018')
+
+        done()
+      })
+  })
+})
