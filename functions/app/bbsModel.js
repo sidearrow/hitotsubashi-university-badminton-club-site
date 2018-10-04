@@ -1,7 +1,12 @@
 const database = require('./database').database
 
-const getCollectionName = () => {
-  return (process.env.ENV === 'TEST') ? 'test-bbs' : 'bbs'
+const getCollectionName = (version) => {
+  let collectionName = 'bbs'
+  if (version === 'dev') {
+    collectionName = 'dev-bbs'
+  }
+
+  return collectionName
 }
 
 const formatDate = (rowDate) => {
@@ -13,9 +18,11 @@ const formatDate = (rowDate) => {
 }
 
 function modelPostPost (req, res) {
+  const version = req.params.version
   const now = new Date(Date.now())
+
   database
-    .collection(getCollectionName())
+    .collection(getCollectionName(version))
     .add({
       title    : req.body.title,
       author   : req.body.author,
@@ -33,36 +40,44 @@ function modelPostPost (req, res) {
     })
 }
 function modelPostGet (req, res) {
+  const version = req.params.version
   const id = req.params.id
-  database.collection(getCollectionName()).doc(id).get().then((doc) => {
-    if (doc.exists) {
-      const tmp = doc.data()
-      tmp.auth = (
-        typeof req.query.password !== 'undefined' &&
-        req.query.password === tmp.password
-      )
-      tmp.id = doc.id
-      tmp.createdAtRaw = tmp.createdAt
-      tmp.updatedAtRaw = tmp.updatedAt
-      tmp.createdAt = formatDate(tmp.createdAt)
-      tmp.updatedAt = formatDate(tmp.updatedAt)
-      tmp.comments.forEach((v, i) => {
-        tmp.comments[i].createdAtRaw = v.createdAt
-        tmp.comments[i].createdAt = formatDate(v.createdAt)
-      })
-      delete tmp.password
+
+  database
+    .collection(getCollectionName(version))
+    .doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        const tmp = doc.data()
+        tmp.auth = (
+          typeof req.query.password !== 'undefined' &&
+          req.query.password === tmp.password
+        )
+        tmp.id = doc.id
+        tmp.createdAtRaw = tmp.createdAt
+        tmp.updatedAtRaw = tmp.updatedAt
+        tmp.createdAt = formatDate(tmp.createdAt)
+        tmp.updatedAt = formatDate(tmp.updatedAt)
+        tmp.comments.forEach((v, i) => {
+          tmp.comments[i].createdAtRaw = v.createdAt
+          tmp.comments[i].createdAt = formatDate(v.createdAt)
+        })
+        delete tmp.password
   
-      res.json(tmp)
-    } else {
-      res.json({auth: false})
-    }
+        res.json(tmp)
+      } else {
+        res.json({auth: false})
+      }
   })
 }
 
 function modelPostPut (req, res) {
+  const version = req.params.version
   const id = req.params.id
+
   database
-    .collection(getCollectionName())
+    .collection(getCollectionName(version))
     .doc(id)
     .update({
       title    : req.body.title,
@@ -80,15 +95,17 @@ function modelPostPut (req, res) {
 }
 
 function modelPostDelete (req, res) {
+  const version = req.params.version
   const id = req.params.id
+
   database
-    .collection(getCollectionName())
+    .collection(getCollectionName(version))
     .doc(id)
     .get()
     .then((doc) => {
       if (doc.exists && (doc.data().password === req.query.password)) {
         database
-          .collection(getCollectionName())
+          .collection(getCollectionName(version))
           .doc(id)
           .delete()
           .then(() => {
@@ -104,9 +121,11 @@ function modelPostDelete (req, res) {
 }
 
 function modelPostCommentPost (req, res) {
+  const version = req.params.version
   const id = req.params.id
+
   database
-    .collection(getCollectionName())
+    .collection(getCollectionName(version))
     .doc(id)
     .get()
     .then((doc) => {
@@ -120,7 +139,7 @@ function modelPostCommentPost (req, res) {
           isDelete: false
         })
         database
-          .collection(getCollectionName())
+          .collection(getCollectionName(version))
           .doc(id)
           .update({comments: commentsData})
           .then(() => {
@@ -133,10 +152,12 @@ function modelPostCommentPost (req, res) {
 }
 
 function modelPostCommentDelete (req, res) {
+  const version = req.params.version
   const id = req.params.id
   const cid = req.params.cid
+
   database
-    .collection(getCollectionName())
+    .collection(getCollectionName(version))
     .doc(id)
     .get()
     .then((doc) => {
@@ -144,7 +165,7 @@ function modelPostCommentDelete (req, res) {
         let commentsData = doc.data().comments
         commentsData[cid].isDelete = true
         database
-          .collection(getCollectionName())
+          .collection(getCollectionName(version))
           .doc(id)
           .update({comments: commentsData})
           .then(() => {
@@ -157,6 +178,8 @@ function modelPostCommentDelete (req, res) {
 }
 
 function modelPostsGet (req, res) {
+  const version = req.params.version
+
   const response = function (qs) {
     let data = []
     qs.forEach((v) => {
@@ -177,19 +200,19 @@ function modelPostsGet (req, res) {
 
   if (typeof req.params.id === 'undefined') {
     database
-      .collection(getCollectionName())
+      .collection(getCollectionName(version))
       .orderBy('createdAt', 'desc')
       .limit(20)
       .get()
       .then(response)
   } else {
     database
-      .collection('bbs')
+      .collection(getCollectionName(version))
       .doc(req.params.id)
       .get()
       .then((doc) => {
         database
-          .collection(getCollectionName())
+          .collection(getCollectionName(version))
           .orderBy('createdAt', 'desc')
           .startAfter(doc)
           .limit(20)

@@ -8,7 +8,7 @@ const app = express()
 /*
  * /bbs
  */
-const bbsRouter = express.Router()
+const bbsRouter = express.Router({ mergeParams: true })
 bbsRouter.post('/post', bbsModel.modelPostPost)
 
 bbsRouter.get('/post/:id', bbsModel.modelPostGet)
@@ -24,10 +24,14 @@ bbsRouter.get('/posts/:id', bbsModel.modelPostsGet)
 /*
  * /mizutori
  */
-const mizutoriRouter = express.Router()
+const mizutoriRouter = express.Router({ mergeParams: true })
 mizutoriRouter.get('/', mizutoriModel.modelIndexGet)
 mizutoriRouter.get('/obmsg', mizutoriModel.modelObmsgGet)
 
+
+/*
+ * share
+ */
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -38,7 +42,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/bbs', bbsRouter)
-app.use('/mizutori', mizutoriRouter)
+app.use('/:version/bbs', bbsRouter)
+app.use('/:version/mizutori', mizutoriRouter)
 
 exports.app = app

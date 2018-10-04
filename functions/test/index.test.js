@@ -3,26 +3,24 @@ const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 
 const assert = chai.assert
-const expect = chai.expect
+//const expect = chai.expect
 
 const app = require('../app/controller').app
 
 const testData = require('./testdata/bbs-post')
 
-process.env.ENV = 'TEST'
-
-describe('掲示板API', function () {
+describe('BBS API Test', function () {
   this.timeout(10000)
 
   let id;
 
-  it('投稿', function (done) {
+  it('post', function (done) {
     chai
       .request(app)
-      .post('/bbs/post')
+      .post('/dev/bbs/post')
       .set('content-type', 'application/json')
       .send(JSON.stringify(testData.case1))
-      .end(function (err, res) {
+      .end(function (_, res) {
         assert.property(res.body, 'id')
         assert.equal(res.body.isSuccess, true)
 
@@ -31,11 +29,11 @@ describe('掲示板API', function () {
       })
   })
 
-  it('複数投稿確認', function (done) {
+  it('get posts', function (done) {
     chai
       .request(app)
-      .get('/bbs/posts')
-      .end(function (err, res) {
+      .get('/dev/bbs/posts')
+      .end(function (_, res) {
         assert.equal(res.body[0].id, id)
         assert.hasAllKeys(
           res.body[0],
@@ -56,10 +54,10 @@ describe('掲示板API', function () {
       })
   })
 
-  it('投稿取得', function (done) {
+  it('get post', function (done) {
     chai
       .request(app)
-      .get(`/bbs/post/${id}`)
+      .get(`/dev/bbs/post/${id}`)
       .end(function (_, res) {
         assert.equal(res.body.auth, false)
         assert.hasAllKeys(
@@ -82,10 +80,10 @@ describe('掲示板API', function () {
       })
   })
 
-  it('投稿取得（パスワード入力）', function (done) {
+  it('get post (input correct password)', function (done) {
     chai
       .request(app)
-      .get(`/bbs/post/${id}`)
+      .get(`/dev/bbs/post/${id}`)
       .query({ password: '1111' })
       .end(function (_, res) {
         assert.equal(res.body.auth, true)
@@ -94,24 +92,24 @@ describe('掲示板API', function () {
       })
   })
 
-  it('投稿修正', function (done) {
+  it('put post', function (done) {
     chai
       .request(app)
-      .put(`/bbs/post/${id}`)
+      .put(`/dev/bbs/post/${id}`)
       .set('content-type', 'application/json')
       .send(JSON.stringify(testData.case2))
-      .end(function (err, res) {
+      .end(function (_, res) {
         assert.equal(res.body.isSuccess, true)
 
         done()
       })
   })
 
-  it('投稿修正確認', function (done) {
+  it('confirm put post', function (done) {
     chai
       .request(app)
-      .get(`/bbs/post/${id}`)
-      .end(function (err, res) {
+      .get(`/dev/bbs/post/${id}`)
+      .end(function (_, res) {
         assert.equal(res.body.title, testData.case2.title)
         assert.notEqual(res.body.createdAtRaw, res.body.updatedAtRaw)
 
@@ -119,10 +117,10 @@ describe('掲示板API', function () {
       })
   })
 
-  it('コメント投稿', function (done) {
+  it('post comment', function (done) {
     chai
       .request(app)
-      .post(`/bbs/post/${id}/comment`)
+      .post(`/dev/bbs/post/${id}/comment`)
       .set('content-type', 'application/json')
       .send(JSON.stringify(testData.caseComment1))
       .end(function (_, res) {
@@ -132,10 +130,10 @@ describe('掲示板API', function () {
       })
   })
 
-  it('コメント投稿確認', function (done) {
+  it('confirm post comment', function (done) {
     chai
       .request(app)
-      .get(`/bbs/post/${id}`)
+      .get(`/dev/bbs/post/${id}`)
       .end(function (_, res) {
         assert.equal(res.body.comments[0].author, testData.caseComment1.author)
         assert.hasAllDeepKeys(
@@ -154,10 +152,10 @@ describe('掲示板API', function () {
       })
   })
 
-  it('コメント削除（失敗）', function (done) {
+  it('delete comment (fail)', function (done) {
     chai
       .request(app)
-      .delete(`/bbs/post/${id}/comment/0`)
+      .delete(`/dev/bbs/post/${id}/comment/0`)
       .query({password: '9999'})
       .end(function (_, res) {
         assert.equal(res.body.isSuccess, false)
@@ -166,10 +164,10 @@ describe('掲示板API', function () {
       })
   })
 
-  it('コメント削除（成功）', function (done) {
+  it('delete comment (success)', function (done) {
     chai
       .request(app)
-      .delete(`/bbs/post/${id}/comment/0`)
+      .delete(`/dev/bbs/post/${id}/comment/0`)
       .query({password: testData.caseComment1.password})
       .end(function (_, res) {
         assert.equal(res.body.isSuccess, true)
@@ -178,10 +176,10 @@ describe('掲示板API', function () {
       })
   })
 
-  it('コメント削除確認', function (done) {
+  it('confirm delete comment', function (done) {
     chai
       .request(app)
-      .get(`/bbs/post/${id}`)
+      .get(`/dev/bbs/post/${id}`)
       .end(function (_, res) {
         assert.equal(res.body.comments[0].isDelete, true)
 
@@ -189,24 +187,47 @@ describe('掲示板API', function () {
       })
   })
 
-  it('投稿削除（失敗）', function (done) {
+  it('get posts by id', function (done) {
     chai
       .request(app)
-      .delete(`/bbs/post/${id}`)
+      .post('/dev/bbs/post')
+      .set('content-type', 'application/json')
+      .send(JSON.stringify(testData.case1))
+      .end(function (_, res) {
+        assert.property(res.body, 'id')
+        assert.equal(res.body.isSuccess, true)
+
+        const nextId = res.body.id
+
+        chai
+          .request(app)
+          .get(`/dev/bbs/posts/${nextId}`)
+          .end(function (_, res) {
+            assert.equal(res.body[0].id, id)
+
+            done()
+          })
+      })
+  })
+
+  it('delet post (miss)', function (done) {
+    chai
+      .request(app)
+      .delete(`/dev/bbs/post/${id}`)
       .query({password: '9999'})
-      .end(function (err, res) {
+      .end(function (_, res) {
         assert.equal(res.body.isSuccess, false)
 
         done()
       })
   })
 
-  it('投稿削除（成功）', function (done) {
+  it('delete post (success)', function (done) {
     chai
       .request(app)
-      .delete(`/bbs/post/${id}`)
+      .delete(`/dev/bbs/post/${id}`)
       .query({password: testData.case1.password})
-      .end(function (err, res) {
+      .end(function (_, res) {
         assert.equal(res.body.isSuccess, true)
 
         done()
