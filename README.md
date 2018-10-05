@@ -1,4 +1,5 @@
-# hit-u-bad-front
+# hit-u-bad hp
+Hitotsubashi Univ. Badminton Club's **un**official homepage.
 
 ## front
 
