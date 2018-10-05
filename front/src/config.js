@@ -8,6 +8,8 @@ export default {
     bbsNew  : ['New', '/bbs/new'],
     mizutori: ['Mizutori', '/mizutori'],
   },
-  apiUrlBase: 'https://us-central1-hit-u-bad.cloudfunctions.net/api',
-  baseDev: 'http://localhost:8080',
+  apiBaseUrl: {
+    development: 'https://us-central1-hit-u-bad.cloudfunctions.net/api/dev',
+    production : 'https://us-central1-hit-u-bad.cloudfunctions.net/api/v1'
+  }
 }

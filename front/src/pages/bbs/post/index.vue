@@ -38,9 +38,11 @@
           <p class="ws-preline">{{ v.isDelete ? 'このコメントは削除されました' : v.content }}</p>
         </div>
       </div>
-      <cmp-input-comment
-        @done-post="fetchData"
-      />
+      <div class="mt-5">
+        <cmp-input-comment
+          @done-post="fetchData"
+        />
+      </div>
       <div class="mt-3">
         <router-link to="/bbs/posts">一覧へ</router-link>
       </div>
@@ -68,7 +70,7 @@ export default {
   methods: {
     fetchData: function () {
       this.$http
-        .get(`${this.$config.apiUrlBase}/bbs/post/${this.postId}`)
+        .get('/bbs/post/' + this.postId)
         .then((res) => {
           this.post = res.data
         })
@@ -84,6 +86,7 @@ export default {
       if (this.modalTargetCommentId === -1) {
         this.$router.push('/bbs/posts')
       } else {
+        this.$refs.inputPasswordModal.close()
         this.fetchData()
       }
     }

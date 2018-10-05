@@ -2,7 +2,7 @@
   <div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">comment</h5>
+        <h5 class="card-title">コメントを投稿する</h5>
         <div class="mb-2">
           <div class="input-group input-group-sm">
             <div class="input-group-prepend">
@@ -101,7 +101,7 @@ export default {
       if (!isError) {
         this.$http
           .post(
-            `${this.$config.apiUrlBase}/bbs/post/${this.$route.params.id}/comment`,
+            `/bbs/post/${this.$route.params.id}/comment`,
             {
               author:   this.input.author,
               content:  this.input.content,

@@ -57,7 +57,7 @@ export default {
     },
     clickSubmit: function () {
       if (this.isDelete) {
-        const url = `${this.$config.apiUrlBase}/bbs/post/${this.id + (this.cid === -1 ? '' : '/comment/' + this.cid)}`
+        const url = '/bbs/post/' + this.id + (this.cid === -1 ? '' : '/comment/' + this.cid)
 
         this.$http
           .delete(url, { params: { password: this.inputPassword }})
@@ -69,7 +69,7 @@ export default {
           })
       } else {
         this.$http.get(
-          `${this.$config.apiUrlBase}/bbs/post/${this.id}`,
+          '/bbs/post/' + this.id,
           { params: { password: this.inputPassword }}
         )
         .then((res) => {

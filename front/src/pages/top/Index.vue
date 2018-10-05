@@ -21,7 +21,7 @@ import Carousel from '@/pages/top/cmp-carousel'
 
 export default {
   beforeCreate: function () {
-    document.title = 'TOP - 一橋バド';
+    document.title = 'TOP - 一橋バド'
   },
   components: {
     'slf-cmp-top-carousel': Carousel,

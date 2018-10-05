@@ -25,7 +25,7 @@ import cmpNowLoading from '@/components/cmp-now-loading'
 export default {
   created: function () {
     this.$http.get(
-      `${this.$config.apiUrlBase}/mizutori/obmsg`
+      '/mizutori/obmsg'
     )
     .then((res) => {
       this.isNowLoading = false

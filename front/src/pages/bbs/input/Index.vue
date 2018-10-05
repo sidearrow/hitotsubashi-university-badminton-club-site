@@ -71,8 +71,6 @@ import CmpInputPasswordModal from '@/pages/bbs/cmp-input-password-modal'
 
 export default {
   mounted: function () {
-    this.mode = this.$route.path.split('/')[2]
-
     if (this.mode === 'edit') {
       this.isOpenInputPasswordModal = true
     }
@@ -96,28 +94,26 @@ export default {
       ], this.mode)
 
       if (data.isError) {
-        this.errMsg = data.errorMsg;
+        this.errMsg = data.errorMsg
+        return
+      }
+
+      if (this.mode === 'edit') {
+        this.$http(
+          '/bbs/post/' + this.$route.params.id,
+          data.getPutData(this.post.opassword)
+        )
+        .then(() => {
+          this.$router.push({path: '/bbs/posts'})
+        })
       } else {
-        if (this.mode === 'edit') {
-          xhr.put(`/api/bbs/post/${this.$route.params.id}`, data.getPutData(this.post.opassword), () => {
-            this.$router.push({path: '/bbs/posts'})
-          })
-        } else if (this.mode === 'reply') {
-          xhr.post(
-            `/api/bbs/post/${this.$route.params.id}/comment`,
-            {
-              author: this.post.author,
-              content: this.post.content,
-              password: this.post.password
-            }),
-            () => {
-              this.$router.push({path: '/bbs/posts'})
-            }
-        } else {
-          xhr.post('/api/bbs/post', data.getPostData(), () => {
-            this.$router.push({path: '/bbs/posts'})
-          })
-        }
+        this.$http.post(
+          '/bbs/post',
+          data.getPostData()
+        )
+        .then(() => {
+          this.$router.push({path: '/bbs/posts'})
+        })
       }
     }
   },
@@ -125,7 +121,7 @@ export default {
     return {
       isOpenInputPasswordModal: false,
       modalTargetId: this.$route.params.id,
-      mode: 'new',
+      mode: this.$route.path.split('/')[2],
       post: {
         id: '',
         author: '',

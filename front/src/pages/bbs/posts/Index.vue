@@ -48,7 +48,7 @@ export default {
   methods: {
     fetchBBSData: function (id) {
       this.$http
-        .get(`${this.$config.apiUrlBase}/bbs/posts${(typeof id === 'undefined') ? '' : '/' + id}`)
+        .get('/bbs/posts' + ((typeof id === 'undefined') ? '' : '/' + id))
         .then((res) => {
           this.isNowLoading = false
           res.data.forEach((v) => {

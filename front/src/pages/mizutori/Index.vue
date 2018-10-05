@@ -45,7 +45,7 @@ export default {
     clickLogin: function () {
       this.$http
         .get(
-          `${this.$config.apiUrlBase}/mizutori`,
+          '/mizutori',
           {params: {password: this.inputPassword}}
         )
         .then((res) => {
