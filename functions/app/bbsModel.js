@@ -12,7 +12,7 @@ const getCollectionName = (version) => {
 const formatDate = (rowDate) => {
   const timezoneOffsetDiff = -540 - new Date().getTimezoneOffset()
   const d = new Date(rowDate._seconds * 1000)
-  d.setTime(d.getTime() + 1000 * 60 * timezoneOffsetDiff)
+  d.setTime(d.getTime() - 1000 * 60 * timezoneOffsetDiff)
   const f = (input) => {
     return ('0' + String(input)).substr(-2)
   }
