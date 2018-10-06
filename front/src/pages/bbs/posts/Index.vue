@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="BBS" :items="titleItems"/>
+    <content-title title="BBS" />
     <article>
       <section>
         <p><router-link to="/bbs/new">新規投稿</router-link></p>
@@ -40,7 +40,7 @@ import CmpNowLoading from '@/components/cmp-now-loading'
 
 export default {
   beforeCreate () {
-    document.title = '掲示板 - 一橋バド';
+    document.title = this.$config.title.bbs
   },
   created: function () {
     this.fetchBBSData()
@@ -66,7 +66,6 @@ export default {
     return {
       isNowLoading: true,
       lastPostId: '',
-      titleItems: [this.$config.pageList.bbs],
       posts: [],
     }
   },

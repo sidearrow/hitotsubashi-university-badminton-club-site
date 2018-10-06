@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="三多摩大会" :items="titleItems"/>
+    <content-title title="三多摩大会"/>
     <p>三多摩地区学生バドミントン選手権大会</p>
     <article>
       <h2>結果</h2>
@@ -27,14 +27,13 @@ import config from '@/config';
 
 export default {
   beforeCreate: function () {
-    document.title = '三多摩大会 - 一橋バド';
+    document.title = this.$config.title.santama
   },
   components: {
     'content-title': ContentTitle,
   },
   data: function () {
     return {
-      titleItems: [config.pageList.santama],
       result: result,
     };
   }

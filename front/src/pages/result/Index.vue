@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="大会結果" :items="titleItems"/>
+    <content-title title="大会結果"/>
     <article>
       <table class="table">
         <tr>
@@ -40,14 +40,13 @@ import config from '@/config';
 
 export default {
   beforeCreate: function () {
-    document.title = '大会結果 - 一橋バド';
+    document.title = this.$config.title.result
   },
   components: {
     'content-title': CmpContentTitle,
   },
   data: function () {
     return {
-      titleItems: [config.pageList.result],
       resultData: resultData,
     };
   }

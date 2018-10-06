@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="部員紹介" :items="titleItems"/>
+    <content-title title="部員紹介"/>
     <article>
       <section v-for="(gradev, gradei) in grade" :key="gradei">
         <h2>{{ gradev }}年生</h2>
@@ -31,7 +31,7 @@ import config from '@/config'
 
 export default {
   beforeCreate: function () {
-    document.title = '部員紹介 - 一橋バド';
+    document.title = this.$config.title.member
   },
   created: function () {
     this.memberData = memberData
@@ -41,7 +41,6 @@ export default {
   },
   data: function () {
     return {
-      titleItems: [config.pageList.member],
       memberData: {},
       grade: [4, 3, 2, 1],
     }

@@ -2,6 +2,7 @@
   <div>
     <cmp-header/>
     <main class="container mb-5">
+      <div class="mdc-top-app-bar--fixed-adjust mb-3"></div>
       <router-view/>
     </main>
   </div>

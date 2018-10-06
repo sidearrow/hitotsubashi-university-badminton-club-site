@@ -10,6 +10,7 @@
               class="mdc-list-item mdc-list-item--activated"
               :key="i"
               :to="v.href"
+              @click.native="toggle()"
             >
               <i class="material-icons mdc-list-item__graphic">chevron_right</i>
               <span class="mdc-list-item__text">{{ v.text }}</span>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-title title="みずとり会" :items="titleItems"/>
+    <content-title title="みずとり会" />
 
     <!-- 未ログイン -->
     <article v-if="!isLogin">
@@ -33,9 +33,11 @@ import MizutoriContent from '@/pages/mizutori/cmp-mizutori-content'
 import config from '@/config'
 
 export default {
+  beforeCreate: function () {
+    document.title = this.$config.title.mizutori
+  },
   data () {
     return {
-      titleItems: [config.pageList.mizutori],
       isLogin: window.sessionStorage.getItem('isLogin') === 'true',
       isError: false,
       inputPassword: '',
