@@ -1,12 +1,13 @@
 export default {
-  pageList: {
-    top     : ['TOP',      '/'],
-    member  : ['Member',   '/member'],
-    result  : ['Result',   '/result'],
-    santama : ['Santama',  '/santama'],
-    bbs     : ['BBS',      '/bbs/posts'],
-    bbsNew  : ['New', '/bbs/new'],
-    mizutori: ['Mizutori', '/mizutori'],
+  url: {
+    top     : '/',
+    member  : '/member',
+    result  : '/result',
+    santama : '/santama',
+    bbs     : '/bbs/posts',
+    bbsNew  : '/bbs/new',
+    mizutori: '/mizutori',
+    manage  : '/manage',
   },
   apiBaseUrl: {
     development: 'https://us-central1-hit-u-bad.cloudfunctions.net/api/dev',
