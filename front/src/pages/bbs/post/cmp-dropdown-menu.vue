@@ -7,8 +7,14 @@
         v-if="!isComment"
         @click="clickEdit()">Edit</a>
       <a
+        v-if="isCommentDelete"
+        class="dropdown-item disabled"
+      >Delete</a>
+      <a
+        v-else
         class="dropdown-item"
-        @click="clickDelete()">Delete</a>
+        @click="clickDelete()"
+      >Delete</a>
     </div>
   </div>
 </template>
@@ -17,7 +23,8 @@
 export default {
   props: {
     id: String,
-    isComment: Boolean
+    isComment: Boolean,
+    isCommentDelete: Boolean,
   },
   data: function () {
     return {

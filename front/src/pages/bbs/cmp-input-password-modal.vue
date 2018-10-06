@@ -43,42 +43,20 @@
 
 <script>
 export default {
-  props: {
-    id: String,
-    cid: Number,
-    isDelete: Boolean
-  },
   methods: {
     open: function () {
       this.isOpen = true
     },
     close: function () {
       this.isOpen = false
+      this.isError = false
+      this.inputPassword = ''
+    },
+    outputError: function () {
+      this.isError = true
     },
     clickSubmit: function () {
-      if (this.isDelete) {
-        const url = '/bbs/post/' + this.id + (this.cid === -1 ? '' : '/comment/' + this.cid)
-
-        this.$http
-          .delete(url, { params: { password: this.inputPassword }})
-          .then((res) => {
-            this.isError = !res.data.isSuccess
-            if (!this.isError) {
-              this.$emit('done')
-            }
-          })
-      } else {
-        this.$http.get(
-          '/bbs/post/' + this.id,
-          { params: { password: this.inputPassword }}
-        )
-        .then((res) => {
-          this.isError = !res.data.auth
-          if (!this.isError) {
-            this.$emit('done', this.inputPassword, res)
-          }
-        })
-      }
+      this.$emit('click-submit', this.inputPassword)
     }
   },
   data: function () {

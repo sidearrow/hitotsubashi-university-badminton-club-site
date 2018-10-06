@@ -32,6 +32,7 @@
             <cmp-dropdown-menu
               :id="postId"
               :isComment="true"
+              :isCommentDelete="v.isDelete"
               @click-delete="openInputPasswordModal(i)"
             />
           </div>
@@ -52,8 +53,7 @@
       ref="inputPasswordModal"
       :id="postId"
       :cid="modalTargetCommentId"
-      :isDelete="true"
-      @done="deletePost"
+      @click-submit="inputPasswordModalClickSubmit"
     />
   </div>
 </template>
@@ -75,6 +75,29 @@ export default {
           this.post = res.data
         })
     },
+    inputPasswordModalClickSubmit: function (inputPassword) {
+        let url = '/bbs/post/' + this.postId
+        if (this.modalTargetCommentId !== -1) {
+          url += '/comment/' + this.modalTargetCommentId
+        }
+
+        this.$http
+          .delete(url, { params: { password: inputPassword }})
+          .then((res) => {
+            if (res.data.isSuccess) {
+              this.$refs.inputPasswordModal.close()
+              if (this.modalTargetCommentId === -1) {
+                alert('投稿を削除しました')
+                this.$router.push('/bbs/posts')
+              } else {
+                alert('コメントを削除しました')
+                this.fetchData()
+              }
+            } else {
+              this.$refs.inputPasswordModal.outputError()
+            }
+          })
+    },
     openInputPasswordModal: function (commentId) {
       this.modalTargetCommentId = commentId
       this.$refs.inputPasswordModal.open()
@@ -82,14 +105,6 @@ export default {
     closeInputPasswordModal: function () {
       this.$refs.inputPasswordModal.close()
     },
-    deletePost: function (inputPassword) {
-      if (this.modalTargetCommentId === -1) {
-        this.$router.push('/bbs/posts')
-      } else {
-        this.$refs.inputPasswordModal.close()
-        this.fetchData()
-      }
-    }
   },
   data () {
     return {

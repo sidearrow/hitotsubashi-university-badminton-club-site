@@ -1,12 +1,11 @@
 <template>
   <article>
     <cmp-input-password-modal
-      :isOpen="isOpenInputPasswordModal"
-      :id="modalTargetId"
-      @close-modal="closeInputPasswordModal"
+      ref="inputPasswordModal"
+      @close-modal="inputPasswordModalClose"
+      @click-submit="inputPasswordModalClickSubmit"
       @done-auth="setForm"
     />
-    <cmp-root-post v-if="mode === 'reply'"/>
     <section>
       <div class="input-group mb-2">
         <div class="input-group-prepend">
@@ -66,18 +65,34 @@
 <script>
 import bbsFunction from '@/pages/bbs/bbsFunction'
 
-import CmpRootPost from '@/pages/bbs/input/cmp-root-post'
 import CmpInputPasswordModal from '@/pages/bbs/cmp-input-password-modal'
 
 export default {
   mounted: function () {
     if (this.mode === 'edit') {
-      this.isOpenInputPasswordModal = true
+      this.$refs.inputPasswordModal.open()
     }
   },
   methods: {
-    closeInputPasswordModal: function () {
+    inputPasswordModalClose: function () {
       this.$router.push('/bbs/posts')
+    },
+    inputPasswordModalClickSubmit: function (inputPassword) {
+      this.$http.get(
+        '/bbs/post/' + this.postId,
+        { params: { password: inputPassword }}
+      )
+      .then((res) => {
+        if (res.data.auth) {
+          this.post.author = res.data.author
+          this.post.title = res.data.title
+          this.post.content = res.data.content
+          this.post.opassword = inputPassword
+          this.$refs.inputPasswordModal.close()
+        } else {
+          this.$refs.inputPasswordModal.outputError()
+        }
+      })
     },
     setForm: function (_, res) {
       this.isOpenInputPasswordModal = false
@@ -99,7 +114,7 @@ export default {
       }
 
       if (this.mode === 'edit') {
-        this.$http(
+        this.$http.put(
           '/bbs/post/' + this.$route.params.id,
           data.getPutData(this.post.opassword)
         )
@@ -120,7 +135,7 @@ export default {
   data: function () {
     return {
       isOpenInputPasswordModal: false,
-      modalTargetId: this.$route.params.id,
+      postId: this.$route.params.id,
       mode: this.$route.path.split('/')[2],
       post: {
         id: '',
@@ -134,7 +149,6 @@ export default {
     }
   },
   components: {
-    'cmp-root-post': CmpRootPost,
     'cmp-input-password-modal': CmpInputPasswordModal,
   }
 }

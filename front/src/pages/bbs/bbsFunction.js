@@ -41,8 +41,7 @@ export default {
         author: this.author,
         title: this.title,
         content: this.content,
-        npassword: this.password,
-        opassword: opassword,
+        password: this.password,
       }
     }
   },
