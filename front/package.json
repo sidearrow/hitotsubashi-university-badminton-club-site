@@ -24,6 +24,7 @@
     "@vue/cli-service": "^3.0.1",
     "@vue/test-utils": "^1.0.0-beta.20",
     "chai": "^4.1.2",
+    "material-components-web": "^0.40.0",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
