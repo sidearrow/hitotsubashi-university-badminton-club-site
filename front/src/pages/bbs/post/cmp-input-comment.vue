@@ -1,69 +1,32 @@
 <template>
   <div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">コメントを投稿する</h5>
-        <div class="mb-2">
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Name</span>
-            </div>
-            <input
-              type="text"
-              :class="`form-control${(isError.author1 || isError.author2) ? ' is-invalid' : ''}`"
-              v-model="input.author"
-            >
-            <div 
-              :class="`invalid-feedback${isError.author1 ? '' : ' d-none'}`"
-            >`Name` を入力してください</div>
-            <div
-              :class="`invalid-feedback${isError.author2 ? '' : ' d-none'}`"
-            >`Name` は50字以内で入力してください</div>
-          </div>
-        </div>
-
-        <div class="mb-2">
-          <textarea
-          　:class="`form-control form-control-sm${(isError.content1 || isError.content2) ? ' is-invalid' : ''}`" rows="3"
-            v-model="input.content"
-          ></textarea>
-          <div
-            :class="`invalid-feedback${isError.password1 ? '' : ' d-none'}`"
-          >`本文` を入力してください</div>
-          <div
-            :class="`invalid-feedback${isError.password2 ? '': ' d-none'}`"
-          >`本文` は3000字以内で入力してください</div>
-        </div>
-
-        <div>
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Password</span>
-            </div>
-            <input
-              type="password"
-              :class="`form-control${(isError.password1 || isError.password2) ? ' is-invalid' : ''}`"
-              v-model="input.password"
-            >
-            <div
-              :class="`invalid-feedback${isError.password1 ? '' : ' d-none'}`"
-            >`Password` を入力してください</div>
-            <div
-              :class="`invalid-feedback${isError.password2 ? '': ' d-none'}`"
-            >`Password` は半角数字４字で入力してください</div>
-          </div>
-          <small
-            :class="`form-text text-muted${(isError.password1 || isError.password2) ? ' d-none' : ''}`"
-          >半角数字4文字で入力してください</small>
-        </div>
-        <div class="text-center mt-2">
-          <button
-            class="btn btn-sm bg-main text-white"
-            @click="clickPost"
-          >POST</button>
-        </div>
+      <p class="title">コメントを投稿する</p>
+      <v-text-field
+        label="名前"
+        :error="isError.author"
+        :error-messages="errorMessages.author"
+        v-model="input.author"
+      ></v-text-field>
+      <v-textarea
+        label="コメント"
+        :error="isError.content"
+        :error-messages="errorMessages.content"
+        v-model="input.content"
+      ></v-textarea>
+      <v-text-field
+        label="パスワード"
+        type="password"
+        :error="isError.password"
+        :error-messages="errorMessages.password"
+        v-model="input.password"
+      ></v-text-field>
+      <div class="text-xs-center mt-2">
+        <v-btn
+          outline
+          color="primary"
+          @click="clickPost"
+        >投稿</v-btn>
       </div>
-    </div>
   </div>
 </template>
 
@@ -78,51 +41,69 @@ export default {
       let isError = false
       if (this.input.author.trim().length === 0) {
         isError = true
-        this.isError.author1 = true
+        this.isError.author = true
+        this.errorMessages.author = this.errorMessagesList.autor1
       } else if (this.input.author.trim().length > 50) {
         isError = true
-        this.isError.author2 = true
+        this.isError.author = true
+        this.errorMessages.author = this.errorMessagesList.author2
       }
       if (this.input.content.trim().length === 0) {
         isError = true
-        this.isError.content1 = true
+        this.isError.content = true
+        this.errorMessages.content = this.errorMessagesList.content1
       } else if (this.input.content.trim().length > 3000) {
         isError = true
-        this.isError.content2 = true
+        this.isError.content = true
+        this.errorMessages.content = this.errorMessagesList.content2
       }
       if (this.input.password.trim().length === 0) {
         isError = true
-        this.isError.password1 = true
+        this.isError.password = true
+        this.errorMessages.password = this.errorMessagesList.password1
       } else if (!this.input.password.match(/\d\d\d\d/)) {
         isError = true
-        this.isError.password2 = true
+        this.isError.password = true
+        this.errorMessages.password = this.errorMessagesList.password2
       }
 
-      if (!isError) {
-        this.$http
-          .post(
-            `/bbs/post/${this.$route.params.id}/comment`,
-            {
-              author:   this.input.author,
-              content:  this.input.content,
-              password: this.input.password
-            }
-          )
-          .then(() => {
-            this.$emit('done-post')
-          })
+      if (isError) {
+        return
       }
+
+      this.$http
+        .post(
+          `/bbs/post/${this.$route.params.id}/comment`,
+          {
+            author:   this.input.author,
+            content:  this.input.content,
+            password: this.input.password
+          }
+        )
+        .then(() => {
+          this.$emit('done-post')
+        })
     }
   },
   data: function () {
     return {
       isError: {
-        author1: false,
-        author2: false,
-        content1: false,
-        content2: false,
-        password1: false,
-        password2: false,
+        author: false,
+        content: false,
+        password: false,
+      },
+      errorMessages: {
+        author: [],
+        content: [],
+        password: [],
+      },
+      errorMessagesList: {
+        author1: '`名前` を入力してください',
+        author2: '`名前` は 50 字で入力してください',
+        content1: '`コメント` を入力してください',
+        content2: '`コメント` は 3000 字以内で入力してください',
+        password1: '`パスワード` を入力してください',
+        password2: '`パスワード` は半角数字 4 字で入力してください',
       },
       input: {
         author: '',

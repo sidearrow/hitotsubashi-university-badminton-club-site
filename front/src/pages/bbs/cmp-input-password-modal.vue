@@ -35,9 +35,6 @@
         </div>
       </div>
     </div>
-    <div
-      :class="`modal-backdrop fade ${isOpen ? 'show d-block' : 'd-none'}`"
-    ></div>
   </div>
 </template>
 

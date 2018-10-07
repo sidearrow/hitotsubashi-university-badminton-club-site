@@ -3,7 +3,7 @@
     <cmp-page-header
       :title="post.title"
     />
-    <div class="text-right">
+    <div class="text-xs-right">
       <v-btn
         outline fab small color="secondary"
         @click="$router.push(`/bbs/edit/${id}`)"
@@ -35,13 +35,13 @@
               <small>{{ v.createdAt }}</small>
             </span>
           </div>
-          <div class="text-right">
-            <cmp-dropdown-menu
-              :id="postId"
-              :isComment="true"
-              :isCommentDelete="v.isDelete"
-              @click-delete="openInputPasswordModal(i)"
-            />
+          <div class="text-xs-right">
+            <v-btn
+              outline fab small color="secondary"
+              @click="openInputPasswordModal(i)"
+            >
+              <v-icon>delete</v-icon>
+            </v-btn>
           </div>
           <p class="ws-preline">{{ v.isDelete ? 'このコメントは削除されました' : v.content }}</p>
         </div>
