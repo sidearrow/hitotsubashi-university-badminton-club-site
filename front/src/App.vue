@@ -8,7 +8,7 @@
       >
         <v-layout
           row
-          :class="$vuetify.breakpoint.smAndUp ? 'm-5' : 'm-1'"
+          :class="$vuetify.breakpoint.smAndUp ? 'ma-5' : 'ma-1'"
         >
           <router-view
             id="slf-main-content"
