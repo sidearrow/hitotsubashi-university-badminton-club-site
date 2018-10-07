@@ -1,31 +1,52 @@
 <template>
   <div>
-    <content-title title="部員紹介"/>
-    <article>
-      <section v-for="(gradev, gradei) in grade" :key="gradei">
-        <h2>{{ gradev }}年生</h2>
-        <div
-          v-for="(memberv, memberi) in memberData[gradev]" :key="memberi"
-        >
-          <div>{{ memberv.name }}</div>
-          <div class="badge bg-sub text-white">
+    <cmp-page-header
+      :title="headerTitle"
+      :text="headerText"
+    />
+    <section
+      v-for="gradev in gradeList"
+      :key="gradev.meta"
+      class="mb-5"
+    >
+      <h2 class="headeline primary--text mb-3">{{ gradev.view }}年生</h2>
+      <div
+        v-for="(memberv, memberi) in memberData[gradev.meta]"
+        :key="memberi"
+        class="mb-3"
+      >
+        <h3 class="subheading">{{ memberv.name }}</h3>
+        <div>
+          <v-chip
+            color="secondary"
+            text-color="secondary"
+            label
+            outline
+            small
+          >
             <span>{{ memberv.highschool }}</span>
             <span>（{{ memberv.prefecture }}）</span>
-          </div>
-          <div class="mb-3">
-            <span
-              v-for="(posv, posi) in memberv.position" :key="posi"
-              class="badge bg-main text-white mr-1"
-            >{{ posv }}</span>
-          </div>
+          </v-chip>
         </div>
-      </section>
-    </article>
+        <div>
+          <v-chip
+            v-for="(posv, posi) in memberv.position"
+            :key="posi"
+            v-if="memberv.position[0] !== ''"
+            color="primary"
+            text-color="primary"
+            label
+            outline
+            small
+          >{{ posv }}</v-chip>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-import ContentTitle from '@/components/cmp-content-title'
+import cmpPageHeader from '@/components/cmp-page-header'
 import memberData from '@/assets/json/member.json'
 
 export default {
@@ -36,12 +57,19 @@ export default {
     this.memberData = memberData
   },
   components: {
-    'content-title': ContentTitle,
+    'cmp-page-header': cmpPageHeader,
   },
   data: function () {
     return {
+      headerTitle: '部員紹介',
+      headerText: '2017 年 7 月現在、男子 24 名、女子 7 名の計 31 名で活動しています。',
       memberData: {},
-      grade: [4, 3, 2, 1],
+      gradeList: [
+        { meta: 4, view: "４"},
+        { meta: 3, view: "３"},
+        { meta: 2, view: "２"},
+        { meta: 1, view: "１"},
+      ],
     }
   },
 };

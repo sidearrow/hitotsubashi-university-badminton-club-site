@@ -3,14 +3,14 @@
     <cmp-drawer
       ref="cmpDrawer"
     />
-    <cmp-top-app-bar
+    <cmp-toolbar
       @toggle-menu="toggleMenu"
     />
   </div>
 </template>
 
 <script>
-import cmpTopAppBar from './cmp-top-app-bar'
+import cmpToolbar from './cmp-toolbar'
 import cmpDrawer from './cmp-drawer'
 
 export default {
@@ -20,7 +20,7 @@ export default {
     }
   },
   components: {
-    'cmp-top-app-bar': cmpTopAppBar,
+    'cmp-toolbar': cmpToolbar,
     'cmp-drawer': cmpDrawer
   }
 }

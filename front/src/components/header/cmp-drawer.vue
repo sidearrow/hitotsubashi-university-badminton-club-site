@@ -1,48 +1,39 @@
 <template>
-  <div>
-    <aside class="mdc-drawer mdc-drawer--modal">
-      <div class="mdc-drawer__content">
-        <div class="mdc-list">
-          <template
-            v-for="(v, i) in menuList"
-          >
+  <v-navigation-drawer
+    v-model="isOpen"
+    absolute
+    temporary
+  >
+    <v-list>
+      <v-list-tile
+        v-for="(v, i) in menuList"
+        :key="i"
+      >
+        <v-list-tile-action>
+          <v-icon>chevron_right</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>
             <router-link
-              class="mdc-list-item mdc-list-item--activated"
-              :key="i"
               :to="v.href"
-              @click.native="toggle()"
-            >
-              <i class="material-icons mdc-list-item__graphic">chevron_right</i>
-              <span class="mdc-list-item__text">{{ v.text }}</span>
-            </router-link>
-            <div
-              v-if="v.divider === true"
-              :key="i + 'div'"
-              class="mdc-list-divider"
-            ></div>
-          </template>
-        </div>
-      </div>
-    </aside>
-    <div class="mdc-drawer-scrim"></div>
-  </div>
+            >{{ v.text }}</router-link>
+          </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>
-import { MDCDrawer } from "@material/drawer"
-
 export default {
-  mounted: function () {
-    this.mdcDrawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'))
-  },
   methods: {
     toggle: function () {
-      this.mdcDrawer.open = !this.mdcDrawer.open
+      this.isOpen = !this.isOpen
     }
   },
   data: function () {
     return {
-      mdcDrawer: {},
+      isOpen: false,
       menuList: [
         { text: 'TOP', href: this.$config.url.top },
         { text: '部員紹介', href: this.$config.url.member },

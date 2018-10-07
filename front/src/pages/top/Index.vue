@@ -1,30 +1,29 @@
 <template>
-  <div>
-    <div class="alert alert-warning">
-      <span>こちらはβ版になります。</span>
+  <div style="width:100%">
+    <v-alert
+      :value="true"
+      color="warning"
+      icon="priority_high"
+      outline
+      class="mb-3"
+    >
+      <span>こちらは β 版になります。</span>
       <br/>
-      <span>最新の情報は<a href="http://jfn.josuikai.net/circle/sports/badminton/" target="__blank">こちら</a>からご確認下さい。</span>
-    </div>
-    <slf-cmp-top-carousel/>
-    <div class="jumbotron mt-3">
-      <p>
-        <span>2017年7月現在、私達一橋大学バドミントン部は男子24名、女子7名の計31名で活動しています。</span>
-        <br/>
-        <span>男女・経験者大学始め関係なく、リーグ戦での4部への昇格を目指して日々練習に励んでいます。</span>
-      </p>
-    </div>
+      <span>最新の情報は <a href="http://jfn.josuikai.net/circle/sports/badminton/" target="__blank">こちら</a> からご確認下さい。</span>
+    </v-alert>
+    <slf-cmp-carousel/>
   </div>
 </template>
 
 <script>
-import Carousel from '@/pages/top/cmp-carousel'
+import CmpCarousel from '@/pages/top/cmp-carousel'
 
 export default {
   beforeCreate: function () {
     document.title = this.$config.title.top
   },
   components: {
-    'slf-cmp-top-carousel': Carousel,
+    'slf-cmp-carousel': CmpCarousel,
   }
 };
 </script>

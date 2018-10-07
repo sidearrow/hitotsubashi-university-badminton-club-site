@@ -1,21 +1,22 @@
 <template>
-  <div>
+  <v-app>
     <cmp-header/>
-    <main class="container mb-5">
-      <div class="mdc-top-app-bar--fixed-adjust mb-3"></div>
-      <router-view/>
-    </main>
-  </div>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout justify-center align-center>
+          <router-view></router-view>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import cmpHeader from '@/components/header/index';
-import CmpAppMenuContent from '@/components/cmp-app-menu-content';
+import cmpHeader from '@/components/header/index'
 
 export default {
   components: {
     'cmp-header': cmpHeader,
-    'cmp-app-menu-content': CmpAppMenuContent,
   },
 }
 </script>
