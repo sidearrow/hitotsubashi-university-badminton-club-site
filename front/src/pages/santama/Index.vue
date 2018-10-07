@@ -21,9 +21,8 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/cmp-content-title';
-import result from './santama_result.js';
-import config from '@/config';
+import ContentTitle from '@/components/cmp-content-title'
+import result from './santama_result.js'
 
 export default {
   beforeCreate: function () {

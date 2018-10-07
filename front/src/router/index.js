@@ -8,11 +8,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('@/pages/top/index.vue')
+      component: () => import('@/pages/top/index')
     },
     {
       path: '/member',
-      component: () => import('@/pages/member/index.vue')
+      component: () => import('@/pages/member/index')
     },
     {
       path: '/result',

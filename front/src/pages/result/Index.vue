@@ -36,7 +36,6 @@
 <script>
 import CmpContentTitle from '@/components/cmp-content-title';
 import resultData from '@/assets/json/result.json';
-import config from '@/config';
 
 export default {
   beforeCreate: function () {

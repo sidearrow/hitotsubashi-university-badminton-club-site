@@ -36,7 +36,7 @@ export default {
         password: this.password,
       }
     }
-    getPutData(opassword) {
+    getPutData() {
       return {
         author: this.author,
         title: this.title,

@@ -116,7 +116,7 @@ export default {
       if (this.mode === 'edit') {
         this.$http.put(
           '/bbs/post/' + this.$route.params.id,
-          data.getPutData(this.post.opassword)
+          data.getPutData()
         )
         .then(() => {
           this.$router.push({path: '/bbs/posts'})

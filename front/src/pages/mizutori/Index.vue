@@ -30,7 +30,6 @@
 <script>
 import ContentTitle from '@/components/cmp-content-title'
 import MizutoriContent from '@/pages/mizutori/cmp-mizutori-content'
-import config from '@/config'
 
 export default {
   beforeCreate: function () {
