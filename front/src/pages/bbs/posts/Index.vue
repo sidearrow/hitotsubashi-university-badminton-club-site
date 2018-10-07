@@ -1,6 +1,9 @@
 <template>
   <div>
-    <content-title title="BBS" />
+    <cmp-page-header
+      title="掲示板"
+      text="試合の結果などをお知らせします。"
+    />
     <article>
       <section>
         <p><router-link to="/bbs/new">新規投稿</router-link></p>
@@ -10,24 +13,33 @@
         </ul>
       </section>
       <cmp-now-loading v-if="isNowLoading"/>
-      <section v-else>
-        <div
-          v-for="(v, i) in posts" :key="i"
-          class="mb-4"
+      <v-list two-line v-else>
+        <template
+          v-for="(v, i) in posts"
         >
-          <div>
-            <span>
-              <router-link :to="`/bbs/post/${v.id}`">{{ v.title }}</router-link>
-            </span>
-            <span class="ml-2 badge bg-main text-white">{{ v.author }}</span>
-            <div class="text-right text-secondary">
-              <span class="ml-2 text-monospace"><small>{{ v.updatedAt }}</small></span>
-            </div>
-          </div>
-        </div>
-      </section>
+          <v-list-tile
+            :key="i"
+          >
+            <v-list-tile-content>
+              <v-list-tile-title>
+                <router-link :to="`/bbs/post/${v.id}`">{{ v.title }}</router-link>
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                <v-chip
+                  outline label small
+                  color="primary"
+                >{{ v.author }}</v-chip>
+                <span class="ml-2">{{ v.updatedAt }}</span>
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </v-list>
       <div class="text-center">
-        <button class="btn bg-main text-white" @click="fetchBBSData(lastPostId)">More</button>
+        <v-btn
+          color="primary"
+          @click="fetchBBSData(lastPostId)"
+        >More</v-btn>
       </div>
     </article>
 
@@ -35,7 +47,7 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/cmp-content-title'
+import cmpPageHeader from '@/components/cmp-page-header'
 import CmpNowLoading from '@/components/cmp-now-loading'
 
 export default {
@@ -59,7 +71,7 @@ export default {
     },
   },
   components: {
-    'content-title': ContentTitle,
+    'cmp-page-header': cmpPageHeader,
     'cmp-now-loading': CmpNowLoading,
   },
   data: function () {

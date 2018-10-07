@@ -1,9 +1,15 @@
 <template>
   <div>
-    <content-title title="三多摩大会"/>
-    <p>三多摩地区学生バドミントン選手権大会</p>
+    <cmp-page-header
+      title="三多摩大会"
+      text="三多摩地区学生バドミントン選手権大会"
+    />
     <article>
-      <h2>結果</h2>
+      <section class="mb-5">
+        <h2 class="headline primary--text">今年度の大会について</h2>
+        <p>第５２回三多摩地区学生バドミントン選手権大会</p>
+      </section>
+      <h2 class="headline primary--text">過去の大会結果</h2>
       <section>
         <div v-for="(v, k) in result" :key="k">
           <span class="mr-2">{{ k }}年</span>
@@ -21,7 +27,7 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/cmp-content-title'
+import cmpPageHeader from '@/components/cmp-page-header'
 import result from './santama_result.js'
 
 export default {
@@ -29,7 +35,7 @@ export default {
     document.title = this.$config.title.santama
   },
   components: {
-    'content-title': ContentTitle,
+    'cmp-page-header': cmpPageHeader,
   },
   data: function () {
     return {

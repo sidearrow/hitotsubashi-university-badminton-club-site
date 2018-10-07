@@ -1,8 +1,10 @@
 <template>
   <v-navigation-drawer
+    mobile-break-point="720"
+    width="240"
     v-model="isOpen"
-    absolute
-    temporary
+    fixed
+    app
   >
     <v-list>
       <v-list-tile
@@ -33,7 +35,7 @@ export default {
   },
   data: function () {
     return {
-      isOpen: false,
+      isOpen: true,
       menuList: [
         { text: 'TOP', href: this.$config.url.top },
         { text: '部員紹介', href: this.$config.url.member },

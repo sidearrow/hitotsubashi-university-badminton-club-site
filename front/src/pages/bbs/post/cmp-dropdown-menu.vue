@@ -1,6 +1,10 @@
 <template>
   <div class="dropdown d-inline-block">
-    <a class="btn btn-sm bg-white dropdown-toggle" @click="toggleDropdown"></a>
+    <v-btn
+      @click="toggleDropdown"
+    >
+      <v-icon></v-icon>
+    </v-btn>
     <div :class="`dropdown-menu dropdown-menu-right${(isShow) ? ' show' : ''} text-08rem`">
       <a
         class="dropdown-item"

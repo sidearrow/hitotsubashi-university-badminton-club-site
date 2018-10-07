@@ -1,6 +1,9 @@
 <template>
   <div>
-    <content-title title="大会結果"/>
+    <cmp-page-header
+      title="大会結果"
+      text="関東学生バドミントン連盟主催のリーグ戦の結果です。一年に春と秋の２度行なわれます。"
+    />
     <article>
       <table class="table">
         <tr>
@@ -34,15 +37,15 @@
 </template>
 
 <script>
-import CmpContentTitle from '@/components/cmp-content-title';
-import resultData from '@/assets/json/result.json';
+import cmpPageHeader from '@/components/cmp-page-header'
+import resultData from '@/assets/json/result.json'
 
 export default {
   beforeCreate: function () {
     document.title = this.$config.title.result
   },
   components: {
-    'content-title': CmpContentTitle,
+    'cmp-page-header': cmpPageHeader,
   },
   data: function () {
     return {

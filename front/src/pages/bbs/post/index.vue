@@ -1,19 +1,26 @@
 <template>
   <div>
+    <cmp-page-header
+      :title="post.title"
+    />
+    <div class="text-right">
+      <v-btn
+        outline fab small color="secondary"
+        @click="$router.push(`/bbs/edit/${id}`)"
+      >
+        <v-icon>edit</v-icon>
+      </v-btn>
+      <v-btn
+        outline fab small color="secondary"
+        @click="openInputPasswordModal(-1)"
+      >
+        <v-icon>delete</v-icon>
+      </v-btn>
+    </div>
     <article>
-      <h2 class="h2">{{ post.title }}</h2>
       <div class="text-right">
         <span>{{ post.author }}</span>
-        <span class="ml-2 text-monospace">
-          <small>{{ post.createdAt }}</small>
-        </span>
-      </div>
-      <div class="text-right">
-        <cmp-dropdown-menu
-          :id="postId"
-          :isComment="false"
-          @click-delete="openInputPasswordModal(-1)"
-        />
+        <span class="ml-2">{{ post.createdAt }}</span>
       </div>
       <section class="ws-preline mb-3">{{ post.content }}</section>
 
@@ -59,7 +66,7 @@
 </template>
 
 <script>
-import CmpDropdownMenu from './cmp-dropdown-menu'
+import CmpPageHeader from '@/components/cmp-page-header'
 import CmpInputComment from './cmp-input-comment'
 import CmpInputPasswordModal from '../cmp-input-password-modal'
 
@@ -114,7 +121,7 @@ export default {
     };
   },
   components: {
-    'cmp-dropdown-menu': CmpDropdownMenu,
+    'cmp-page-header': CmpPageHeader,
     'cmp-input-comment': CmpInputComment,
     'cmp-input-password-modal': CmpInputPasswordModal,
   }

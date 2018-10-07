@@ -1,8 +1,9 @@
 <template>
   <v-toolbar
     dark
-    :color="$vuetify.theme.primary"
+    color="primary"
     app
+    fixed
   >
     <v-toolbar-side-icon
       @click="toggleMenu"
