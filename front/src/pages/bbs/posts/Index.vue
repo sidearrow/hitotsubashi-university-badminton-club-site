@@ -27,7 +27,7 @@
               <v-list-tile-sub-title>
                 <v-chip
                   outline label small
-                  color="primary"
+                  color="secondary"
                 >{{ v.author }}</v-chip>
                 <span class="ml-2">{{ v.updatedAt }}</span>
               </v-list-tile-sub-title>
@@ -35,7 +35,7 @@
           </v-list-tile>
         </template>
       </v-list>
-      <div class="text-center">
+      <div class="text-xs-center">
         <v-btn
           color="primary"
           @click="fetchBBSData(lastPostId)"
