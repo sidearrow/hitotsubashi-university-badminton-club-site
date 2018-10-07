@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import CmpNavBar from '@/components/cmp-navbar.vue'
+import CmpNavBar from '@/components/header/cmp-drawer.vue'
 import { wrapperShallowMount } from './before'
 
 const wrapper = wrapperShallowMount(CmpNavBar)
@@ -8,7 +8,7 @@ const wrpMenuButton = wrapper.find('button.dropdown-toggle')
 const wrpMenu = wrapper.find('div.dropdown-menu')
 const wrpMenuItem = wrapper.find('router-link-stub.dropdown-item')
 
-describe('components/cmp-navbar.vue', () => {
+describe('components/header/cmp-drawer.vue', () => {
   it('click the menu button to open the menu', () => {
     wrpMenuButton.trigger('click')
     assert.include(wrpMenu.classes(), 'show')
