@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h2 class="h2">OB通信</h2>
+    <h2 class="headline primary--text">OB通信</h2>
     <cmpNowLoading v-if="isNowLoading"/>
     <section
       v-else
       v-for="(v1, i1) in obmsg" :key="i1"
+      class="mb-3"
     >
-      <h3 class="h5">{{ v1.year }}年</h3>
+      <h3 class="title">{{ v1.year }}年</h3>
       <div class="mb-3">
         <span
           v-for="(v2, i2) in v1.data" :key="i2"

@@ -5,7 +5,7 @@
       text="試合の結果などをお知らせします。"
     />
     <article>
-      <section>
+      <section class="mb-3">
         <p><router-link to="/bbs/new">新規投稿</router-link></p>
         <ul>
           <li><a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">旧掲示板１</a></li>
@@ -13,28 +13,26 @@
         </ul>
       </section>
       <cmp-now-loading v-if="isNowLoading"/>
-      <v-list two-line v-else>
-        <template
+        <div
           v-for="(v, i) in posts"
+          :key="i"
         >
-          <v-list-tile
-            :key="i"
-          >
-            <v-list-tile-content>
-              <v-list-tile-title>
-                <router-link :to="`/bbs/post/${v.id}`">{{ v.title }}</router-link>
-              </v-list-tile-title>
-              <v-list-tile-sub-title>
-                <v-chip
-                  outline label small
-                  color="secondary"
-                >{{ v.author }}</v-chip>
-                <span class="ml-2">{{ v.updatedAt }}</span>
-              </v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </template>
-      </v-list>
+          <div class="py-2">
+            <div>
+              <router-link
+                :to="`/bbs/post/${v.id}`"
+              >{{ v.title }}</router-link>
+            </div>
+            <div class="ml-2">
+              <v-chip
+                outline label small
+                color="secondary"
+              >{{ v.author }}</v-chip>
+              <span class="ml-2 grey--text">{{ v.updatedAt }}</span>
+            </div>
+          </div>
+          <v-divider></v-divider>
+        </div>
       <div class="text-xs-center">
         <v-btn
           color="primary"

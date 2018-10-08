@@ -1,32 +1,32 @@
 <template>
-  <div>
-      <p class="title">コメントを投稿する</p>
-      <v-text-field
-        label="名前"
-        :error="isError.author"
-        :error-messages="errorMessages.author"
-        v-model="input.author"
-      ></v-text-field>
-      <v-textarea
-        label="コメント"
-        :error="isError.content"
-        :error-messages="errorMessages.content"
-        v-model="input.content"
-      ></v-textarea>
-      <v-text-field
-        label="パスワード"
-        type="password"
-        :error="isError.password"
-        :error-messages="errorMessages.password"
-        v-model="input.password"
-      ></v-text-field>
-      <div class="text-xs-center mt-2">
-        <v-btn
-          outline
-          color="primary"
-          @click="clickPost"
-        >投稿</v-btn>
-      </div>
+  <div class="mt-5">
+    <p class="title">コメントを投稿する</p>
+    <v-text-field
+      label="名前"
+      :error="isError.author"
+      :error-messages="errorMessages.author"
+      v-model="input.author"
+    ></v-text-field>
+    <v-textarea
+      label="コメント"
+      :error="isError.content"
+      :error-messages="errorMessages.content"
+      v-model="input.content"
+    ></v-textarea>
+    <v-text-field
+      label="パスワード"
+      type="password"
+      :error="isError.password"
+      :error-messages="errorMessages.password"
+      v-model="input.password"
+    ></v-text-field>
+    <div class="text-xs-center mt-2">
+      <v-btn
+        outline
+        color="primary"
+        @click="clickPost"
+      >投稿</v-btn>
+    </div>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
       if (this.input.author.trim().length === 0) {
         isError = true
         this.isError.author = true
-        this.errorMessages.author = this.errorMessagesList.autor1
+        this.errorMessages.author = this.errorMessagesList.author1
       } else if (this.input.author.trim().length > 50) {
         isError = true
         this.isError.author = true
@@ -81,6 +81,9 @@ export default {
           }
         )
         .then(() => {
+          this.input.author = ''
+          this.input.content = ''
+          this.input.password = ''
           this.$emit('done-post')
         })
     }

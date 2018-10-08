@@ -1,11 +1,14 @@
 <template>
-  <div style="width:100%">
+  <div>
+    <div class="mb-5">
+      <h1 class="display-3 primary--text mb-3">一橋大学<br/>体育会<br/>バドミントン部</h1>
+      <p class="title secondary--text font-weight-thin">Hitotsubashi University Badminton Club was established in 1952.</p>
+    </div>
     <v-alert
       :value="true"
       color="warning"
       icon="priority_high"
-      outline
-      class="mb-3"
+      class="mb-3 font-weight-bold"
     >
       <span>こちらは β 版になります。</span>
       <br/>

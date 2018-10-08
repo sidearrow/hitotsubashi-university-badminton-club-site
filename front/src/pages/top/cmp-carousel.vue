@@ -16,7 +16,9 @@
 export default {
   mounted: function () {
     const carousel = document.getElementById('slf-carousel')
-    carousel.style.height = carousel.offsetWidth * 3 / 4 + 'px'
+    window.addEventListener('resize', function () {
+      carousel.style.height = carousel.offsetWidth * 3 / 4 + 'px'
+    })
   },
 }
 </script>

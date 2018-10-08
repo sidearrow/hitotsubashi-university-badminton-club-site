@@ -1,26 +1,31 @@
 <template>
   <div>
-    <content-title title="みずとり会" />
+    <cmp-page-header
+      title="みずとり会"
+      :text="headerText"
+    />
 
     <!-- 未ログイン -->
     <article v-if="!isLogin">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Password</span>
-        </div>
-        <input type="password" class="form-control" v-model="inputPassword">
-        <div class="input-group-append">
-          <button class="btn bg-main text-white" @click="clickLogin">Login</button>
-        </div>
-      </div>
-      <div v-if="isError" class="alert alert-danger mt-3">パスワードが間違っています。</div>
+      <v-text-field
+        v-model="inputPassword"
+        label="パスワード"
+        type="password"
+        append-outer-icon="send"
+        @click:append-outer="clickLogin"
+        :error="isError"
+        :error-messages="isError ? errorMessages : []"
+      ></v-text-field>
     </article>
 
     <!-- ログイン -->
     <article v-else>
       <p>
-        <span>みずとり会会員ページにログインしております。</span>
-        <button class="btn bg-main text-white" @click="clickLogout">Logout</button>
+        <v-btn
+          outline
+          color="primary"
+          @click="clickLogout"
+        >Logout</v-btn>
       </p>
       <mizutori-content/>
     </article>
@@ -28,18 +33,31 @@
 </template>
 
 <script>
-import ContentTitle from '@/components/cmp-content-title'
+import CmpPageHeader from '@/components/cmp-page-header'
 import MizutoriContent from '@/pages/mizutori/cmp-mizutori-content'
 
 export default {
   beforeCreate: function () {
     document.title = this.$config.title.mizutori
   },
+  created: function () {
+    if (this.isLogin) {
+      this.headerText = this.headerTextList.login
+    } else {
+      this.headerText = this.headerTextList.noLogin
+    }
+  },
   data () {
     return {
       isLogin: window.sessionStorage.getItem('isLogin') === 'true',
       isError: false,
+      errorMessages: ['パスワードが間違っています'],
       inputPassword: '',
+      headerText: '',
+      headerTextList: {
+        noLogin: 'みずとり会のページです。コンテンツを見るにはログインをして下さい。',
+        login: 'みずとり会のページです。',
+      }
     }
   },
   methods: {
@@ -57,15 +75,17 @@ export default {
           this.isError = false
           this.isLogin = true
           window.sessionStorage.setItem('isLogin', 'true')
+          this.headerText = this.headerTextList.login
         })
     },
     clickLogout: function () {
       this.isLogin = false;
       window.sessionStorage.removeItem('isLogin');
+      this.headerText = this.headerTextList.noLogin
     }
   },
   components: {
-    'content-title': ContentTitle,
+    'cmp-page-header': CmpPageHeader,
     'mizutori-content': MizutoriContent,
   },
 };

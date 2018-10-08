@@ -17,23 +17,25 @@
         <v-icon>delete</v-icon>
       </v-btn>
     </div>
+    <div class="mb-5">
+      <v-chip
+        outline
+        small
+        color="secondary"
+      >{{ post.author }}</v-chip>
+      <span class="ml-2 grey--text">{{ post.createdAt }}</span>
+    </div>
     <article>
-      <div class="text-right">
-        <span>{{ post.author }}</span>
-        <span class="ml-2">{{ post.createdAt }}</span>
-      </div>
       <section class="ws-preline mb-3">{{ post.content }}</section>
 
       <div>
         <div
           v-for="(v, i) in post.comments" :key="i"
         >
-          <hr/>
-          <div>
+          <v-divider></v-divider>
+          <div class="mt-3">
             <span>{{ v.isDelete ? '----' : v.author }}</span>
-            <span class="ml-2 text-monospace">
-              <small>{{ v.createdAt }}</small>
-            </span>
+            <span class="ml-2 grey--text">{{ v.createdAt }}</span>
           </div>
           <div class="text-xs-right">
             <v-btn

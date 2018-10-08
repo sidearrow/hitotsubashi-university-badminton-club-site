@@ -10,16 +10,16 @@
       <v-list-tile
         v-for="(v, i) in menuList"
         :key="i"
+        :to="v.href"
+        color="primary"
       >
         <v-list-tile-action>
-          <v-icon>chevron_right</v-icon>
+          <v-icon
+            color="primary"
+          >chevron_right</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>
-            <router-link
-              :to="v.href"
-            >{{ v.text }}</router-link>
-          </v-list-tile-title>
+          <v-list-tile-title>{{ v.text }}</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
