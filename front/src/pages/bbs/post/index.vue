@@ -6,7 +6,7 @@
     <div class="text-xs-right">
       <v-btn
         outline fab small color="secondary"
-        @click="$router.push(`/bbs/edit/${id}`)"
+        @click="$router.push(`/bbs/edit/${postId}`)"
       >
         <v-icon>edit</v-icon>
       </v-btn>
@@ -56,7 +56,7 @@
       </div>
     </article>
 
-    <cmp-input-password-modal
+    <cmp-password-dialog
       ref="inputPasswordModal"
       :id="postId"
       :cid="modalTargetCommentId"
@@ -68,7 +68,7 @@
 <script>
 import CmpPageHeader from '@/components/cmp-page-header'
 import CmpInputComment from './cmp-input-comment'
-import CmpInputPasswordModal from '../cmp-input-password-modal'
+import CmpPasswordDialog from '../cmp-password-dialog'
 
 export default {
   created () {
@@ -123,7 +123,7 @@ export default {
   components: {
     'cmp-page-header': CmpPageHeader,
     'cmp-input-comment': CmpInputComment,
-    'cmp-input-password-modal': CmpInputPasswordModal,
+    'cmp-password-dialog': CmpPasswordDialog,
   }
 }
 </script>

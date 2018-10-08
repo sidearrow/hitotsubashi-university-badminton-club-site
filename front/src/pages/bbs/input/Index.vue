@@ -1,10 +1,9 @@
 <template>
   <article>
-    <cmp-input-password-modal
+    <cmp-password-dialog
       ref="inputPasswordModal"
-      @close-modal="inputPasswordModalClose"
+      @close-dialog="inputPasswordModalClose"
       @click-submit="inputPasswordModalClickSubmit"
-      @done-auth="setForm"
     />
     <v-text-field
       label="名前"
@@ -38,13 +37,15 @@
       >投稿</v-btn>
     </div>
     <div class="mt-2">
-      <router-link to="/bbs/posts">←戻る</router-link>
+      <router-link 
+        :to="(this.mode === 'edit') ? '/bbs/post/' + this.postId : '/bbs/posts'"
+      >←戻る</router-link>
     </div>
   </article>
 </template>
 
 <script>
-import CmpInputPasswordModal from '@/pages/bbs/cmp-input-password-modal'
+import CmpPasswordDialog from '@/pages/bbs/cmp-password-dialog'
 
 export default {
   mounted: function () {
@@ -54,7 +55,7 @@ export default {
   },
   methods: {
     inputPasswordModalClose: function () {
-      this.$router.push('/bbs/posts')
+      this.$router.push('/bbs/post/' + this.postId)
     },
     inputPasswordModalClickSubmit: function (inputPassword) {
       this.$http.get(
@@ -63,21 +64,15 @@ export default {
       )
       .then((res) => {
         if (res.data.auth) {
-          this.post.author = res.data.author
-          this.post.title = res.data.title
-          this.post.content = res.data.content
-          this.post.opassword = inputPassword
+          this.input.author = res.data.author
+          this.input.title = res.data.title
+          this.input.content = res.data.content
+          this.input.opassword = inputPassword
           this.$refs.inputPasswordModal.close()
         } else {
           this.$refs.inputPasswordModal.outputError()
         }
       })
-    },
-    setForm: function (_, res) {
-      this.isOpenInputPasswordModal = false
-      this.input.author = res.author
-      this.input.title = res.title
-      this.input.content = res.content
     },
     clickSubmit: function () {
       for (let key in this.isError) {
@@ -197,7 +192,7 @@ export default {
     }
   },
   components: {
-    'cmp-input-password-modal': CmpInputPasswordModal,
+    'cmp-password-dialog': CmpPasswordDialog,
   }
 }
 </script>
