@@ -53,6 +53,8 @@ export default {
           this.isError = !res.data.isSuccess
           if (this.isError) {
             this.errorMessages.push('パスワードが間違っています')
+          } else {
+            this.isDone = true
           }
         })
     }

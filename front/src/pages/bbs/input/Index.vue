@@ -27,6 +27,7 @@
       label="パスワード"
       :error="isError.password"
       :error-messages="errorMessages.password"
+      type="password"
       v-model="input.password"
     ></v-text-field>
     <div class="text-xs-center mt-2">
@@ -93,7 +94,7 @@ export default {
         isError = true
         this.isError.title = true
         this.errorMessages.title = this.errorMessagesList.title1
-      } else if (this.title.author.trim().length > 100) {
+      } else if (this.input.title.trim().length > 100) {
         isError = true
         this.isError.title = true
         this.errorMessages.title = this.errorMessagesList.title2
