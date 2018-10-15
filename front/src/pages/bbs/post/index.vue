@@ -12,7 +12,7 @@
       </v-btn>
       <v-btn
         outline fab small color="secondary"
-        @click="openInputPasswordModal(-1)"
+        @click="$router.push('/bbs/delete/' + postId)"
       >
         <v-icon>delete</v-icon>
       </v-btn>
