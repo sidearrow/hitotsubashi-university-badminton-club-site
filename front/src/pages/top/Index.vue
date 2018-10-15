@@ -5,6 +5,7 @@
       <p class="title secondary--text font-weight-thin">Hitotsubashi University Badminton Club was established in 1952.</p>
     </div>
     <v-alert
+      outline
       :value="true"
       color="warning"
       icon="priority_high"
