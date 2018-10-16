@@ -12,28 +12,40 @@
           <li><a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板２</a></li>
         </ul>
       </section>
-      <cmp-now-loading v-if="isNowLoading"/>
-        <div
-          v-for="(v, i) in posts"
-          :key="i"
-        >
-          <div class="py-2">
-            <div>
-              <router-link
-                :to="`/bbs/post/${v.id}`"
-              >{{ v.title }}</router-link>
-            </div>
-            <div class="ml-2">
-              <v-chip
-                outline label small
-                color="secondary"
-              >{{ v.author }}</v-chip>
-              <span class="ml-2 grey--text">{{ v.updatedAt }}</span>
-            </div>
+
+      <div
+        v-if="isNowLoading"
+        class="text-xs-center"
+      >
+        <v-progress-circular
+          :size="50"
+          indeterminate
+          color="secondary"
+        ></v-progress-circular>
+      </div>
+
+      <div
+        v-else
+        v-for="(v, i) in posts"
+        :key="i"
+      >
+        <div class="py-2">
+          <div>
+            <router-link
+              :to="`/bbs/post/${v.id}`"
+            >{{ v.title }}</router-link>
           </div>
-          <v-divider></v-divider>
+          <div class="ml-2">
+            <v-chip
+              outline label small
+              color="secondary"
+            >{{ v.author }}</v-chip>
+            <span class="ml-2 grey--text">{{ v.updatedAt }}</span>
+          </div>
         </div>
-      <div class="text-xs-center">
+        <v-divider></v-divider>
+      </div>
+      <div class="text-xs-center mt-3">
         <v-btn
           color="primary"
           @click="fetchBBSData(lastPostId)"

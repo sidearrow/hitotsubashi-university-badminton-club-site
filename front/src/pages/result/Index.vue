@@ -5,33 +5,17 @@
       text="関東学生バドミントン連盟主催のリーグ戦の結果です。一年に春と秋の２度行なわれます。"
     />
     <article>
-      <table class="table">
-        <tr>
-          <th></th>
-          <th>男子</th>
-          <th>女子</th>
-        </tr>
-
-        <tr v-for="(v, i) in resultData" :key="i">
-          <td>{{ v.year }} {{ v.season }}</td>
-
-          <td v-if="!(v.year === 2011 && v.season === '春')">
-            {{ v.m_group }}部{{ v.m_rank }}位
-            <span v-if="v.m_flag === 1">昇格</span>
-            <span v-if="v.m_flag === -1">降格</span>
-          </td>
-          <td v-if="!(v.year === 2011 && v.season === '春')">
-            {{ v.f_group }}部{{ v.f_rank }}位
-            <span v-if="v.f_flag === 1">昇格</span>
-            <span v-if="v.f_flag === -1">降格</span>
-          </td>
-
-          <!-- 2011春 -->
-          <td v-if="(v.year === 2011 && v.season === '春')">中止</td>
-          <td v-if="(v.year === 2011 && v.season === '春')">中止</td>
-
-        </tr>
-      </table>
+      <v-data-table
+        :headers="resultHeaders"
+        :items="resultData"
+        hide-actions
+      >
+        <template slot="items" slot-scope="v">
+          <td>{{ v.item.year }} {{ v.item.season }}</td>
+          <td>{{ v.item.m }}</td>
+          <td>{{ v.item.f }}</td>
+        </template>
+      </v-data-table>
     </article>
   </div>
 </template>
@@ -49,6 +33,11 @@ export default {
   },
   data: function () {
     return {
+      resultHeaders: [
+        { text: '',    sortable: false },
+        { text: '男子', sortable: false },
+        { text: '女子', sortable: false },
+      ],
       resultData: resultData,
     };
   }
