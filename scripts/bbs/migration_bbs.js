@@ -1,6 +1,6 @@
 const fs = require('fs')
 const firebase = require('firebase')
-const config = require('../slf-config')
+const config = require(__dirname + '/../../config')
 
 require("firebase/firestore")
 firebase.initializeApp(config.firebase)
@@ -8,17 +8,17 @@ const db = firebase.firestore()
 const settings = {timestampsInSnapshots: true};
 db.settings(settings);
 
-const filePath = __dirname + '/bbs-data.json'
+const filePath = __dirname + '/bbs_data.json'
 const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 
 json.forEach((v) => {
-  const tmp = new Date((new Date(v.date)).getTime() + 36000000)
-  db.collection('bbs').add({
+  db.collection('dev-bbs').add({
     title: v.title,
-    author: v.name,
+    author: v.author,
     content: v.content,
-    password: parseInt(v.password),
-    createdAt: tmp,
-    updatedAt: tmp,
+    password: v.password,
+    comments: v.comments,
+    createdAt: new Date(v.createdAt),
+    updatedAt: new Date(v.updatedAt),
   })
 })
