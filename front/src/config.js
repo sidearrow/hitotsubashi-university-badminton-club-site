@@ -19,7 +19,7 @@ export default {
     mizutori: 'みずとり会 - 一橋大学 バドミントン部',
   },
   apiBaseUrl: {
-    development: 'https://us-central1-hit-u-bad.cloudfunctions.net/api/dev',
-    production : 'https://us-central1-hit-u-bad.cloudfunctions.net/api/v1'
+    development: 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/dev',
+    production : 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/v1'
   }
 }
