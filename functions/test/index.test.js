@@ -1,19 +1,31 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
-
 const assert = chai.assert
 //const expect = chai.expect
 
 const app = require('../app/controller').app
-
+const database = require(__dirname + '/../app/database').database
 const testData = require('./testdata/bbs-post')
+
 
 describe('BBS API Test', function () {
   this.timeout(10000)
 
-  let id;
+  let id
+  let testDataId = []
 
+  before(async () => {
+    const insert = async (data) => {
+      const tmp = await database.collection('dev-bbs').add(data)
+      return tmp.id
+    }
+    testDataId.push(await insert(testData.narrowDate1))
+    testDataId.push(await insert(testData.narrowDate2))
+    testDataId.push(await insert(testData.narrowDate3))
+  })
+
+/*
   it('post', function (done) {
     chai
       .request(app)
@@ -232,6 +244,30 @@ describe('BBS API Test', function () {
 
         done()
       })
+  })
+  */
+
+  it('narrow date', function (done) {
+    chai
+      .request(app)
+      .get('/dev/bbs/posts/date/200011')
+      .end(function (_, res) {
+        console.log(res.body)
+        assert.equal(res.body.length, 1)
+        assert.equal(res.body[0].title, '2000/11/30 23:59:59')
+
+        done()
+      })
+  })
+
+  after(() => {
+    console.log(testDataId)
+    testDataId.forEach((v) => {
+      database
+        .collection('dev-bbs')
+        .doc(v)
+        .delete()
+    })
   })
 })
 
