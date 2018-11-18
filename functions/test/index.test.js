@@ -25,7 +25,6 @@ describe('BBS API Test', function () {
     testDataId.push(await insert(testData.narrowDate3))
   })
 
-/*
   it('post', function (done) {
     chai
       .request(app)
@@ -245,23 +244,32 @@ describe('BBS API Test', function () {
         done()
       })
   })
-  */
 
-  it('narrow date', function (done) {
+  it('narrow date', (done) => {
     chai
       .request(app)
       .get('/dev/bbs/posts/date/200011')
       .end(function (_, res) {
-        console.log(res.body)
         assert.equal(res.body.length, 1)
-        assert.equal(res.body[0].title, '2000/11/30 23:59:59')
-
+        assert.equal(res.body[0].title, testData.narrowDate1.title)
+      })
+    chai
+      .request(app)
+      .get('/dev/bbs/posts/date/200012')
+      .end((_, res) => {
+        assert.equal(res.body.length, 1)
+        assert.equal(res.body[0].title, testData.narrowDate2.title)
+      })
+    chai
+      .request(app)
+      .get('/dev/bbs/posts/date/hoge')
+      .end((_, res) => {
+        assert.hasAllKeys(res.body, ['err'])
         done()
       })
   })
 
   after(() => {
-    console.log(testDataId)
     testDataId.forEach((v) => {
       database
         .collection('dev-bbs')
