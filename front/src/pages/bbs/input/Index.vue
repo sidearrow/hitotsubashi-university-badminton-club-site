@@ -1,5 +1,9 @@
 <template>
   <article>
+    <cmp-input-author/>
+    <cmp-input-title/>
+    <cmp-input-content/>
+    <!--
     <cmp-password-dialog
       ref="inputPasswordModal"
       @close-dialog="inputPasswordModalClose"
@@ -42,11 +46,15 @@
         :to="(this.mode === 'edit') ? '/bbs/post/' + this.postId : '/bbs/posts'"
       >←戻る</router-link>
     </div>
+    -->
   </article>
 </template>
 
 <script>
 import CmpPasswordDialog from '@/pages/bbs/cmp-password-dialog'
+import cmpInputAuthor from './cmp-input-author'
+import cmpInputTitle from './cmp-input-title'
+import cmpInputContent from './cmp-input-content'
 
 export default {
   mounted: function () {
@@ -194,6 +202,9 @@ export default {
   },
   components: {
     'cmp-password-dialog': CmpPasswordDialog,
+    'cmp-input-author': cmpInputAuthor,
+    'cmp-input-title': cmpInputTitle,
+    'cmp-input-content': cmpInputContent,
   }
 }
 </script>

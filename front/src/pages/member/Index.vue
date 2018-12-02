@@ -1,9 +1,7 @@
 <template>
   <div>
-    <cmp-page-header
-      :title="headerTitle"
-      :text="headerText"
-    />
+    <h1>部員紹介</h1>
+    <p>2017 年 7 月現在、男子 24 名、女子 7 名の計 31 名で活動しています。</p>
     <section
       v-for="gradev in gradeList"
       :key="gradev.meta"
@@ -15,30 +13,17 @@
         :key="memberi"
         class="mb-3"
       >
-        <h3 class="subheading">{{ memberv.name }}</h3>
+        <div>{{ memberv.name }}</div>
         <div>
-          <v-chip
-            color="secondary"
-            text-color="secondary"
-            label
-            outline
-            small
-          >
-            <span>{{ memberv.highschool }}</span>
-            <span>（{{ memberv.prefecture }}）</span>
-          </v-chip>
+          <span class="badge bg-main text-white">{{ memberv.highschool + '（' + memberv.prefecture + '）' }}</span>
         </div>
         <div>
-          <v-chip
+          <span
             v-for="(posv, posi) in memberv.position"
             :key="posi"
             v-if="memberv.position[0] !== ''"
-            color="primary"
-            text-color="primary"
-            label
-            outline
-            small
-          >{{ posv }}</v-chip>
+            class="badge bg-sub text-white mr-1"
+          >{{ posv }}</span>
         </div>
       </div>
     </section>
@@ -61,8 +46,6 @@ export default {
   },
   data: function () {
     return {
-      headerTitle: '部員紹介',
-      headerText: '2017 年 7 月現在、男子 24 名、女子 7 名の計 31 名で活動しています。',
       memberData: {},
       gradeList: [
         { meta: 4, view: "４"},

@@ -1,62 +1,58 @@
 <template>
-  <div>
-    <cmp-page-header
-      title="掲示板"
-      text="試合の結果などをお知らせします。"
-    />
-    <article>
-      <section class="mb-3">
-        <p><router-link to="/bbs/new">新規投稿</router-link></p>
-        <ul>
-          <li><a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">旧掲示板１</a></li>
-          <li><a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板２</a></li>
-        </ul>
-      </section>
+<div>
+  <h1>掲示板</h1>
+  <p>試合の結果などをお知らせします。</p>
+  <section class="mb-3">
+    <p><router-link to="/bbs/new">新規投稿</router-link></p>
+    <ul>
+      <li><a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">旧掲示板１</a></li>
+      <li><a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板２</a></li>
+    </ul>
+  </section>
 
-      <div
-        v-if="isNowLoading"
-        class="text-xs-center"
-      >
-        <v-progress-circular
-          :size="50"
-          indeterminate
-          color="secondary"
-        ></v-progress-circular>
-      </div>
-
-      <div
-        v-else
-        v-for="(v, i) in posts"
-        :key="i"
-      >
-        <div class="py-2">
-          <div>
-            <router-link
-              :to="`/bbs/post/${v.id}`"
-            >{{ v.title }}</router-link>
-          </div>
-          <div class="ml-2">
-            <v-chip
-              outline label small
-              color="secondary"
-            >{{ v.author }}</v-chip>
-            <span class="ml-2 grey--text">{{ v.updatedAt }}</span>
-          </div>
-        </div>
-        <v-divider></v-divider>
-      </div>
-      <div
-        v-if="typeof narrowDate === 'undefined'"
-        class="text-xs-center mt-3"
-      >
-        <v-btn
-          color="primary"
-          @click="fetchBBSData(lastPostId)"
-        >More</v-btn>
-      </div>
-    </article>
-
+  <div
+    v-if="isNowLoading"
+    class="text-xs-center"
+  >
+    <v-progress-circular
+      :size="50"
+      indeterminate
+      color="secondary"
+    ></v-progress-circular>
   </div>
+
+  <div
+    v-else
+    class="list-group list-group-flush"
+  >
+    <div
+      v-for="(v, i) in posts"
+      :key="i"
+      class="list-group-item"
+    >
+      <div>
+        <router-link
+          :to="`/bbs/post/${v.id}`"
+        >{{ v.title }}</router-link>
+      </div>
+      <div class="">
+        <small>
+          <span>by {{ v.author }}</span>
+          <span class="ml-4">{{ v.updatedAt }}</span>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div
+    v-if="typeof narrowDate === 'undefined'"
+    class="text-center mt-3"
+  >
+    <button
+      @click="fetchBBSData(lastPostId)"
+      class="btn bg-main text-white"
+    >MORE</button>
+  </div>
+</div>
 </template>
 
 <script>
