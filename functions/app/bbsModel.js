@@ -274,6 +274,18 @@ function modelPostsDateGet (req, res) {
     })
 }
 
+function modelPostsDatelistGet (req, res) {
+  database
+    .collection('bbs-month-list')
+    .orderBy('createdAt', 'desc')
+    .get()
+    .then((qs) => {
+      qs.forEach((doc) => {
+        console.log(doc.data())
+      })
+    })
+}
+
 module.exports = {
   modelPostPost: modelPostPost,
   modelPostGet: modelPostGet,
@@ -283,4 +295,5 @@ module.exports = {
   modelPostCommentDelete: modelPostCommentDelete,
   modelPostsGet: modelPostsGet,
   modelPostsDateGet: modelPostsDateGet,
+  modelPostsDatelistGet: modelPostsDatelistGet,
 }

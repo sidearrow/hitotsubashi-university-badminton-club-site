@@ -12,6 +12,8 @@ export default new Router({
     { path: '/santama', component: () => import('@/pages/santama/index') },
     { path: '/bbs/post/:id', component: () => import('@/pages/bbs/post/index')},
     { path: '/bbs/posts', component: () => import('@/pages/bbs/posts/index') },
+    { path: '/bbs/posts/:date', component: () => import('@/pages/bbs/posts/index') },
+    { path: '/bbs/posts/narrowdate', component: () => import('@/pages/bbs/posts/narrowdate/index') },
     { path: '/bbs/new', component: () => import('@/pages/bbs/input/index') },
     { path: '/bbs/edit/:id', component: () => import('@/pages/bbs/input/index') },
     { path: '/bbs/reply/:id', component: () => import('@/pages/bbs/input/index') },

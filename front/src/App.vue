@@ -1,39 +1,31 @@
 <template>
-  <v-app>
+  <div>
     <cmp-header/>
-    <v-content>
-      <v-container
-        fluid
-        fill-height
-      >
-        <v-layout
-          row
-          :class="$vuetify.breakpoint.smAndUp ? 'ma-5' : 'ma-1'"
-        >
-          <router-view
-            id="slf-main-content"
-          ></router-view>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-app>
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-md-3 col-xl-2 d-none d-md-block">
+          <cmp-sidebar></cmp-sidebar>
+        </div>
+        <div class="col-md-9 col-xl-10">
+          <router-view></router-view>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import cmpHeader from '@/components/header/index'
+import cmpHeader from '@/components/cmp-navbar'
+import cmpSidebar from '@/components/cmp-sidebar'
 
 export default {
   components: {
-    'cmp-header': cmpHeader
+    'cmp-header': cmpHeader,
+    'cmp-sidebar': cmpSidebar,
   },
 }
 </script>
 
 <style lang="scss">
 @import './assets/style';
-
-#slf-main-content {
-  width: 100%;
-  max-width: 720px;
-}
 </style>

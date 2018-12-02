@@ -22,6 +22,8 @@ bbsRouter.get('/posts', bbsModel.modelPostsGet)
 bbsRouter.get('/posts/:id', bbsModel.modelPostsGet)
 bbsRouter.get('/posts/date/:date', bbsModel.modelPostsDateGet)
 
+bbsRouter.get('/posts/datelist', bbsModel.modelPostsDatelistGet)
+
 /*
  * /mizutori
  */

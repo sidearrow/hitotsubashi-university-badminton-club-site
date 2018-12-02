@@ -45,7 +45,10 @@
         </div>
         <v-divider></v-divider>
       </div>
-      <div class="text-xs-center mt-3">
+      <div
+        v-if="typeof narrowDate === 'undefined'"
+        class="text-xs-center mt-3"
+      >
         <v-btn
           color="primary"
           @click="fetchBBSData(lastPostId)"
@@ -69,10 +72,19 @@ export default {
   },
   methods: {
     fetchBBSData: function (id) {
+      let url = '/bbs/posts'
+      if (typeof id !== 'undefined') {
+        url += '/' + id
+      } else if (typeof this.narrowDate !== 'undefined') {
+        url += '/date/' + this.narrowDate
+      }
       this.$http
-        .get('/bbs/posts' + ((typeof id === 'undefined') ? '' : '/' + id))
+        .get(url)
         .then((res) => {
           this.isNowLoading = false
+          if (res.data.length === 0) {
+            return
+          }
           res.data.forEach((v) => {
             this.posts.push(v)
           })
@@ -86,6 +98,7 @@ export default {
   },
   data: function () {
     return {
+      narrowDate: this.$route.params.date,
       isNowLoading: true,
       lastPostId: '',
       posts: [],
