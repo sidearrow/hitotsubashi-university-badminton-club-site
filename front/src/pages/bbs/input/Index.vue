@@ -1,52 +1,20 @@
 <template>
   <article>
-    <cmp-input-author/>
-    <cmp-input-title/>
-    <cmp-input-content/>
-    <!--
-    <cmp-password-dialog
-      ref="inputPasswordModal"
-      @close-dialog="inputPasswordModalClose"
-      @click-submit="inputPasswordModalClickSubmit"
-    />
-    <v-text-field
-      label="名前"
-      :error="isError.author"
-      :error-messages="errorMessages.author"
-      v-model="input.author"
-    ></v-text-field>
-    <v-text-field
-      label="タイトル"
-      :error="isError.title"
-      :error-messages="errorMessages.title"
-      v-model="input.title"
-    ></v-text-field>
-    <v-textarea
-      label="本文"
-      :error="isError.content"
-      :error-messages="errorMessages.content"
-      v-model="input.content"
-    ></v-textarea>
-    <v-text-field
-      label="パスワード"
-      :error="isError.password"
-      :error-messages="errorMessages.password"
-      type="password"
-      v-model="input.password"
-    ></v-text-field>
-    <div class="text-xs-center mt-2">
-      <v-btn
-        outline
-        color="primary"
+    <cmp-input-author v-model="input.author" ref="inputAuthor"/>
+    <cmp-input-title v-model="input.title" ref="inputTitle"/>
+    <cmp-input-content v-model="input.content" ref="inputContent"/>
+    <cmp-input-password v-model="input.password" ref="inputPassword"/>
+    <div class="text-center mt-2">
+      <button
+        class="btn bg-main text-white"
         @click="clickSubmit()"
-      >投稿</v-btn>
+      >投稿</button>
     </div>
     <div class="mt-2">
       <router-link 
         :to="(this.mode === 'edit') ? '/bbs/post/' + this.postId : '/bbs/posts'"
       >←戻る</router-link>
     </div>
-    -->
   </article>
 </template>
 
@@ -55,6 +23,7 @@ import CmpPasswordDialog from '@/pages/bbs/cmp-password-dialog'
 import cmpInputAuthor from './cmp-input-author'
 import cmpInputTitle from './cmp-input-title'
 import cmpInputContent from './cmp-input-content'
+import cmpInputPassword from './cmp-input-password'
 
 export default {
   mounted: function () {
@@ -84,51 +53,15 @@ export default {
       })
     },
     clickSubmit: function () {
-      for (let key in this.isError) {
-        this.isError[key] = false
-      }
-
-      let isError = false
-      if (this.input.author.trim().length === 0) {
-        isError = true
-        this.isError.author = true
-        this.errorMessages.author = this.errorMessagesList.author1
-      } else if (this.input.author.trim().length > 50) {
-        isError = true
-        this.isError.author = true
-        this.errorMessages.author = this.errorMessagesList.author2
-      }
-      if (this.input.title.trim().length === 0) {
-        isError = true
-        this.isError.title = true
-        this.errorMessages.title = this.errorMessagesList.title1
-      } else if (this.input.title.trim().length > 100) {
-        isError = true
-        this.isError.title = true
-        this.errorMessages.title = this.errorMessagesList.title2
-      }
-      if (this.input.content.trim().length === 0) {
-        isError = true
-        this.isError.content = true
-        this.errorMessages.content = this.errorMessagesList.content1
-      } else if (this.input.content.trim().length > 3000) {
-        isError = true
-        this.isError.content = true
-        this.errorMessages.content = this.errorMessagesList.content2
-      }
-      if (this.input.password.trim().length === 0) {
-        isError = true
-        this.isError.password = true
-        this.errorMessages.password = this.errorMessagesList.password1
-      } else if (!this.input.password.match(/\d\d\d\d/)) {
-        isError = true
-        this.isError.password = true
-        this.errorMessages.password = this.errorMessagesList.password2
-      }
-
-      if (isError) {
+      if (
+        this.$refs.inputAuthor.check() |
+        this.$refs.inputTitle.check() |
+        this.$refs.inputContent.check() |
+        this.$refs.inputPassword.check()
+      ) {
         return
       }
+      return
 
       const inputData = {
         author  : this.input.author,
@@ -161,28 +94,6 @@ export default {
       isOpenInputPasswordModal: false,
       postId: this.$route.params.id,
       mode: this.$route.path.split('/')[2],
-      isError: {
-        author: false,
-        title: false,
-        content: false,
-        password: false,
-      },
-      errorMessages: {
-        author: [],
-        title: [],
-        content: [],
-        password: [],
-      },
-      errorMessagesList: {
-        author1: '`名前` を入力してください',
-        author2: '`名前` は 50 字で入力してください',
-        title1: '`タイトル` を入力してください',
-        title2: '`タイトル` は 100 字で入力してください',
-        content1: '`コメント` を入力してください',
-        content2: '`コメント` は 3000 字以内で入力してください',
-        password1: '`パスワード` を入力してください',
-        password2: '`パスワード` は半角数字 4 字で入力してください',
-      },
       input: {
         author: '',
         title: '',
@@ -197,7 +108,6 @@ export default {
         password: '',
         opassword: '',
       },
-      errMsg: [],
     }
   },
   components: {
@@ -205,6 +115,7 @@ export default {
     'cmp-input-author': cmpInputAuthor,
     'cmp-input-title': cmpInputTitle,
     'cmp-input-content': cmpInputContent,
+    'cmp-input-password': cmpInputPassword,
   }
 }
 </script>
