@@ -6,7 +6,7 @@
         <div class="col-md-3 col-xl-2 d-none d-md-block">
           <cmp-sidebar></cmp-sidebar>
         </div>
-        <div class="col-md-9 col-xl-10">
+        <div class="col-md-9 col-xl-10 mb-5">
           <router-view></router-view>
         </div>
       </div>

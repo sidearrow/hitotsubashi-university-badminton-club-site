@@ -12,13 +12,9 @@
 
   <div
     v-if="isNowLoading"
-    class="text-xs-center"
+    class="text-center"
   >
-    <v-progress-circular
-      :size="50"
-      indeterminate
-      color="secondary"
-    ></v-progress-circular>
+    <cmp-now-loading/>
   </div>
 
   <div
@@ -45,7 +41,7 @@
   </div>
   <div
     v-if="typeof narrowDate === 'undefined'"
-    class="text-center mt-3"
+    class="text-center mt-3 mb-5"
   >
     <button
       @click="fetchBBSData(lastPostId)"
@@ -57,7 +53,7 @@
 
 <script>
 import cmpPageHeader from '@/components/cmp-page-header'
-import CmpNowLoading from '@/components/cmp-now-loading'
+import cmpNowLoading from '@/components/cmp-now-loading'
 
 export default {
   beforeCreate () {
@@ -90,7 +86,7 @@ export default {
   },
   components: {
     'cmp-page-header': cmpPageHeader,
-    'cmp-now-loading': CmpNowLoading,
+    'cmp-now-loading': cmpNowLoading,
   },
   data: function () {
     return {
