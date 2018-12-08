@@ -5,6 +5,7 @@
     :class="'form-control form-control-sm' + (isError ? ' is-invalid' : '')"
     rows="5"
     :value="value"
+    :disabled="isDisable"
     @input="$emit('input', $event.target.value)"
   ></textarea>
   <div class="invalid-feedback">{{ errorMsg }}</div>
@@ -13,7 +14,7 @@
 
 <script>
 export default {
-  props: ['value'],
+  props: ['value', 'isDisable'],
   methods: {
     check: function () {
       this.isError = false

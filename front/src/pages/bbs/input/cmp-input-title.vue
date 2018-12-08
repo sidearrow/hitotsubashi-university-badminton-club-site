@@ -4,6 +4,7 @@
   <input
     :class="'form-control form-control-sm' + (isError ? ' is-invalid' : '')"
     :value="value"
+    :disabled="isDisable"
     @input="$emit('input', $event.target.value)"
   >
   <div class="invalid-feedback">{{ errorMsg }}</div>
@@ -12,7 +13,7 @@
 
 <script>
 export default {
-  props: ['value'],
+  props: ['value', 'isDisable'],
   methods: {
     check: function () {
       this.isError = false

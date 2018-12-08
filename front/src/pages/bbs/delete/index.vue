@@ -15,13 +15,15 @@
         :error-messages="errorMessages"
       ></v-text-field>
       <div class="text-xs-right mb-3">
-        <v-btn
+        <button
+          class="btn bg-main text-white"
           color="info"
           @click="clickOK"
-        >OK</v-btn>
-        <v-btn
+        >OK</button>
+        <button
+          class="btn btn-secondary ml-2"
           @click="$router.push('/bbs/post/' + postId)"
-        >CANCEL</v-btn>
+        >CANCEL</button>
       </div>
       <div>
         <div>{{ post.title }}</div>

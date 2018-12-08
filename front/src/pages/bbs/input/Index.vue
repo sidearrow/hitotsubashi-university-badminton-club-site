@@ -1,9 +1,30 @@
 <template>
 <article>
-  <cmp-input-author v-model="input.author" ref="inputAuthor"/>
-  <cmp-input-title v-model="input.title" ref="inputTitle"/>
-  <cmp-input-content v-model="input.content" ref="inputContent"/>
-  <cmp-input-password v-model="input.password" ref="inputPassword"/>
+  <cmp-edit-password
+    :id="postId"
+    v-on:doneAuth="doneAuth"
+    :isDisable="!isDisable"
+  />
+  <cmp-input-author
+    :isDisable="isDisable"
+    v-model="input.author"
+    ref="inputAuthor"
+  />
+  <cmp-input-title
+    :isDisable="isDisable"
+    v-model="input.title"
+    ref="inputTitle"
+  />
+  <cmp-input-content
+    :isDisable="isDisable"
+    v-model="input.content"
+    ref="inputContent"
+  />
+  <cmp-input-password
+    :isDisable="isDisable"
+    v-model="input.password"
+    ref="inputPassword"
+  />
   <div class="text-center mt-2">
     <button
       class="btn bg-main text-white"
@@ -12,8 +33,8 @@
   </div>
   <div class="mt-2">
     <router-link 
-      :to="(this.mode === 'edit') ? '/bbs/post/' + this.postId : '/bbs/posts'"
-    >←戻る</router-link>
+      :to="isEdit ? '/bbs/post/' + this.postId : '/bbs/posts'"
+    >戻る</router-link>
   </div>
 </article>
 </template>
@@ -27,30 +48,20 @@ import cmpInputPassword from './cmp-input-password'
 
 export default {
   mounted: function () {
-    if (this.mode === 'edit') {
-      this.$refs.passwordModal.open()
-    }
+    this.isDisable = this.isEdit
+    this.$http.get(
+      '/bbs/post/' + this.$route.params.id,
+    )
+    .then((res) => {
+      this.input.author    = res.data.author
+      this.input.title     = res.data.title
+      this.input.content   = res.data.content
+    })
   },
   methods: {
-    inputPasswordModalClose: function () {
-      this.$router.push('/bbs/post/' + this.postId)
-    },
-    inputPasswordModalClickSubmit: function (inputPassword) {
-      this.$http.get(
-        '/bbs/post/' + this.postId,
-        { params: { password: inputPassword }}
-      )
-      .then((res) => {
-        if (res.data.auth) {
-          this.input.author = res.data.author
-          this.input.title = res.data.title
-          this.input.content = res.data.content
-          this.input.opassword = inputPassword
-          this.$refs.inputPasswordModal.close()
-        } else {
-          this.$refs.inputPasswordModal.outputError()
-        }
-      })
+    doneAuth: function (opassword) {
+      this.isDisable = false
+      this.input.opassword = opassword
     },
     clickSubmit: function () {
       if (
@@ -70,7 +81,7 @@ export default {
         password: this.input.password,
       }
 
-      if (this.mode === 'edit') {
+      if (isEdit) {
         this.$http.put(
           '/bbs/post/' + this.$route.params.id,
           inputData
@@ -91,22 +102,14 @@ export default {
   },
   data: function () {
     return {
-      isOpenInputPasswordModal: false,
+      isDisable: false,
       postId: this.$route.params.id,
-      mode: this.$route.path.split('/')[2],
+      isEdit: this.$route.path.split('/')[2] === 'edit',
       input: {
         author: '',
         title: '',
         content: '',
         password: '',
-      },
-      post: {
-        id: '',
-        author: '',
-        title: '',
-        content: '',
-        password: '',
-        opassword: '',
       },
     }
   },
