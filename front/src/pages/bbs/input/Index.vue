@@ -28,13 +28,14 @@
   />
   <div class="text-center mt-2">
     <button
-      class="btn bg-main text-white"
+      class="btn btn-primary"
       @click="clickSubmit()"
+      :disabled="isDisable"
     >投稿</button>
   </div>
   <div class="mt-2">
     <router-link 
-      :to="isEdit ? '/bbs/post/' + this.postId : '/bbs/posts'"
+      :to="isEdit ? '/bbs/posts/' + this.postId : '/bbs/posts'"
     >戻る</router-link>
   </div>
 </article>
@@ -49,7 +50,7 @@ import cmpInputPassword from './cmp-input-password'
 
 export default {
   mounted: function () {
-    this.isDisable = this.isEdit
+    this.isDisable = this.isEdit || this.isDelete
     this.$http.get(
       '/bbs/post/' + this.$route.params.id,
     )
@@ -105,7 +106,8 @@ export default {
     return {
       isDisable: false,
       postId: this.$route.params.id,
-      isEdit: this.$route.path.split('/')[2] === 'edit',
+      isEdit: this.$route.path.split('/')[4] === 'edit',
+      isDelete: this.$route.path.split('/')[4] === 'delete', 
       input: {
         author: '',
         title: '',

@@ -22,7 +22,7 @@
         >OK</button>
         <button
           class="btn btn-secondary ml-2"
-          @click="$router.push('/bbs/post/' + postId)"
+          @click="$router.push('/bbs/posts/' + postId)"
         >CANCEL</button>
       </div>
       <div>

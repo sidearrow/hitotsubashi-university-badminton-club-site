@@ -28,7 +28,7 @@
     >
       <div>
         <router-link
-          :to="`/bbs/post/${v.id}`"
+          :to="`/bbs/posts/${v.id}`"
         >{{ v.title }}</router-link>
       </div>
       <div class="">

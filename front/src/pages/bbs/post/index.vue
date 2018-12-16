@@ -1,20 +1,7 @@
 <template>
 <div>
   <h1>{{ post.title }}</h1>
-  <div class="text-right">
-    <button
-      class="btn"
-      @click="$router.push(`/bbs/edit/${postId}`)"
-    >
-      <i class="material-icons">edit</i>
-    </button>
-    <button
-      class="btn"
-      @click="$router.push('/bbs/delete/' + postId)"
-    >
-      <i class="material-icons">delete</i>
-    </button>
-  </div>
+  <cmp-post-dropdown :postId="postId"/>
   <div class="mb-5">
     <span>{{ post.author }}</span>
     <span class="ml-2 text-monospace"><small>{{ post.createdAt }}</small></span>
@@ -62,7 +49,7 @@
 </template>
 
 <script>
-import CmpPageHeader from '@/components/cmp-page-header'
+import CmpPostDropdown from './cmp-post-dropdown'
 import CmpInputComment from './cmp-input-comment'
 import CmpPasswordDialog from '../cmp-password-modal'
 
@@ -117,7 +104,7 @@ export default {
     };
   },
   components: {
-    'cmp-page-header': CmpPageHeader,
+    'cmp-post-dropdown': CmpPostDropdown,
     'cmp-input-comment': CmpInputComment,
     'cmp-password-dialog': CmpPasswordDialog,
   }
