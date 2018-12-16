@@ -1,6 +1,7 @@
 <template>
 <article>
   <cmp-edit-password
+    v-if="isEdit"
     :id="postId"
     v-on:doneAuth="doneAuth"
     :isDisable="!isDisable"
