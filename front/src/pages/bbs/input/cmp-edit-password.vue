@@ -1,5 +1,5 @@
 <template>
-<div class="mb-5">
+<div class="my-5 col-sm-8 offset-sm-2">
   <p>この投稿のパスワードを入力してください</p>
   <div class="input-group">
     <input
@@ -11,7 +11,7 @@
     <div class="input-group-append">
       <button
         @click="click"
-        class="btn btn-sm bg-main text-white"
+        class="btn btn-sm btn-primary"
         :disabled="isDisable"
       >確認</button>
     </div>
@@ -22,21 +22,38 @@
 
 <script>
 export default {
-  props: ['id', 'isDisable'],
+  props: ['id', 'isEdit', 'isDelete', 'isDisable'],
   methods: {
     click: function () {
-      this.$http.get(
-        '/bbs/post/' + this.id,
-        { params: { password: this.inputPassword }}
-      ).then((res) => {
-        if (res.data.auth) {
-          this.isError = false
-          this.$emit('doneAuth', this.inputPassword)
-        } else {
-          this.isError = true
-          this.errMsg = "パスワードが間違っています"
-        }
-      })
+      if (isEdit) {
+        this.$http.get(
+          '/bbs/post/' + this.id,
+          { params: { password: this.inputPassword }}
+        ).then((res) => {
+          if (res.data.auth) {
+            this.isError = false
+            this.$emit('doneAuth', this.inputPassword)
+          } else {
+            this.isError = true
+            this.errMsg = "パスワードが間違っています"
+          }
+        })
+      } else if (isDelete) {
+        this.$http
+          .delete(
+            '/bbs/post/' + this.postId,
+            { params: {password: this.inputPassword} }
+          )
+          .then((res) => {
+            if (res.data.isSuccess) {
+              this.isError = false
+              this.$emit('doneDelete')
+            } else {
+              this.isError = true
+              this.errMsg = "パスワードが間違っています"
+            }
+          })
+      } 
     }
   },
   data: function () {

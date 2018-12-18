@@ -1,10 +1,26 @@
 <template>
 <article>
+  <div>
+    <h1 v-if="isEdit">投稿編集</h1>
+    <h1 v-if="isDelete">投稿削除</h1>
+  </div>
+
+  <template v-if="isDoneDelete">
+    <div class="alert alert-primary my-5">投稿を削除しました</div>
+    <div class="text-xs-center mt-3">
+      <router-link to="/bbs/posts">投稿一覧へ戻る</router-link>
+    </div>
+  </template>
+
+  <template v-else>
   <cmp-edit-password
-    v-if="isEdit"
+    v-if="isEdit || isDelete"
     :id="postId"
-    v-on:doneAuth="doneAuth"
+    :isEdit="isEdit"
+    :isDelete="isDelete"
     :isDisable="!isDisable"
+    v-on:doneAuth="doneAuth"
+    v-on:doneDelete="doneDelete"
   />
   <cmp-input-author
     :isDisable="isDisable"
@@ -34,10 +50,9 @@
     >投稿</button>
   </div>
   <div class="mt-2">
-    <router-link 
-      :to="isEdit ? '/bbs/posts/' + this.postId : '/bbs/posts'"
-    >戻る</router-link>
+    <a @click="$router.go(-1)">戻る</a>
   </div>
+  </template>
 </article>
 </template>
 
@@ -64,6 +79,9 @@ export default {
     doneAuth: function (opassword) {
       this.isDisable = false
       this.input.opassword = opassword
+    },
+    doneDelete: function () {
+      this.isDoneDelete = true
     },
     clickSubmit: function () {
       if (
@@ -107,7 +125,8 @@ export default {
       isDisable: false,
       postId: this.$route.params.id,
       isEdit: this.$route.path.split('/')[4] === 'edit',
-      isDelete: this.$route.path.split('/')[4] === 'delete', 
+      isDelete: this.$route.path.split('/')[4] === 'delete',
+      isDoneDelete: false,
       input: {
         author: '',
         title: '',
