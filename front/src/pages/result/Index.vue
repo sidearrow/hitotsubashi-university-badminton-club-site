@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import cmpPageHeader from '@/components/cmp-page-header'
 import resultData from '@/assets/json/result.json'
 
 export default {

@@ -92,7 +92,6 @@ export default {
       ) {
         return
       }
-      return
 
       const inputData = {
         author  : this.input.author,
@@ -101,7 +100,7 @@ export default {
         password: this.input.password,
       }
 
-      if (isEdit) {
+      if (this.isEdit) {
         this.$http.put(
           '/bbs/post/' + this.$route.params.id,
           inputData

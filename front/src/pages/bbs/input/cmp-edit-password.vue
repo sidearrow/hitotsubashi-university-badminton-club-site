@@ -25,7 +25,7 @@ export default {
   props: ['id', 'isEdit', 'isDelete', 'isDisable'],
   methods: {
     click: function () {
-      if (isEdit) {
+      if (this.isEdit) {
         this.$http.get(
           '/bbs/post/' + this.id,
           { params: { password: this.inputPassword }}
@@ -38,7 +38,7 @@ export default {
             this.errMsg = "パスワードが間違っています"
           }
         })
-      } else if (isDelete) {
+      } else if (this.isDelete) {
         this.$http
           .delete(
             '/bbs/post/' + this.postId,
