@@ -10,23 +10,32 @@ db.settings(settings);
 
 const aggregate = async () => {
   const querySnapshot = await db.collection('bbs').get()
-  let date, key
+  let date, key, year, month
   let data = {}
   querySnapshot.forEach((v) => {
     date = new Date(v.data().createdAt.seconds * 1000)
-    key = String(date.getFullYear()) + '-' + String(date.getMonth() + 1)
+    year = String(date.getFullYear())
+    month = String(date.getMonth() + 1)
+    key = year + ('0' + month).substr(-2)
 
     if (typeof data[key] === 'undefined') {
-      data[key] = 1
+      view = 
+      data[key] = {
+        num: 1,
+        view: year + ' 年 ' + month + ' 月',
+        createdAt: new Date(year, date.getMonth())
+      }
     } else {
-      data[key]++
+      data[key].num++
     }
   })
 
-  db
-    .collection('bbs-month-list')
-    .doc('index')
-    .set(data)
+  for (let key in data) {
+    db
+      .collection('bbs-month-list')
+      .doc(key)
+      .set(data[key])
+  }
 }
 
 aggregate()

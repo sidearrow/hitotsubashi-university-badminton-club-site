@@ -1,7 +1,4 @@
-import '@mdi/font/css/materialdesignicons.css'
-
 import Vue from 'vue'
-import './plugins/vuetify'
 import axios from 'axios'
 import App from './App'
 import router from './router'

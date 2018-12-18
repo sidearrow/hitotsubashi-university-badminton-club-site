@@ -1,126 +1,98 @@
 <template>
-  <article>
-    <cmp-password-dialog
-      ref="inputPasswordModal"
-      @close-dialog="inputPasswordModalClose"
-      @click-submit="inputPasswordModalClickSubmit"
-    />
-    <v-text-field
-      label="名前"
-      :error="isError.author"
-      :error-messages="errorMessages.author"
-      v-model="input.author"
-    ></v-text-field>
-    <v-text-field
-      label="タイトル"
-      :error="isError.title"
-      :error-messages="errorMessages.title"
-      v-model="input.title"
-    ></v-text-field>
-    <v-textarea
-      label="本文"
-      :error="isError.content"
-      :error-messages="errorMessages.content"
-      v-model="input.content"
-    ></v-textarea>
-    <v-text-field
-      label="パスワード"
-      :error="isError.password"
-      :error-messages="errorMessages.password"
-      type="password"
-      v-model="input.password"
-    ></v-text-field>
-    <div class="text-xs-center mt-2">
-      <v-btn
-        outline
-        color="primary"
-        @click="clickSubmit()"
-      >投稿</v-btn>
+<article>
+  <div>
+    <h1 v-if="isEdit">投稿編集</h1>
+    <h1 v-if="isDelete">投稿削除</h1>
+  </div>
+
+  <template v-if="isDoneDelete">
+    <div class="alert alert-primary my-5">投稿を削除しました</div>
+    <div class="text-xs-center mt-3">
+      <router-link to="/bbs/posts">投稿一覧へ戻る</router-link>
     </div>
-    <div class="mt-2">
-      <router-link 
-        :to="(this.mode === 'edit') ? '/bbs/post/' + this.postId : '/bbs/posts'"
-      >←戻る</router-link>
-    </div>
-  </article>
+  </template>
+
+  <template v-else>
+  <cmp-edit-password
+    v-if="isEdit || isDelete"
+    :id="postId"
+    :isEdit="isEdit"
+    :isDelete="isDelete"
+    :isDisable="!isDisable"
+    v-on:doneAuth="doneAuth"
+    v-on:doneDelete="doneDelete"
+  />
+  <cmp-input-author
+    :isDisable="isDisable"
+    v-model="input.author"
+    ref="inputAuthor"
+  />
+  <cmp-input-title
+    :isDisable="isDisable"
+    v-model="input.title"
+    ref="inputTitle"
+  />
+  <cmp-input-content
+    :isDisable="isDisable"
+    v-model="input.content"
+    ref="inputContent"
+  />
+  <cmp-input-password
+    :isDisable="isDisable"
+    v-model="input.password"
+    ref="inputPassword"
+  />
+  <div class="text-center mt-2">
+    <button
+      class="btn btn-primary"
+      @click="clickSubmit()"
+      :disabled="isDisable"
+    >投稿</button>
+  </div>
+  <div class="mt-2">
+    <a @click="$router.go(-1)">戻る</a>
+  </div>
+  </template>
+</article>
 </template>
 
 <script>
-import CmpPasswordDialog from '@/pages/bbs/cmp-password-dialog'
+import cmpEditPassword from './cmp-edit-password'
+import cmpInputAuthor from './cmp-input-author'
+import cmpInputTitle from './cmp-input-title'
+import cmpInputContent from './cmp-input-content'
+import cmpInputPassword from './cmp-input-password'
 
 export default {
   mounted: function () {
-    if (this.mode === 'edit') {
-      this.$refs.inputPasswordModal.open()
-    }
+    this.isDisable = this.isEdit || this.isDelete
+    this.$http.get(
+      '/bbs/post/' + this.$route.params.id,
+    )
+    .then((res) => {
+      this.input.author    = res.data.author
+      this.input.title     = res.data.title
+      this.input.content   = res.data.content
+    })
   },
   methods: {
-    inputPasswordModalClose: function () {
-      this.$router.push('/bbs/post/' + this.postId)
+    doneAuth: function (opassword) {
+      this.isDisable = false
+      this.input.opassword = opassword
     },
-    inputPasswordModalClickSubmit: function (inputPassword) {
-      this.$http.get(
-        '/bbs/post/' + this.postId,
-        { params: { password: inputPassword }}
-      )
-      .then((res) => {
-        if (res.data.auth) {
-          this.input.author = res.data.author
-          this.input.title = res.data.title
-          this.input.content = res.data.content
-          this.input.opassword = inputPassword
-          this.$refs.inputPasswordModal.close()
-        } else {
-          this.$refs.inputPasswordModal.outputError()
-        }
-      })
+    doneDelete: function () {
+      this.isDoneDelete = true
     },
     clickSubmit: function () {
-      for (let key in this.isError) {
-        this.isError[key] = false
-      }
-
-      let isError = false
-      if (this.input.author.trim().length === 0) {
-        isError = true
-        this.isError.author = true
-        this.errorMessages.author = this.errorMessagesList.author1
-      } else if (this.input.author.trim().length > 50) {
-        isError = true
-        this.isError.author = true
-        this.errorMessages.author = this.errorMessagesList.author2
-      }
-      if (this.input.title.trim().length === 0) {
-        isError = true
-        this.isError.title = true
-        this.errorMessages.title = this.errorMessagesList.title1
-      } else if (this.input.title.trim().length > 100) {
-        isError = true
-        this.isError.title = true
-        this.errorMessages.title = this.errorMessagesList.title2
-      }
-      if (this.input.content.trim().length === 0) {
-        isError = true
-        this.isError.content = true
-        this.errorMessages.content = this.errorMessagesList.content1
-      } else if (this.input.content.trim().length > 3000) {
-        isError = true
-        this.isError.content = true
-        this.errorMessages.content = this.errorMessagesList.content2
-      }
-      if (this.input.password.trim().length === 0) {
-        isError = true
-        this.isError.password = true
-        this.errorMessages.password = this.errorMessagesList.password1
-      } else if (!this.input.password.match(/\d\d\d\d/)) {
-        isError = true
-        this.isError.password = true
-        this.errorMessages.password = this.errorMessagesList.password2
-      }
-
-      if (isError) {
+      if (
+        this.$refs.inputAuthor.check() |
+        this.$refs.inputTitle.check() |
+        this.$refs.inputContent.check() |
+        this.$refs.inputPassword.check()
+      ) {
         return
       }
+      return
 
       const inputData = {
         author  : this.input.author,
@@ -129,7 +101,7 @@ export default {
         password: this.input.password,
       }
 
-      if (this.mode === 'edit') {
+      if (isEdit) {
         this.$http.put(
           '/bbs/post/' + this.$route.params.id,
           inputData
@@ -150,59 +122,25 @@ export default {
   },
   data: function () {
     return {
-      isOpenInputPasswordModal: false,
+      isDisable: false,
       postId: this.$route.params.id,
-      mode: this.$route.path.split('/')[2],
-      isError: {
-        author: false,
-        title: false,
-        content: false,
-        password: false,
-      },
-      errorMessages: {
-        author: [],
-        title: [],
-        content: [],
-        password: [],
-      },
-      errorMessagesList: {
-        author1: '`名前` を入力してください',
-        author2: '`名前` は 50 字で入力してください',
-        title1: '`タイトル` を入力してください',
-        title2: '`タイトル` は 100 字で入力してください',
-        content1: '`コメント` を入力してください',
-        content2: '`コメント` は 3000 字以内で入力してください',
-        password1: '`パスワード` を入力してください',
-        password2: '`パスワード` は半角数字 4 字で入力してください',
-      },
+      isEdit: this.$route.path.split('/')[4] === 'edit',
+      isDelete: this.$route.path.split('/')[4] === 'delete',
+      isDoneDelete: false,
       input: {
         author: '',
         title: '',
         content: '',
         password: '',
       },
-      post: {
-        id: '',
-        author: '',
-        title: '',
-        content: '',
-        password: '',
-        opassword: '',
-      },
-      errMsg: [],
     }
   },
   components: {
-    'cmp-password-dialog': CmpPasswordDialog,
+    'cmp-edit-password': cmpEditPassword,
+    'cmp-input-author': cmpInputAuthor,
+    'cmp-input-title': cmpInputTitle,
+    'cmp-input-content': cmpInputContent,
+    'cmp-input-password': cmpInputPassword,
   }
 }
 </script>
-
-<style>
-.width-70px {
-  width: 70px;
-}
-.width-100px {
-  width: 100px;
-}
-</style>

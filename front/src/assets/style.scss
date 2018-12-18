@@ -1,5 +1,14 @@
+@import 'scss/bootstrap';
+
 body {
   font-family: 'Robot', 'Noto Sans Japanese';
+}
+
+.bg-main {
+  background: #ac2926;
+}
+.bg-sub {
+  background: #26a9ac;
 }
 
 a {
