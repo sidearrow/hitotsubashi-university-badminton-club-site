@@ -1,18 +1,18 @@
 <template>
-  <div :class="'collapse navbar-collapse' + (isShow && ' show')">
-    <ul class="navbar-nav">
-      <li
+  <div class="dropdown">
+    <a
+      class="btn btn-transpalent dropdown-toggle"
+      @click="toggle()"
+    ></a>
+    <div :class="'dropdown-menu dropdown-menu-right' + (isShow ? ' show' : '')">
+      <router-link
         v-for="(v, i) in menuList"
         :key="i"
-        class="nav-item"
-      >
-        <router-link
-          class="nav-link"
-          :to="v.href"
-          @click.native="toggle()"
-        >{{ v.text }}</router-link>
-      </li>
-    </ul>
+        class="dropdown-item"
+        :to="v.href"
+        @click.native="toggle()"
+      >{{ v.text }}</router-link>
+    </div>
   </div>
 </template>
 

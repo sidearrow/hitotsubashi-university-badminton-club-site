@@ -1,23 +1,7 @@
 <template>
 <div>
-  <nav class="navbar bg-main navbar-dark d-none d-md-block">
-    <router-link
-      to="/"
-      class="navbar-brand"
-    >Hitotsubashi Univ. Badminton Club</router-link>
-  </nav>
-  <nav class="navbar bg-main navbar-dark d-md-none">
-    <router-link
-      to="/"
-      class="navbar-brand"
-      style="font-size:0.8rem"
-    >Hitotsubashi Univ.<br/>Badminton Club</router-link>
-    <button
-      class="navbar-toggler"
-      @click="$refs.cmpMenu.toggle()"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar bg-transparent fixed-top">
+    <span class="navbar-brand">一橋バド</span>
     <cmp-menu ref="cmpMenu"></cmp-menu>
     <!---
     <v-btn
