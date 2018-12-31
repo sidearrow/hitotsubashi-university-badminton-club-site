@@ -1,7 +1,7 @@
 <template>
 <div class="row my-5">
   <div
-    class="col-6 text-center my-2"
+    class="col-sm-6 text-center my-2"
     v-for="(v, i) in buttonsList" :key="i"
   >
     <button

@@ -2,7 +2,7 @@
   <div>
     <cmp-header/>
     <div class="container-fluid" style="margin-top:5rem">
-      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 mb-5">
+      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 mb-5 px-0">
         <router-view></router-view>
       </div>
     </div>

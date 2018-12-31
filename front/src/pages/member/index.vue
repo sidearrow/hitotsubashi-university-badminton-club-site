@@ -3,29 +3,32 @@
     <h1>部員紹介</h1>
     <p>2017 年 7 月現在、男子 24 名、女子 7 名の計 31 名で活動しています。</p>
     <cmp-switch-buttons
-      :now="2 /*nowGrade */"
+      :now="nowGrade"
       @switch="switchGrade"
     />
     <div
-      v-for="(gradeData, i) in memberData" :key="i"
-      v-if="i == nowGrade"
+      v-for="(gradeData, key) in memberData" :key="key"
+      v-if="key === '_' + nowGrade"
     >
       <div
         class="row py-2"
         v-for="(member, j) in gradeData" :key="j"
       >
-        <div>
-          <img src="static/img/150x150.png" />
+        <div class="col-12 col-sm-auto mb-1 mb-sm-0 text-center bg-light">
+          <img src="static/img/in-preparation.png" />
         </div>
-        <div class="ml-3">
-          <div>{{ member.name }}</div>
-          <div>
-            <span class="badge bg-main text-white">{{ `${member.highschool} (${member.prefecture})` }}</span>
+        <div class="pl-3">
+          <h6
+            :class="member.sx === 'm' ? 'text-primary' : 'text-danger'"
+          >{{ member.name }}</h6>
+          <div class="py-2">
+            <span class="border border-dark rounded p-1">{{ member.gakubu }}</span>
+            <span class="border border-dark rounded p-1 ml-2">{{ member.from }}</span>
           </div>
           <div>
             <span
-              class="badge bg-sub text-white mr-1"
-              v-for="(pos, k) in member.position" :key="k"
+              class="border border-dark rounded p-1 mr-1"
+              v-for="(pos, k) in member.pos" :key="k"
             >{{ pos }}</span>
           </div>
         </div>
@@ -48,7 +51,6 @@ export default {
   methods: {
     switchGrade: function (grade) {
       this.nowGrade = grade
-      console.log(grade)
     }
   },
   components: {
