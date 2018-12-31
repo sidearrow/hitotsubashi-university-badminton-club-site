@@ -1,5 +1,6 @@
 <template>
-  <div class="carousel slide">
+<div class="px-0">
+  <div class="carousel slide my-5">
     <div class="carousel-inner">
       <div
         v-for="i in imgNum"
@@ -27,6 +28,7 @@
       </a>
     </div>
   </div>
+</div>
 </template>
 
 <script>
