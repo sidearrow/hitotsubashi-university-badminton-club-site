@@ -13,7 +13,7 @@
 export default {
   methods: {
     click: function () {
-      document.documentElement.scrollTop = 0
+      window.scrollTo(0, 0)
     }
   },
   data: function () {

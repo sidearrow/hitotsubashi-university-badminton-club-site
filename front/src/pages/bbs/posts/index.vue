@@ -10,17 +10,7 @@
     </ul>
   </section>
 
-  <div
-    v-if="isNowLoading"
-    class="text-center"
-  >
-    <cmp-now-loading/>
-  </div>
-
-  <div
-    v-else
-    class="list-group list-group-flush"
-  >
+  <div class="list-group list-group-flush">
     <div
       v-for="(v, i) in posts"
       :key="i"
@@ -34,18 +24,26 @@
       <div class="">
         <small>
           <span>by {{ v.author }}</span>
-          <span class="ml-4">{{ v.updatedAt }}</span>
+          <span class="ml-4 text-monospace">{{ v.updatedAt }}</span>
         </small>
       </div>
     </div>
   </div>
+
+  <div
+    v-if="isNowLoading"
+    class="text-center"
+  >
+    <cmp-now-loading/>
+  </div>
+
   <div
     v-if="typeof narrowDate === 'undefined'"
     class="text-center mt-3 mb-5"
   >
     <button
       @click="fetchBBSData(lastPostId)"
-      class="btn bg-main text-white"
+      class="btn btn-sm btn-outline-primary"
     >MORE</button>
   </div>
 </div>
@@ -65,6 +63,7 @@ export default {
   methods: {
     fetchBBSData: function (id) {
       let url = '/bbs/posts'
+      this.isNowLoading = true
       if (typeof id !== 'undefined') {
         url += '/' + id
       } else if (typeof this.narrowDate !== 'undefined') {

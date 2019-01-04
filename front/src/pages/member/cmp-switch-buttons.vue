@@ -1,13 +1,13 @@
 <template>
 <div class="row my-5">
   <div
-    class="col-sm-6 text-center my-2"
+    class="col-6 col-sm-3 text-center my-2"
     v-for="(v, i) in buttonsList" :key="i"
   >
     <button
-      :class="'btn btn-outline-dark' + ((i === now-1) ? ' active' : '')"
+      :class="'btn btn-sm btn-outline-dark' + ((i === now-1) ? ' active' : '')"
       @click="click(i)"
-    >{{ v[0] }}<small class="ml-2">{{ v[1] }}</small></button>
+    >{{ v[0] }}<br/><small>{{ v[1] }}</small></button>
   </div>
 </div>
 </template>

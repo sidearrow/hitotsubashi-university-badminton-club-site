@@ -16,6 +16,7 @@ csvData.forEach((v) => {
     sx    : v.sx,
     gakubu: v.gakubu,
     from  : v.highschool + ' (' + v.prefecture + ')',
+    img   : v.img,
     pos   : [],
   }
   v.position.split(',').forEach((v) => {

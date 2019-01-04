@@ -15,9 +15,13 @@
         v-for="(member, j) in gradeData" :key="j"
       >
         <div class="col-12 col-sm-auto mb-1 mb-sm-0 text-center bg-light">
-          <img src="static/img/in-preparation.png" />
+          <img
+            :src="'static/img/member/' + member.img + '.jpg'"
+            width="200"
+            height="200"
+          />
         </div>
-        <div class="col pl-3">
+        <div class="col pl-3 my-3 my-sm-0">
           <h6
             :class="member.sx === 'm' ? 'text-primary' : 'text-danger'"
           >{{ member.name }}</h6>
