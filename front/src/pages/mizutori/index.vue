@@ -13,7 +13,7 @@
   <article v-else>
     <div class="text-right my-3">
       <button
-        class="btn btn-secondary"
+        class="btn btn-outline-secondary"
         @click="clickLogout"
       >ログアウト</button>
     </div>

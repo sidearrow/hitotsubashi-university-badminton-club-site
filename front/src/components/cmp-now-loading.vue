@@ -1,6 +1,6 @@
 <template>
-  <div class="text-center mb-3">
-    <span>Now Loading ...</span>
+  <div class="spinner-border text-secondary m-5">
+    <span class="sr-only">Loading...</span>
   </div>
 </template>
 

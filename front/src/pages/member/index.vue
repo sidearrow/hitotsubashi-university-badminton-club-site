@@ -17,17 +17,17 @@
         <div class="col-12 col-sm-auto mb-1 mb-sm-0 text-center bg-light">
           <img src="static/img/in-preparation.png" />
         </div>
-        <div class="pl-3">
+        <div class="col pl-3">
           <h6
             :class="member.sx === 'm' ? 'text-primary' : 'text-danger'"
           >{{ member.name }}</h6>
           <div class="py-2">
-            <span class="border border-dark rounded p-1">{{ member.gakubu }}</span>
-            <span class="border border-dark rounded p-1 ml-2">{{ member.from }}</span>
+            <span class="border border-dark rounded px-1 mb-1 mr-2 d-inline-block">{{ member.gakubu }}</span>
+            <span class="border border-dark rounded px-1 d-inline-block">{{ member.from }}</span>
           </div>
           <div>
             <span
-              class="border border-dark rounded p-1 mr-1"
+              class="border border-dark rounded px-1 mr-1 mb-1 d-inline-block"
               v-for="(pos, k) in member.pos" :key="k"
             >{{ pos }}</span>
           </div>

@@ -6,19 +6,20 @@
         <router-view></router-view>
       </div>
     </div>
+    <cmp-to-top/>
     <cmp-footer/>
   </div>
 </template>
 
 <script>
 import cmpHeader from '@/components/cmp-navbar'
-import cmpSidebar from '@/components/cmp-sidebar'
+import cmpToTop from '@/components/cmp-to-top'
 import cmpFooter from '@/components/cmp-footer'
 
 export default {
   components: {
     'cmp-header': cmpHeader,
-    'cmp-sidebar': cmpSidebar,
+    'cmp-to-top': cmpToTop,
     'cmp-footer': cmpFooter,
   },
 }

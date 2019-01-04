@@ -38,13 +38,18 @@
 
 <script>
 export default {
+  created: function () {
+    this.elModalBackdrop = document.createElement('div')
+    this.elModalBackdrop.classList.add('modal-backdrop', 'fade', 'show', 'd-none')
+    document.body.appendChild(this.elModalBackdrop)
+  },
   methods: {
     open: function () {
-      document.querySelector('.modal-backdrop').classList.remove('d-none')
+      this.elModalBackdrop.classList.remove('d-none')
       this.isOpen = true
     },
     close: function () {
-      document.querySelector('.modal-backdrop').classList.add('d-none')
+      this.elModalBackdrop.classList.add('d-none')
       this.isOpen = false
       this.isError = false
       this.inputPassword = ''
@@ -62,6 +67,7 @@ export default {
     return {
       isOpen: false,
       isError: false,
+      elModalBackdrop: {},
       errorMessages: [],
       inputPassword: '',
     }

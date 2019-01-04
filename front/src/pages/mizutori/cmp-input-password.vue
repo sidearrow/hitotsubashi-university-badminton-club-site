@@ -4,7 +4,7 @@
     <label>パスワード</label>
     <input
       type="password"
-      :class="'form-control' + (isError ? ' is-invalid' : '')"
+      :class="'form-control form-control-sm' + (isError ? ' is-invalid' : '')"
       v-model="inputPassword"
     />
     <small class="form-text text-muted">{{ hintText }}</small>
@@ -12,9 +12,15 @@
   </div>
   <div class="text-center">
     <button
-      class="btn btn-primary"
+      class="btn btn-outline-primary"
       @click="clickLogin()"
-    >ログイン</button>
+    >
+      <span
+        v-if="isNowLoading"
+        class="spinner-border spinner-border-sm mr-2"
+      ></span>
+      <span>ログイン</span>
+    </button>
   </div>
 </div>
 </template>
@@ -23,12 +29,14 @@
 export default {
   methods: {
     clickLogin: function () {
+      this.isNowLoading = true
       this.$http
         .get(
           '/mizutori',
           {params: {password: this.inputPassword}}
         )
         .then((res) => {
+          this.isNowLoading = false
           if (!res.data.auth) {
             this.isError = true
             return
@@ -42,6 +50,7 @@ export default {
   data: function () {
     return {
       isError: false,
+      isNowLoading: false,
       hintText: '現会長の名前をローマ字表記・英小文字のみで入力してください',
       msgError: 'パスワードが間違っています',
       inputPassword: '',

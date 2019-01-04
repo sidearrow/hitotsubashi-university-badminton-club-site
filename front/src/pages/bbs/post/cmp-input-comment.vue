@@ -1,12 +1,12 @@
 <template>
   <div class="mt-5">
-    <h3>コメントを投稿する</h3>
+    <div class="h4">コメントを投稿する</div>
     <cmp-input-comment-author v-model="input.author" ref="inputAuthor"/>
     <cmp-input-comment-content v-model="input.content" ref="inputContent"/>
     <cmp-input-comment-password v-model="input.password" ref="inputPassowrd"/>
     <div class="text-center mt-2">
       <button
-        class="btn bg-main text-white"
+        class="btn btn-outline-primary"
         @click="clickPost"
       >投稿</button>
     </div>

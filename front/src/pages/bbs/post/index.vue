@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>{{ post.title }}</h1>
+  <div class="h3">{{ post.title }}</div>
   <cmp-post-dropdown :postId="postId"/>
   <div class="mb-5">
     <span>{{ post.author }}</span>
@@ -20,11 +20,9 @@
         </div>
         <div class="text-right">
           <button
-            class="btn"
+            class="btn btn-sm btn-outline-secondary"
             @click="openInputPasswordModal(i)"
-          >
-            <i class="material-icons">delete</i>
-          </button>
+          >削除</button>
         </div>
         <p class="ws-preline">{{ v.content }}</p>
       </div>

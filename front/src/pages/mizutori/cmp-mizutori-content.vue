@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h2 class="headline primary--text">OB通信</h2>
+    <div class="h3">OB通信</div>
     <cmpNowLoading v-if="isNowLoading"/>
-    <section
+    <div
       v-else
       v-for="(v1, i1) in obmsg" :key="i1"
-      class="mb-3"
+      class="row mb-2"
     >
-      <h3 class="title">{{ v1.year }}年</h3>
-      <div class="mb-3">
+      <div class="col-auto">{{ v1.year }}年</div>
+      <div class="col">
         <span
           v-for="(v2, i2) in v1.data" :key="i2"
           class="mr-2 d-inline-block"
@@ -16,7 +16,7 @@
           <a target="__blank" :href="v2.url">{{ v2.name }}</a>
         </span>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
