@@ -1,0 +1,7 @@
+firebase-debug.log
+package-lock.json
+hit-u-bad-*.json
+.nyc_output
+
+/node_modules
+/firebase-secret-key
