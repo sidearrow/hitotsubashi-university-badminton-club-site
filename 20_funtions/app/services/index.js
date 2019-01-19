@@ -3,7 +3,7 @@ const config = require('../config/index')
 
 const serviceAccount = require(
   '../firebase-secret-key/' +
-  ((process.env.NODE_ENV === 'production') ? 'prod.json' : 'dev.json')
+  ((config.env === 'prod') ? 'prod.json' : 'dev.json')
 )
 
 admin.initializeApp({

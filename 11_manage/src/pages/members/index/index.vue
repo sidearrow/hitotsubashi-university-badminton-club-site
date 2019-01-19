@@ -32,15 +32,19 @@
 
 <script>
 export default {
+  created: function () {
+    this.fetchMembersData()
+  },
+  methods: {
+    fetchMembersData: function () {
+      this.$axios
+        .get('/members')
+        .then(res => this.members = res.data)
+    }
+  },
   data: function () {
     return {
-      members: [
-        {
-          name_family: 'aaa',
-          name_given: 'bbb',
-          year: '2017',
-        }
-      ],
+      members: [],
     }
   }
 }
