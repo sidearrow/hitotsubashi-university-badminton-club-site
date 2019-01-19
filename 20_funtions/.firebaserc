@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "hit-u-bad"
+    "default": "hit-u-bad",
+    "dev": "dev-hit-u-bad"
   }
 }

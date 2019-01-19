@@ -31,6 +31,7 @@ mizutoriRouter.get('/obmsg', mizutoriModel.modelObmsgGet)
 
 const membersRouter = express.Router({ mergeParams: true })
 membersRouter.get('/', modelMembers.index)
+membersRouter.post('/', modelMembers.create)
 
 module.exports = {
   bbs: bbsRouter,

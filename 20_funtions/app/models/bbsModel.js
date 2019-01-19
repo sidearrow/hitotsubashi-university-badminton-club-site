@@ -1,13 +1,6 @@
-const database = require('../database')
+const database = require('../services/index').database
 
-const getCollectionName = (version) => {
-  let collectionName = 'bbs'
-  if (version === 'dev') {
-    collectionName = 'dev-bbs'
-  }
-
-  return collectionName
-}
+const collectionName = 'bbs'
 
 const formatDate = (rowDate) => {
   const timezoneOffsetDiff = -540 - new Date().getTimezoneOffset()
@@ -24,7 +17,7 @@ function modelPostPost (req, res) {
   const now = new Date(Date.now())
 
   database
-    .collection(getCollectionName(version))
+    .collection(collectionName)
     .add({
       title    : req.body.title,
       author   : req.body.author,
@@ -46,7 +39,7 @@ function modelPostGet (req, res) {
   const id = req.params.id
 
   database
-    .collection(getCollectionName(version))
+    .collection(collectionName)
     .doc(id)
     .get()
     .then((doc) => {
@@ -79,7 +72,7 @@ function modelPostPut (req, res) {
   const id = req.params.id
 
   database
-    .collection(getCollectionName(version))
+    .collection(collectionName)
     .doc(id)
     .update({
       title    : req.body.title,
@@ -101,7 +94,7 @@ function modelPostDelete (req, res) {
   const id = req.params.id
 
   database
-    .collection(getCollectionName(version))
+    .collection(collectionName)
     .doc(id)
     .get()
     .then((doc) => {
@@ -127,7 +120,7 @@ function modelPostCommentPost (req, res) {
   const id = req.params.id
 
   database
-    .collection(getCollectionName(version))
+    .collection(collectionName)
     .doc(id)
     .get()
     .then((doc) => {
@@ -159,7 +152,7 @@ function modelPostCommentDelete (req, res) {
   const cid = req.params.cid
 
   database
-    .collection(getCollectionName(version))
+    .collection(collectionName)
     .doc(id)
     .get()
     .then((doc) => {
@@ -202,19 +195,19 @@ function modelPostsGet (req, res) {
 
   if (typeof req.params.id === 'undefined') {
     database
-      .collection(getCollectionName(version))
+      .collection(collectionName)
       .orderBy('createdAt', 'desc')
       .limit(20)
       .get()
       .then(response)
   } else {
     database
-      .collection(getCollectionName(version))
+      .collection(collectionName)
       .doc(req.params.id)
       .get()
       .then((doc) => {
         database
-          .collection(getCollectionName(version))
+          .collection(collectionName)
           .orderBy('createdAt', 'desc')
           .startAfter(doc)
           .limit(20)
@@ -227,7 +220,6 @@ function modelPostsGet (req, res) {
 function modelPostsDateGet (req, res) {
   const version = req.params.version
 
-  console.log(req.params)
   if (
     typeof req.params.date === 'undefined' ||
     req.params.date.match(new RegExp(/\d\d\d\d\d\d/)) === null
@@ -248,7 +240,7 @@ function modelPostsDateGet (req, res) {
   }
 
   database
-    .collection(getCollectionName(version))
+    .collection(collectionName)
     .where('createdAt', '>=', startDate)
     .where('createdAt', '<', endDate)
     .orderBy('createdAt', 'desc')

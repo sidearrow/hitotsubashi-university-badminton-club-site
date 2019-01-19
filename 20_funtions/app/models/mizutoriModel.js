@@ -1,4 +1,4 @@
-const database = require('../database').database
+const database = require('../services/index').database
 
 function modelIndexGet (req, res) {
   const inputPassword = req.query.password
