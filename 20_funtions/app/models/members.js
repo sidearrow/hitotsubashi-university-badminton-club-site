@@ -13,6 +13,18 @@ model.schema = {
   img: '',
 }
 
+model.get = (id, callback) => {
+  database
+    .collection(collectionName)
+    .doc(id)
+    .get()
+    .then((doc) => {
+      callback(Object.assign(
+        doc.data(), { id: doc.id }
+      ))
+    })
+}
+
 model.getAll = function (callback) {
   database
     .collection('members')
@@ -20,7 +32,9 @@ model.getAll = function (callback) {
     .then((qs) => {
       let data = []
       qs.forEach((v) => {
-        data.push(v.data())
+        data.push(Object.assign(
+          v.data(), { id: v.id }
+        ))
       })
 
       callback(data)

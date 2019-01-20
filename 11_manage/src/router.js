@@ -14,6 +14,7 @@ export default new Router({
       component: Home
     },
     { path: '/members', component: () => import('./pages/members/index/index.vue') },
+    { path: '/members/new', component: () => import('./pages/members/edit/index.vue') },
     { path: '/members/:id/edit', component: () => import('./pages/members/edit/index.vue') }
   ]
 })

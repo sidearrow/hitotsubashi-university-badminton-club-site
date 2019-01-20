@@ -3,6 +3,6 @@ const config = {}
 config.apiBaseUrl =
   (process.env.NODE_ENV === 'production') ?
   '' :
-  'https://asia-northeast1-dev-hit-u-bad.cloudfunctions.net/api'
+  'http://localhost:5000/dev-hit-u-bad/us-central1/api'
 
 module.exports = config

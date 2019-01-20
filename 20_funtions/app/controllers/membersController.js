@@ -28,6 +28,13 @@ controller.indexPost = (req, res) => {
   })
 }
 
+controller.indexIdGet = (req, res) => {
+  const id = req.params.id
+  modelMembers.get(id, (data) => {
+    res.json(data)
+  })
+}
+
 controller.indexIdPut = (req, res) => {
   const id = req.params.id
   const inputData = modelMembers.schema

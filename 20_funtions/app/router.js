@@ -26,6 +26,7 @@ router.route('/members')
   .get(membersController.indexGet)
   .post(membersController.indexPost)
 router.route('/members/:id')
+  .get(membersController.indexIdGet)
   .put(membersController.indexIdPut)
   .delete(membersController.indexIdDelete)
 
