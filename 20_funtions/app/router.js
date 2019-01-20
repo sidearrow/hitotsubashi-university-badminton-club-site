@@ -4,27 +4,32 @@ const mizutoriModel = require('./models/mizutoriModel')
 const membersController = require('./controllers/membersController')
 
 const router = express.Router()
-router.post('bbs/post', bbsModel.modelPostPost)
+router.route('/bbs/posts')
+  .get(bbsController.index)
+  .post(bbsController.create)
 
-router.get('bbs/post/:id', bbsModel.modelPostGet)
-router.put('bbs/post/:id', bbsModel.modelPostPut)
-router.delete('bbs/post/:id', bbsModel.modelPostDelete)
+router.route('/bbs/posts/:id')
+  .get(bbsController.show)
+  .put(bbsController.update)
+  .delete(bbsController.delete)
 
-router.post('bbs/post/:id/comment', bbsModel.modelPostCommentPost)
-router.delete('bbs/post/:id/comment/:cid', bbsModel.modelPostCommentDelete)
+router.route('/bbs/posts/:id/comment')
+  .post(bbsController.commentCreate)
 
-router.get('bbs/posts', bbsModel.modelPostsGet)
-router.get('bbs/posts/:id', bbsModel.modelPostsGet)
-router.get('bbs/posts/date/:date', bbsModel.modelPostsDateGet)
+router.route('/bbs/posts/:id/comment/:cid')
+  .delete(bbsController.commentDelete)
 
-router.get('bbs/posts/datelist', bbsModel.modelPostsDatelistGet)
+router.get('/bbs/posts/date/:date', bbsModel.modelPostsDateGet)
 
-router.get('mizutori/', mizutoriModel.modelIndexGet)
-router.get('mizutori/obmsg', mizutoriModel.modelObmsgGet)
+router.get('/bbs/posts/datelist', bbsModel.modelPostsDatelistGet)
+
+router.get('/mizutori/', mizutoriModel.modelIndexGet)
+router.get('/mizutori/obmsg', mizutoriModel.modelObmsgGet)
 
 router.route('/members')
   .get(membersController.indexGet)
   .post(membersController.indexPost)
+
 router.route('/members/:id')
   .get(membersController.indexIdGet)
   .put(membersController.indexIdPut)

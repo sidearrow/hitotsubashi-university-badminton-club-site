@@ -1,12 +1,5 @@
-const fs = require('fs')
-const os = require('os')
-const path = require('path')
-const Busboy = require('busboy')
-
-const config = require('../config/index')
 const modelMembers = require('../models/members')
-let controller = {}
-
+const controller = {}
 
 controller.indexGet = (_, res) => {
   modelMembers.getAll((data) => {

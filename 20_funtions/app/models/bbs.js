@@ -1,17 +1,7 @@
 const database = require('../services/index').database
-const collectionName = 'members'
+const collectionName = 'bbs'
 
-let model = {}
-
-model.schema = {
-  name_family: '',
-  name_given: '',
-  year: 0,
-  highschool: '',
-  prefecture: '',
-  intro: '',
-  img: '',
-}
+const model = {}
 
 model.get = (id, callback) => {
   database
@@ -25,27 +15,11 @@ model.get = (id, callback) => {
     })
 }
 
-model.getAll = (callback) => {
-  database
-    .collection('members')
-    .get()
-    .then((qs) => {
-      let data = []
-      qs.forEach((v) => {
-        data.push(Object.assign(
-          v.data(), { id: v.id }
-        ))
-      })
-
-      callback(data)
-    })
-}
-
 model.create = (data, callback) => {
   database
     .collection(collectionName)
     .add(data)
-    .then((docRef) => callback(docRef.id))
+    .then((doc) => callback(doc.id))
 }
 
 model.update = (id, data, callback) => {
