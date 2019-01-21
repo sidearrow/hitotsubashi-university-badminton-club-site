@@ -1,4 +1,5 @@
 const modelBbs = require('../models/bbs')
+const modelBbsDelete = require('../models/bbsDelete')
 const controller = {}
 
 const formatDate = (rowDate) => {
@@ -11,7 +12,7 @@ const formatDate = (rowDate) => {
   return `${d.getFullYear()}/${f(d.getMonth()+1)}/${f(d.getDate())} ${f(d.getHours())}:${f(d.getMinutes())}`
 }
 
-controller.create = (req, res) => {
+controller.create = async (req, res) => {
   const now = new Date(Date.now())
 
   const data = {}
@@ -23,195 +24,98 @@ controller.create = (req, res) => {
   data.createdAt = now
   data.updatedAt = now
 
-  modelBbs.create(data, (doc) => {
-    res.json({
-      isSuccess: true,
-      id: doc.id
-    })
+  const id = await modelBbs.create(data)
+
+  res.json({
+    isSuccess: true,
+    id: id
   })
 }
 
-function modelPostGet (req, res) {
-  const version = req.params.version
+controller.show = async (req, res) => {
   const id = req.params.id
 
-  database
-    .collection(collectionName)
-    .doc(id)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        const tmp = doc.data()
-        tmp.auth = (
-          typeof req.query.password !== 'undefined' &&
-          req.query.password === tmp.password
-        )
-        tmp.id = doc.id
-        tmp.createdAtRaw = tmp.createdAt
-        tmp.updatedAtRaw = tmp.updatedAt
-        tmp.createdAt = formatDate(tmp.createdAt)
-        tmp.updatedAt = formatDate(tmp.updatedAt)
-        tmp.comments.forEach((v, i) => {
-          tmp.comments[i].createdAtRaw = v.createdAt
-          tmp.comments[i].createdAt = formatDate(v.createdAt)
-        })
-        delete tmp.password
-  
-        res.json(tmp)
-      } else {
-        res.json({auth: false})
-      }
+  res.json(
+    await modelBbs.get(id)
+  )
+}
+
+controller.update = async (req, res) => {
+  const id = req.params.id
+
+  const data = {}
+  data.title     = req.body.title
+  data.author    = req.body.author
+  data.content   = req.body.content
+  data.password  = req.body.password
+  data.updatedAt = new Date(Date.now())
+
+  const _ = await modelBbs.update(id, data)
+  res.json({
+    isSuccess: true
   })
 }
 
-function modelPostPut (req, res) {
-  const version = req.params.version
-  const id = req.params.id
+controller.delete = async (req, res) => {
+  const reqId = req.params.id
+  const reqPassword = req.query.password
 
-  database
-    .collection(collectionName)
-    .doc(id)
-    .update({
-      title    : req.body.title,
-      author   : req.body.author,
-      content  : req.body.content,
-      password : req.body.password,
-      updatedAt: new Date(Date.now()),
-    })
-    .then((docRef) => {
-      res.json({
-        isSuccess: true,
-        id: docRef.id
-      })
-    })
-}
-
-function modelPostDelete (req, res) {
-  const version = req.params.version
-  const id = req.params.id
-
-  database
-    .collection(collectionName)
-    .doc(id)
-    .get()
-    .then((doc) => {
-      if (doc.exists && (doc.data().password === req.query.password)) {
-        database
-          .collection(getCollectionName(version))
-          .doc(id)
-          .delete()
-          .then(() => {
-            res.json({isSuccess: true})
-          })
-        database
-          .collection('bbs-delete')
-          .add(doc.data())
-      } else {
-        res.json({isSuccess: false})
-      }
-    })
-}
-
-function modelPostCommentPost (req, res) {
-  const version = req.params.version
-  const id = req.params.id
-
-  database
-    .collection(collectionName)
-    .doc(id)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        let commentsData = doc.data().comments
-        commentsData.push({
-          author: req.body.author,
-          content: req.body.content,
-          password: req.body.password,
-          createdAt: new Date(Date.now()),
-          isDelete: false
-        })
-        database
-          .collection(getCollectionName(version))
-          .doc(id)
-          .update({comments: commentsData})
-          .then(() => {
-            res.json({isSuccess: true})
-          })
-      } else {
-        res.json({isSuccess: false})
-      }
-    })
-}
-
-function modelPostCommentDelete (req, res) {
-  const version = req.params.version
-  const id = req.params.id
-  const cid = req.params.cid
-
-  database
-    .collection(collectionName)
-    .doc(id)
-    .get()
-    .then((doc) => {
-      if (doc.exists && (doc.data().comments[cid].password === req.query.password)) {
-        let commentsData = doc.data().comments
-        commentsData[cid].isDelete = true
-        database
-          .collection(getCollectionName(version))
-          .doc(id)
-          .update({comments: commentsData})
-          .then(() => {
-            res.json({isSuccess: true})
-          })
-      } else {
-        res.json({isSuccess: false})
-      }
-    })
-}
-
-function modelPostsGet (req, res) {
-  const version = req.params.version
-
-  const response = function (qs) {
-    let data = []
-    qs.forEach((v) => {
-      let tmp = v.data()
-      tmp['id'] = v.id
-      tmp.createdAtRaw = tmp.createdAt
-      tmp.updatedAtRaw = tmp.updatedAt
-      tmp.createdAt = formatDate(tmp.createdAt)
-      tmp.updatedAt = formatDate(tmp.updatedAt)
-      tmp.commentNum = tmp.comments.length
-      delete tmp.password
-      delete tmp.comments
-      data.push(tmp)
-    })
-
-    res.json(data)
-  }
-
-  if (typeof req.params.id === 'undefined') {
-    database
-      .collection(collectionName)
-      .orderBy('createdAt', 'desc')
-      .limit(20)
-      .get()
-      .then(response)
+  const target = await modelBbs.get(reqId)
+  if (target.password === reqPassword) {
+    await modelBbs.delete(reqId)
+    await modelBbsDelete.create(target)
+    res.json({isSuccess: true})
   } else {
-    database
-      .collection(collectionName)
-      .doc(req.params.id)
-      .get()
-      .then((doc) => {
-        database
-          .collection(collectionName)
-          .orderBy('createdAt', 'desc')
-          .startAfter(doc)
-          .limit(20)
-          .get()
-          .then(response)
-    })
+    res.json({isSuccess: false})
   }
+}
+
+controller.commentsCreate = async (req, res) => {
+  const reqId = req.params.id
+
+  const data = {}
+  data.author    = req.body.author
+  data.content   = req.body.content
+  data.password  = req.body.password
+  data.createdAt = new Date(Date.now())
+  data.isDelete  = false
+
+  const target = await modelBbs.get(reqId)
+  target.comments.push(data)
+  const updateData = { comments: target.comments}
+  await modelBbs.update(reqId, updateData)
+
+  res.json({isSuccess: true})
+}
+
+controller.commentsDelete = async (req, res) => {
+  const reqId = req.params.id
+  const reqCid = req.params.cid
+  const reqPassword = req.query.password
+
+  const target = await modelBbs.get(reqId)
+  if (target.comments[reqCid].password === req.query.password) {
+    target.comments[reqCid].isDelete = true
+    const updateData = { comments: target.comments }
+    await modelBbs.update(reqId, updateData)
+
+    res.json({isSuccess: true})
+  } else {
+    res.json({isSuccess: false})
+  }
+}
+
+controller.index = async (req, res) => {
+  const reqId = req.query.id
+
+  let resData = []
+  if (typeof reqId === 'undefined') {
+    resData = await modelBbs.getPage()
+  } else {
+    resData = await modelBbs.getPage(reqId)
+  }
+
+  res.json(resData)
 }
 
 function modelPostsDateGet (req, res) {
@@ -275,14 +179,4 @@ function modelPostsDatelistGet (req, res) {
     })
 }
 
-module.exports = {
-  modelPostPost: modelPostPost,
-  modelPostGet: modelPostGet,
-  modelPostPut: modelPostPut,
-  modelPostDelete: modelPostDelete,
-  modelPostCommentPost: modelPostCommentPost,
-  modelPostCommentDelete: modelPostCommentDelete,
-  modelPostsGet: modelPostsGet,
-  modelPostsDateGet: modelPostsDateGet,
-  modelPostsDatelistGet: modelPostsDatelistGet,
-}
+module.exports = controller
