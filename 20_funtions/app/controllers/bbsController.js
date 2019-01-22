@@ -118,9 +118,7 @@ controller.index = async (req, res) => {
   res.json(resData)
 }
 
-function modelPostsDateGet (req, res) {
-  const version = req.params.version
-
+controller.dateIndex = async (req, res) => {
   if (
     typeof req.params.date === 'undefined' ||
     req.params.date.match(new RegExp(/\d\d\d\d\d\d/)) === null
@@ -129,42 +127,11 @@ function modelPostsDateGet (req, res) {
     return
   }
 
-  const year = req.params.date.substr(0, 4)
-  const month = req.params.date.substr(4, 2)
-  const startDate = new Date(year + '-' + month + '-01 00:00:00')
+  const year = Number(req.params.date.substr(0, 4))
+  const month = Number(req.params.date.substr(4, 2))
 
-  let endDate
-  if (month === '12') {
-    endDate = new Date(String(Number(year) + 1) + '-01-01 00:00:00')
-  } else {
-    endDate = new Date(year + '-' + String(Number(month) + 1) + '-01 00:00:00')
-  }
-
-  database
-    .collection(collectionName)
-    .where('createdAt', '>=', startDate)
-    .where('createdAt', '<', endDate)
-    .orderBy('createdAt', 'desc')
-    .get()
-    .then((qs) => {
-      let data = []
-      qs.forEach((v) => {
-        let tmp = v.data()
-        tmp['id'] = v.id
-        tmp.createdAtRaw = tmp.createdAt
-        tmp.updatedAtRaw = tmp.updatedAt
-        tmp.createdAt = formatDate(tmp.createdAt)
-        tmp.updatedAt = formatDate(tmp.updatedAt)
-        tmp.commentNum = tmp.comments.length
-        delete tmp.content
-        delete tmp.password
-        delete tmp.comments
-
-        data.push(tmp)
-      })
-
-      res.json(data)
-    })
+  const data = await modelBbs.getDateNarrow(year, month)
+  res.json(data)
 }
 
 function modelPostsDatelistGet (req, res) {

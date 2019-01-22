@@ -1,11 +1,35 @@
 const database = require('../services/index').database
+const util = require('../util')
 const collectionName = 'bbs'
 
 const model = {}
+const formatResponse = (doc, isDetail = false) => {
+  const data = doc.data()
+  data.id = doc.id
+  data.createdAt = util.getDateString(data.createdAt.toDate())
+  data.updatedAt = util.getDateString(data.updatedAt.toDate())
+  delete data.password
+
+  if (isDetail && data.comments.length > 0) {
+    data.comments.forEach((v, i) => {
+      if (v.isDelete) {
+        data.comments[i] = { isDelete: true }
+      } else {
+        data.comments[i].createdAt = util.getDateString(v.createdAt.toDate())
+        delete data.comments[i].password
+      }
+    })
+  } else {
+    data.commentsNum = data.comments.length
+    delete data.comments
+  }
+
+  return data
+}
 
 model.get = async (id) => {
   const doc = await database.collection(collectionName).doc(id).get()
-  return Object.assign(doc.data(), { id: doc.id })
+  return formatResponse(doc, true)
 }
 
 model.getPage = async (id = null) => {
@@ -21,13 +45,7 @@ model.getPage = async (id = null) => {
 
   let res = []
   docs.forEach(doc => {
-    const tmp = doc.data()
-    tmp.id = doc.id
-    tmp.commentsNum = tmp.comments.length
-    delete tmp.password
-    delete tmp.comments
-
-    res.push(tmp)
+    res.push(formatResponse(doc))
   })
 
   return res
@@ -46,6 +64,21 @@ model.update = async (id, data) => {
 model.delete = async (id) => {
   await database.collection(collectionName).doc(id).delete()
   return true
+}
+
+model.getDateNarrow = async (year, month) => {
+  const docs = await database.collection(collectionName)
+                       .where('createdAt', '>=', new Date(year, month-1))
+                       .where('createdAt', '<', new Date(year, month))
+                       .orderBy('createdAt', 'desc')
+                       .get()
+
+  let res = []
+  docs.forEach(doc => {
+    res.push(formatResponse(doc))
+  })
+
+  return res
 }
 
 module.exports = model

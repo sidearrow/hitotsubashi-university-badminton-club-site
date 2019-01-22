@@ -19,10 +19,11 @@ router.route('/bbs/posts/:id/comments')
 router.route('/bbs/posts/:id/comments/:cid')
   .delete(bbsController.commentsDelete)
 
+
+router.route('/bbs/posts/date/:date')
+  .get(bbsController.dateIndex)
+
 /*
-
-router.get('/bbs/posts/date/:date', bbsModel.modelPostsDateGet)
-
 router.get('/bbs/posts/datelist', bbsModel.modelPostsDatelistGet)
 
 router.get('/mizutori/', mizutoriModel.modelIndexGet)
