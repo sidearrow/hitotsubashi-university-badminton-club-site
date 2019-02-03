@@ -3,7 +3,7 @@
     <a
       class="btn btn-transpalent dropdown-toggle"
       @click="toggle()"
-    ></a>
+    >Menu</a>
     <div :class="'dropdown-menu dropdown-menu-right' + (isShow ? ' show' : '')">
       <router-link
         v-for="(v, i) in menuList"
@@ -27,12 +27,12 @@ export default {
     return {
       isShow: false,
       menuList: [
-        { text: 'TOP', href: this.$config.url.top },
-        { text: 'MEMBER', href: this.$config.url.member },
-        { text: 'RESULT', href: this.$config.url.result },
-        { text: 'SANTAMA', href: this.$config.url.santama },
-        { text: 'BBS', href: this.$config.url.bbs },
-        { text: 'MIZUTORI', href: this.$config.url.mizutori},
+        { text: 'ホーム', href: this.$config.url.top },
+        { text: '部員紹介', href: this.$config.url.member },
+        { text: '大会結果', href: this.$config.url.result },
+        { text: '三多摩大会', href: this.$config.url.santama },
+        { text: '掲示板', href: this.$config.url.bbs },
+        { text: 'みずとり会', href: this.$config.url.mizutori},
       ]
     }
   }

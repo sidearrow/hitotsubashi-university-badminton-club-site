@@ -1,6 +1,6 @@
 <template>
 <div>
-  <nav class="navbar bg-white fixed-top border-bottom border-dark">
+  <nav class="navbar bg-main fixed-top text-white">
     <span class="navbar-brand">一橋バド</span>
     <cmp-menu ref="cmpMenu"></cmp-menu>
     <!---

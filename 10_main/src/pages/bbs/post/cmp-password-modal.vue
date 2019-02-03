@@ -48,6 +48,9 @@ export default {
     this.elModalBackdrop.classList.add('modal-backdrop', 'fade', 'show', 'd-none')
     document.body.appendChild(this.elModalBackdrop)
   },
+  destroyed: function () {
+    this.elModalBackdrop.parentNode.removeChild(this.elModalBackdrop)
+  },
   methods: {
     open: function () {
       this.elModalBackdrop.classList.remove('d-none')
