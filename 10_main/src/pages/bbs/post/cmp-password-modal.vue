@@ -5,7 +5,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <p class="modal-title">パスワードを入力して下さい</p>
+        <h5 class="modal-title">投稿を削除します</h5>
         <button
           class="close"
           @click="close"
@@ -15,19 +15,23 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
+          <label>削除キー</label>
           <input
-            type="password" class="form-control"
-            :v-model="inputPassword"
+            type="password" maxlength="4"
+            :class="'form-control form-control-sm' + (isError ? ' is-invalid' : '')"
+            v-model="inputPassword"
           />
+          <div class="invalid-feedback">{{ errorMsg }}</div>
+          <small :class="'form-text text-muted' + (isError ? ' d-none' : '')">半角数字 4 桁で入力してください</small>
         </div>
       </div>
       <div class="modal-footer">
         <button
-          class="btn bg-main text-white"
+          class="btn btn-sm btn-outline-danger"
           @click="clickSubmit"
-        >OK</button>
+        >削除</button>
         <button
-          class="btn btn-secondary"
+          class="btn btn-sm btn-outline-secondary"
           @click="close"
         >キャンセル</button>
       </div>
@@ -38,6 +42,7 @@
 
 <script>
 export default {
+  props: ['postId', 'commentId'],
   created: function () {
     this.elModalBackdrop = document.createElement('div')
     this.elModalBackdrop.classList.add('modal-backdrop', 'fade', 'show', 'd-none')
@@ -55,12 +60,27 @@ export default {
       this.inputPassword = ''
       this.$emit('close-dialog')
     },
-    outputError: function () {
-      this.isError = true
-      this.errorMessages = 'パスワードが間違っています'
-    },
-    clickSubmit: function () {
-      this.$emit('click-submit', this.inputPassword)
+    clickSubmit: async function () {
+      let url = '/bbs/post/' + this.postId
+      if (this.commentId !== null) {
+        url += '/comment/' + this.commentId
+      }
+
+      const res = await this.$http.delete(url, { params: { password: this.inputPassword }})
+      if (!res.data.isSuccess) {
+        this.isError = true
+        this.errorMsg = 'パスワードが間違っています'
+        return
+      }
+
+      this.close()
+      if (this.commentId === null) {
+        alert('投稿を削除しました')
+        this.$router.push('/bbs/posts')
+      } else {
+        alert('コメントを削除しました')
+        this.$emit('comment-delete-done')
+      }
     }
   },
   data: function () {
@@ -68,7 +88,7 @@ export default {
       isOpen: false,
       isError: false,
       elModalBackdrop: {},
-      errorMessages: [],
+      errorMsg: '',
       inputPassword: '',
     }
   },

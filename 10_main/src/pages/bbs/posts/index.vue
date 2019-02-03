@@ -10,11 +10,10 @@
     </ul>
   </section>
 
-  <div class="list-group list-group-flush">
+  <div>
     <div
-      v-for="(v, i) in posts"
-      :key="i"
-      class="list-group-item"
+      v-for="(v, i) in posts" :key="i"
+      class="mb-4"
     >
       <div>
         <router-link
@@ -27,6 +26,7 @@
           <span class="ml-4 text-monospace">{{ v.updatedAt }}</span>
         </small>
       </div>
+      <div><small>{{ v.content.slice(0, 100) + (v.content.length > 100 ? ' ...' : '') }}</small></div>
     </div>
   </div>
 

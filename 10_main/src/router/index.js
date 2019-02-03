@@ -14,7 +14,6 @@ const router = new Router({
     // 掲示板
     { path: '/bbs/posts/:id',        component: () => import('@/pages/bbs/post/index')},
     { path: '/bbs/posts/:id/edit',   component: () => import('@/pages/bbs/input/index') },
-    { path: '/bbs/posts/:id/delete', component: () => import('@/pages/bbs/input/index') },
     { path: '/bbs/posts',            component: () => import('@/pages/bbs/posts/index') },
     { path: '/bbs/posts/:date',      component: () => import('@/pages/bbs/posts/index') },
     { path: '/bbs/posts/narrowdate', component: () => import('@/pages/bbs/posts/narrowdate/index') },

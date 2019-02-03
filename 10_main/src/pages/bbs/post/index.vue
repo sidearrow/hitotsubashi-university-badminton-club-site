@@ -1,7 +1,13 @@
 <template>
 <div>
   <div class="h3">{{ post.title }}</div>
-  <cmp-post-dropdown :postId="postId"/>
+  <div class="text-right">
+    <router-link class="btn btn-sm btn-outline-success mr-2" :to="'/bbs/posts/' + postId + '/edit'">編集</router-link>
+    <button
+      class="btn btn-sm btn-outline-danger"
+      @click="openInputPasswordModal(null)"
+    >削除</button>
+  </div>
   <div class="mb-5">
     <span>{{ post.author }}</span>
     <span class="ml-2 text-monospace"><small>{{ post.createdAt }}</small></span>
@@ -20,7 +26,7 @@
         </div>
         <div class="text-right">
           <button
-            class="btn btn-sm btn-outline-secondary"
+            class="btn btn-sm btn-outline-danger"
             @click="openInputPasswordModal(i)"
           >削除</button>
         </div>
@@ -39,17 +45,16 @@
 
   <cmp-password-dialog
     ref="inputPasswordModal"
-    :id="postId"
-    :cid="modalTargetCommentId"
-    @click-submit="inputPasswordModalClickSubmit"
+    :postId="postId"
+    :commentId="modalTargetCommentId"
+    @comment-delete-done="fetchData"
   />
 </div>
 </template>
 
 <script>
-import CmpPostDropdown from './cmp-post-dropdown'
 import CmpInputComment from './cmp-input-comment'
-import CmpPasswordDialog from '../cmp-password-modal'
+import CmpPasswordDialog from './cmp-password-modal'
 
 export default {
   created () {
@@ -63,29 +68,6 @@ export default {
           this.post = res.data
         })
     },
-    inputPasswordModalClickSubmit: function (inputPassword) {
-        let url = '/bbs/post/' + this.postId
-        if (this.modalTargetCommentId !== -1) {
-          url += '/comment/' + this.modalTargetCommentId
-        }
-
-        this.$http
-          .delete(url, { params: { password: inputPassword }})
-          .then((res) => {
-            if (res.data.isSuccess) {
-              this.$refs.inputPasswordModal.close()
-              if (this.modalTargetCommentId === -1) {
-                alert('投稿を削除しました')
-                this.$router.push('/bbs/posts')
-              } else {
-                alert('コメントを削除しました')
-                this.fetchData()
-              }
-            } else {
-              this.$refs.inputPasswordModal.outputError()
-            }
-          })
-    },
     openInputPasswordModal: function (commentId) {
       this.modalTargetCommentId = commentId
       this.$refs.inputPasswordModal.open()
@@ -98,11 +80,10 @@ export default {
     return {
       post: {},
       postId: this.$route.params.id,
-      modalTargetCommentId: -1,
+      modalTargetCommentId: null,
     };
   },
   components: {
-    'cmp-post-dropdown': CmpPostDropdown,
     'cmp-input-comment': CmpInputComment,
     'cmp-password-dialog': CmpPasswordDialog,
   }
