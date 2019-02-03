@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "front/dist",
+    "public": "10_main/dist",
     "rewrites": [
       {
         "source": "**",
