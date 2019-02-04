@@ -16,7 +16,7 @@
     </div>
     <div class="text-center">
       <button
-        class="btn btn-outline-primary"
+        class="btn btn-sm btn-outline-primary"
         @click="clickLogin()"
       >
         <span

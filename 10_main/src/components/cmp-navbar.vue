@@ -2,7 +2,23 @@
 <div>
   <nav class="navbar bg-main fixed-top text-white">
     <span class="navbar-brand">一橋バド</span>
-    <cmp-menu ref="cmpMenu"></cmp-menu>
+    <div class="dropdown">
+      <a class="btn btn-transpalent dropdown-toggle"
+         @click="toggle()"
+      >Menu</a>
+      <div :class="'dropdown-menu dropdown-menu-right' + (isShow ? ' show' : '')">
+        <router-link v-for="(menu, key) in menuList" :key="key"
+                     class="dropdown-item"
+                     :to="menu.href"
+                     @click.native="toggle()"
+        >{{ menu.text }}</router-link>
+        <div class="dropdown-divider"></div>
+        <router-link to="/manage"
+                     class="dropdown-item"
+                     @click.native="toggle()"
+        >管理者はこちら</router-link>
+      </div>
+    </div>
     <!---
     <v-btn
       icon
@@ -24,11 +40,24 @@
 </template>
 
 <script>
-import cmpMenu from './cmp-navbar-menu'
-
 export default {
-  components: {
-    'cmp-menu': cmpMenu,
+  methods: {
+    toggle: function () {
+      this.isShow = !this.isShow
+    }
+  },
+  data: function () {
+    return {
+      isShow: false,
+      menuList: [
+        { text: 'ホーム', href: this.$config.url.top },
+        { text: '部員紹介', href: this.$config.url.member },
+        { text: '大会結果', href: this.$config.url.result },
+        { text: '三多摩大会', href: this.$config.url.santama },
+        { text: '掲示板', href: this.$config.url.bbs },
+        { text: 'みずとり会', href: this.$config.url.mizutori},
+      ]
+    }
   }
 }
 </script>

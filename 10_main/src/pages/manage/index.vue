@@ -1,7 +1,7 @@
 <template>
   <div>
     <article>
-      <div>管理よう</div>
+      <div>管理画面</div>
     </article>
   </div>
 </template>

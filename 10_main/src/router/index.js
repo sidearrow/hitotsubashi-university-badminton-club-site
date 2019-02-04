@@ -26,17 +26,29 @@ const router = new Router({
     { path: '/mizutori/login', component: () => import('@/pages/mizutori/login') },
 
     // 管理画面
-    { path: '/manage', component: () => import('@/pages/manage/index') }
+    { path: '/manage', component: () => import('@/pages/manage/index'), meta: { authManage: true } },
+    { path: '/manage/login', component: () => import('@/pages/manage/login') }
   ]
 });
 
 router.beforeEach((to, from, next) => {
+  // みずとり会ログイン
   const requireAuth = to.matched.some(v => v.meta.requireAuth)
   if (requireAuth) {
     if (window.sessionStorage.getItem('mizutori-login-token') === 'true') {
       next()
     } else {
       next({ path: '/mizutori/login' })
+    }
+  }
+
+  // 管理画面ログイン
+  const authManage = to.matched.some(v => v.meta.authManage)
+  if (authManage) {
+    if (window.sessionStorage.getItem('manage-login-token') === 'true') {
+      next()
+    } else {
+      next({ path: '/manage/login' })
     }
   }
   next()
