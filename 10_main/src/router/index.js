@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from '@/store';
 
 Vue.use(Router);
+
+const metaAuthManage = { authManage: true }
 
 const router = new Router({
   mode: 'history',
@@ -26,8 +29,9 @@ const router = new Router({
     { path: '/mizutori/login', component: () => import('@/pages/mizutori/login') },
 
     // 管理画面
-    { path: '/manage', component: () => import('@/pages/manage/index'), meta: { authManage: true } },
-    { path: '/manage/login', component: () => import('@/pages/manage/login') }
+    { path: '/manage/login', component: () => import('@/pages/manage/login') },
+    { path: '/manage', component: () => import('@/pages/manage/index'), meta: metaAuthManage },
+    { path: '/manage/obmsg', component: () => import('@/pages/manage/obmsg/index'), meta: metaAuthManage },
   ]
 });
 
@@ -45,11 +49,15 @@ router.beforeEach((to, from, next) => {
   // 管理画面ログイン
   const authManage = to.matched.some(v => v.meta.authManage)
   if (authManage) {
+    if (store.state.isLoginManage) {
+      next()
+      return
+    }
     if (window.sessionStorage.getItem('manage-login-token') === 'true') {
       next()
-    } else {
-      next({ path: '/manage/login' })
+      return
     }
+    next({ path: '/manage/login' })
   }
   next()
 })
