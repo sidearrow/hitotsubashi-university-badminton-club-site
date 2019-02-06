@@ -1,8 +1,12 @@
 <template>
 <div>
   <h2 class="h2">OB通信 管理</h2>
+  <div class="alert alert-info">
+    <div>PDFファイルの名前は<span class="text-monospace mx-1">obmsgYYYYMM.pdf</span>の形式でアップロードしてください。</div>
+    <div>2018年1月号の場合は<span class="text-monospace mx-1">obmsg201801.pdf</span></div>
+  </div>
   <div class="my-3">
-    <select v-model="nrwYear" :disabled="targetId !== null"
+    <select v-model="nrwYear" :disabled="isNew"
             class="form-control form-control-sm" style="width:100px">
       <option></option>
       <option v-for="(year, key) in yearList" :key="key">{{ year }}</option>
@@ -14,7 +18,8 @@
         <tr>
           <th class="text-center" style="width:180px">
             <button class="btn btn-sm btn-outline-primary mr-1"
-                    :disabled="targetId !== null"
+                    :disabled="isNew"
+                    @click="clickNew()"
             >新規作成</button>
           </th>
           <th style="width:120px">年度</th>
@@ -23,49 +28,45 @@
         </tr>
       </thead>
       <tbody>
-        <template v-for="(obMsg, key) in obMsgListView">
-          <!-- 表示 -->
-          <tr v-if="obMsg.id !== targetId" :key="key + 'v'">
-            <td class="text-center">
-              <button @click="clickEdit(obMsg.id)"
-                      class="btn btn-sm btn-outline-primary mr-1"
-                      :disabled="targetId !== null">編集</button>
-              <button @click="clickDelete(obMsg.id)"
-                      class="btn btn-sm btn-outline-danger"
-                      :disabled="targetId !== null">削除</button>
-            </td>
-            <td class="align-middle">{{ obMsg.year }}</td>
-            <td class="align-middle">{{ obMsg.viewName }}</td>
-            <td class="align-middle">
-              <a :href="obMsg.link" _target="blank">{{ obMsg.fileName }}</a>
-            </td>
-          </tr>
 
-          <!-- 編集 -->
-          <tr v-else :key="key + 'e'">
-            <td class="text-center">
-              <button @click="clickSave(obMsg.id)"
-                      class="btn btn-sm btn-outline-success mr-1">保存</button>
-              <button @click="clickCancel(obMsg.id)"
-                      class="btn btn-sm btn-outline-secondary">キャンセル</button>
-            </td>
-            <td>
-              <select class="form-control form-control-sm">
-                <option>2019</option>
-                <option>2018</option>
-                <option>2017</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control form-control-sm">
-                <option v-for="(viewName, key) in viewNameList" :key="key">{{ viewName }}</option>
-              </select>
-            </td>
-            <td>
-              <input type="file" />
-            </td>
-          </tr>
-        </template>
+        <!-- 新規作成 -->
+        <tr v-if="isNew">
+          <td class="text-center">
+            <button @click="clickSave()"
+                    class="btn btn-sm btn-outline-success mr-1">保存</button>
+            <button @click="clickCancel()"
+                    class="btn btn-sm btn-outline-secondary">キャンセル</button>
+          </td>
+          <td>
+            <select class="form-control form-control-sm" v-model="input.year">
+              <option>2019</option>
+              <option>2018</option>
+              <option>2017</option>
+            </select>
+          </td>
+          <td>
+            <select class="form-control form-control-sm" v-model="input.fileName">
+              <option v-for="(viewName, key) in viewNameList" :key="key">{{ viewName }}</option>
+            </select>
+          </td>
+          <td>
+            <input type="file" accept=".pdf" @change="changeFile"/>
+          </td>
+        </tr>
+
+        <!-- 表示 -->
+        <tr v-for="(obMsg, key) in obMsgListView" :key="key + 'v'">
+          <td class="text-center">
+            <button @click="clickDelete(obMsg.id)"
+                    class="btn btn-sm btn-outline-danger"
+                    :disabled="isNew">削除</button>
+          </td>
+          <td class="align-middle">{{ obMsg.year }}</td>
+          <td class="align-middle">{{ obMsg.viewName }}</td>
+          <td class="align-middle">
+            <a :href="obMsg.link" _target="blank">{{ obMsg.fileName }}</a>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -78,18 +79,25 @@ export default {
     this.obMsgListView = this.obMsgListOrig
   },
   methods: {
-    clickEdit: function (id) {
-      this.targetId = id
+    clickNew: function () {
+      this.isNew = true
     },
     clickDelete: function (id) {
       alert(id)
     },
-    clickSave: function (id) {
-      this.targetId = null
+    clickSave: function () {
+      this.isNew = null
     },
-    clickCancel: function (id) {
-      this.targetId = null
+    clickCancel: function () {
+      this.isNew = null
     },
+    changeFile: function (e) {
+      e.preventDefault()
+      const file = e.target.files[0]
+      if (!file.name.match(/obmsg\d\d\d\d\d\d/)) {
+        return
+      }
+    }
   },
   watch: {
     nrwYear: function () {
@@ -103,7 +111,12 @@ export default {
   data: function () {
     return {
       nrwYear: '',
-      targetId: null,
+      isNew: false,
+      input: {
+        year: '',
+        viewName: '',
+        file: '',
+      },
       obMsgListView: [],
       obMsgListOrig: [
         {
