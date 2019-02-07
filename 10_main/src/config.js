@@ -21,5 +21,12 @@ export default {
   apiBaseUrl: {
     development: 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/dev',
     production : 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/v1'
+  },
+  firebase: {
+    dev: {
+      apiKey: "AIzaSyC_VaJeym5oxGZrrVVXxRCJDQ3fZdb34PM",
+      authDomain: "dev-hit-u-bad.firebaseapp.com",
+      storageBucket: "dev-hit-u-bad.appspot.com",
+    }
   }
 }

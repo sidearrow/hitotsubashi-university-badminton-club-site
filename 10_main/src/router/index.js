@@ -49,17 +49,16 @@ router.beforeEach((to, from, next) => {
   // 管理画面ログイン
   const authManage = to.matched.some(v => v.meta.authManage)
   if (authManage) {
-    if (store.state.isLoginManage) {
+    if (window.sessionStorage.getItem('auth-manage-token') === 'true') {
       next()
-      return
-    }
-    if (window.sessionStorage.getItem('manage-login-token') === 'true') {
+    } else if (store.state.isLoginManage) {
       next()
-      return
+    } else {
+      next({ path: '/manage/login' })
     }
-    next({ path: '/manage/login' })
+  } else {
+    next()
   }
-  next()
 })
 
 export default router;

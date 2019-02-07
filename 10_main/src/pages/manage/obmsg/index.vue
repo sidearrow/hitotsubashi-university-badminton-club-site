@@ -6,7 +6,7 @@
     <div>2018年1月号の場合は<span class="text-monospace mx-1">obmsg201801.pdf</span></div>
   </div>
   <div class="my-3">
-    <select v-model="nrwYear" :disabled="isNew"
+    <select v-model="nrwYear" :disabled="isNew || isNowUploading"
             class="form-control form-control-sm" style="width:100px">
       <option></option>
       <option v-for="(year, key) in yearList" :key="key">{{ year }}</option>
@@ -18,7 +18,7 @@
         <tr>
           <th class="text-center" style="width:180px">
             <button class="btn btn-sm btn-outline-primary mr-1"
-                    :disabled="isNew"
+                    :disabled="isNew || isNowUploading"
                     @click="clickNew()"
             >新規作成</button>
           </th>
@@ -33,9 +33,11 @@
         <tr v-if="isNew">
           <td class="text-center">
             <button @click="clickSave()"
-                    class="btn btn-sm btn-outline-success mr-1">保存</button>
+                    class="btn btn-sm btn-outline-success mr-1"
+                    :disabled="isNowUploading">保存</button>
             <button @click="clickCancel()"
-                    class="btn btn-sm btn-outline-secondary">キャンセル</button>
+                    class="btn btn-sm btn-outline-secondary"
+                    :disabled="isNowUploading">キャンセル</button>
           </td>
           <td>
             <select class="form-control form-control-sm" v-model="input.year">
@@ -53,13 +55,27 @@
             <input type="file" accept=".pdf" @change="changeFile"/>
           </td>
         </tr>
+        <tr v-if="isNowUploading">
+          <td colspan="4">
+            <div class="alert alert-danger">
+              <div class="row">
+                <div class="col-auto">
+                  <div class="spinner-border text-danger">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <div>ファイルをアップロード中です。<br>このページを離れないでください</div>
+              </div>
+            </div>
+          </td>
+        </tr>
 
         <!-- 表示 -->
         <tr v-for="(obMsg, key) in obMsgListView" :key="key + 'v'">
           <td class="text-center">
             <button @click="clickDelete(obMsg.id)"
                     class="btn btn-sm btn-outline-danger"
-                    :disabled="isNew">削除</button>
+                    :disabled="isNew || isNowUploading">削除</button>
           </td>
           <td class="align-middle">{{ obMsg.year }}</td>
           <td class="align-middle">{{ obMsg.viewName }}</td>
@@ -74,6 +90,8 @@
 </template>
 
 <script>
+import storage from '@/storage'
+
 export default {
   created() {
     this.obMsgListView = this.obMsgListOrig
@@ -85,7 +103,10 @@ export default {
     clickDelete: function (id) {
       alert(id)
     },
-    clickSave: function () {
+    clickSave: async function () {
+      this.isNowUploading = true
+      const url = await storage.obMsgUpload('test.pdf', this.input.file)
+      this.isNowUploading = false
       this.isNew = null
     },
     clickCancel: function () {
@@ -93,10 +114,16 @@ export default {
     },
     changeFile: function (e) {
       e.preventDefault()
-      const file = e.target.files[0]
-      if (!file.name.match(/obmsg\d\d\d\d\d\d/)) {
+      if (!e.target.files[0]) {
         return
       }
+      const targetFile = e.target.files[0]
+      /*
+      if (!targetFile.name.match(/obmsg\d\d\d\d\d\d/)) {
+        return
+      }
+      */
+      this.input.file = targetFile
     }
   },
   watch: {
@@ -112,6 +139,7 @@ export default {
     return {
       nrwYear: '',
       isNew: false,
+      isNowUploading: false,
       input: {
         year: '',
         viewName: '',

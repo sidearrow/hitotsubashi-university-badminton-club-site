@@ -29,6 +29,7 @@ export default {
     clickLogin: function () {
       if (this.inputPassword === 'password') {
         this.$store.commit('loginManage')
+        window.sessionStorage.setItem('auth-manage-token', 'true')
         this.$router.push('/manage')
         return
       }
