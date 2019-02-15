@@ -18,6 +18,4 @@ services.database.settings({
   timestampsInSnapshots: true
 })
 
-services.stroage = admin.storage()
-
 module.exports = services

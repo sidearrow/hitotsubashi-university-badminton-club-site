@@ -6,6 +6,8 @@ const model = {}
 const formatResponse = (doc, isDetail = false) => {
   const data = doc.data()
   data.id = doc.id
+  data.createdAtRaw = data.createdAt
+  data.updatedAtRaw = data.updatedAt
   data.createdAt = util.getDateString(data.createdAt.toDate())
   data.updatedAt = util.getDateString(data.updatedAt.toDate())
   delete data.password

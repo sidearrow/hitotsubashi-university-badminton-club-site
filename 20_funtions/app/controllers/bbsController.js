@@ -1,16 +1,8 @@
 const modelBbs = require('../models/bbs')
 const modelBbsDelete = require('../models/bbsDelete')
+const modelBbsDateList = require('../models/bbsDateList')
+const util = require('../util')
 const controller = {}
-
-const formatDate = (rowDate) => {
-  const timezoneOffsetDiff = -540 - new Date().getTimezoneOffset()
-  const d = new Date(rowDate._seconds * 1000)
-  d.setTime(d.getTime() - 1000 * 60 * timezoneOffsetDiff)
-  const f = (input) => {
-    return ('0' + String(input)).substr(-2)
-  }
-  return `${d.getFullYear()}/${f(d.getMonth()+1)}/${f(d.getDate())} ${f(d.getHours())}:${f(d.getMinutes())}`
-}
 
 controller.create = async (req, res) => {
   const now = new Date(Date.now())
@@ -25,6 +17,7 @@ controller.create = async (req, res) => {
   data.updatedAt = now
 
   const id = await modelBbs.create(data)
+  modelBbsDateList.updateNumIncrement(util.getMonthString(data.createdAt))
 
   res.json({
     isSuccess: true,
@@ -50,7 +43,7 @@ controller.update = async (req, res) => {
   data.password  = req.body.password
   data.updatedAt = new Date(Date.now())
 
-  const _ = await modelBbs.update(id, data)
+  await modelBbs.update(id, data)
   res.json({
     isSuccess: true
   })
@@ -63,7 +56,9 @@ controller.delete = async (req, res) => {
   const target = await modelBbs.get(reqId)
   if (target.password === reqPassword) {
     await modelBbs.delete(reqId)
-    await modelBbsDelete.create(target)
+    modelBbsDelete.create(target)
+    console.log(target.createdAt)
+    modelBbsDateList.updateNumDecrement(util.getMonthString(target.createdAtRaw.toDate()))
     res.json({isSuccess: true})
   } else {
     res.json({isSuccess: false})
@@ -94,7 +89,7 @@ controller.commentsDelete = async (req, res) => {
   const reqPassword = req.query.password
 
   const target = await modelBbs.get(reqId)
-  if (target.comments[reqCid].password === req.query.password) {
+  if (target.comments[reqCid].password === reqPassword) {
     target.comments[reqCid].isDelete = true
     const updateData = { comments: target.comments }
     await modelBbs.update(reqId, updateData)
@@ -134,16 +129,9 @@ controller.dateIndex = async (req, res) => {
   res.json(data)
 }
 
-function modelPostsDatelistGet (req, res) {
-  database
-    .collection('bbs-month-list')
-    .orderBy('createdAt', 'desc')
-    .get()
-    .then((qs) => {
-      qs.forEach((doc) => {
-        console.log(doc.data())
-      })
-    })
+controller.dateListIndex = async (req, res) => {
+  const data = await modelBbsDateList.get()
+  res.json(data)
 }
 
 module.exports = controller

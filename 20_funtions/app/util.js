@@ -4,17 +4,22 @@ const convert2JST = (date) => {
   date.setTime(date.getTime() - 1000 * 60 * (-540 - date.getTimezoneOffset()))
   return date
 }
+const format = (str) => {
+  return ('0' + str).substr(-2)
+}
 
 util.getDateString = (date) => {
   date = convert2JST(date)
-  const z = (str) => {
-    return ('00' + str).substr(-2)
-  }
   return date.getFullYear() + '/' +
-         z((date.getMonth()+1)) + '/' +
-         z(date.getDate()) + ' ' +
-         z(date.getHours()) + ':' +
-         z(date.getMinutes())
+         format((date.getMonth()+1)) + '/' +
+         format(date.getDate()) + ' ' +
+         format(date.getHours()) + ':' +
+         format(date.getMinutes())
+}
+
+util.getMonthString = (date) => {
+  date = convert2JST(date)
+  return date.getFullYear() + format((date.getMonth()+1))
 }
 
 module.exports = util

@@ -2,6 +2,5 @@ firebase-debug.log
 package-lock.json
 hit-u-bad-*.json
 .nyc_output
-.runtimeconfig.json
 /node_modules
 /app/firebase-secret-key
