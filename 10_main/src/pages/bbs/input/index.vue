@@ -1,51 +1,82 @@
 <template>
-<article>
-  <div>
-    <h2 v-if="isEdit">投稿編集</h2>
-    <h2 v-else>新規投稿</h2>
+<div>
+  <!-- 入力画面 -->
+  <div v-if="!isConfirm">
+    <div>
+      <h2 v-if="isEdit">投稿編集</h2>
+      <h2 v-else>新規投稿</h2>
+    </div>
+  
+    <cmp-edit-password
+      v-if="isEdit"
+      :id="postId"
+      :isEdit="isEdit"
+      :isDisable="!isDisable"
+      v-on:doneAuth="doneAuth"
+      v-on:doneDelete="doneDelete"
+    />
+    <cmp-input-author
+      :isDisable="isDisable"
+      v-model="input.author"
+      ref="inputAuthor"
+    />
+    <cmp-input-title
+      :isDisable="isDisable"
+      v-model="input.title"
+      ref="inputTitle"
+    />
+    <cmp-input-content
+      :isDisable="isDisable"
+      v-model="input.content"
+      ref="inputContent"
+    />
+    <cmp-input-password
+      :isDisable="isDisable"
+      v-model="input.password"
+      ref="inputPassword"
+    />
+    <div class="text-center mt-2">
+      <button
+        class="btn btn-sm btn-outline-primary"
+        @click="clickConfirm()"
+        :disabled="isDisable"
+      >確認</button>
+      <router-link
+        :to="isEdit ? '/bbs/posts/' + postId : '/bbs/posts'"
+        class="btn btn-sm btn-outline-secondary ml-2"
+      >キャンセル</router-link>
+    </div>
   </div>
 
-  <cmp-edit-password
-    v-if="isEdit"
-    :id="postId"
-    :isEdit="isEdit"
-    :isDisable="!isDisable"
-    v-on:doneAuth="doneAuth"
-    v-on:doneDelete="doneDelete"
-  />
-  <cmp-input-author
-    :isDisable="isDisable"
-    v-model="input.author"
-    ref="inputAuthor"
-  />
-  <cmp-input-title
-    :isDisable="isDisable"
-    v-model="input.title"
-    ref="inputTitle"
-  />
-  <cmp-input-content
-    :isDisable="isDisable"
-    v-model="input.content"
-    ref="inputContent"
-  />
-  <cmp-input-password
-    :isDisable="isDisable"
-    v-model="input.password"
-    ref="inputPassword"
-  />
-  <div class="text-center mt-2">
-    <button
-      class="btn btn-sm btn-outline-primary"
-      @click="clickSubmit()"
-      :disabled="isDisable"
-    >投稿</button>
+  <!-- 確認画面 -->
+  <div v-if="isConfirm">
+    <dl>
+      <dt>名前：</dt>
+      <dd>{{ input.author }}</dd>
+    </dl>
+    <dl>
+      <dt>タイトル：</dt>
+      <dd>{{ input.title }}</dd>
+    </dl>
+    <dl>
+      <dt>本文：</dt>
+      <dd class="ws-preline">{{ input.content }}</dd>
+    </dl>
+    <dl>
+      <dt>編集 / 削除キー：</dt>
+      <dd>{{ input.password }}</dd>
+    </dl>
+    <div class="text-center mt-2">
+      <button class="btn btn-sm btn-outline-primary"
+              @click="clickSubmit()"
+              :disabled="isDisable"
+      >投稿</button>
+      <button class="btn btn-sm btn-outline-secondary ml-2"
+              @click="clickEdit()"
+      >編集に戻る</button>
+    </div>
   </div>
-  <div class="mt-2">
-    <router-link
-      :to="isEdit ? '/bbs/posts/' + postId : '/bbs/posts'"
-    >戻る</router-link>
-  </div>
-</article>
+</div>
 </template>
 
 <script>
@@ -58,6 +89,10 @@ import cmpInputPassword from './cmp-input-password'
 export default {
   mounted: async function () {
     this.isDisable = this.isEdit
+    if (!isEdit) {
+      return
+    }
+
     const res = await this.$http.get('/bbs/post/' + this.$route.params.id)
     this.input.author  = res.data.author
     this.input.title   = res.data.title
@@ -71,7 +106,7 @@ export default {
     doneDelete: function () {
       this.isDoneDelete = true
     },
-    clickSubmit: async function () {
+    clickConfirm: function () {
       if (
         this.$refs.inputAuthor.check() |
         this.$refs.inputTitle.check() |
@@ -81,6 +116,12 @@ export default {
         return
       }
 
+      this.isConfirm = true
+    },
+    clickEdit: function () {
+      this.isConfirm = false
+    },
+    clickSubmit: async function () {
       const inputData = {
         author  : this.input.author,
         title   : this.input.title,
@@ -99,6 +140,7 @@ export default {
   },
   data: function () {
     return {
+      isConfirm: false,
       isDisable: false,
       postId: this.$route.params.id,
       isEdit: this.$route.path !== '/bbs/new',
