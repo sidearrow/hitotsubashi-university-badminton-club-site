@@ -1,4 +1,4 @@
-const database = require('../services/index').database
+const database = require('../services/database')
 const collectionName = 'bbs-month-list'
 
 const _ = {}

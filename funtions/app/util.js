@@ -8,8 +8,11 @@ const format = (str) => {
   return ('0' + str).substr(-2)
 }
 
+/**
+ * @param {Date} date
+ */
 util.getDateString = (date) => {
-  date = convert2JST(date)
+  //date = convert2JST(date)
   return date.getFullYear() + '/' +
          format((date.getMonth()+1)) + '/' +
          format(date.getDate()) + ' ' +
@@ -17,6 +20,9 @@ util.getDateString = (date) => {
          format(date.getMinutes())
 }
 
+/**
+ * @param {Date} date
+ */
 util.getMonthString = (date) => {
   date = convert2JST(date)
   return date.getFullYear() + format((date.getMonth()+1))

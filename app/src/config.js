@@ -19,7 +19,7 @@ export default {
     mizutori: 'みずとり会 - 一橋大学 バドミントン部',
   },
   apiBaseUrl: {
-    development: 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/dev',
+    development: 'https://asia-northeast1-dev-hit-u-bad-3a8d2.cloudfunctions.net/api',
     production : 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/v1'
   },
   firebase: {

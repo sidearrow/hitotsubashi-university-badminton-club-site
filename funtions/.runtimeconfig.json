@@ -1,8 +1,0 @@
-{
-  "bucket_name": {
-    "dev": "gs://dev-hit-u-bad.appspot.com"
-  },
-  "env": {
-    "env": "dev"
-  }
-}

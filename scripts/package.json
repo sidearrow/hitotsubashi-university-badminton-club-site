@@ -4,5 +4,6 @@
   "devDependencies": {
     "csv-parse": "^4.3.0",
     "firebase": "^5.5.1"
-  }
+  },
+  "dependencies": {}
 }

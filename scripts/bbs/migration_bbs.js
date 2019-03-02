@@ -1,12 +1,13 @@
 const fs = require('fs')
 const firebase = require('firebase')
-const config = require(__dirname + '/../config')
+const config = require('../config')
 
 require("firebase/firestore")
-firebase.initializeApp(config.firebase)
+
+// 引数で環境切り替え
+firebase.initializeApp(config.firebase.dev)
 const db = firebase.firestore()
-const settings = {timestampsInSnapshots: true};
-db.settings(settings);
+db.settings({});
 
 const filePath = __dirname + '/bbs_data.json'
 const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))

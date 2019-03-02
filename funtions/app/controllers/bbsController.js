@@ -8,11 +8,11 @@ controller.create = async (req, res) => {
   const now = new Date(Date.now())
 
   const data = {}
-  data.title    = req.body.title
-  data.author   = req.body.author
-  data.content  = req.body.content
-  data.password = req.body.password
-  data.comments = []
+  data.title     = req.body.title
+  data.author    = req.body.author
+  data.content   = req.body.content
+  data.password  = req.body.password
+  data.comments  = []
   data.createdAt = now
   data.updatedAt = now
 
