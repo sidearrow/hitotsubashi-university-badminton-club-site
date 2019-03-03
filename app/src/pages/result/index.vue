@@ -1,28 +1,23 @@
 <template>
 <div>
-  <h1>大会結果</h1>
+  <cmp-page-title title="大会結果" />
   <p>関東学生バドミントン連盟主催のリーグ戦の結果です。一年に春と秋の２度行なわれます。</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th> </th>
-        <th> </th>
-        <th>男子</th>
-        <th>女子</th>
-      </tr>
-    </thead>
+  <table class="table table-bordered">
     <tbody>
+      <tr>
+        <td class="bg-light" colspan="2"></td>
+        <td class="bg-light text-center">男子</td>
+        <td class="bg-light text-center">女子</td>
+      </tr>
       <tr
         v-for="(v, i) in resultData" :key="i"
       >
         <td
-          v-if="v.season === '秋'"
-          rowspan="2"
+          v-if="i === 0 || v.season === '秋'"
+          class="bg-light align-middle text-center"
+          :rowspan="v.season === '秋' ? 2 : 1"
         >{{ v.year }}</td>
-        <td
-          v-if="i === 0 && v.season === '春'"
-        >{{ v.year }}</td>
-        <td>{{ v.season }}</td>
+        <td class="text-center bg-light">{{ v.season }}</td>
         <td>{{ v.m }}</td>
         <td>{{ v.f }}</td>
       </tr>
@@ -32,6 +27,7 @@
 </template>
 
 <script>
+import cmpPageTitle from '@/components/cmp-page-title'
 import resultData from '@/assets/json/result.json'
 
 export default {
@@ -42,6 +38,9 @@ export default {
     return {
       resultData: resultData,
     };
+  },
+  components: {
+    'cmp-page-title': cmpPageTitle
   }
 };
 </script>

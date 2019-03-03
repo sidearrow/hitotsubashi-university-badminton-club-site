@@ -1,25 +1,27 @@
 <template>
   <div>
-    <h1>部員紹介</h1>
+    <cmp-page-title title="部員紹介" />
     <p>2017 年 7 月現在、男子 24 名、女子 7 名の計 31 名で活動しています。</p>
-    <table class="table table-bordered my-5">
-      <thead>
-        <tr>
-          <th>学年</th>
-          <th>男子</th>
-          <th>女子</th>
-          <th>計</th>
-        </tr>
-      </thead>
+
+    <!-- 部員数表 -->
+    <table class="table table-bordered my-5" style="table-layout:fixed">
       <tbody>
+        <tr class="bg-light">
+          <td class="text-center">学年</td>
+          <td class="text-center">男子</td>
+          <td class="text-center">女子</td>
+          <td class="text-center">計</td>
+        </tr>
         <tr v-for="(data, key) in gradeData.grade" :key="key">
-          <th>{{ data[0] }}</th>
-          <td class="text-primary">{{ data[1] }}</td>
-          <td class="text-danger">{{ data[2] }}</td>
-          <td>{{ data[1] + data[2] }}</td>
+          <td class="bg-light text-center">{{ data[0] }}</td>
+          <td class="text-primary text-right">{{ data[1] }}</td>
+          <td class="text-danger text-right">{{ data[2] }}</td>
+          <td class="text-right">{{ data[1] + data[2] }}</td>
         </tr>
       </tbody>
     </table>
+
+
     <div>
       <select class="form-control" v-model="nowGrade"
               style="width:100px">
@@ -57,6 +59,7 @@
 </template>
 
 <script>
+import cmpPageTitle from '@/components/cmp-page-title'
 import memberData from '@/assets/json/member.json'
 
 export default {
@@ -77,12 +80,14 @@ export default {
           ['３回生', 9, 1],
           ['２回生', 6, 2],
           ['１回生', 4, 0],
-          ['', 22, 4],
+          ['計', 22, 4],
         ],
       },
-      memberData: memberData,
       memberDataView: memberData.filter(v => v.grade === 4)[0],
     }
   },
+  components: {
+    'cmp-page-title': cmpPageTitle,
+  }
 };
 </script>

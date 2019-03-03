@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="h2">三多摩大会</h2>
+    <cmp-page-title title="三多摩大会" />
     <div>三多摩地区学生バドミントン選手権大会</div>
     <section class="mb-5">
       <p>第５２回三多摩地区学生バドミントン選手権大会</p>
@@ -73,15 +73,14 @@
 </template>
 
 <script>
-import cmpPageHeader from '@/components/cmp-page-header'
-import result from './santama_result.js'
+import cmpPageTitle from '@/components/cmp-page-title'
 
 export default {
   beforeCreate: function () {
     document.title = this.$config.title.santama
   },
   components: {
-    'cmp-page-header': cmpPageHeader,
+    'cmp-page-title': cmpPageTitle,
   },
   watch: {
     selectYear: function () {

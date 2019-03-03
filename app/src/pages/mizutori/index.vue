@@ -2,7 +2,6 @@
 <div>
   <h1>みずとり会</h1>
   <div>みずとり会のページです</div>
-
   <article>
     <div class="text-right my-3">
       <button

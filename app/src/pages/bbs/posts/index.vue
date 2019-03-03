@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>掲示板</h1>
+  <cmp-page-title title="掲示板" />
   <p>試合の結果などをお知らせします。</p>
   <section class="mb-3">
     <p><router-link to="/bbs/new">新規投稿</router-link></p>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import cmpPageHeader from '@/components/cmp-page-header'
+import cmpPageTitle from '@/components/cmp-page-title'
 import cmpNowLoading from '@/components/cmp-now-loading'
 
 export default {
@@ -84,7 +84,7 @@ export default {
     },
   },
   components: {
-    'cmp-page-header': cmpPageHeader,
+    'cmp-page-title': cmpPageTitle,
     'cmp-now-loading': cmpNowLoading,
   },
   data: function () {

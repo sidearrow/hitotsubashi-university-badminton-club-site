@@ -1,11 +1,14 @@
 <template>
 <div>
-  <nav class="navbar bg-main fixed-top text-white">
-    <span class="navbar-brand">一橋バド</span>
+  <nav class="navbar bg-white fixed-top border-bottom border-dark">
+    <router-link class="navbar-brand" to="/">
+      <img src="/static/img/logo.jpg" height="52px" class="align-bottom mr-3">
+      <span class="d-inline-block text-dark">一橋大学<br>バドミントン部</span>
+    </router-link>
     <div class="dropdown">
       <a class="btn btn-transpalent dropdown-toggle"
          @click="toggle()"
-      >Menu</a>
+      >MENU</a>
       <div :class="'dropdown-menu dropdown-menu-right' + (isShow ? ' show' : '')">
         <router-link v-for="(menu, key) in menuList" :key="key"
                      class="dropdown-item"

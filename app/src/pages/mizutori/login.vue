@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>みずとり会</h1>
+  <cmp-page-title title="みずとり会" />
   <div>みずとり会のページです。<br/>コンテンツを見るにはログインしてください。</div>
 
   <div class="col-sm-8 offset-sm-2 mt-5">
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import cmpNowLoading from '@/components/cmp-now-loading'
+import cmpPageTitle from '@/components/cmp-page-title'
 
 export default {
   methods: {
@@ -62,6 +62,9 @@ export default {
       msgError: 'パスワードが間違っています',
       inputPassword: '',
     }
+  },
+  components: {
+    'cmp-page-title': cmpPageTitle
   }
 }
 </script>

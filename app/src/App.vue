@@ -3,10 +3,8 @@
 <!-- 一般画面 -->
 <template v-if="!isManagePage">
   <cmp-header/>
-  <div class="container-fluid" style="margin-top:5rem">
-    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 mb-5 px-0">
-      <router-view></router-view>
-    </div>
+  <div class="container mb-5" style="max-width:720px;margin-top:100px">
+    <router-view></router-view>
   </div>
   <cmp-footer/>
 </template>
