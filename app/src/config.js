@@ -28,5 +28,29 @@ export default {
       authDomain: "dev-hit-u-bad.firebaseapp.com",
       storageBucket: "dev-hit-u-bad.appspot.com",
     }
+  },
+  obmsg: {
+    list: [
+      { year: 2018, month: [1, 2, 3, 4] },
+      { year: 2017, month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+      { year: 2016, month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+      { year: 2015, month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+      { year: 2014, month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+      { year: 2013, month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+      { year: 2012, month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 12] },
+      { year: 2011, month: [11, 12] },
+      { year: 2010, month: [] },
+      { year: 2009, month: [1, 2, 3, 4, 5] },
+      { year: 2008, month: [1, 3, 4, 5, 6, 7] },
+      { year: 2007, month: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+      { year: 2006, month: [8] },
+      { year: 2005, month: [1, 2, 3, 4, 5, 6, 7, 8] },
+    ],
+    getHref: (year, month) => ( '/public/static/obmsg/obmessage_' +
+                                year +
+                                ('0' + month).substr(-2) +
+                                '.' +
+                                (year < 2013 || (year === 2013 && month <= 4) ? 'html' : 'pdf') ),
+    getName: (year, month) => ( year <= 2009 ? `第${month}号` : `${month}月号` ),
   }
 }
