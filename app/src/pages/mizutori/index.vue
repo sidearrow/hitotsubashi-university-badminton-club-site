@@ -11,15 +11,17 @@
     </div>
     <div>
       <div class="h3">OB通信</div>
-      <table class="table">
+      <table class="table table-bordered">
         <tr v-for="(obmsgsYear, _) in obmsgs.list" :key="_">
-          <td>{{ obmsgsYear.year }}</td>
+          <td class="bg-light text-center">{{ obmsgsYear.year }}</td>
           <td>
             <span
               v-for="(obmsgMonth, _) in obmsgsYear.month" :key="_"
               class="ml-2 d-inline-block"
             >
-              <a target="__blank" :href="obmsgs.getHref(obmsgsYear.year, obmsgMonth)">{{ obmsgs.getName(obmsgsYear.year, obmsgMonth) }}</a>
+              <a target="__blank"
+                 :href="obmsgs.getHref(obmsgsYear.year, obmsgMonth)"
+              >{{ obmsgs.getName(obmsgsYear.year, obmsgMonth) }}</a>
             </span>
           </td>
         </tr>

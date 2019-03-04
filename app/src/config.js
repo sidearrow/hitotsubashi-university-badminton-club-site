@@ -22,13 +22,6 @@ export default {
     development: 'https://asia-northeast1-dev-hit-u-bad-3a8d2.cloudfunctions.net/api',
     production : 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/v1'
   },
-  firebase: {
-    dev: {
-      apiKey: "AIzaSyC_VaJeym5oxGZrrVVXxRCJDQ3fZdb34PM",
-      authDomain: "dev-hit-u-bad.firebaseapp.com",
-      storageBucket: "dev-hit-u-bad.appspot.com",
-    }
-  },
   obmsg: {
     list: [
       { year: 2018, month: [1, 2, 3, 4] },
@@ -46,7 +39,7 @@ export default {
       { year: 2006, month: [8] },
       { year: 2005, month: [1, 2, 3, 4, 5, 6, 7, 8] },
     ],
-    getHref: (year, month) => ( '/public/static/obmsg/obmessage_' +
+    getHref: (year, month) => ( '/static/obmsg/obmessage_' +
                                 year +
                                 ('0' + month).substr(-2) +
                                 '.' +
