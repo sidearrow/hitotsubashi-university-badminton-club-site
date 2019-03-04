@@ -63,7 +63,7 @@ export default {
   methods: {
     fetchData: function () {
       this.$http
-        .get('/bbs/post/' + this.postId)
+        .get('/bbs/posts/' + this.postId)
         .then((res) => {
           this.post = res.data
         })

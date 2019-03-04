@@ -93,7 +93,7 @@ export default {
       return
     }
 
-    const res = await this.$http.get('/bbs/post/' + this.$route.params.id)
+    const res = await this.$http.get('/bbs/posts/' + this.$route.params.id)
     this.input.author  = res.data.author
     this.input.title   = res.data.title
     this.input.content = res.data.content

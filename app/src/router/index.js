@@ -18,7 +18,7 @@ const router = new Router({
     { path: '/bbs/new',              component: () => import('@/pages/bbs/input/index') },
     { path: '/bbs/reply/:id',        component: () => import('@/pages/bbs/input/index') },
     { path: '/bbs/delete/:id',       component: () => import('@/pages/bbs/delete/index') },
-    { path: '/mizutori',       component: () => import('@/pages/mizutori/index'), meta: { requireAuth: false } },
+    { path: '/mizutori',       component: () => import('@/pages/mizutori/index'), meta: { requireAuth: true } },
     { path: '/mizutori/login', component: () => import('@/pages/mizutori/login') },
   ],
   scrollBehavior: () => ({ x: 0, y: 0 })

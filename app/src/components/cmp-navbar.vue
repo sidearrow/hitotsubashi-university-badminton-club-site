@@ -1,15 +1,15 @@
 <template>
 <div>
   <nav class="navbar bg-white fixed-top border-bottom border-dark">
-    <router-link class="navbar-brand" to="/">
-      <img src="/static/img/logo.jpg" height="52px" class="align-bottom mr-3">
+    <router-link class="navbar-brand mr-0" to="/">
+      <img src="/static/img/logo.jpg" height="45px" class="align-top mr-2">
       <span class="d-inline-block text-dark">一橋大学<br>バドミントン部</span>
     </router-link>
     <div class="d-flex">
       <a href="https://twitter.com/hit_u_bad">
         <img src="@/assets/img/twitter.svg" width="30px"/>
       </a>
-      <div class="dropdown ml-2">
+      <div class="dropdown">
           <a class="btn btn-transpalent dropdown-toggle"
              @click="toggle()"
           >MENU</a>

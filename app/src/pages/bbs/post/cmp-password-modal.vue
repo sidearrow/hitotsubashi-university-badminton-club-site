@@ -64,7 +64,7 @@ export default {
       this.$emit('close-dialog')
     },
     clickSubmit: async function () {
-      let url = '/bbs/post/' + this.postId
+      let url = '/bbs/posts/' + this.postId
       if (this.commentId !== null) {
         url += '/comment/' + this.commentId
       }
