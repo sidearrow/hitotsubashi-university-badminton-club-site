@@ -35,17 +35,6 @@
       v-model="input.password"
       ref="inputPassword"
     />
-    <div class="text-center mt-2">
-      <button
-        class="btn btn-sm btn-outline-primary"
-        @click="clickConfirm()"
-        :disabled="isDisable"
-      >確認</button>
-      <router-link
-        :to="isEdit ? '/bbs/posts/' + postId : '/bbs/posts'"
-        class="btn btn-sm btn-outline-secondary ml-2"
-      >キャンセル</router-link>
-    </div>
   </div>
 
   <!-- 確認画面 -->
