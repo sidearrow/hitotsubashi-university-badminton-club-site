@@ -6,6 +6,12 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLoginManage: false,
+    bbsInput: {
+      title: '',
+      author: '',
+      content: '',
+      password: '',
+    },
   },
   mutations: {
     loginManage: function (state) {
@@ -13,6 +19,6 @@ export default new Vuex.Store({
     },
     logoutManage: function (state) {
       state.isLoginManage = false
-    }
+    },
   }
 })

@@ -3,7 +3,7 @@
   <cmp-page-title title="掲示板" />
   <p>試合の結果などをお知らせします。</p>
   <section class="mb-3">
-    <p><router-link to="/bbs/new">新規投稿</router-link></p>
+    <p><router-link to="/bbs/posts/create">新規投稿</router-link></p>
     <ul>
       <li><a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">旧掲示板１</a></li>
       <li><a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板２</a></li>
