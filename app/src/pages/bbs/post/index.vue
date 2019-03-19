@@ -1,16 +1,16 @@
 <template>
 <div>
   <div class="h3">{{ post.title }}</div>
-  <div class="text-right">
-    <router-link class="btn btn-sm btn-outline-success mr-2" :to="'/bbs/posts/' + postId + '/edit'">編集</router-link>
+  <div class="text-right my-3">
+    <router-link class="btn btn-outline-success mr-2 px-4" :to="'/bbs/posts/' + postId + '/edit'">編集</router-link>
     <button
-      class="btn btn-sm btn-outline-danger"
+      class="btn btn-outline-danger px-4"
       @click="openInputPasswordModal(null)"
     >削除</button>
   </div>
   <div class="mb-5">
     <span>{{ post.author }}</span>
-    <span class="ml-2 text-monospace"><small>{{ post.createdAt }}</small></span>
+    <span class="ml-2 text-monospace">{{ post.createdAt }}</span>
   </div>
   <article>
     <section class="ws-preline mb-3">{{ post.content }}</section>

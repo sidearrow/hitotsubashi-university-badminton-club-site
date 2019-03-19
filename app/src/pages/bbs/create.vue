@@ -1,7 +1,9 @@
 <template>
 <div>
   <cmp-page-title title="掲示板 新規投稿" />
-  <cmp-base />
+  <cmp-base
+    backTo="/bbs/posts"
+  />
 </div>
 </template>
 

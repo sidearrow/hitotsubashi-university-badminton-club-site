@@ -2,7 +2,7 @@
 <div>
   <div class="form-group">
     <label>タイトル</label>
-    <input :class="'form-control form-control-sm' + (title.isError ? ' is-invalid' : '')"
+    <input :class="'form-control form-control' + (title.isError ? ' is-invalid' : '')"
            v-model="title.value"
            maxlength="50"
     >
@@ -10,7 +10,7 @@
   </div>
   <div class="form-group">
     <label>名前</label>
-    <input :class="'form-control form-control-sm' + (author.isError ? ' is-invalid' : '')"
+    <input :class="'form-control form-control' + (author.isError ? ' is-invalid' : '')"
            v-model="author.value"
            maxlength="50"
     >
@@ -18,8 +18,8 @@
   </div>
   <div class="form-group">
     <label>本文</label>
-    <textarea :class="'form-control form-control-sm' + (content.isError ? ' is-invalid' : '')"
-              rows="5" maxlength="2000"
+    <textarea :class="'form-control form-control' + (content.isError ? ' is-invalid' : '')"
+              rows="10" maxlength="2000"
               v-model="content.value"
     ></textarea>
     <div class="invalid-feedback">{{ content.errorMsg }}</div>
@@ -27,7 +27,7 @@
   <div class="form-group">
     <label>パスワード</label>
     <input type="password" maxlength="4"
-           :class="'form-control form-control-sm' + (password.isError ? ' is-invalid' : '')"
+           :class="'form-control form-control' + (password.isError ? ' is-invalid' : '')"
            v-model="password.value"
     >
     <div class="invalid-feedback">{{ password.errorMsg }}</div>
@@ -60,7 +60,6 @@ export default {
       return this.password.value
     },
     validate: function() {
-      console.log('aa')
       this.title.isError = ((this.title.errorMsg = validationTitle(this.title.value)) !== '')
       this.author.isError = ((this.author.errorMsg = validationAuthor(this.author.value)) !== '')
       this.content.isError = ((this.content.errorMsg = validationContent(this.content.value)) !== '')
