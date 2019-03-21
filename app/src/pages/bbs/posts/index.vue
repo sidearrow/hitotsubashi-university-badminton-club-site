@@ -11,40 +11,27 @@
   </section>
 
   <div>
-    <div
-      v-for="(v, i) in posts" :key="i"
-      class="mb-4"
-    >
+    <div v-for="(v, i) in posts" :key="i" class="mb-4">
       <div>
-        <router-link
-          :to="`/bbs/posts/${v.id}`"
-        >{{ v.title }}</router-link>
+        <router-link :to="`/bbs/posts/${v.id}`">{{ v.title }}</router-link>
       </div>
-      <div class="">
-        <small>
+      <div class="mt-2" style="font-size:0.8rem">
+        <div>
           <span>by {{ v.author }}</span>
-          <span class="ml-4 text-monospace">{{ v.updatedAt }}</span>
-        </small>
+          <span class="ml-4 text-monospace text-secondary">{{ v.updatedAt }}</span>
+        </div>
+        <div>{{ v.content.slice(0, 100) + (v.content.length > 100 ? ' ...' : '') }}</div>
       </div>
-      <div><small>{{ v.content.slice(0, 100) + (v.content.length > 100 ? ' ...' : '') }}</small></div>
     </div>
   </div>
 
-  <div
-    v-if="isNowLoading"
-    class="text-center"
-  >
+  <div v-if="isNowLoading" class="text-center">
     <cmp-now-loading/>
   </div>
 
-  <div
-    v-if="typeof narrowDate === 'undefined'"
-    class="text-center mt-3 mb-5"
-  >
-    <button
-      @click="fetchBBSData(lastPostId)"
-      class="btn btn-sm btn-outline-primary"
-    >MORE</button>
+  <div class="text-center mt-5">
+    <button @click="fetchBBSData()"
+            class="btn btn-outline-primary px-4">MORE</button>
   </div>
 </div>
 </template>
@@ -61,26 +48,18 @@ export default {
     this.fetchBBSData()
   },
   methods: {
-    fetchBBSData: function (id) {
+    fetchBBSData: async function () {
       let url = '/bbs/posts'
       this.isNowLoading = true
-      if (typeof id !== 'undefined') {
-        url += '/' + id
-      } else if (typeof this.narrowDate !== 'undefined') {
-        url += '/date/' + this.narrowDate
+      if (this.lastPostId !== '') {
+        url += '?id=' + this.lastPostId
       }
-      this.$http
-        .get(url)
-        .then((res) => {
-          this.isNowLoading = false
-          if (res.data.length === 0) {
-            return
-          }
-          res.data.forEach((v) => {
-            this.posts.push(v)
-          })
-          this.lastPostId = this.posts[this.posts.length - 1].id
-        })
+      const res = await this.$http.get(url)
+      this.isNowLoading = false
+      res.data.forEach((v) => {
+        this.posts.push(v)
+      })
+      this.lastPostId = this.posts[this.posts.length - 1].id
     },
   },
   components: {
