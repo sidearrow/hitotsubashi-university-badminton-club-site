@@ -1,4 +1,6 @@
 const express = require('express')
+
+const config = require('./config')
 const bbsController = require('./controllers/bbsController')
 
 const router = express.Router()
@@ -11,5 +13,9 @@ router.delete('/bbs/posts/:id', bbsController.delete)
 
 router.post('/bbs/posts/:id/comments', bbsController.commentsCreate)
 router.delete('/bbs/posts/:id/comments/:cid', bbsController.commentsDelete)
+
+router.get('/mizutori/login', (req, res) => {
+  return res.json({ login: req.query.password === config.mizutoriPassword })
+})
 
 module.exports = router

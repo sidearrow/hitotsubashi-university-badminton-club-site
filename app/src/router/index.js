@@ -18,23 +18,9 @@ const router = new Router({
     { path: '/bbs/posts/:date',      component: () => import('@/pages/bbs/posts/index') },
     { path: '/bbs/posts/narrowdate', component: () => import('@/pages/bbs/posts/narrowdate/index') },
     { path: '/bbs/delete/:id',       component: () => import('@/pages/bbs/delete/index') },
-    { path: '/mizutori',             component: () => import('@/pages/mizutori/index'), meta: { requireAuth: true } },
-    { path: '/mizutori/login',       component: () => import('@/pages/mizutori/login') },
+    { path: '/mizutori',             component: () => import('@/pages/mizutori/index') },
   ],
   scrollBehavior: () => ({ x: 0, y: 0 })
-});
-
-router.beforeEach((to, from, next) => {
-  // みずとり会ログイン
-  const requireAuth = to.matched.some(v => v.meta.requireAuth)
-  if (requireAuth) {
-    if (window.sessionStorage.getItem('mizutori-login-token') === 'true') {
-      next()
-    } else {
-      next({ path: '/mizutori/login' })
-    }
-  }
-  next()
 })
 
 export default router;
