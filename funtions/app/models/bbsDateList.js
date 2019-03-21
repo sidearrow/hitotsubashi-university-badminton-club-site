@@ -1,4 +1,4 @@
-const database = require('../services/database')
+const database = require('../firestore')
 const collectionName = 'bbs-month-list'
 
 const _ = {}

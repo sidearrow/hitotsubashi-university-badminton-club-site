@@ -27,9 +27,10 @@ controller.create = async (req, res) => {
 
 controller.show = async (req, res) => {
   const id = req.params.id
+  const queryPassword = req.query.password
 
   res.json(
-    await modelBbs.get(id)
+    await modelBbs.get(id, queryPassword)
   )
 }
 
@@ -57,7 +58,6 @@ controller.delete = async (req, res) => {
   if (target.password === reqPassword) {
     await modelBbs.delete(reqId)
     modelBbsDelete.create(target)
-    console.log(target.createdAt)
     modelBbsDateList.updateNumDecrement(util.getMonthString(target.createdAtRaw.toDate()))
     res.json({isSuccess: true})
   } else {

@@ -2,10 +2,9 @@ const chai = require('chai')
 const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 const assert = chai.assert
-//const expect = chai.expect
 
 const app = require('../app/app')
-const database = require('../app/services').database
+const database = require('../app/firestore')
 const testData = require('./testdata/bbs-post')
 
 
@@ -15,7 +14,6 @@ describe('BBS API Test', function () {
   let id
   let testDataId = []
 
-  /*
   before(async () => {
     const insert = async (data) => {
       const tmp = await database.collection('bbs').add(data)
@@ -25,8 +23,8 @@ describe('BBS API Test', function () {
     testDataId.push(await insert(testData.narrowDate2))
     testDataId.push(await insert(testData.narrowDate3))
   })
-  */
 
+  /*
   it('post', function (done) {
     chai
       .request(app)
@@ -66,33 +64,31 @@ describe('BBS API Test', function () {
         done()
       })
   })
+  */
 
-  it('get post', function (done) {
-    chai
-      .request(app)
-      .get(`/dev/bbs/post/${id}`)
-      .end(function (_, res) {
-        assert.equal(res.body.auth, false)
-        assert.hasAllKeys(
-          res.body,
-          [
-            'auth',
-            'id',
-            'title',
-            'author',
-            'content',
-            'createdAt',
-            'updatedAt',
-            'createdAtRaw',
-            'updatedAtRaw',
-            'comments',
-          ]
-        )
-
-        done()
-      })
+  it('get post', async (done) => {
+    id = testDataId[0]
+    const res = await chai.request(app).get(`/bbs/post/${id}`)
+    assert.equal(res.body.auth, false)
+    assert.hasAllKeys(
+      res.body,
+      [
+        'auth',
+        'id',
+        'title',
+        'author',
+        'content',
+        'createdAt',
+        'updatedAt',
+        'createdAtRaw',
+        'updatedAtRaw',
+        'comments',
+      ]
+    )
+    
+    done()
   })
-
+/*
   it('get post (input correct password)', function (done) {
     chai
       .request(app)

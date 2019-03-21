@@ -1,18 +1,17 @@
-const database = require('../services/database')
+const database = require('../firestore')
 const util = require('../util')
 const collectionName = 'bbs'
 
 const model = {}
-const formatResponse = (doc, isDetail = false) => {
-  const data = doc.data()
-  data.id = doc.id
+const formatResponse = (id, data, isDetail = false, password = null) => {
+  data.id = id
   data.createdAtRaw = data.createdAt
   data.updatedAtRaw = data.updatedAt
   data.createdAt = util.getDateString(data.createdAt.toDate())
   data.updatedAt = util.getDateString(data.updatedAt.toDate())
-  delete data.password
 
-  if (isDetail && data.comments.length > 0) {
+  // コメント
+  if (isDetail) {
     data.comments.forEach((v, i) => {
       if (v.isDelete) {
         data.comments[i] = { isDelete: true }
@@ -26,12 +25,19 @@ const formatResponse = (doc, isDetail = false) => {
     delete data.comments
   }
 
+  // 認証
+  data.auth = false
+  if (password !== null && data.password === password) {
+    data.auth = true
+  }
+  delete data.password
+
   return data
 }
 
-model.get = async (id) => {
+model.get = async (id, password) => {
   const doc = await database.collection(collectionName).doc(id).get()
-  return formatResponse(doc, true)
+  return formatResponse(doc.id, doc.data(), true, password)
 }
 
 model.getPage = async (id = null) => {
@@ -47,7 +53,7 @@ model.getPage = async (id = null) => {
 
   let res = []
   docs.forEach(doc => {
-    res.push(formatResponse(doc))
+    res.push(formatResponse(doc.id, doc.data()))
   })
 
   return res
@@ -77,7 +83,7 @@ model.getDateNarrow = async (year, month) => {
 
   let res = []
   docs.forEach(doc => {
-    res.push(formatResponse(doc))
+    res.push(formatResponse(doc.id, doc.data()))
   })
 
   return res
