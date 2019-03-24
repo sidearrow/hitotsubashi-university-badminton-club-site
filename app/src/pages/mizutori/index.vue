@@ -12,26 +12,29 @@
     </div>
     <div>
       <div class="h3">OB通信</div>
-      <table class="table table-bordered">
-        <tr v-for="(obmsgsYear, _) in obmsgs.list" :key="_">
-          <td class="bg-light text-center">{{ obmsgsYear.year }}</td>
-          <td>
-            <span v-for="(obmsgMonth, _) in obmsgsYear.month" :key="_"
-                  class="ml-2 d-inline-block">
-              <a target="__blank"
-                 :href="obmsgs.getHref(obmsgsYear.year, obmsgMonth)">{{ obmsgs.getName(obmsgsYear.year, obmsgMonth) }}</a>
-            </span>
-          </td>
-        </tr>
-      </table>
+      <div class="row my-2" v-for="(obmsgsYear, _) in obmsgs.list" :key="_">
+        <div class="bg-light col-sm-2 py-2 font-weight-bold">{{ obmsgsYear.year }}</div>
+        <div class="col-sm-10">
+          <button class="btn btn-sm btn-outline-primary mr-2 my-1"
+                  v-for="(obmsgMonth, _) in obmsgsYear.month" :key="_"
+                  @click="openObmsg(obmsgs.getPath(obmsgsYear.year, obmsgMonth))">{{ obmsgs.getName(obmsgsYear.year, obmsgMonth) }}</button>
+        </div>
+      </div>
     </div>
   </article>
 </div>
 </template>
 
 <script>
+import firebaseConfig from '@/firebase-config'
 import cmpLogin from './cmp-login'
 import cmpPageTitle from '@/components/cmp-page-title'
+
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/storage'
+firebase.initializeApp(firebaseConfig)
+const storage = firebase.storage();
 
 const _components = {
   'cmp-login'     : cmpLogin,
@@ -51,11 +54,21 @@ export default {
   },
   methods: {
     clickLogout: function () {
+      firebase.auth().signOut()
       this.isLogin = false
     },
-    doneLogin: function () {
+    doneLogin: async function () {
+      await firebase.auth().signInAnonymously()
       this.isLogin = true
     },
+    openObmsg: async function (path) {
+      try {
+        const url = await storage.ref(path).getDownloadURL()
+        window.open(url)
+      } catch {
+        alert('ファイルの読み込みに失敗しました。\n管理者にご連絡ください。')
+      }
+    }
   },
 };
 </script>

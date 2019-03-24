@@ -39,7 +39,7 @@ export default {
       { year: 2006, month: [8] },
       { year: 2005, month: [1, 2, 3, 4, 5, 6, 7, 8] },
     ],
-    getHref: (year, month) => ( '/static/obmsg/obmessage_' +
+    getPath: (year, month) => ( 'obmsg/obmessage_' +
                                 year +
                                 ('0' + month).substr(-2) +
                                 '.' +

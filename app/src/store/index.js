@@ -5,20 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLoginManage: false,
-    bbsInput: {
-      title: '',
-      author: '',
-      content: '',
-      password: '',
-    },
+    isLoading: false,
   },
   mutations: {
-    loginManage: function (state) {
-      state.isLoginManage = true
+    loadingStart: function (state) {
+      state.isLoading = true
     },
-    logoutManage: function (state) {
-      state.isLoginManage = false
+    loadingEnd: function (state) {
+      state.isLoading = false
     },
   }
 })

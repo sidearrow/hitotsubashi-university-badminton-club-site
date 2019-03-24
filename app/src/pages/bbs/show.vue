@@ -17,22 +17,16 @@
   <div class="card mt-5">
     <div class="card-header">コメント</div>
     <div class="card-body">
-      <template v-if="post.comments.length === 0">
-        <div>コメントはありません</div>
-      </template>
-      <template v-else>
-        <div v-for="(v, i) in post.comments" :key="i">
-          <div class="mt-3">
-            <span>{{ v.author }}</span>
-            <span class="ml-2 text-monospace">{{ v.createdAt }}</span>
-          </div>
-          <div class="text-right">
-            <button class="btn btn-outline-danger"
-                    @click="openInputPasswordModal(i)">削除</button>
-          </div>
-          <p class="ws-preline">{{ v.content }}</p>
+      <div v-for="(v, i) in post.comments" :key="i">
+        <div class="mt-3">
+          <span>{{ v.author }}</span>
+          <span class="ml-2 text-monospace">{{ v.createdAt }}</span>
         </div>
-      </template>
+        <div class="text-right">
+          <button class="btn btn-outline-danger">削除</button>
+        </div>
+        <p class="ws-preline">{{ v.content }}</p>
+      </div>
       <hr class="my-5">
       <cmp-input-comment @done-post="fetchData"/>
     </div>
@@ -41,19 +35,11 @@
   <div class="mt-3">
     <router-link to="/bbs/posts">一覧へ</router-link>
   </div>
-
-  <cmp-password-dialog
-    ref="inputPasswordModal"
-    :postId="postId"
-    :commentId="modalTargetCommentId"
-    @comment-delete-done="fetchData"
-  />
 </div>
 </template>
 
 <script>
 import CmpInputComment from './cmp-input-comment'
-import CmpPasswordDialog from './cmp-password-modal'
 
 export default {
   created () {
@@ -66,13 +52,6 @@ export default {
           this.post = res.data
         })
     },
-    openInputPasswordModal: function (commentId) {
-      this.modalTargetCommentId = commentId
-      this.$refs.inputPasswordModal.open()
-    },
-    closeInputPasswordModal: function () {
-      this.$refs.inputPasswordModal.close()
-    },
   },
   data () {
     return {
@@ -83,7 +62,6 @@ export default {
   },
   components: {
     'cmp-input-comment': CmpInputComment,
-    'cmp-password-dialog': CmpPasswordDialog,
   }
 }
 </script>

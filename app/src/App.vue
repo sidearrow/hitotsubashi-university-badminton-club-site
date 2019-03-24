@@ -5,6 +5,13 @@
     <router-view></router-view>
   </div>
   <cmp-footer/>
+
+<!--
+  <div>
+    <div class="modal fade show"></div>
+    <div class="modal-backdrop fade show"></div>
+  </div>
+  -->
 </div>
 </template>
 
@@ -17,18 +24,6 @@ export default {
     'cmp-header': cmpHeader,
     'cmp-footer': cmpFooter,
   },
-  watch: {
-    '$route': function () {
-      this.isManagePage = this.$route.path !== '/manage/login' &&
-                          this.$route.path.split('/')[1] === 'manage'
-    }
-  },
-  data: function () {
-    return {
-      isManagePage: this.$route.path !== '/manage/login' &&
-                    this.$route.path.split('/')[1] === 'manage'
-    }
-  }
 }
 </script>
 
