@@ -42,12 +42,16 @@ controller.show = async (req, res) => {
     updatedAt: util.getDateString(docData.updatedAt.toDate()),
   }
   docData.comments.forEach((v) => {
-    resData.comments.push({
-      author   : v.author,
-      content  : v.content,
-      createdAt: util.getDateString(v.createdAt.toDate()),
-      deletedAt: v.deletedAt && util.getDateString(v.deletedAt.toDate())
-    })
+    if (v.deletedAt === null) {
+      resData.comments.push({
+        isDelete : false,
+        author   : v.author,
+        content  : v.content,
+        createdAt: util.getDateString(v.createdAt.toDate()),
+      })
+    } else {
+      resData.comments.push({ isDelete: true })
+    }
   })
 
   res.json(resData)

@@ -17,17 +17,39 @@
   <div class="card mt-5">
     <div class="card-header">コメント</div>
     <div class="card-body">
-      <div v-for="(v, i) in post.comments" :key="i">
-        <div class="mt-3">
-          <span>{{ v.author }}</span>
-          <span class="ml-2 text-monospace">{{ v.createdAt }}</span>
-        </div>
-        <div class="text-right">
-          <button class="btn btn-outline-danger">削除</button>
-        </div>
+      <div v-for="(v, i) in post.comments" :key="i" class="mb-5">
+        <!-- コメント 未削除 -->
+        <div v-if="!v.isDelete">
+          <div class="mt-3">
+            <span>{{ v.author }}</span>
+            <span class="ml-2 text-monospace">{{ v.createdAt }}</span>
+          </div>
+          <div v-show="deleteCommentsId !== i" class="text-right">
+            <button @click="clickDeleteOpen(i)" class="btn btn-sm btn-outline-danger">削除</button>
+          </div>
+          <div v-show="deleteCommentsId === i"
+               class="text-right" style="width:200px;margin-left:auto">
+            <div class="input-group">
+              <input type="password" placeholder="削除キー" maxlength="4"
+                     :class="'form-control form-control-sm' + (isErrorCommentsPassword ? ' is-invalid' : '')" v-model="commentsPassword">
+              <div>
+                <button @click="clickDelete(i)"
+                        class="btn btn-sm btn-outline-danger">削除</button>
+                <button @click="clickCancel()"
+                        class="btn btn-sm btn-outline-secondary">ｷｬﾝｾﾙ</button>
+              </div>
+              <small class="form-text text-muted">半角数字 4 字で入力してください</small>
+              <div class="invalid-feedback text-left">パスワードが間違っています</div>
+            </div>
+          </div>
         <p class="ws-preline">{{ v.content }}</p>
+        </div>
+        <!-- コメント 削除 -->
+        <div v-if="v.isDelete">
+          <div class="py-2">このコメントは削除されました</div>
+        </div>
+        <hr class="my-2">
       </div>
-      <hr class="my-5">
       <cmp-input-comment @done-post="fetchData"/>
     </div>
   </div>
@@ -46,18 +68,35 @@ export default {
     this.fetchData()
   },
   methods: {
-    fetchData: function () {
-      this.$http.get('/bbs/posts/' + this.postId)
-        .then((res) => {
-          this.post = res.data
-        })
+    fetchData: async function () {
+      const res = await this.$http.get('/bbs/posts/' + this.postId)
+      this.post = res.data
     },
+    clickDeleteOpen: function (cid) {
+      this.deleteCommentsId = cid
+    },
+    clickDelete: async function (cid) {
+      const url = `/bbs/posts/${this.postId}/comments/${cid}?password=${this.commentsPassword}`;
+      const res = await this.$http.delete(url)
+      if (res.data.isSuccess) {
+        this.fetchData()
+      } else {
+        this.isErrorCommentsPassword = true
+      }
+    },
+    clickCancel: function () {
+      this.deleteCommentsId = null
+      this.commentsPassword = ''
+      this.isErrorCommentsPassword = false
+    }
   },
   data () {
     return {
       post: {},
       postId: this.$route.params.id,
-      modalTargetCommentId: null,
+      deleteCommentsId: null,
+      commentsPassword: '',
+      isErrorCommentsPassword: false,
     };
   },
   components: {
