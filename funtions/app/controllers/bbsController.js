@@ -61,7 +61,7 @@ controller.update = async (req, res) => {
     author   : req.body.author,
     content  : req.body.content,
     password : req.body.password,
-    updatedAt: new Date(Date.now()),
+    updatedAt: new Date(),
   }
 
   await modelBbs.update(id, data)
@@ -91,11 +91,11 @@ controller.commentsCreate = async (req, res) => {
     author   : req.body.author,
     content  : req.body.content,
     password : req.body.password,
-    createdAt: new Date(Date.now()),
-    isDelete : false,
+    createdAt: new Date(),
+    deletedAt: null,
   }
 
-  const target = await modelBbs.get(id)
+  const target = (await modelBbs.get(id)).data()
   target.comments.push(data)
   await modelBbs.update(id, { comments: target.comments })
 
@@ -103,16 +103,14 @@ controller.commentsCreate = async (req, res) => {
 }
 
 controller.commentsDelete = async (req, res) => {
-  const reqId = req.params.id
-  const reqCid = req.params.cid
-  const reqPassword = req.query.password
+  const id = req.params.id
+  const cid = req.params.cid
+  const password = req.query.password
 
-  const target = await modelBbs.get(reqId)
-  if (target.comments[reqCid].password === reqPassword) {
-    target.comments[reqCid].isDelete = true
-    const updateData = { comments: target.comments }
-    await modelBbs.update(reqId, updateData)
-
+  const target = (await modelBbs.get(id)).data()
+  if (target.comments[cid].password === password) {
+    target.comments[cid].deletedAt = new Date()
+    await modelBbs.update(id, { comments: target.comments })
     res.json({isSuccess: true})
   } else {
     res.json({isSuccess: false})

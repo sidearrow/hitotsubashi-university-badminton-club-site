@@ -39,7 +39,7 @@ _.update = async (id, data) => {
 }
 
 _.delete = async (id) => {
-  await database.collection(collectionName).doc(id).update({ deletedAt: new Data() })
+  await database.collection(collectionName).doc(id).update({ deletedAt: new Date() })
 }
 
 _.getDateNarrow = async (year, month) => {
