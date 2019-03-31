@@ -5,3 +5,4 @@ package-lock.json
 /node_modules
 
 app/resources/obmsg.js
+app/resources/mizutoriPassword.js

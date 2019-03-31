@@ -1,8 +1,7 @@
-const functions = require('firebase-functions')
+const mizutoriPassword = require('./resources/mizutoriPassword')
 
-const functionsConfig = functions.config()
 const config = {
-  mizutoriPassword: functionsConfig.mizutori.password,
+  mizutoriPassword: mizutoriPassword,
 }
 
 module.exports = config

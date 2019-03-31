@@ -4,7 +4,7 @@
   "scripts": {
     "serve": "firebase use dev && firebase serve --only functions",
     "deploy-dev": "firebase use dev && firebase deploy --only functions",
-    "deploy-prod": "firebase use prod && firebase firebase deploy --only functions",
+    "deploy-prod": "firebase use prod && firebase deploy --only functions",
     "logs": "firebase functions:log",
     "test": "mocha",
     "test-all": "nyc mocha test/index.test.js 2>&1 | tee test.log"
