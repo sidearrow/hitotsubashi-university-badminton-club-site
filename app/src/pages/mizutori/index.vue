@@ -30,12 +30,6 @@ import firebaseConfig from '@/firebase-config'
 import cmpLogin from './cmp-login'
 import cmpPageTitle from '@/components/cmp-page-title'
 
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/storage'
-firebase.initializeApp(firebaseConfig)
-const storage = firebase.storage();
-
 const _components = {
   'cmp-login'     : cmpLogin,
   'cmp-page-title': cmpPageTitle,
@@ -54,21 +48,11 @@ export default {
   },
   methods: {
     clickLogout: function () {
-      firebase.auth().signOut()
       this.isLogin = false
     },
     doneLogin: async function () {
-      await firebase.auth().signInAnonymously()
       this.isLogin = true
     },
-    openObmsg: async function (path) {
-      try {
-        const url = await storage.ref(path).getDownloadURL()
-        window.open(url)
-      } catch {
-        alert('ファイルの読み込みに失敗しました。\n管理者にご連絡ください。')
-      }
-    }
   },
 };
 </script>

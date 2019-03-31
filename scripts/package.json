@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "devDependencies": {
     "csv-parse": "^4.3.0",
-    "firebase": "^5.5.1"
+    "firebase": "^5.9.2",
+    "xhr2": "^0.1.4"
   },
   "dependencies": {}
 }
