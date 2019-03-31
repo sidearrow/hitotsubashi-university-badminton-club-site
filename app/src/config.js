@@ -20,7 +20,7 @@ export default {
   },
   apiBaseUrl: {
     development: 'https://asia-northeast1-dev-hit-u-bad-3a8d2.cloudfunctions.net/api',
-    production : 'https://asia-northeast1-hit-u-bad.cloudfunctions.net/api/v1'
+    production : 'https://asia-northeast1-hit-u-badminton.cloudfunctions.net/api'
   },
   obmsg: {
     list: [
