@@ -39,11 +39,7 @@ export default {
       { year: 2006, month: [8] },
       { year: 2005, month: [1, 2, 3, 4, 5, 6, 7, 8] },
     ],
-    getPath: (year, month) => ( 'obmsg/obmessage_' +
-                                year +
-                                ('0' + month).substr(-2) +
-                                '.' +
-                                (year < 2013 || (year === 2013 && month <= 4) ? 'html' : 'pdf') ),
+    getId: (year, month) => ( year + ('0' + month).substr(-2) ),
     getName: (year, month) => ( year <= 2009 ? `第${month}号` : `${month}月号` ),
   }
 }

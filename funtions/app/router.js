@@ -18,7 +18,7 @@ router.get('/mizutori/login', (req, res) => {
   return res.json({ login: req.query.password === config.mizutoriPassword })
 })
 router.get('/mizutori/obmsg', (_, res) => {
-  return res.json(JSON.parse(require('./resources/obmsg')))
+  return res.json(require('./resources/obmsg'))
 })
 
 module.exports = router

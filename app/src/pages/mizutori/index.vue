@@ -17,7 +17,7 @@
         <div class="col-sm-10">
           <button class="btn btn-sm btn-outline-primary mr-2 my-1"
                   v-for="(obmsgMonth, _) in obmsgsYear.month" :key="_"
-                  @click="openObmsg(obmsgs.getPath(obmsgsYear.year, obmsgMonth))">{{ obmsgs.getName(obmsgsYear.year, obmsgMonth) }}</button>
+                  @click="clickButton(obmsgs.getId(obmsgsYear.year, obmsgMonth))">{{ obmsgs.getName(obmsgsYear.year, obmsgMonth) }}</button>
         </div>
       </div>
     </div>
@@ -43,7 +43,8 @@ export default {
   data: function () {
     return {
       isLogin: false,
-      obmsgs: this.$config.obmsg
+      obmsgs: this.$config.obmsg,
+      obmsgUrl: {},
     }
   },
   methods: {
@@ -52,7 +53,11 @@ export default {
     },
     doneLogin: async function () {
       this.isLogin = true
+      this.obmsgUrl = (await this.$http.get('/mizutori/obmsg')).data
     },
+    clickButton: function (id) {
+      window.open(this.obmsgUrl[id])
+    }
   },
 };
 </script>
