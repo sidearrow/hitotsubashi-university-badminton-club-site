@@ -10,16 +10,9 @@ class BbsPostsService
 {
     const PAGE_POST_NUM = 20;
 
-    private $table;
-
-    public function __construct()
-    {
-        $this->table = DB::table('bbs_posts');
-    }
-
     public function getPost(string $uuid)
     {
-        $res = $this->table
+        $res = DB::table('bbs_posts')
             ->select(
                 'uuid',
                 'title',
@@ -37,7 +30,7 @@ class BbsPostsService
 
     public function getPosts(int $pageNum = 1)
     {
-        $data = $this->table
+        $data = DB::table('bbs_posts')
             ->select(
                 'uuid',
                 'title',
@@ -45,7 +38,10 @@ class BbsPostsService
                 'created_at'
             )
             ->whereNull('parent_id')
-            ->orderBy('created_at')
+            ->whereNull('deleted_at')
+            ->orderBy('created_at', 'desc')
+            ->offset(($pageNum - 1) * self::PAGE_POST_NUM)
+            ->limit(self::PAGE_POST_NUM)
             ->get();
 
         return $data;
@@ -53,8 +49,9 @@ class BbsPostsService
 
     public function getPostsNum() :int
     {
-        $res = $this->table
+        $res = DB::table('bbs_posts')
             ->whereNull('parent_id')
+            ->whereNull('deleted_at')
             ->count();
 
         return $res;
@@ -78,16 +75,16 @@ class BbsPostsService
         string $author,
         string $content,
         string $password
-    )
-    {
-        $this->table->insert([
-            'uuid'       => uniqid(),
-            'title'      => $title,
-            'author'     => $author,
-            'content'    => $content,
-            'password'   => Hash::make($password),
-            'created_at' => Carbon::now(),
-        ]);
+    ) {
+        DB::table('bbs_posts')
+            ->insert([
+                'uuid'       => uniqid(),
+                'title'      => $title,
+                'author'     => $author,
+                'content'    => $content,
+                'password'   => Hash::make($password),
+                'created_at' => Carbon::now(),
+            ]);
     }
 
     public function updatePost(
@@ -97,7 +94,7 @@ class BbsPostsService
         string $content,
         string $password
     ) {
-        $this->table
+        DB::table('bbs_posts')
             ->where('uuid', $uuid)
             ->update([
                 'title' => $title,
