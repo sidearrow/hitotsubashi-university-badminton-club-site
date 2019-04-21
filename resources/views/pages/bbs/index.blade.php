@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
+@component('components.title', [ 'title' => '掲示板' ])
+@endcomponent
 <div>
   <p>試合の結果などをお知らせします。</p>
   <section class="mb-3">

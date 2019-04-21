@@ -33,6 +33,6 @@ $menus = [
       </div>
     </nav>
   </header>
-  <main class="container-fluid" style="margin-top:100px">@yield('content')</main>
+  <main class="container-fluid" style="margin-top:100px;max-width:720px">@yield('content')</main>
 </body>
 </html>
