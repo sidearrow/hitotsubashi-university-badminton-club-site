@@ -18,3 +18,5 @@ Route::get('/bbs/{id}/edit', 'BbsController@edit');
 Route::post('/bbs/{id}/edit-confirm', 'BbsController@editConfirm');
 Route::get('/bbs/{id}/edit-complete', 'BbsController@editCompleteGet');
 Route::post('/bbs/{id}/edit-complete', 'BbsController@editCompletePost');
+Route::post('/bbs/{id}/ajax-auth', 'BbsController@editAuthAjax');
+Route::post('/bbs/{id}/delete', 'BbsController@deleteAjax');

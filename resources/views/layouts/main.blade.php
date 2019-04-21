@@ -16,6 +16,11 @@ $menus = [
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <script src="{{ asset('/js/jquery-3.4.0.slim.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+    <style>
+      html {
+        font-size: 12px
+      }
+    </style>
   </head>
 <body>
   <header>

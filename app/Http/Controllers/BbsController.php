@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\BbsPostRequest;
+use App\Http\Requests\BbsPostAuthRequest;
 use App\Http\Services\BbsPostsService;
 
 class BbsController extends Controller
@@ -26,6 +27,7 @@ class BbsController extends Controller
     public function createConfirm(BbsPostRequest $request)
     {
         $request->flash();
+
         return view('pages.bbs.create-confirm');
     }
 
@@ -104,5 +106,10 @@ class BbsController extends Controller
         ];
 
         return view('pages.bbs.edit-complete', $viewData);
+    }
+
+    public function editAuthAjax(BbsPostAuthRequest $request, string $id)
+    {
+
     }
 }
