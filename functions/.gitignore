@@ -1,8 +1,0 @@
-firebase-debug.log
-package-lock.json
-.runtimeconfig.json
-.nyc_output
-/node_modules
-
-app/resources/obmsg.js
-app/resources/mizutoriPassword.js
