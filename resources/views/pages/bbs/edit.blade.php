@@ -2,8 +2,10 @@
 
 @section('content')
 @component('components.title', [ 'title' => '掲示板 投稿編集' ]) @endcomponent
-<form method="POST" action="edit-confirm">
+<form method="post" action="{{ url('bbs/' . $id . '/edit-confirm') }}">
     @csrf
+    <input type="hidden" name="postId" value="{{ $id }}" />
+    <input type="hidden" name="editPassword" value="{{ old('editPassword') }}" />
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">タイトル</label>
         <div class="col-sm-10">

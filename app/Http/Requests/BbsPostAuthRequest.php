@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,37 +16,56 @@ class BbsPostAuthRequest extends FormRequest
 
     public function rules()
     {
+        if ($this->request->has('editPassword')) {
+            return [
+                'postId'       => 'required',
+                'editPassword' => [ 'required', 'regex:/\d\d\d\d/', new PostAuthRule($this->request->get('postId')) ],
+            ];
+        }
+
         return [
-            'password' => ['required|regex:/\d\d\d\d/', new PostAuthRule],
+            'postId'         => 'required',
+            'deletePassword' => [ 'required', 'regex:/\d\d\d\d/', new PostAuthRule($this->request->get('postId')) ],
         ];
     }
 
     public function messages()
     {
         return [
-            'password.regex' => ':attributeは半角数字4字で入力してください'
+            '*.regex' => ':attributeは半角数字4字で入力してください'
         ];
     }
 
     public function attributes()
     {
         return [
-            'password' => '編集キー',
+            'editPassword'   => '編集キー',
+            'deletePassword' => '削除キー',
         ];
     }
 }
 
 class PostAuthRule implements Rule
 {
+    private $id;
+
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
+
     public function passes($attribute, $value)
     {
-        $passwordHash = DB::table('bbs_posts')
+        $res = DB::table('bbs_posts')
             ->select('password')
-            ->where('uuid', $this->route('id'))
-            ->first()
-            ->password;
+            ->where('uuid', $this->id)
+            ->first();
+
+        if (is_null($res)) {
+            return false;
+        }
         
-        return Hash::check($value, $passwordHash);
+        return Hash::check($value, $res->password);
     }
 
     public function message()

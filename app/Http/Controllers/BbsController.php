@@ -53,23 +53,21 @@ class BbsController extends Controller
 
     public function show(Request $request, BbsPostsService $bbsPostsService, string $id)
     {
-        $viewData = [
+        return view('pages.bbs.show', [
             'id'       => $id,
             'post'     => $bbsPostsService->getPost($id),
             'comments' => $bbsPostsService->getComments($id),
-        ];
-
-        return view('pages.bbs.show', $viewData);
+        ]);
     }
 
-    public function edit(Request $request, BbsPostsService $bbsPostsService, string $id)
+    public function edit(BbsPostAuthRequest $request, BbsPostsService $bbsPostsService, string $id)
     {
-        $viewData = [
+        $request->flash();
+
+        return view('pages.bbs.edit', [
             'id'   => $id,
             'post' => $bbsPostsService->getPost($id),
-        ];
-
-        return view('pages.bbs.edit', $viewData);
+        ]);
     }
 
     public function editConfirm(BbsPostRequest $request)
@@ -108,8 +106,8 @@ class BbsController extends Controller
         return view('pages.bbs.edit-complete', $viewData);
     }
 
-    public function editAuthAjax(BbsPostAuthRequest $request, string $id)
+    public function delete(BbsPostAuthRequest $request, string $id)
     {
-
+        return redirect('bbs');
     }
 }
