@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\BbsPostRequest;
+use App\Http\Requests\BbsPostEditRequest;
 use App\Http\Requests\BbsPostAuthRequest;
 use App\Http\Services\BbsPostsService;
 
@@ -70,7 +71,7 @@ class BbsController extends Controller
         ]);
     }
 
-    public function editConfirm(BbsPostRequest $request)
+    public function editConfirm(BbsPostEditRequest $request)
     {
         $request->flash();
 

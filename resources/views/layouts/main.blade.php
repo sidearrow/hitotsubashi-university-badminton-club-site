@@ -1,7 +1,7 @@
 <?php
 $menus = [
     [ '部員紹介', url('/members') ],
-    [ '大会結果', url('/result') ],
+    [ '大会結果', url('/results') ],
     [ '三多摩大会', url('/santama') ],
     [ '掲示板', url('/bbs') ],
     [ 'みずとり会', url('/mizutori') ],

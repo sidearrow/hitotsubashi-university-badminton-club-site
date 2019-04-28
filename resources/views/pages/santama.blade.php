@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-santama
+<div>santama</div>
 @endsection
