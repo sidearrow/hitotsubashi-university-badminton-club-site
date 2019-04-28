@@ -18,6 +18,7 @@ class BbsPostsService
                 'title',
                 'author',
                 'content',
+                'password',
                 'created_at',
             )
             ->whereNull('parent_id')

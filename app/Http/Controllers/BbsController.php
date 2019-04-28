@@ -61,7 +61,7 @@ class BbsController extends Controller
         ]);
     }
 
-    public function edit(BbsPostAuthRequest $request, BbsPostsService $bbsPostsService, string $id)
+    public function edit(Request $request, BbsPostsService $bbsPostsService, string $id)
     {
         $request->flash();
 
