@@ -19,6 +19,7 @@ Route::post('/bbs/{id}/edit-confirm', 'BbsController@editConfirm');
 Route::get('/bbs/{id}/edit-complete', 'BbsController@editCompleteGet');
 Route::post('/bbs/{id}/edit-complete', 'BbsController@editCompletePost');
 Route::post('/bbs/{id}/delete', 'BbsController@delete');
+Route::post('/bbs/{id}/comment', 'BbsController@commentCreate');
 
 Auth::routes();
 

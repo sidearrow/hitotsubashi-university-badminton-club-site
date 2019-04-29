@@ -70,15 +70,12 @@ class BbsPostsService
         return $res;
     }
 
-    public function getComments(string $uuid)
+    public function getComments(string $parentId)
     {
-        $sql = 
-            "select * from bbs_posts " .
-            "where parent_id in (select id from bbs_posts where uuid = :uuid)";
-        $binds = [
-            'uuid' => $uuid
-        ];
-        $res = DB::raw($sql, $binds);
+        $res = DB::table('bbs_posts')
+            ->select('uuid', 'author', 'content', 'created_at', 'deleted_at')
+            ->where('parent_id', $parentId)
+            ->get();
 
         return $res;
     }
@@ -97,6 +94,7 @@ class BbsPostsService
                 'content'    => $content,
                 'password'   => Hash::make($password),
                 'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
     }
 
@@ -124,6 +122,24 @@ class BbsPostsService
             ->where('uuid', $id)
             ->update([
                 'deleted_at' => Carbon::now(),
+            ]);
+    }
+
+    public function createComment(
+        string $id,
+        string $author,
+        string $content,
+        string $password
+    ) {
+        DB::table('bbs_posts')
+            ->insert([
+                'uuid'       => uniqid(),
+                'author'     => $author,
+                'content'    => $content,
+                'password'   => Hash::make($password),
+                'parent_id'  => $id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
     }
 }

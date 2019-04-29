@@ -7,6 +7,7 @@ use App\Http\Requests\BbsPostRequest;
 use App\Http\Requests\BbsPostEditRequest;
 use App\Http\Requests\BbsPostDeleteRequest;
 use App\Http\Requests\BbsPostEditAuthRequest;
+use App\Http\Requests\BbsPostCommentCreateRequest;
 use App\Http\Services\BbsPostsService;
 
 class BbsController extends Controller
@@ -137,6 +138,22 @@ class BbsController extends Controller
     public function delete(BbsPostDeleteRequest $request, BbsPostsService $bbsPostsService)
     {
         $bbsPostsService->deletePost($request->postId);
+
         return redirect('bbs');
+    }
+
+    public function commentCreate(
+        BbsPostCommentCreateRequest $request,
+        BbsPostsService $bbsPostsService,
+        string $postId
+    ) {
+        $bbsPostsService->createComment(
+            $postId,
+            $request->author,
+            $request->content,
+            $request->password
+        );
+
+        return redirect('bbs/' . $postId);
     }
 }
