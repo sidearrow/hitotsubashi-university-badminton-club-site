@@ -14,7 +14,6 @@ Route::post('/bbs/create-confirm', 'BbsController@createConfirm');
 Route::get('/bbs/create-complete', 'BbsController@createCompleteGet');
 Route::post('/bbs/create-complete', 'BbsController@createCompletePost');
 Route::get('/bbs/{id}', 'BbsController@show');
-Route::get('/bbs/{id}/edit-login', 'BbsPostAuth\LoginController@editLogin');
 Route::get('/bbs/{id}/edit', 'BbsController@edit');
 Route::post('/bbs/{id}/edit-confirm', 'BbsController@editConfirm');
 Route::get('/bbs/{id}/edit-complete', 'BbsController@editCompleteGet');

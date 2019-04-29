@@ -2,20 +2,23 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class BbsPostEditRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        if (!Auth::guard('bbsPost')->check()) {
+            return false;
+        }
+
+        return Auth::guard('bbsPost')->user()->uuid === $this->request->get('postId');
     }
 
     public function rules()
     {
         return [
-            'postId'       => 'required',
-            'editPassword' => 'required',
             'author'       => 'required|max:100',
             'title'        => 'required|max:100',
             'content'      => 'required|max:2000',

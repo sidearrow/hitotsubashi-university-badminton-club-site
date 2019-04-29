@@ -29,7 +29,7 @@ class BbsPostsService
         return $res;
     }
 
-    public function getPosts(int $pageNum = 1)
+    public function getPosts(int $pageNum = 1, string $year, string $month)
     {
         $data = DB::table('bbs_posts')
             ->select(
@@ -38,6 +38,12 @@ class BbsPostsService
                 'author',
                 'created_at'
             )
+            ->when($year, function ($query, $year) {
+                return $query->whereYear('created_at', $year);
+            })
+            ->when($month, function ($query, $month) {
+                return $query->whereMonth('created_at', $month);
+            })
             ->whereNull('parent_id')
             ->whereNull('deleted_at')
             ->orderBy('created_at', 'desc')
@@ -48,9 +54,15 @@ class BbsPostsService
         return $data;
     }
 
-    public function getPostsNum() :int
+    public function getPostsNum(string $year, string $month) :int
     {
         $res = DB::table('bbs_posts')
+            ->when($year, function ($query, $year) {
+                return $query->whereYear('created_at', $year);
+            })
+            ->when($month, function ($query, $month) {
+                return $query->whereMonth('created_at', $month);
+            })
             ->whereNull('parent_id')
             ->whereNull('deleted_at')
             ->count();
@@ -103,6 +115,15 @@ class BbsPostsService
                 'content' => $content,
                 'password' => Hash::make($password),
                 'updated_at' => Carbon::now(),
+            ]);
+    }
+
+    public function deletePost(string $id)
+    {
+        DB::table('bbs_posts')
+            ->where('uuid', $id)
+            ->update([
+                'deleted_at' => Carbon::now(),
             ]);
     }
 }

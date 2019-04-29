@@ -20,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="get" action="{{ url('bbs/' . $id . '/edit-login') }}">
+            <form method="get" action="{{ url('bbs/' . $id . '/edit') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
