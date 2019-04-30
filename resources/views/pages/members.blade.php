@@ -2,7 +2,8 @@
 
 @section('content')
 @component('components.title', [ 'title' => '部員紹介' ]) @endcomponent
-@foreach ($members as $membersYear)
+@foreach ($members as $i => $membersYear)
+    <div>{{ $i+1 }}年生</div>
     @foreach ($membersYear as $v)
         <div class="row py-3">
             <div class="col-auto">
@@ -14,10 +15,11 @@
                     <span class="border border-dark rounded px-1 mb-1 mr-2 d-inline-block">{{ $v['faculty'] }}</span>
                     <span class="border border-dark rounded px-1 d-inline-block">{{ $v['highschool'] }}</span>
                 </div>
-            <div>
-                @foreach ($v['positions'] as $pos)
-                    <span class="border border-dark rounded px-1 mr-1 mb-1 d-inline-block">{{ $pos }}</span>
-                @endforeach
+                <div>
+                    @foreach ($v['positions'] as $pos)
+                        <span class="border border-dark rounded px-1 mr-1 mb-1 d-inline-block">{{ $pos }}</span>
+                    @endforeach
+                </div>
             </div>
         </div>
     @endforeach

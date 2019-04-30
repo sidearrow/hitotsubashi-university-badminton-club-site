@@ -49,7 +49,6 @@ class MembersService
     {
         $assetPath = 'storage/members/' . $fileName;
         $filePath = public_path() . '/' . $assetPath;
-        var_dump($filePath);
 
         if (file_exists($filePath)) {
             return asset($assetPath);

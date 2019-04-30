@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\MembersService;
 use App\Http\Services\ResultsService;
+use App\Http\Services\SantamaResultsService;
 
 class MainController extends Controller
 {
@@ -26,6 +27,10 @@ class MainController extends Controller
         return view('pages.results', [ 'results' => $results ]);
     }
 
-    public function santama()
-    {}
+    public function santama(SantamaResultsService $santamaResultsService)
+    {
+        $results = $santamaResultsService->get();
+
+        return view('pages.santama', ['results' => $results]);
+    }
 }
