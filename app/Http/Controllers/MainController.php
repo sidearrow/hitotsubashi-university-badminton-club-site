@@ -16,7 +16,8 @@ class MainController extends Controller
     public function members(MembersService $membersService)
     {
         $members = $membersService->getMembers();
-        return view('pages.members', [ 'members' => $members ]);
+
+        return view('pages.members', ['members' => $members]);
     }
 
     public function results(ResultsService $resultsService)
