@@ -4,8 +4,6 @@ Route::get('/', 'MainController@index');
 Route::get('/members', 'MainController@members');
 Route::get('/results', 'MainController@results');
 Route::get('/santama', 'MainController@santama');
-//Route::get('/mizutori', '');
-//Route::get('/mizutori/login', '');
 
 Route::get('/bbs', 'BbsController@index');
 Route::get('/bbs/create', 'BbsController@create');
@@ -21,6 +19,10 @@ Route::post('/bbs/{id}/edit-complete', 'BbsController@editCompletePost');
 Route::post('/bbs/{id}/delete', 'BbsController@delete');
 Route::post('/bbs/{id}/comment', 'BbsController@commentCreate');
 
-Auth::routes();
+Route::get('/mizutori', 'MizutoriController@index');
+Route::get('/mizutori-login', 'MizutoriController@loginGet');
+Route::post('/mizutori-login', 'MizutoriController@loginPost');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/files/members/{fileName}', function (string $fileName) {
+    return response()->file(storage_path() . '/files/' . $fileName);
+});
