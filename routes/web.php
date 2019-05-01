@@ -23,6 +23,4 @@ Route::get('/mizutori', 'MizutoriController@index');
 Route::get('/mizutori-login', 'MizutoriController@loginGet');
 Route::post('/mizutori-login', 'MizutoriController@loginPost');
 
-Route::get('/files/members/{fileName}', function (string $fileName) {
-    return response()->file(storage_path() . '/files/' . $fileName);
-});
+Route::get('/files/obmessages/{fileName}', 'FileController@obmessages');

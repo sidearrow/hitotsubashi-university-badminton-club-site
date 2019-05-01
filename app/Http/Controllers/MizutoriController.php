@@ -18,10 +18,14 @@ class MizutoriController extends Controller
             return redirect('mizutori-login');
         }
 
-        $obmsgs = $obmessagesService->get();
+        $obmessages = $obmessagesService->get();
+        $getObmessasgesUrl = function (string $fileName) {
+            return url('files/obmessages') . '/' . $fileName;
+        };
 
         return view('pages.mizutori', [
-            'obmsgs' => $obmsgs,
+            'obmessags' => $obmessages,
+            'getObmessagesUrl' => $getObmessasgesUrl
         ]);
     }
 
