@@ -19,16 +19,20 @@
             <p>コメントはありません</p>
         @else
             @foreach ($comments as $comment)
-                <div>
+                @if (!is_null($comment->deleted_at))
+                    <div>コメントは削除されました</div>
+                @else
                     <div>
-                        <span>{{ $comment->author }}</span>
-                        <span class="ml-2 text-monospace">{{ $comment->created_at }}</span>
+                        <div>
+                            <span>{{ $comment->author }}</span>
+                            <span class="ml-2 text-monospace">{{ $comment->created_at }}</span>
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteCommentModal" data-post-id="{{ $comment->uuid }}">削除</button>
+                        </div>
+                        <div>{!! nl2br($comment->content) !!}</div>
                     </div>
-                    <div class="text-right">
-                        <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteCommentModal" data-post-id="{{ $comment->uuid }}">削除</button>
-                    </div>
-                    <div>{!! nl2br($comment->content) !!}</div>
-                </div>
+                @endif
                 <hr class="my-4" />
             @endforeach
         @endif
@@ -100,7 +104,8 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="deleteModal" data-is-error="@if($errors->has('deletePassword')){{'1'}}@endif">
+<?php $errorsHasPostDeletePassword = old('isComment') !== '1' && $errors->has('deletePassword'); ?>
+<div class="modal fade" id="deleteModal" data-is-error="{{ $errorsHasPostDeletePassword ? '1' : '' }}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -115,8 +120,8 @@
                     <div class="form-group">
                         <label>削除キー</label>
                         <input type="hidden" name="postId" value="{{ $id }}" />
-                        <input type="password" name="deletePassword" class="form-control @if($errors->has('deletePassword')){{'is-invalid'}}@endif" />
-                        @if($errors->has('deletePassword'))
+                        <input type="password" name="deletePassword" class="form-control {{ $errorsHasPostDeletePassword ? 'is-invalid' : '' }}" />
+                        @if($errorsHasPostDeletePassword)
                             <div class="invalid-feedback">{{ $errors->first('deletePassword') }}</div>
                         @else
                             <small class="form-text text-muted">半角数字 4 字で入力してください</small>
@@ -131,7 +136,8 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="deleteCommentModal" data-is-error="{{ $errors->has('deletePassword') ? '1' : '' }}">
+<?php $errorsHasCommentDeletePassword = old('isComment') === '1' && $errors->has('deletePassword'); ?>
+<div class="modal fade" id="deleteCommentModal" data-is-error="{{ $errorsHasCommentDeletePassword ? '1' : '' }}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -146,9 +152,11 @@
                     <div class="form-group">
                         <label>削除キー</label>
                         <input type="hidden" name="postId" />
-                        <input type="password" name="deletePassword" class="form-control {{ $errors->has('deletePassword') ? 'is-invalid' : '' }}" />
-                        @if($errors->has('commentDeletePassword'))
-                            <div class="invalid-feedback">{{ $errors->first('commentDeletePassword') }}</div>
+                        <input type="hidden" name="isComment" value="1" />
+                        <input type="hidden" name="parentId" value="{{ $id }}" />
+                        <input type="password" name="deletePassword" class="form-control {{ $errorsHasCommentDeletePassword ? 'is-invalid' : '' }}" />
+                        @if($errorsHasCommentDeletePassword)
+                            <div class="invalid-feedback">{{ $errors->first('deletePassword') }}</div>
                         @else
                             <small class="form-text text-muted">半角数字 4 字で入力してください</small>
                         @endif
@@ -169,13 +177,13 @@ $(function () {
     $editModal.attr('data-is-error') === '1' && $editModal.modal('show');
     $deleteModal = $('#deleteModal');
     $deleteModal.attr('data-is-error') === '1' && $deleteModal.modal('show');
-    $commentDeleteModal = $('#commentDeleteModal');
+    $commentDeleteModal = $('#deleteCommentModal');
     $commentDeleteModal.attr('data-is-error') === '1' && $commentDeleteModal.modal('show');
 
     $('button[data-post-id]').click(function () {
         var targetId = $(this).attr('data-post-id');
         $('#deleteCommentModal [name=postId]').val(targetId);
-        $('#deleteCommentModal form').attr('action', baseUrl + '/bbs/' + targetId + '/delete-comment');
+        $('#deleteCommentModal form').attr('action', baseUrl + '/bbs/' + targetId + '/delete');
     });
 });
 </script>

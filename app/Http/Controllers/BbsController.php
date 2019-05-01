@@ -139,6 +139,10 @@ class BbsController extends Controller
     {
         $bbsPostsService->deletePost($request->postId);
 
+        if ($request->isComment === '1') {
+            return redirect('bbs/' . $request->parentId)->with('isCommentDelete', '1');
+        }
+
         return redirect('bbs');
     }
 
