@@ -18,7 +18,7 @@ class CreateObmessagesTable extends Migration
             $table->string('year', 4);
             $table->smallInteger('year_index');
             $table->string('name', 10);
-            $table->string('filename', 20);
+            $table->string('filename', 30);
         });
     }
 
