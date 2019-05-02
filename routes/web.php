@@ -24,3 +24,11 @@ Route::get('/mizutori-login', 'MizutoriController@loginGet');
 Route::post('/mizutori-login', 'MizutoriController@loginPost');
 
 Route::get('/files/obmessages/{fileName}', 'FileController@obmessages');
+
+Route::get('/admin/login', 'AdminIndexController@loginGet');
+Route::post('/admin/login', 'AdminIndexController@loginPost');
+Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
+    Route::get('/', 'AdminIndexController@index');
+    Route::get('/obmessages', 'AdminIndexController@obmessages');
+    Route::post('/obmessages/create', 'AdminIndexController@obmessagesCreate');
+});

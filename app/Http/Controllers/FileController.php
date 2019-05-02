@@ -17,7 +17,8 @@ class FileController extends Controller
 
         if (
             !Auth::guard('user')->check() ||
-            Auth::guard('user')->user()->login_id !== 'mizutori'
+            (Auth::guard('user')->user()->login_id !== 'mizutori' &&
+             Auth::guard('user')->user()->login_id !== 'admin')
         ) {
             return abort(401);
         }

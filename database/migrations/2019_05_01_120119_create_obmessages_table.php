@@ -16,7 +16,7 @@ class CreateObmessagesTable extends Migration
         Schema::create('obmessages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('year', 4);
-            $table->smallInteger('year_index');
+            $table->string('month', 2);
             $table->string('name', 10);
             $table->string('filename', 30);
         });

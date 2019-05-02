@@ -11,11 +11,12 @@ class ObmessagesService
         $dbdata = DB::table('obmessages')
             ->select(
                 'year',
+                'month',
                 'name',
                 'filename',
             )
             ->orderBy('year', 'desc')
-            ->orderBy('year_index', 'asc')
+            ->orderBy('month', 'asc')
             ->get();
 
         $res = [];
@@ -27,5 +28,16 @@ class ObmessagesService
         }
        
         return $res;
+    }
+
+    public function getForAdmin()
+    {
+        $dbdata = DB::table('obmessages')
+            ->select('year', 'month', 'name', 'filename')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->get();
+
+        return $dbdata;
     }
 }
