@@ -37,6 +37,27 @@ class AdminIndexController extends Controller
         ]);
     }
 
-    public function obmessagesCreate(ObmessagesCreateRequest $request)
-    {}
+    public function obmessagesCreate(ObmessagesCreateRequest $request, ObmessagesService $obmessagesService)
+    {
+        $fileName = $obmessagesService->createFileName($request->year, $request->month);
+        $obmessagesService->insert($request->year, $request->month, $request->name, $fileName);
+        $request->file->storeAs('/files/obmessages', $fileName);
+
+        return redirect('admin/obmessages')->with('isCreateDone', '1');
+    }
+
+    public function obmessagesDelete(Request $request, ObmessagesService $obmessagesService)
+    {
+        if ($request->id === null) {
+            return redirect('admin/obmessages');
+        }
+
+        $fileName = $obmessagesService->getFileNameById($request->id);
+        $filePath = storage_path('app/files/obmessages/' . $fileName);
+
+        unlink($filePath);
+        $obmessagesService->delete($request->id);
+
+        return redirect('admin/obmessages')->with('isDeleteDone', '1');
+    }
 }

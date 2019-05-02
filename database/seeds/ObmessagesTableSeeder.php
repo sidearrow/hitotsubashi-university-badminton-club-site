@@ -12,13 +12,13 @@ class ObmessagesTableSeeder extends Seeder
 
         $data = [];
         foreach ($_data as $v) {
-            $year = substr($v->filename, 10, 4);
-            $month = substr($v->filename, 14, 2);
+            $year = (int)substr($v->filename, 10, 4);
+            $month = (int)substr($v->filename, 14, 2);
 
             if ((int)$year > 2009) {
-                $name = (string)(int)$month . '月号';
+                $name = (string)$month . '月号';
             } else {
-                $name = '第' . (string)(int)$month . '号';
+                $name = '第' . (string)$month . '号';
             }
 
             $data[] = [
