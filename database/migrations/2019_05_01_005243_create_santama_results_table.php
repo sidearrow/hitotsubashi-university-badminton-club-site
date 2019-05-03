@@ -17,7 +17,7 @@ class CreateSantamaResultsTable extends Migration
             $table->increments('id');
             $table->smallInteger('year');
             $table->string('name', 10);
-            $table->string('filename', 20);
+            $table->string('file_name', 20);
         });
     }
 

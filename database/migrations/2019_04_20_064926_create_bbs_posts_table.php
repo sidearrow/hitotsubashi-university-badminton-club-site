@@ -14,16 +14,17 @@ class CreateBbsPostsTable extends Migration
     public function up()
     {
         Schema::create('bbs_posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('uuid', 15);
-            $table->string('title', 100);
+            $table->string('id', 15);
+            $table->string('title', 100)->nullable();
             $table->string('author', 100);
             $table->string('content', 2000);
             $table->string('password', 200);
-            $table->integer('parent_id')->nullable();
+            $table->string('parent_id', 15)->nullable();
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();
+
+            $table->primary('id');
         });
     }
 

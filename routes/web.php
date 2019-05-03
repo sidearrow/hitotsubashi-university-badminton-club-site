@@ -7,7 +7,6 @@ Route::get('/santama', 'MainController@santama');
 
 Route::get('/bbs', 'BbsController@index');
 Route::get('/bbs/create', 'BbsController@create');
-//Route::post('/bbs/create', 'BbsController@create');
 Route::post('/bbs/create-confirm', 'BbsController@createConfirm');
 Route::get('/bbs/create-complete', 'BbsController@createCompleteGet');
 Route::post('/bbs/create-complete', 'BbsController@createCompletePost');
@@ -29,6 +28,7 @@ Route::get('/admin/login', 'AdminIndexController@loginGet');
 Route::post('/admin/login', 'AdminIndexController@loginPost');
 Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
     Route::get('/', 'AdminIndexController@index');
+    Route::get('/members', 'AdminMembersController@index');
     Route::get('/obmessages', 'AdminIndexController@obmessages');
     Route::post('/obmessages/create', 'AdminIndexController@obmessagesCreate');
     Route::post('/obmessages/delete', 'AdminIndexController@obmessagesDelete');

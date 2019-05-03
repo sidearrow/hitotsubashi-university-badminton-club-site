@@ -52,7 +52,7 @@
     <div>
         @foreach ($posts as $post)
             <div class="mb-4">
-                <div><a href="{{ url('bbs/' . $post->uuid) }}">{{ $post->title }}</a></div>
+                <div><a href="{{ url('bbs/' . $post->id) }}">{{ $post->title }}</a></div>
                 <div class="mt-2">
                     <div>
                         <span>by {{ $post->author }}</span>

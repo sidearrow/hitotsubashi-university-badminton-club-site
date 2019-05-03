@@ -18,13 +18,13 @@ class BbsPostEditAuthRequest extends FormRequest
         $postId = $this->request->get('postId');
 
         $authGuardBbsPost = Auth::guard('bbsPost');
-        if ($authGuardBbsPost->check() && $authGuardBbsPost->user()->uuid === $postId) {
+        if ($authGuardBbsPost->check() && $authGuardBbsPost->user()->id === $postId) {
             return [];
         }
 
         return [
             'postId'       => 'required',
-            'editPassword' => [ 'required', 'regex:/\d\d\d\d/', new BbsPostsAuthRule($postId) ],
+            'editPassword' => ['required', 'regex:/\d\d\d\d/', new BbsPostsAuthRule($postId)],
         ];
     }
 

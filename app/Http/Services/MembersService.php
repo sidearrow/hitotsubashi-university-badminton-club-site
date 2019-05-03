@@ -55,4 +55,37 @@ class MembersService
         }
         return asset('storage/members/in_preparation.png');
     }
+
+    public function getForAdmin()
+    {
+        $dbdata = DB::table('members')
+            ->select(
+                'id', 'admission_year', 'first_name', 'last_name', 'faculty',
+                'highschool', 'position', 'file_name', 'comment'
+            )
+            ->orderBy('admission_year', 'desc')
+            ->get();
+
+        return $dbdata;
+    }
+
+    public function insert(
+        string $admissionYear,
+        string $firstName,
+        string $lastName,
+        string $faculty,
+        string $highschool,
+        string $position,
+        string $comment
+    ) {
+        DB::table('members')->insert([
+            'admission_year' => $admissionYear,
+            'first_name'     => $firstName,
+            'last_name'      => $lastName,
+            'faculty'        => $faculty,
+            'highschool'     => $highschool,
+            'position'       => $position,
+            'comment'        => $comment,
+        ]);
+    }
 }

@@ -10,8 +10,10 @@
     <span>{{ $post->author }}</span>
     <span class="ml-2 text-monospace">{{ $post->created_at }}</span>
 </div>
-<div class="ws-preline mb-3">{!! nl2br($post->content) !!}</div>
-<div></div>
+<div class="ws-preline mb-5">{!! nl2br($post->content) !!}</div>
+<div class="text-center mb-3">
+    <a class="btn btn-outline-primary mr-2 px-4" href="{{ url('bbs') }}">一覧へ戻る</a>
+</div>
 <div class="card my-5">
     <div class="card-header">コメント</div>
     <div class="card-body">
@@ -28,7 +30,7 @@
                             <span class="ml-2 text-monospace">{{ $comment->created_at }}</span>
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteCommentModal" data-post-id="{{ $comment->uuid }}">削除</button>
+                            <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteCommentModal" data-post-id="{{ $comment->id }}">削除</button>
                         </div>
                         <div>{!! nl2br($comment->content) !!}</div>
                     </div>

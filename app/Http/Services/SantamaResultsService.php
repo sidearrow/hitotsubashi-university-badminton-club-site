@@ -8,15 +8,15 @@ class SantamaResultsService
 {
     public function get()
     {
-        $results = DB::table('santama_results')
-            ->select('year', 'name', 'filename')
+        $dbdata = DB::table('santama_results')
+            ->select('year', 'name', 'file_name')
             ->get();
 
         $res = [];
-        foreach ($results as $v) {
+        foreach ($dbdata as $v) {
             $res[$v->year][] = [
-                'name'     => $v->name,
-                'filename' => $v->filename,
+                'name' => $v->name,
+                'url'  => asset('storage/santama_results/' . $v->file_name),
             ];
         }
 

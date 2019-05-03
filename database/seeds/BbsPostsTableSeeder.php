@@ -12,10 +12,10 @@ class BbsPostsTableSeeder extends Seeder
     {
         $data = json_decode(file_get_contents(self::FILE_PATH));
         foreach($data as $v) {
-            $uuid = uniqid();
+            $parentId = uniqid();
             $id = DB::table('bbs_posts')
                 ->insertGetId([
-                    'uuid'       => $uuid,
+                    'id'         => $parentId,
                     'title'      => $v->title,
                     'author'     => $v->author,
                     'content'    => $v->content,
@@ -30,12 +30,12 @@ class BbsPostsTableSeeder extends Seeder
             foreach($v->comments as $vc) {
                 DB::table('bbs_posts')
                     ->insert([
-                        'uuid'       => $uuid,
+                        'id'         => uniqid(),
                         'title'      => $v->title,
                         'author'     => $vc->author,
                         'content'    => $vc->content,
                         'password'   => Hash::make('1111'),
-                        'parent_id'  => $id,
+                        'parent_id'  => $parentId,
                         'created_at' => $this->formatDate($vc->createdAt),
                         'updated_at' => $this->formatDate($vc->updatedAt),
                     ]);

@@ -8,16 +8,18 @@
         </section>
         <h3 class="h3">過去の大会結果</h3>
         <table class="table table-bordered">
-            @foreach ($results as $i => $vYear)
+            <tbody>
+            @foreach ($results as $i => $v1)
                 <tr>
-                    <td class="align-middle bg-light text-center" rowspan="3" style="width:60px">{{ $i }}</td>
+                    <td class="align-middle bg-light text-center" style="width:60px">{{ $i }}</td>
                     <td>
-                        @foreach ($vYear as $v)
-                            <a class="btn btn-sm btn-outline-primary mr-1" target="_blank" href="{{ $v['filename'] }}">{{ $v['name'] }}</a>
+                        @foreach ($v1 as $v2)
+                            <a class="btn btn-sm btn-outline-primary mr-1 my-1" target="_blank" href="{{ $v2['url'] }}">{{ $v2['name'] }}</a>
                         @endforeach
                     </td>
                 </tr>
             @endforeach
+            </tbody>
         </table>
     </div>
 @endsection

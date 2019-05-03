@@ -19,7 +19,7 @@ class BbsPostsAuthRule implements Rule
         $authGuardBbsPost = Auth::guard('bbsPost');
 
         $isAuth = $authGuardBbsPost->attempt([
-                'uuid' => $this->id,
+                'id'       => $this->id,
                 'password' => $value,
             ]);
 

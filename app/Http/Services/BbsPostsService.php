@@ -10,20 +10,13 @@ class BbsPostsService
 {
     const PAGE_POST_NUM = 20;
 
-    public function getPost(string $uuid)
+    public function getPost(string $id)
     {
         $res = DB::table('bbs_posts')
-            ->select(
-                'uuid',
-                'title',
-                'author',
-                'content',
-                'password',
-                'created_at',
-            )
+            ->select('id', 'title', 'author', 'content', 'password', 'created_at')
             ->whereNull('parent_id')
             ->whereNull('deleted_at')
-            ->where('uuid', $uuid)
+            ->where('id', $id)
             ->first();
 
         return $res;
@@ -32,12 +25,7 @@ class BbsPostsService
     public function getPosts(int $pageNum = 1, string $year, string $month)
     {
         $data = DB::table('bbs_posts')
-            ->select(
-                'uuid',
-                'title',
-                'author',
-                'created_at'
-            )
+            ->select('id', 'title', 'author', 'created_at')
             ->when($year, function ($query, $year) {
                 return $query->whereYear('created_at', $year);
             })
@@ -73,7 +61,7 @@ class BbsPostsService
     public function getComments(string $parentId)
     {
         $res = DB::table('bbs_posts')
-            ->select('uuid', 'author', 'content', 'created_at', 'deleted_at')
+            ->select('id', 'author', 'content', 'created_at', 'deleted_at')
             ->where('parent_id', $parentId)
             ->get();
 
@@ -88,7 +76,7 @@ class BbsPostsService
     ) {
         DB::table('bbs_posts')
             ->insert([
-                'uuid'       => uniqid(),
+                'id'         => uniqid(),
                 'title'      => $title,
                 'author'     => $author,
                 'content'    => $content,
@@ -99,19 +87,19 @@ class BbsPostsService
     }
 
     public function updatePost(
-        string $uuid,
+        string $id,
         string $title,
         string $author,
         string $content,
         string $password
     ) {
         DB::table('bbs_posts')
-            ->where('uuid', $uuid)
+            ->where('id', $id)
             ->update([
-                'title' => $title,
-                'author' => $author,
-                'content' => $content,
-                'password' => Hash::make($password),
+                'title'      => $title,
+                'author'     => $author,
+                'content'    => $content,
+                'password'   => Hash::make($password),
                 'updated_at' => Carbon::now(),
             ]);
     }
@@ -119,7 +107,7 @@ class BbsPostsService
     public function deletePost(string $id)
     {
         DB::table('bbs_posts')
-            ->where('uuid', $id)
+            ->where('id', $id)
             ->update([
                 'deleted_at' => Carbon::now(),
             ]);
@@ -133,7 +121,7 @@ class BbsPostsService
     ) {
         DB::table('bbs_posts')
             ->insert([
-                'uuid'       => uniqid(),
+                'id'         => uniqid(),
                 'author'     => $author,
                 'content'    => $content,
                 'password'   => Hash::make($password),

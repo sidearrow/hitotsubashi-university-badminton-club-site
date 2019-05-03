@@ -13,7 +13,7 @@ class BbsPostEditRequest extends FormRequest
             return false;
         }
 
-        return Auth::guard('bbsPost')->user()->uuid === $this->request->get('postId');
+        return Auth::guard('bbsPost')->user()->id === $this->request->get('postId');
     }
 
     public function rules()
