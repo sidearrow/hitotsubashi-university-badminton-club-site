@@ -21,14 +21,16 @@ $menus = [
     <body>
         <header>
             <nav class="navbar navbar-dark fixed-top" style="background-color:#ac2926">
-                <a class="navbar-brand" href="{{ url('/') }}">一橋大学バドミントン</a>
-                <div class="d-flex">
-                    <div class="dropdown">
-                        <a class="btn btn-transpalent dropdown-toggle text-white" data-toggle="dropdown" style="cursor:pointer">MENU</a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            @foreach ($menus as $menu)
-                                <a class="dropdown-item" href="{{ $menu[1] }}">{{ $menu[0] }}</a>
-                            @endforeach
+                <div class="container" style="max-width:720px">
+                    <a class="navbar-brand" href="{{ url('/') }}">一橋大学バドミントン</a>
+                    <div class="d-flex">
+                        <div class="dropdown">
+                            <a class="btn btn-transpalent dropdown-toggle text-white" data-toggle="dropdown" style="cursor:pointer">MENU</a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                @foreach ($menus as $menu)
+                                    <a class="dropdown-item" href="{{ $menu[1] }}">{{ $menu[0] }}</a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
