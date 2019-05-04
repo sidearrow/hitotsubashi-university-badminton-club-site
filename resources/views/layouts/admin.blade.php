@@ -12,14 +12,18 @@
     <body>
         <header>
             <nav class="navbar navbar-dark bg-dark mb-4">
-                <a class="navbar-brand" href="{{ url('/admin') }}">一橋大バド部HP 管理画面</a>
-                <div class="d-flex">
-                    <div class="dropdown text-white">
-                        <a class="btn btn-transpalent dropdown-toggle" data-toggle="dropdown" style="cursor:pointer">MENU</a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="/admin">aa</a>
+                <div class="container" style="max-width:960px">
+                    <a class="navbar-brand" href="{{ url('/admin') }}">一橋大バド部HP 管理画面</a>
+                    @if (Auth::check() && Auth::user()->login_id === 'admin')
+                        <div class="d-flex">
+                            <div class="dropdown text-white">
+                                <a class="btn btn-transpalent dropdown-toggle" data-toggle="dropdown" style="cursor:pointer">MENU</a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="/admin">aa</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </nav>
         </header>

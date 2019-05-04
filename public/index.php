@@ -1,5 +1,7 @@
 <?php
 
+setlocale(LC_ALL, 'ja_JP.UTF-8');
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

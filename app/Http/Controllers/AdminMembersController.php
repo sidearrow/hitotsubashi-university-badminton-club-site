@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\MembersService;
+use App\Http\Requests\AdminMembersImportRequest;
 
 class AdminMembersController extends Controller
 {
@@ -16,18 +17,8 @@ class AdminMembersController extends Controller
         ]);
     }
 
-    public function create(Request $request, MembersService $membersService)
+    public function import(AdminMembersImportRequest $request, MembersService $membersService)
     {
-        $membersService->insert(
-            $request->admissionYear,
-            $request->firstName,
-            $request->lastName,
-            $request->faculty,
-            $request->highschool,
-            $request->position,
-            $request->comment
-        );
-
         return redirect('admin/members')->with('isDoneCreate', '1');
     }
 }

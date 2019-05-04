@@ -8,30 +8,40 @@ class MembersService
 {
     const NOW_YEAR = 2019;
 
-    public function getMembers()
+    public function get()
     {
         $members = DB::table('members')
             ->select(
                 'admission_year',
                 'first_name',
                 'last_name',
+                'sx',
                 'faculty',
                 'highschool',
+                'highschool_prefecture',
                 'position',
                 'file_name',
                 'comment'
             )
             ->where('admission_year', '>=', self::NOW_YEAR - 3)
             ->where('admission_year', '<=', self::NOW_YEAR)
+            ->orderBy('admission_year', 'asc')
             ->get();
 
-        $res = [[],[],[],[]];
+        $res = [
+            ['grade' => '４', 'members' => []],
+            ['grade' => '３', 'members' => []],
+            ['grade' => '２', 'members' => []],
+            ['grade' => '１', 'members' => []],
+        ];
+
         foreach ($members as $v) {
-            $res[self::NOW_YEAR - $v->admission_year][] = [
+            $res[4 - self::NOW_YEAR + $v->admission_year]['members'][] = [
                 'fileUrl'    => $this->getFileUrl($v->file_name),
-                'fullName'   => $v->first_name . ' ' . $v->last_name,
+                'fullName'   => $v->last_name . ' ' . $v->first_name,
+                'sx'         => $v->sx,
                 'faculty'    => $v->faculty,
-                'highschool' => $v->highschool,
+                'highschool' => $v->highschool . '（' . $v->highschool_prefecture . '）',
                 'positions'  => $this->explodePosition($v->position),
                 'comment'    => $v->comment,
             ];
@@ -42,6 +52,10 @@ class MembersService
 
     private function explodePosition(string $str) :array
     {
+        if ($str === '') {
+            return [];
+        }
+
         return explode(';', $str);
     }
 
@@ -60,10 +74,10 @@ class MembersService
     {
         $dbdata = DB::table('members')
             ->select(
-                'id', 'admission_year', 'first_name', 'last_name', 'faculty',
-                'highschool', 'position', 'file_name', 'comment'
+                'id', 'admission_year', 'first_name', 'last_name', 'sx', 'faculty',
+                'highschool', 'highschool_prefecture', 'position', 'file_name', 'comment'
             )
-            ->orderBy('admission_year', 'desc')
+            ->orderBy('admission_year', 'asc')
             ->get();
 
         return $dbdata;

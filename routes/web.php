@@ -29,6 +29,7 @@ Route::post('/admin/login', 'AdminIndexController@loginPost');
 Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
     Route::get('/', 'AdminIndexController@index');
     Route::get('/members', 'AdminMembersController@index');
+    Route::post('/members/import', 'AdminMembersController@import');
     Route::get('/obmessages', 'AdminIndexController@obmessages');
     Route::post('/obmessages/create', 'AdminIndexController@obmessagesCreate');
     Route::post('/obmessages/delete', 'AdminIndexController@obmessagesDelete');
