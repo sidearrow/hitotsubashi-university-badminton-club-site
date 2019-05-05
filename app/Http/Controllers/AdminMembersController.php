@@ -19,6 +19,8 @@ class AdminMembersController extends Controller
 
     public function import(AdminMembersImportRequest $request, MembersService $membersService)
     {
-        return redirect('admin/members')->with('isDoneCreate', '1');
+        $membersService->import($request->fileData);
+
+        return redirect('admin/members')->with('isDoneImport', '1');
     }
 }

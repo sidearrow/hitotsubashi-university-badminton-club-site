@@ -2,6 +2,12 @@
 
 @section('content')
 <h2 class="mb-5 text-center">部員紹介</h2>
+<div class="alert alert-success alert-dismissible fade show">
+    <span>データ取込が完了しました</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <div class="card mb-3">
     <div class="card-header">データ取込</div>
     <div class="card-body">

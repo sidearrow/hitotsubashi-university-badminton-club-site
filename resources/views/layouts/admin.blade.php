@@ -19,7 +19,8 @@
                             <div class="dropdown text-white">
                                 <a class="btn btn-transpalent dropdown-toggle" data-toggle="dropdown" style="cursor:pointer">MENU</a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="/admin">aa</a>
+                                    <a class="dropdown-item" href="{{ url('/') }}">HPへ</a>
+                                    <a class="dropdown-item" href="/admin">TOP</a>
                                 </div>
                             </div>
                         </div>

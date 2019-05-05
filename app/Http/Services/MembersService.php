@@ -83,23 +83,10 @@ class MembersService
         return $dbdata;
     }
 
-    public function insert(
-        string $admissionYear,
-        string $firstName,
-        string $lastName,
-        string $faculty,
-        string $highschool,
-        string $position,
-        string $comment
-    ) {
-        DB::table('members')->insert([
-            'admission_year' => $admissionYear,
-            'first_name'     => $firstName,
-            'last_name'      => $lastName,
-            'faculty'        => $faculty,
-            'highschool'     => $highschool,
-            'position'       => $position,
-            'comment'        => $comment,
-        ]);
+    public function import(array $data) {
+        DB::transaction(function () use ($data) {
+            DB::table('members')->truncate();
+            DB::table('members')->insert($data);
+        });
     }
 }

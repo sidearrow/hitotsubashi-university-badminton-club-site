@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Services\MembersService;
 use App\Http\Services\ResultsService;
 use App\Http\Services\SantamaResultsService;
+use App\Http\Services\TopImageService;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index(TopImageService $topImageService)
     {
-        return view('pages.index');
+        $files = $topImageService->getFilesUrl();
+
+        return view('pages.index', [
+            'topImages' => $files,
+        ]);
     }
 
     public function members(MembersService $membersService)

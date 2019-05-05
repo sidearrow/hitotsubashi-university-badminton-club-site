@@ -30,7 +30,7 @@ class AdminMembersImportRequest extends FormRequest
             if ($i === 0) {
                 continue;
             }
-            if (count($row) === 0 && $row[0] === null) {
+            if (count($row) === 1 && $row[0] === null) {
                 break;
             }
             $fileData[] = [
