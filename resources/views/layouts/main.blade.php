@@ -22,7 +22,7 @@ $menus = [
         <header>
             <nav class="navbar navbar-dark fixed-top" style="background-color:#ac2926">
                 <div class="container" style="max-width:720px">
-                    <a class="navbar-brand" href="{{ url('/') }}">一橋大学バドミントン</a>
+                    <a class="navbar-brand" href="{{ url('/') }}">一橋大学バドミントン部</a>
                     <div class="d-flex">
                         <div class="dropdown">
                             <a class="btn btn-transpalent dropdown-toggle text-white" data-toggle="dropdown" style="cursor:pointer">MENU</a>
@@ -41,7 +41,7 @@ $menus = [
             <hr class="my-5 w-25">
             <section>
                 <div class="text-center text-secondary">
-                    <small>Copyright © 2018 一橋大学バドミントン部</small>
+                    <small>Copyright © 2019 一橋大学バドミントン部</small>
                 </div>
             </section>
         </footer>

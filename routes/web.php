@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'MainController@index');
+//Route::get('/about', 'MainController@about');
 Route::get('/members', 'MainController@members');
 Route::get('/results', 'MainController@results');
 Route::get('/santama', 'MainController@santama');
