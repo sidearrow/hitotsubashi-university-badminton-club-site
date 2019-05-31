@@ -1,10 +1,16 @@
 <?php
 
-Route::get('/', 'MainController@index');
-//Route::get('/about', 'MainController@about');
-Route::get('/members', 'MainController@members');
-Route::get('/results', 'MainController@results');
-Route::get('/santama', 'MainController@santama');
+use App\Http\Controllers\{
+    IndexController,
+    MembersController,
+    ResultsController,
+    SantamaController
+};
+
+Route::get('/', IndexController::class);
+Route::get('/members', MembersController::class);
+Route::get('/results', ResultsController::class);
+Route::get('/santama', SantamaController::class);
 
 Route::get('/bbs', 'BbsController@index');
 Route::get('/bbs/create', 'BbsController@create');

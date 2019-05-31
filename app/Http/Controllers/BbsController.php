@@ -39,6 +39,9 @@ class BbsController extends Controller
 
     private function createPageList(int $page, int $pageLast) :array
     {
+        if ($pageLast === 0) {
+            return [0];
+        }
         if ($pageLast <= 5) {
             return range(1, $pageLast);
         }
