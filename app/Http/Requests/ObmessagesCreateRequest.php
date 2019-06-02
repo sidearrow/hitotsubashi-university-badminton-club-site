@@ -28,7 +28,7 @@ class ObmessagesCreateRequest extends FormRequest
 
     public function attributes()
     {
-        return [ 
+        return [
             'year'  => '年',
             'month' => '月',
             'name'  => '表示名',

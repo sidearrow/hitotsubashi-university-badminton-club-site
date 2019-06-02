@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Services;
+
 use Illuminate\Support\Facades\DB;
+
 class MembersService
 {
     const NOW_YEAR = 2019;
@@ -47,14 +49,24 @@ class MembersService
     {
         $dbdata = DB::table('members')
             ->select(
-                'id', 'admission_year', 'first_name', 'last_name', 'sx', 'faculty',
-                'highschool', 'highschool_prefecture', 'position', 'file_name', 'comment'
+                'id',
+                'admission_year',
+                'first_name',
+                'last_name',
+                'sx',
+                'faculty',
+                'highschool',
+                'highschool_prefecture',
+                'position',
+                'file_name',
+                'comment'
             )
             ->orderBy('admission_year', 'asc')
             ->get();
         return $dbdata;
     }
-    public function import(array $data) {
+    public function import(array $data)
+    {
         DB::transaction(function () use ($data) {
             DB::table('members')->truncate();
             DB::table('members')->insert($data);

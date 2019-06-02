@@ -15,7 +15,7 @@ class ObmessagesService
                 'month',
                 'name',
                 'filename',
-            )
+                )
             ->orderBy('year', 'desc')
             ->orderBy('month', 'asc')
             ->get();

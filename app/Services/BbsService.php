@@ -2,15 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\BbsPosts\{
-    BbsPostsRepositorySelectPost,
-    BbsPostsRepositorySelectPage,
-    BbsPostsRepositorySelectCount,
-    BbsPostsRepositorySelectComment,
-    BbsPostsRepositoryDelete,
-    BbsPostsRepositoryInsert,
-    BbsPostsRepositoryUpdate
-};
+use App\Repositories\BbsPosts\BbsPostsRepositorySelectPost;
+use App\Repositories\BbsPosts\BbsPostsRepositorySelectPage;
+use App\Repositories\BbsPosts\BbsPostsRepositorySelectCount;
+use App\Repositories\BbsPosts\BbsPostsRepositorySelectComment;
+use App\Repositories\BbsPosts\BbsPostsRepositoryDelete;
+use App\Repositories\BbsPosts\BbsPostsRepositoryInsert;
+use App\Repositories\BbsPosts\BbsPostsRepositoryUpdate;
 use App\Http\Requests\BbsPostRequest;
 use App\Http\Requests\BbsPostCommentCreateRequest;
 use App\Http\Requests\BbsPostEditRequest;
