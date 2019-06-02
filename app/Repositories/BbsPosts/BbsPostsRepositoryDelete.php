@@ -9,7 +9,7 @@ class BbsPostsRepositoryDelete
         DB::table('bbs_posts')
             ->where('id', $id)
             ->update([
-                'deleted_at' => Carbon::now(),
+                'deleted_at' => now(),
             ]);
     }
 }

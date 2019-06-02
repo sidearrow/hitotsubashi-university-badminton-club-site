@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Bbs;
 
+use App\Http\Requests\BbsPostRequest;
+
 class BbsCreateCompletePostController
 {
-    public function __invoke(Request $request, BbsPostsService $bbsPostsService)
+    public function __invoke(BbsPostRequest $request, BbsPostsService $bbsPostsService)
     {
         if ($request->input('return') === '1') {
             return redirect('bbs/create')->withInput();

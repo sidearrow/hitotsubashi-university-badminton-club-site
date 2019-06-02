@@ -12,13 +12,13 @@ class FilesController extends Controller
         $filePath = storage_path('app/files/obmessages/' . $fileName);
 
         if (!file_exists($filePath)) {
-            return abort(404);
+            abort(404);
         }
 
         if (Auth::check() && (Auth::user()->login_id === 'mizutori' || Auth::user()->login_id === 'admin')) {
             return response()->file($filePath);
         }
 
-        return abort(401);
+        abort(401);
     }
 }

@@ -1,13 +1,9 @@
 <?php
-
 namespace App\Http\Services;
-
 use Illuminate\Support\Facades\DB;
-
 class MembersService
 {
     const NOW_YEAR = 2019;
-
     public function get()
     {
         $members = DB::table('members')
@@ -27,14 +23,12 @@ class MembersService
             ->where('admission_year', '<=', self::NOW_YEAR)
             ->orderBy('admission_year', 'asc')
             ->get();
-
         $res = [
             ['grade' => '４', 'members' => []],
             ['grade' => '３', 'members' => []],
             ['grade' => '２', 'members' => []],
             ['grade' => '１', 'members' => []],
         ];
-
         foreach ($members as $v) {
             $res[4 - self::NOW_YEAR + $v->admission_year]['members'][] = [
                 'fileUrl'    => $this->getFileUrl($v->file_name),
@@ -49,8 +43,6 @@ class MembersService
         
         return $res;
     }
-
-
     public function getForAdmin()
     {
         $dbdata = DB::table('members')
@@ -60,10 +52,8 @@ class MembersService
             )
             ->orderBy('admission_year', 'asc')
             ->get();
-
         return $dbdata;
     }
-
     public function import(array $data) {
         DB::transaction(function () use ($data) {
             DB::table('members')->truncate();
