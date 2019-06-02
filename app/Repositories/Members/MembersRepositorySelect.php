@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Members;
 
-use Illuminate\Support\Facades\DB;
+use App\Repositories\AbstractRepository;
 
-class MembersRepositorySelect
+class MembersRepositorySelect extends AbstractRepository
 {
     public function __invoke(int $year)
     {
-        return DB::table('members')
+        return $this->db::table('members')
             ->select(
                 'admission_year',
                 'first_name',
