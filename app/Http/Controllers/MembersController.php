@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\MembersService;
+use App\Services\MembersService;
 
 class MembersController extends Controller
 {

@@ -4,7 +4,8 @@ use App\Http\Controllers\{
     IndexController,
     MembersController,
     ResultsController,
-    SantamaController
+    SantamaController,
+    Bbs\BbsIndexController
 };
 
 Route::get('/', IndexController::class);
@@ -12,7 +13,7 @@ Route::get('/members', MembersController::class);
 Route::get('/results', ResultsController::class);
 Route::get('/santama', SantamaController::class);
 
-Route::get('/bbs', 'BbsController@index');
+Route::get('/bbs', BbsIndexController::class);
 Route::get('/bbs/create', 'BbsController@create');
 Route::post('/bbs/create-confirm', 'BbsController@createConfirm');
 Route::get('/bbs/create-complete', 'BbsController@createCompleteGet');

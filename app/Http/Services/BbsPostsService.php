@@ -22,42 +22,6 @@ class BbsPostsService
         return $res;
     }
 
-    public function getPosts(int $pageNum = 1, string $year, string $month)
-    {
-        $data = DB::table('bbs_posts')
-            ->select('id', 'title', 'author', 'created_at')
-            ->when($year, function ($query, $year) {
-                return $query->whereYear('created_at', $year);
-            })
-            ->when($month, function ($query, $month) {
-                return $query->whereMonth('created_at', $month);
-            })
-            ->whereNull('parent_id')
-            ->whereNull('deleted_at')
-            ->orderBy('created_at', 'desc')
-            ->offset(($pageNum - 1) * self::PAGE_POST_NUM)
-            ->limit(self::PAGE_POST_NUM)
-            ->get();
-
-        return $data;
-    }
-
-    public function getPostsNum(string $year, string $month) :int
-    {
-        $res = DB::table('bbs_posts')
-            ->when($year, function ($query, $year) {
-                return $query->whereYear('created_at', $year);
-            })
-            ->when($month, function ($query, $month) {
-                return $query->whereMonth('created_at', $month);
-            })
-            ->whereNull('parent_id')
-            ->whereNull('deleted_at')
-            ->count();
-
-        return $res;
-    }
-
     public function getComments(string $parentId)
     {
         $res = DB::table('bbs_posts')

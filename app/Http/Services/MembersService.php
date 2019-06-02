@@ -50,25 +50,6 @@ class MembersService
         return $res;
     }
 
-    private function explodePosition(string $str) :array
-    {
-        if ($str === '') {
-            return [];
-        }
-
-        return explode(';', $str);
-    }
-
-    private function getFileUrl(string $fileName) :string
-    {
-        $assetPath = 'storage/members/' . $fileName;
-        $filePath = public_path() . '/' . $assetPath;
-
-        if (file_exists($filePath)) {
-            return asset($assetPath);
-        }
-        return asset('storage/members/in_preparation.png');
-    }
 
     public function getForAdmin()
     {

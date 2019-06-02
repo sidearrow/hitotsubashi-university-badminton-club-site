@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\TopImageService;
+use App\Services\TopImageService;
 
 class IndexController extends Controller
 {

@@ -12,54 +12,6 @@ use App\Http\Services\BbsPostsService;
 
 class BbsController extends Controller
 {
-    public function index(Request $request, BbsPostsService $bbsPostsService)
-    {
-        $page = (int)($request->page ?? '1');
-        $year = $request->searchYear ?? '';
-        $month = $request->searchMonth ?? '';
-
-        $posts = $bbsPostsService->getPosts($page, $year, $month);
-        $postsNum = $bbsPostsService->getPostsNum($year, $month);
-
-        $pageLast = (int)(($postsNum + 19) / 20);
-        $pageList = $this->createPageList($page, $pageLast);
-
-        return view('pages.bbs.index', [
-            'page'            => (string)$page,
-            'pageList'        => $pageList,
-            'urlWithoutPage'  => url()->current() . '?' . http_build_query(['searchYear' => $year, 'searchMonth' => $month]),
-            'posts'           => $posts,
-            'postsNum'        => $postsNum,
-            'searchYearList'  => ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
-            'searchMonthList' => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-            'searchYear'      => $year ?? '2012',
-            'searchMonth'     => $month ?? '1',
-        ]);
-    }
-
-    private function createPageList(int $page, int $pageLast) :array
-    {
-        if ($pageLast === 0) {
-            return [0];
-        }
-        if ($pageLast <= 5) {
-            return range(1, $pageLast);
-        }
-        if ($page <= 2) {
-            return [1, 2, 3, -1, $pageLast];
-        }
-        if ($page === 3) {
-            return [1, 2, 3, 4, -1, $pageLast];
-        }
-        if ($page >= $pageLast-1) {
-            return [1, -1, $pageLast-2, $pageLast-1, $pageLast];
-        }
-        if ($page === $pageLast-2) {
-            return [1, -1, $pageLast-3, $pageLast-2, $pageLast-1, $pageLast];
-        }
-        return [1, -1, $page-1, $page, $page+1, -1, $pageLast];
-    }
-
     public function create()
     {
         return view('pages.bbs.create');
