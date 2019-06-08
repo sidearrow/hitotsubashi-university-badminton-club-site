@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MizutoriLoginRequest;
 use App\Http\Services\ObmessagesService;
@@ -18,13 +17,13 @@ class MizutoriController extends Controller
             return redirect('mizutori-login');
         }
 
-        $obmessages = $obmessagesService->get();
+        $obmessages        = $obmessagesService->get();
         $getObmessasgesUrl = function (string $fileName) {
             return url('files/obmessages') . '/' . $fileName;
         };
 
         return view('pages.mizutori', [
-            'obmessags' => $obmessages,
+            'obmessags'        => $obmessages,
             'getObmessagesUrl' => $getObmessasgesUrl
         ]);
     }

@@ -3,7 +3,6 @@
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Config;
 
 class ObmessagesService
 {
@@ -27,7 +26,7 @@ class ObmessagesService
                 'filename' => $v->filename,
             ];
         }
-       
+
         return $res;
     }
 
@@ -63,6 +62,7 @@ class ObmessagesService
         if ($dbData === null) {
             return null;
         }
+
         return $dbData->filename;
     }
 

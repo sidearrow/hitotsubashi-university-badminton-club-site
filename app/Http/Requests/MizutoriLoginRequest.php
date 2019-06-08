@@ -16,7 +16,7 @@ class MizutoriLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => ['required', new MizutoriAuthRule],
+            'password' => ['required', new MizutoriAuthRule()],
         ];
     }
 

@@ -9,11 +9,11 @@ class BbsIndexController
 {
     public function __invoke(Request $request, BbsService $bbsService)
     {
-        $page = (int)($request->page ?? '1');
-        $year = $request->searchYear ?? '';
+        $page  = (int)($request->page ?? '1');
+        $year  = $request->searchYear ?? '';
         $month = $request->searchMonth ?? '';
 
-        $posts = $bbsService->getPagePosts($page, $year, $month);
+        $posts    = $bbsService->getPagePosts($page, $year, $month);
         $postsNum = $bbsService->getPostsNum($year, $month);
 
         $pageLast = (int)(($postsNum + 19) / 20);

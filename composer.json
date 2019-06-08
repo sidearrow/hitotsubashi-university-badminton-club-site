@@ -50,15 +50,11 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+        "php-cs-fixer--dry": [
+            "php-cs-fixer fix --dry-run --diff"
         ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+        "php-cs-fixer": [
+            "php-cs-fixer fix"
         ]
     }
 }

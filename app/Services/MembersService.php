@@ -30,7 +30,7 @@ class MembersService
                 'comment'    => $v->comment,
             ];
         }
-        
+
         return $res;
     }
 
@@ -46,11 +46,12 @@ class MembersService
     private function getFileUrl(string $fileName) :string
     {
         $assetPath = 'storage/members/' . $fileName;
-        $filePath = public_path() . '/' . $assetPath;
+        $filePath  = public_path() . '/' . $assetPath;
 
         if (file_exists($filePath)) {
             return asset($assetPath);
         }
+
         return asset('storage/members/in_preparation.png');
     }
 }

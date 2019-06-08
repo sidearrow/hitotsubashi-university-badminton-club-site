@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\DB;
@@ -6,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 class MembersService
 {
     const NOW_YEAR = 2019;
+
     public function get()
     {
         $members = DB::table('members')
@@ -42,9 +44,10 @@ class MembersService
                 'comment'    => $v->comment,
             ];
         }
-        
+
         return $res;
     }
+
     public function getForAdmin()
     {
         $dbdata = DB::table('members')
@@ -63,8 +66,10 @@ class MembersService
             )
             ->orderBy('admission_year', 'asc')
             ->get();
+
         return $dbdata;
     }
+
     public function import(array $data)
     {
         DB::transaction(function () use ($data) {

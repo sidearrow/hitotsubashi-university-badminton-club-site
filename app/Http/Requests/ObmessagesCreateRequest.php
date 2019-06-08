@@ -39,7 +39,7 @@ class ObmessagesCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            '*.unique' => '入力された [:attribute] は同じ [年] にすでに存在します',
+            '*.unique'     => '入力された [:attribute] は同じ [年] にすでに存在します',
             'file.max'     => ':attributeは2000KB以内のファイルを指定してください',
         ];
     }

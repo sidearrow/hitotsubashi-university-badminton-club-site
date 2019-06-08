@@ -12,9 +12,9 @@ class BbsCreateCompletePostController
             return redirect('bbs/create')->withInput();
         }
 
-        $title = $request->input('title') ?: '';
-        $author = $request->input('author') ?: '';
-        $content = $request->input('content') ?: '';
+        $title    = $request->input('title') ?: '';
+        $author   = $request->input('author') ?: '';
+        $content  = $request->input('content') ?: '';
         $password = $request->input('password') ?: '';
         $bbsPostsService->insertPost($title, $author, $content, $password);
 

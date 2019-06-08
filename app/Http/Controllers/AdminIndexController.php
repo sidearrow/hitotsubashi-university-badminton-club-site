@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AdminLoginRequest;
 use App\Http\Requests\ObmessagesCreateRequest;
 use App\Http\Services\ObmessagesService;
@@ -28,7 +27,7 @@ class AdminIndexController extends Controller
     public function obmessages(Request $request, ObmessagesService $obmessagesService)
     {
         $obmessages = $obmessagesService->getForAdmin();
-        $getUrl = function (string $fileName) {
+        $getUrl     = function (string $fileName) {
             return url('files/obmessages/' . $fileName);
         };
 

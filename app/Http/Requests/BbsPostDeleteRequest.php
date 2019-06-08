@@ -15,6 +15,7 @@ class BbsPostDeleteRequest extends FormRequest
     public function rules()
     {
         $id = $this->request->get('postId');
+
         return [
             'deletePassword' => ['required', 'regex:/\d\d\d\d/', new BbsPostsAuthRule($id)]
         ];

@@ -42,12 +42,12 @@ class BbsService
 
     public function createPost(BbsPostRequest $request) :void
     {
-        $bbsPostsRepositoryInsert = new BbsPostsRepositoryInsert();
-        $bbsPostsRepositoryInsert->id = uniqid();
-        $bbsPostsRepositoryInsert->title = $request->title;
-        $bbsPostsRepositoryInsert->author = $request->author;
-        $bbsPostsRepositoryInsert->content = $request->content;
-        $bbsPostsRepositoryInsert->password = bcrypt($request->password);
+        $bbsPostsRepositoryInsert            = new BbsPostsRepositoryInsert();
+        $bbsPostsRepositoryInsert->id        = uniqid();
+        $bbsPostsRepositoryInsert->title     = $request->title;
+        $bbsPostsRepositoryInsert->author    = $request->author;
+        $bbsPostsRepositoryInsert->content   = $request->content;
+        $bbsPostsRepositoryInsert->password  = bcrypt($request->password);
         $bbsPostsRepositoryInsert->createdAt = now();
         $bbsPostsRepositoryInsert->updatedAt = now();
 
@@ -56,12 +56,12 @@ class BbsService
 
     public function createComment(BbsPostCommentCreateRequest $request, string $id) :void
     {
-        $bbsPostsRepositoryInsert = new BbsPostsRepositoryInsert();
-        $bbsPostsRepositoryInsert->id = uniqid();
-        $bbsPostsRepositoryInsert->parentId = $id;
-        $bbsPostsRepositoryInsert->author = $request->author;
-        $bbsPostsRepositoryInsert->content = $request->content;
-        $bbsPostsRepositoryInsert->password = bcrypt($request->password);
+        $bbsPostsRepositoryInsert            = new BbsPostsRepositoryInsert();
+        $bbsPostsRepositoryInsert->id        = uniqid();
+        $bbsPostsRepositoryInsert->parentId  = $id;
+        $bbsPostsRepositoryInsert->author    = $request->author;
+        $bbsPostsRepositoryInsert->content   = $request->content;
+        $bbsPostsRepositoryInsert->password  = bcrypt($request->password);
         $bbsPostsRepositoryInsert->createdAt = now();
         $bbsPostsRepositoryInsert->updatedAt = now();
 
@@ -70,10 +70,10 @@ class BbsService
 
     public function updatePost(BbsPostEditRequest $request, string $id) :void
     {
-        $bbsPostsRepositoryUpdate = new BbsPostsRepositoryUpdate();
-        $bbsPostsRepositoryUpdate->title = $request->title;
-        $bbsPostsRepositoryUpdate->author = $request->author;
-        $bbsPostsRepositoryUpdate->content = $request->content;
+        $bbsPostsRepositoryUpdate           = new BbsPostsRepositoryUpdate();
+        $bbsPostsRepositoryUpdate->title    = $request->title;
+        $bbsPostsRepositoryUpdate->author   = $request->author;
+        $bbsPostsRepositoryUpdate->content  = $request->content;
         $bbsPostsRepositoryUpdate->password = bcrypt($request->password);
 
         $bbsPostsRepositoryUpdate();
@@ -93,12 +93,13 @@ class BbsService
         if ($page === 3) {
             return [1, 2, 3, 4, -1, $pageLast];
         }
-        if ($page >= $pageLast-1) {
-            return [1, -1, $pageLast-2, $pageLast-1, $pageLast];
+        if ($page >= $pageLast - 1) {
+            return [1, -1, $pageLast - 2, $pageLast - 1, $pageLast];
         }
-        if ($page === $pageLast-2) {
-            return [1, -1, $pageLast-3, $pageLast-2, $pageLast-1, $pageLast];
+        if ($page === $pageLast - 2) {
+            return [1, -1, $pageLast - 3, $pageLast - 2, $pageLast - 1, $pageLast];
         }
-        return [1, -1, $page-1, $page, $page+1, -1, $pageLast];
+
+        return [1, -1, $page - 1, $page, $page + 1, -1, $pageLast];
     }
 }
