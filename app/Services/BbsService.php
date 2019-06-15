@@ -27,7 +27,10 @@ class BbsService
 
     public function getPagePosts(int $pageNum, string $year, string $month)
     {
-        return (new BbsPostsRepositorySelectPage())($pageNum, 20, $year, $month);
+        $limit = 20;
+        $offset = ($pageNum - 1) * $limit + 1;
+
+        return (new BbsPostsRepositorySelectPage())($limit, $offset, $year . $month);
     }
 
     public function getPostsNum(string $year, string $month)
@@ -82,7 +85,7 @@ class BbsService
     public function createPageList(int $page, int $pageLast) :array
     {
         if ($pageLast === 0) {
-            return [0];
+            return [-1];
         }
         if ($pageLast <= 5) {
             return range(1, $pageLast);

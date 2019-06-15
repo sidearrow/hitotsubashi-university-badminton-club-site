@@ -2,25 +2,35 @@
 
 namespace App\Repositories\BbsPosts;
 
-use Illuminate\Support\Facades\DB;
+use App\Repositories\AbstractRepository;
 
-class BbsPostsRepositorySelectPage
+class BbsPostsRepositorySelectPage extends AbstractRepository
 {
-    public function __invoke(int $pageNum = 1, int $length, string $year, string $month)
+    public function __invoke(int $limit, int $offset, string $yearMonth): array
     {
-        return DB::table('bbs_posts')
-            ->select('id', 'title', 'author', 'created_at')
-            ->when($year, function ($query, $year) {
-                return $query->whereYear('created_at', $year);
-            })
-            ->when($month, function ($query, $month) {
-                return $query->whereMonth('created_at', $month);
-            })
-            ->whereNull('parent_id')
-            ->whereNull('deleted_at')
-            ->orderBy('created_at', 'desc')
-            ->offset(($pageNum - 1) * $length)
-            ->limit($length)
-            ->get();
+        $bindArray = [];
+
+        $sql  = ' SELECT';
+        $sql .= '   id';
+        $sql .= '  ,title';
+        $sql .= '  ,author';
+        $sql .= '  ,created_at';
+        $sql .= ' FROM';
+        $sql .= '   bbs_posts';
+        $sql .= ' WHERE';
+        $sql .= '   parent_id IS NULL';
+        $sql .= '   AND deleted_at IS NULL';
+
+        if ($yearMonth !== '') {
+            $sql .= "   AND DATE_FORMAT(created_at, '%Y%m') = :year_month";
+            $bindArray['year_month'] = $yearMonth;
+        }
+
+        $sql .= ' ORDER BY';
+        $sql .= '   created_at desc';
+        $sql .= " LIMIT ${limit}";
+        $sql .= " OFFSET ${offset}";
+
+        return $this->select($sql, $bindArray);
     }
 }
