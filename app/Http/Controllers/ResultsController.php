@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\ResultsService;
+use App\Services\ResultsService;
 
 class ResultsController extends Controller
 {
     public function __invoke(ResultsService $resultsService)
     {
-        $results = $resultsService->getResults();
+        $viewData = $resultsService->getViewData();
 
-        return view('pages.results', [ 'results' => $results ]);
+        return view('pages.results', ['viewData' => $viewData]);
     }
 }

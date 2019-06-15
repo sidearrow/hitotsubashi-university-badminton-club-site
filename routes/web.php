@@ -2,8 +2,10 @@
 
 Route::get('/', 'IndexController');
 Route::get('/members', 'MembersController');
-Route::get('/results', 'ResultsController');
 Route::get('/santama', 'SantamaController');
+
+Route::get('/results', 'ResultsController');
+Route::get('/results/{id}', 'ResultsDetailController');
 
 Route::get('/bbs', 'Bbs\BbsIndexController');
 Route::get('/bbs/create', 'Bbs\BbsCreateController');
