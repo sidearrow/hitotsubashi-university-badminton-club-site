@@ -64,6 +64,7 @@ class BbsIndexService
             ->when($month, function ($query, $month) {
                 return $query->whereMonth('created_at', $month);
             })
+            ->orderBy('created_at', 'desc')
             ->limit($limit)
             ->offset($offset)
             ->get();

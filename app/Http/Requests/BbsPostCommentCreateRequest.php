@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $author
+ * @property string $content
+ * @property string $password
+ */
 class BbsPostCommentCreateRequest extends FormRequest
 {
     public function authorize()

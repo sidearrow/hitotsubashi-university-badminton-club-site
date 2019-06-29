@@ -14,13 +14,13 @@ Route::post('/bbs/create-confirm', 'BbsController@createConfirm');
 Route::get('/bbs/create-complete', 'BbsController@createCompleteGet');
 Route::post('/bbs/create-complete', 'BbsController@createCompletePost');
 
-Route::get('/bbs/{id}', 'Bbs\BbsShowController');
-Route::get('/bbs/{id}/edit', 'Bbs\BbsEditController');
-Route::post('/bbs/{id}/edit-confirm', 'Bbs\BbsEditConfirmController');
-Route::get('/bbs/{id}/edit-complete', 'Bbs\BbsEditCompleteGetController');
-Route::post('/bbs/{id}/edit-complete', 'Bbs\BbsEditCompletePostController');
-Route::post('/bbs/{id}/delete', 'Bbs\BbsDeleteController');
-Route::post('/bbs/{id}/comment', 'Bbs\BbsCommentCreateController');
+Route::get('/bbs/{postId}', 'BbsController@show');
+Route::get('/bbs/{id}/edit', 'BbsController@edit');
+Route::post('/bbs/{postId}/edit-confirm', 'BbsController@editConfirm');
+Route::get('/bbs/{postId}/edit-complete', 'BbsController@editCompleteGet');
+Route::post('/bbs/{postId}/edit-complete', 'BbsController@editCompletePost');
+Route::post('/bbs/{postId}/delete', 'BbsController@delete');
+Route::post('/bbs/{postId}/comment', 'BbsController@commentCreate');
 
 Route::get('/mizutori', 'MizutoriController@index');
 Route::get('/mizutori-login', 'MizutoriController@loginGet');

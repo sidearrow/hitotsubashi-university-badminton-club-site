@@ -5,6 +5,12 @@ namespace App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $author
+ * @property string $title
+ * @property string $content
+ * @property string $password
+ */
 class BbsPostEditRequest extends FormRequest
 {
     public function authorize()
