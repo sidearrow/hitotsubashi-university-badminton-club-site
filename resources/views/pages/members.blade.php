@@ -2,7 +2,7 @@
 
 @section('content')
 @component('components.title', [ 'title' => '部員紹介' ]) @endcomponent
-@foreach ($members as $v1)
+@foreach ($viewData->members as $v1)
     <h3>{{ $v1['grade'] }}年生</h3>
     <div class="mb-5">
         @foreach ($v1['members'] as $v2)

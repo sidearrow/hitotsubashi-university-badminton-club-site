@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MizutoriLoginRequest;
-use App\Http\Services\ObmessagesService;
+use App\Services\MizutoriService;
 
 class MizutoriController extends Controller
 {
-    public function index(ObmessagesService $obmessagesService)
+    public function index(MizutoriService $mizutoriService)
     {
         if (
             !Auth::guard('user')->check() ||
@@ -17,20 +17,14 @@ class MizutoriController extends Controller
             return redirect('mizutori-login');
         }
 
-        $obmessages        = $obmessagesService->get();
-        $getObmessasgesUrl = function (string $fileName) {
-            return url('files/obmessages') . '/' . $fileName;
-        };
-
-        return view('pages.mizutori', [
-            'obmessags'        => $obmessages,
-            'getObmessagesUrl' => $getObmessasgesUrl
+        return view('pages.mizutori.index', [
+            'viewData' => $mizutoriService->getViewData(),
         ]);
     }
 
     public function loginGet()
     {
-        return view('pages.mizutori-login');
+        return view('pages.mizutori.login');
     }
 
     public function loginPost(MizutoriLoginRequest $request)

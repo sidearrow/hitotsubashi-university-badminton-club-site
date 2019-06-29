@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\ViewModels\Bbs\BbsIndexViewModel $viewModel 
+ */
+?>
+
 @extends('layouts.main')
 
 @section('content')
@@ -23,8 +29,8 @@
                     <div class="input-group col-auto" style="width:150px">
                         <select class="form-control" name="searchYear">
                             <option></option>
-                            @foreach ($searchYearList as $v)
-                                <option @if($searchYear === $v) selected @endif>{{ $v }}</option>
+                            @foreach ($viewModel::SEARCH_YEAR_LIST as $v)
+                                <option @if($viewModel->searchYear === $v) selected @endif>{{ $v }}</option>
                             @endforeach
                         </select>
                         <div class="input-group-append">
@@ -34,8 +40,8 @@
                     <div class="input-group col-auto" style="width:120px">
                         <select class="form-control" name="searchMonth">
                             <option></option>
-                            @foreach ($searchMonthList as $v)
-                                <option @if($searchMonth === $v) selected @endif>{{ $v }}</option>
+                            @foreach ($viewModel::SEARCH_MONTH_LIST as $v)
+                                <option @if($viewModel->searchMonth === $v) selected @endif>{{ $v }}</option>
                             @endforeach
                         </select>
                         <div class="input-group-append">
@@ -50,7 +56,7 @@
         </div>
     </div>
     <div>
-        @foreach ($posts as $post)
+        @foreach ($viewModel->posts as $post)
             <div class="mb-4">
                 <div><a href="{{ url('bbs/' . $post->id) }}">{{ $post->title }}</a></div>
                 <div class="mt-2">
@@ -63,9 +69,9 @@
         @endforeach
     </div>
     <ul class="pagination justify-content-center pb-5">
-        @foreach ($pageList as $v)
-            <li class="page-item {{ ($v == $page || $v === -1) ? 'disabled' : '' }}">
-                <a class="page-link" href="{{ $urlWithoutPage . '&page=' . $v }}">{{ $v === -1 ? '...' : $v }}</a>
+        @foreach ($viewModel->pageList as $v)
+            <li class="page-item {{ ($v == $viewModel->nowPage || $v === -1) ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $viewModel->getUrlByPageNum($v) }}">{{ $v === -1 ? '...' : $v }}</a>
             </li>
         @endforeach
     </ul>

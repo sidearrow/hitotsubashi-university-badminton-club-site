@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\SantamaResultsService;
+use App\Services\SantamaService;
 
 class SantamaController extends Controller
 {
-    public function __invoke(SantamaResultsService $santamaResultsService)
+    public function __invoke(SantamaService $santamaService)
     {
-        $results = $santamaResultsService->get();
-
         return view('pages.santama', [
-            'results' => $results,
+            'viewData' => $santamaService->getViewData(),
         ]);
     }
 }

@@ -4,6 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $author
+ * @property string $title
+ * @property string $content
+ * @property string $password
+ */
 class BbsPostRequest extends FormRequest
 {
     public function authorize()

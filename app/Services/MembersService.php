@@ -3,14 +3,17 @@
 namespace App\Services;
 
 use App\Repositories\Members\MembersRepositorySelect;
+use Illuminate\Support\Facades\DB;
 
 class MembersService
 {
-    const NOW_YEAR = 2019;
+    private const NOW_YEAR = 2019;
 
-    public function get()
+    private $viewData;
+
+    public function __construct()
     {
-        $members = (new MembersRepositorySelect())(self::NOW_YEAR);
+        $members = self::get(self::NOW_YEAR - 3, self::NOW_YEAR);
 
         $res = [
             ['grade' => '４', 'members' => []],
@@ -31,7 +34,13 @@ class MembersService
             ];
         }
 
-        return $res;
+        $this->viewData = new \stdClass();
+        $this->viewData->members = $res;
+    }
+
+    public function getViewData()
+    {
+        return $this->viewData;
     }
 
     private function explodePosition(string $str) :array
@@ -53,5 +62,26 @@ class MembersService
         }
 
         return asset('storage/members/in_preparation.png');
+    }
+
+    private static function get(int $yearFrom, int $yearTo)
+    {
+        return DB::table('members')
+            ->select(
+                'admission_year',
+                'first_name',
+                'last_name',
+                'sx',
+                'faculty',
+                'highschool',
+                'highschool_prefecture',
+                'position',
+                'file_name',
+                'comment'
+            )
+            ->where('admission_year', '>=', $yearFrom)
+            ->where('admission_year', '<=', $yearTo)
+            ->orderBy('admission_year', 'asc')
+            ->get();
     }
 }

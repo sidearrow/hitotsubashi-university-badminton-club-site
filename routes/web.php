@@ -7,11 +7,13 @@ Route::get('/santama', 'SantamaController');
 Route::get('/results', 'ResultsController');
 Route::get('/results/{id}', 'ResultsDetailController');
 
-Route::get('/bbs', 'Bbs\BbsIndexController');
-Route::get('/bbs/create', 'Bbs\BbsCreateController');
-Route::post('/bbs/create-confirm', 'Bbs\BbsCreateConfirmController');
-Route::get('/bbs/create-complete', 'Bbs\BbsCreateCompleteGetController');
-Route::post('/bbs/create-complete', 'Bbs\BbsCreateCompletePostController');
+Route::get('/bbs', 'BbsController@index');
+
+Route::get('/bbs/create', 'BbsController@create');
+Route::post('/bbs/create-confirm', 'BbsController@createConfirm');
+Route::get('/bbs/create-complete', 'BbsController@createCompleteGet');
+Route::post('/bbs/create-complete', 'BbsController@createCompletePost');
+
 Route::get('/bbs/{id}', 'Bbs\BbsShowController');
 Route::get('/bbs/{id}/edit', 'Bbs\BbsEditController');
 Route::post('/bbs/{id}/edit-confirm', 'Bbs\BbsEditConfirmController');
@@ -26,6 +28,7 @@ Route::post('/mizutori-login', 'MizutoriController@loginPost');
 
 Route::get('/files/obmessages/{fileName}', 'FilesController@obmessages');
 
+/*
 Route::get('/admin/login', 'AdminIndexController@loginGet');
 Route::post('/admin/login', 'AdminIndexController@loginPost');
 Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
@@ -36,3 +39,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
     Route::post('/obmessages/create', 'AdminIndexController@obmessagesCreate');
     Route::post('/obmessages/delete', 'AdminIndexController@obmessagesDelete');
 });
+*/

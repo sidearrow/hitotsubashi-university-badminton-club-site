@@ -3,9 +3,11 @@ columns:
   - name: matches_id
     type: varchar
     length: 9
+    primaryKey: true
   - name: matche_no
     type: int
     length: 1
+    primaryKey: true
   - name: a_name1
     type: varchar
     length: 10

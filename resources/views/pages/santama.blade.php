@@ -9,7 +9,7 @@
         <h3 class="h3">過去の大会結果</h3>
         <table class="table table-bordered">
             <tbody>
-            @foreach ($results as $i => $v1)
+            @foreach ($viewData->results as $i => $v1)
                 <tr>
                     <td class="align-middle bg-light text-center" style="width:60px">{{ $i }}</td>
                     <td>
