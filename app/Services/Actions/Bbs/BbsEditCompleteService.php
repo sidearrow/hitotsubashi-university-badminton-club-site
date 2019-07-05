@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Bbs;
+namespace App\Services\Actions\Bbs;
 
 use App\Http\Requests\BbsPostEditRequest;
 use Illuminate\Support\Facades\DB;

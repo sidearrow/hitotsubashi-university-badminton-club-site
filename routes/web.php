@@ -15,10 +15,12 @@ Route::get('/bbs/create-complete', 'BbsController@createCompleteGet');
 Route::post('/bbs/create-complete', 'BbsController@createCompletePost');
 
 Route::get('/bbs/{postId}', 'BbsController@show');
-Route::get('/bbs/{id}/edit', 'BbsController@edit');
-Route::post('/bbs/{postId}/edit-confirm', 'BbsController@editConfirm');
-Route::get('/bbs/{postId}/edit-complete', 'BbsController@editCompleteGet');
-Route::post('/bbs/{postId}/edit-complete', 'BbsController@editCompletePost');
+
+Route::get('/bbs/{postId}/edit', 'Bbs\EditController@index');
+Route::post('/bbs/{postId}/edit-confirm', 'Bbs\EditController@confirm');
+Route::get('/bbs/{postId}/edit-complete', 'Bbs\EditController@completeGet');
+Route::post('/bbs/{postId}/edit-complete', 'Bbs\EditController@completePost');
+
 Route::post('/bbs/{postId}/delete', 'BbsController@delete');
 Route::post('/bbs/{postId}/comment', 'BbsController@commentCreate');
 

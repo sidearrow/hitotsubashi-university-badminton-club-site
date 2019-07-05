@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\BbsPostRequest;
-use App\Http\Requests\BbsPostEditAuthRequest;
 use App\Services\Bbs\BbsIndexService;
 use App\Services\Bbs\BbsCreateCompleteService;
-use App\Services\Bbs\BbsEditService;
 use App\Services\Bbs\BbsShowService;
-use App\Http\Requests\BbsPostEditRequest;
-use App\Services\Bbs\BbsEditCompleteService;
 use App\Services\Bbs\BbsDeleteService;
 use App\Http\Requests\BbsPostDeleteRequest;
 use App\Http\Requests\BbsPostCommentCreateRequest;
@@ -56,36 +52,6 @@ class BbsController extends Controller
         new BbsCreateCompleteService($request);
 
         return redirect('bbs/create-complete');
-    }
-
-    public function edit(BbsPostEditAuthRequest $request, string $id)
-    {
-        $service = new BbsEditService($id);
-
-        return view('pages.bbs.edit', [
-            'viewData' => $service->getViewData(),
-        ]);
-    }
-
-    public function editConfirm(BbsPostEditRequest $request, string $postId)
-    {
-        return view('pages.bbs.edit-confirm', [
-            'id' => $postId,
-        ]);
-    }
-
-    public function editCompleteGet(string $postId)
-    {
-        return view('pages.bbs.edit-complete', [
-            'backUrl' => url('bbs/' . $postId),
-        ]);
-    }
-
-    public function editCompletePost(BbsPostEditRequest $request, string $postId)
-    {
-        new BbsEditCompleteService($request, $postId);
-
-        return redirect('bbs/' . $postId . '/edit-complete');
     }
 
     public function delete(BbsPostDeleteRequest $request, string $postId)

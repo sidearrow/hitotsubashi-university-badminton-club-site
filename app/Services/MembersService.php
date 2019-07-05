@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Repositories\Members\MembersRepositorySelect;
 use Illuminate\Support\Facades\DB;
 
 class MembersService

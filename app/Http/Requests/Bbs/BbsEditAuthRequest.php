@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Bbs;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\BbsPostsAuthRule;
 
-class BbsPostEditAuthRequest extends FormRequest
+class BbsEditAuthRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,7 +15,7 @@ class BbsPostEditAuthRequest extends FormRequest
 
     public function rules()
     {
-        $postId = $this->request->get('postId');
+        $postId = $this->route('postId');
 
         $authGuardBbsPost = Auth::guard('bbsPost');
         if ($authGuardBbsPost->check() && $authGuardBbsPost->user()->id === $postId) {
