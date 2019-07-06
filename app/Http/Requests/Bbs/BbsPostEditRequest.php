@@ -1,16 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Bbs;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * @property string $author
- * @property string $title
- * @property string $content
- * @property string $password
- */
 class BbsPostEditRequest extends FormRequest
 {
     public function authorize()
@@ -19,7 +13,7 @@ class BbsPostEditRequest extends FormRequest
             return false;
         }
 
-        return Auth::guard('bbsPost')->user()->id === $this->request->get('postId');
+        return Auth::guard('bbsPost')->user()->id === $this->route('postId');
     }
 
     public function rules()

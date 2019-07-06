@@ -4,25 +4,17 @@ namespace App\Services\Actions\Bbs;
 
 use App\Services\FormService;
 use App\Services\Actions\AbstractActionService;
-use Illuminate\Support\Facades\DB;
 
-class BbsEditService extends AbstractActionService
+class BbsCreateService extends AbstractActionService
 {
     private $viewData;
 
-    private $postId;
-
-    public function __construct(string $postId)
+    public function __construct()
     {
-        $this->postId = $postId;
-        
-        $dbData = $this->getPostData($postId);
-
         $this->viewData = new \stdClass();
-        $this->viewData->postId = $this->postId;
         $this->viewData->form = new \stdClass();
-        $this->viewData->backUrl = url('/bbs/' . $postId);
-        $this->viewData->formActionUrl = url('/bbs/' . $postId . '/edit-confirm');
+        $this->viewData->backUrl = url('/bbs');
+        $this->viewData->formActionUrl = url('/bbs/create-confirm');
 
         if ($this->hasValidationError()) {
             $errors = $this->getValidationErrors();
@@ -63,31 +55,14 @@ class BbsEditService extends AbstractActionService
             return;
         }
 
-        $this->viewData->form->title = new FormService($dbData->title);
-        $this->viewData->form->author = new FormService($dbData->author);
-        $this->viewData->form->content = new FormService($dbData->content);
+        $this->viewData->form->title = new FormService('');
+        $this->viewData->form->author = new FormService('');
+        $this->viewData->form->content = new FormService('');
         $this->viewData->form->password = new FormService('');
     }
 
     public function getViewData()
     {
         return $this->viewData;
-    }
-
-    private function getPostData()
-    {
-        return DB::table('bbs_posts')
-            ->select(
-                'id',
-                'title',
-                'author',
-                'content',
-                'password',
-                'created_at'
-            )
-            ->whereNull('parent_id')
-            ->whereNull('deleted_at')
-            ->where('id', $this->postId)
-            ->first();
     }
 }

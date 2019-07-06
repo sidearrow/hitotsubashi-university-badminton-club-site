@@ -2,13 +2,13 @@
 
 namespace App\Services\Actions\Bbs;
 
-use App\Http\Requests\Bbs\BbsPostEditRequest;
+use App\Http\Requests\Bbs\BbsCreateRequest;
 
-class BbsEditConfirmService
+class BbsCreateConfirmService
 {
     private $viewData;
 
-    public function __construct(BbsPostEditRequest $request, string $postId)
+    public function __construct(BbsCreateRequest $request)
     {
         session()->flash('backData', $request->all());
 
@@ -19,8 +19,8 @@ class BbsEditConfirmService
         $this->viewData->content = $request->input('content');
         $this->viewData->password = $request->input('password');
 
-        $this->viewData->backUrl = url('/bbs/' . $postId . '/edit');
-        $this->viewData->formActionUrl = url('/bbs/' . $postId . '/edit-complete');
+        $this->viewData->backUrl = url('/bbs/create');
+        $this->viewData->formActionUrl = url('/bbs/create-complete');
     }
 
     public function getViewData()

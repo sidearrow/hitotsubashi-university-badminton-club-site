@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Services\Bbs;
+namespace App\Services\Actions\Bbs;
 
-use App\Http\Requests\BbsPostRequest;
+use App\Http\Requests\Bbs\BbsCreateRequest;
+use Illuminate\Support\Facades\DB;
 
 class BbsCreateCompleteService
 {
-    public function __construct(BbsPostRequest $request)
+    public function __construct(BbsCreateRequest $request)
     {
         $dbData = new \stdClass();
+
         $dbData->postId = uniqid();
         $dbData->title = $request->title;
         $dbData->author = $request->author;
@@ -23,7 +25,7 @@ class BbsCreateCompleteService
         DB::table('bbs_posts')
             ->insert([
                 'id'         => $data->postId,
-                'title'      => $data->titile,
+                'title'      => $data->title,
                 'author'     => $data->author,
                 'content'    => $data->content,
                 'password'   => $data->password,

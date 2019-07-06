@@ -9,10 +9,10 @@ Route::get('/results/{id}', 'ResultsDetailController');
 
 Route::get('/bbs', 'BbsController@index');
 
-Route::get('/bbs/create', 'BbsController@create');
-Route::post('/bbs/create-confirm', 'BbsController@createConfirm');
-Route::get('/bbs/create-complete', 'BbsController@createCompleteGet');
-Route::post('/bbs/create-complete', 'BbsController@createCompletePost');
+Route::get('/bbs/create', 'Bbs\CreateController@create');
+Route::post('/bbs/create-confirm', 'Bbs\CreateController@confirm');
+Route::get('/bbs/create-complete', 'Bbs\CreateController@completeGet');
+Route::post('/bbs/create-complete', 'Bbs\CreateController@completePost');
 
 Route::get('/bbs/{postId}', 'BbsController@show');
 

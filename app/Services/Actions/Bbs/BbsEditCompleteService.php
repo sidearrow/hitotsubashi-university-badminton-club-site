@@ -2,33 +2,37 @@
 
 namespace App\Services\Actions\Bbs;
 
-use App\Http\Requests\BbsPostEditRequest;
+use App\Http\Requests\Bbs\BbsPostEditRequest;
 use Illuminate\Support\Facades\DB;
 
 class BbsEditCompleteService
 {
+    private $updPostId;
+    private $updTitle;
+    private $updAuthor;
+    private $updContent;
+    private $updPassword;
+
     public function __construct(BbsPostEditRequest $request, string $postId)
     {
-        $data = new \stdClass();
+        $this->updPostId = $postId;
+        $this->updTitle = $request->input('title');
+        $this->updAuthor = $request->input('author');
+        $this->updContent = $request->input('content');
+        $this->updPassword = bcrypt($request->input('password'));
 
-        $data->postId = $postId;
-        $data->title = $request;
-        $data->author = $request->author;
-        $data->content = $request->content;
-        $data->password = bcrypt($request->password);
-
-        self::update($data);
+        $this->update();
     }
 
-    private static function update(\stdClass $data)
+    private function update()
     {
         DB::table('bbs_posts')
-            ->where('id', $data->postId)
+            ->where('id', $this->updPostId)
             ->update([
-                'title'      => $data->title,
-                'author'     => $data->author,
-                'content'    => $data->content,
-                'password'   => $data->password,
+                'title'      => $this->updTitle,
+                'author'     => $this->updAuthor,
+                'content'    => $this->updContent,
+                'password'   => $this->updPassword,
                 'updated_at' => now(),
             ]);
     }

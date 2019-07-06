@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\BbsPostRequest;
 use App\Services\Bbs\BbsIndexService;
-use App\Services\Bbs\BbsCreateCompleteService;
 use App\Services\Bbs\BbsShowService;
 use App\Services\Bbs\BbsDeleteService;
 use App\Http\Requests\BbsPostDeleteRequest;
@@ -30,28 +28,6 @@ class BbsController extends Controller
         return view('pages.bbs.show', [
             'viewData' => $service->getViewData(),
         ]);
-    }
-
-    public function create()
-    {
-        return view('pages.bbs.create');
-    }
-
-    public function createConfirm(BbsPostRequest $request)
-    {
-        return view('pages.bbs.create-confirm');
-    }
-
-    public function createCompleteGet()
-    {
-        return view('pages.bbs.create-confirm');
-    }
-
-    public function createCompletePost(BbsPostRequest $request)
-    {
-        new BbsCreateCompleteService($request);
-
-        return redirect('bbs/create-complete');
     }
 
     public function delete(BbsPostDeleteRequest $request, string $postId)
