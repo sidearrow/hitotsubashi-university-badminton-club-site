@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\SantamaService;
+use App\Services\Actions\SantamaService;
 
 class SantamaController extends Controller
 {

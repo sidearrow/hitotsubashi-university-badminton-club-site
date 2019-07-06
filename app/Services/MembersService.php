@@ -22,7 +22,7 @@ class MembersService
         ];
 
         foreach ($members as $v) {
-            $res[4 - self::NOW_YEAR + $v->admission_year]['members'][] = [
+            $res[3 - self::NOW_YEAR + $v->admission_year]['members'][] = [
                 'fileUrl'    => $this->getFileUrl($v->file_name),
                 'fullName'   => $v->last_name . ' ' . $v->first_name,
                 'sx'         => $v->sx,

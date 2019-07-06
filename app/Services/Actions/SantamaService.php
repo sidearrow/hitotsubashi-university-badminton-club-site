@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Actions;
 
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +15,9 @@ class SantamaService
                 'year',
                 'name',
                 'file_name'
-                )
+            )
+            ->orderBy('year', 'desc')
+            ->orderBy('sort_no_year', 'asc')
             ->get();
 
         $this->viewData = new \stdClass();
