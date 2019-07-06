@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\TopImageService;
+use App\Services\Actions\IndexService;
 
 class IndexController extends Controller
 {
-    public function __invoke(TopImageService $topImageService)
+    public function __invoke(IndexService $service)
     {
-        $files = $topImageService->getFilesUrl();
-
         return view('pages.index', [
-            'topImages' => $files,
+            'viewData' => $service->getViewData(),
         ]);
     }
 }

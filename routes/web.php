@@ -5,7 +5,6 @@ Route::get('/members', 'MembersController');
 Route::get('/santama', 'SantamaController');
 
 Route::get('/results', 'ResultsController');
-Route::get('/results/{id}', 'ResultsDetailController');
 
 Route::get('/bbs', 'BbsController@index');
 
@@ -30,15 +29,17 @@ Route::post('/mizutori-login', 'MizutoriController@loginPost');
 
 Route::get('/files/obmessages/{fileName}', 'FilesController@obmessages');
 
-/*
-Route::get('/admin/login', 'AdminIndexController@loginGet');
-Route::post('/admin/login', 'AdminIndexController@loginPost');
+Route::get('/admin/login', 'Admin\IndexController@loginGet');
+Route::post('/admin/login', 'Admin\IndexController@loginPost');
 Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
-    Route::get('/', 'AdminIndexController@index');
+    Route::get('/', 'Admin\IndexController@index');
+
+    Route::get('/top', 'Admin\TopController@index');
+/*
     Route::get('/members', 'AdminMembersController@index');
     Route::post('/members/import', 'AdminMembersController@import');
     Route::get('/obmessages', 'AdminIndexController@obmessages');
     Route::post('/obmessages/create', 'AdminIndexController@obmessagesCreate');
     Route::post('/obmessages/delete', 'AdminIndexController@obmessagesDelete');
-});
 */
+});

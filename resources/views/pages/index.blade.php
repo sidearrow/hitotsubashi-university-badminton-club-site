@@ -7,7 +7,7 @@
     </div>
     <div id="topImagesCaruosel" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($topImages as $i => $v)
+            @foreach ($viewData->topImages as $i => $v)
                 <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
                     <img src="{{ $v }}" class="d-block w-100">
                 </div>
@@ -22,7 +22,11 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <div class="card mt-3">
+    <div class="mt-5">
+        <h3 class="h3">部活紹介</h3>
+        <div style="white-space:pre-line">{{ $viewData->introWording }}</div>
+    </div>
+    <div class="card mt-5">
         <div class="card-header bg-hit text-white">Twitter</div>
         <div class="card-body">
             <div class="mt-3">
