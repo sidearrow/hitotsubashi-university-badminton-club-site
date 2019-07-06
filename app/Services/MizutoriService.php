@@ -15,7 +15,7 @@ class MizutoriService
             $obmsgs[$v->year][] = [
                 'name'     => $v->name,
                 'filename' => $v->filename,
-                'url' => url('files/obmessages') . '.' . $v->filename,
+                'url' => url('files/obmessages') . '/' . $v->filename,
             ];
         }
 
