@@ -12,18 +12,28 @@ $menus = [
     <head>
         <meta charset="utf-8">
         <title>一橋大学バドミントン部</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-        <script src="{{ asset('/js/jquery-3.4.0.slim.min.js') }}"></script>
-        <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="format-detection" content="telephone=no" />
+
+        <meta name="description" content="一橋大学バドミントン部の HP です" />
+        <meta name="author" content="sidearrow" />
+
+        <link rel="stylesheet" href="{{ asset('/css/vendor/bootstrap/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/css/vendor/fontawesome/all.min.css') }}" />
+        <script src="{{ asset('/js/vendor/jquery/jquery-3.4.0.slim.min.js') }}"></script>
+        <script src="{{ asset('/js/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('/js/vendor/fontawesome/all.min.js') }}"></script>
         <script src="{{ asset('/js/app/common.js') }}"></script>
-        <style>html { font-size: 12px }</style>
+        <style>html{font-size:12px;}.bg-hit{background-color:#ac2926;}</style>
     </head>
     <body>
         <header>
             <nav class="navbar navbar-dark fixed-top" style="background-color:#ac2926">
                 <div class="container" style="max-width:720px">
                     <a class="navbar-brand" href="{{ url('/') }}">一橋大学バドミントン部</a>
+                    <div>a</div>
                     <div class="d-flex">
                         <div class="dropdown">
                             <a class="btn btn-transpalent dropdown-toggle text-white" data-toggle="dropdown" style="cursor:pointer">MENU</a>

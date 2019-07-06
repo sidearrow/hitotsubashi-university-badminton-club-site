@@ -22,4 +22,13 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <div class="card mt-3">
+        <div class="card-header bg-hit text-white">Twitter</div>
+        <div class="card-body">
+            <div class="mt-3">
+                <a class="twitter-timeline" data-lang="ja" data-theme="light" data-height="600" href="https://twitter.com/hit_u_bad?ref_src=twsrc%5Etfw">Tweets by hit_u_bad</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </div>
 @endsection
