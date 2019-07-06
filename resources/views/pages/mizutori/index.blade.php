@@ -1,7 +1,5 @@
 @extends('layouts.main')
 
-<?php debug($viewData); ?>
-
 @section('content')
     @component('components.title', [ 'title' => 'みずとり会' ]) @endcomponent
     <div>
