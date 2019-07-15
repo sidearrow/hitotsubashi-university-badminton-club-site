@@ -13,8 +13,8 @@ class BbsShowService
         $this->viewData = new \stdClass();
 
         $this->viewData->postId = $postId;
-        $this->viewData->post = self::getPost($postId);
-        $this->viewData->comments = self::getComments($postId);
+        $this->viewData->post = $this->getPost($postId);
+        $this->viewData->comments = $this->getComments($postId);
     }
 
     public function getViewData()
@@ -22,7 +22,7 @@ class BbsShowService
         return $this->viewData;
     }
 
-    private static function getPost(string $postId)
+    private function getPost(string $postId)
     {
         return DB::table('bbs_posts')
             ->select(
@@ -39,7 +39,7 @@ class BbsShowService
             ->first();
     }
 
-    private static function getComments(string $parentId)
+    private function getComments(string $parentId)
     {
         return DB::table('bbs_posts')
             ->select(

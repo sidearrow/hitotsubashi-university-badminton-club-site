@@ -17,17 +17,17 @@ class BbsCommentCreateService
         $data->content = $request->content;
         $data->password = bcrypt($request->password);
 
-        self::create($data);
+        $this->create($data);
     }
 
-    private static function create(\stdClass $data)
+    private function create(\stdClass $data)
     {
         $now = now();
 
         DB::table('bbs_posts')
             ->insert([
                 'id'         => $data->id,
-                'parentID'   => $data->parentId,
+                'parent_id'  => $data->parentId,
                 'author'     => $data->author,
                 'content'    => $data->content,
                 'password'   => $data->password,

@@ -5,6 +5,7 @@ $menus = [
     [ '三多摩大会', url('/santama') ],
     [ '掲示板', url('/bbs') ],
     [ 'みずとり会', url('/mizutori') ],
+    [ '管理用', url('/admin') ],
 ];
 
 $urlGitHub = 'https://github.com/sidearrow/hit-u-bad';
@@ -24,12 +25,14 @@ $urlTwitter = 'https://twitter.com/hit_u_bad';
         <meta name="description" content="一橋大学バドミントン部の HP です" />
         <meta name="author" content="sidearrow" />
 
+        <meta name="google-site-verification" content="{{ config('app.googleSiteVerification') }}" />
+
         <link rel="stylesheet" href="{{ asset('/css/vendor/bootstrap/bootstrap.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('/css/vendor/fontawesome/css/all.min.css') }}" />
-        <script src="{{ asset('/js/vendor/jquery/jquery-3.4.0.slim.min.js') }}"></script>
-        <script src="{{ asset('/js/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('/js/vendor/fontawesome/all.min.js') }}"></script>
-        <script src="{{ asset('/js/app/common.js') }}"></script>
+        <script src="{{ asset('/js/vendor/jquery/jquery-3.4.0.slim.min.js') }}" defer></script>
+        <script src="{{ asset('/js/vendor/bootstrap/bootstrap.bundle.min.js') }}" defer></script>
+        <script src="{{ asset('/js/vendor/fontawesome/all.min.js') }}" defer></script>
+        <script src="{{ asset('/js/app/common.js') }}" defer></script>
         <style>html{font-size:12px;}.bg-hit{background-color:#ac2926;}</style>
     </head>
     <body>

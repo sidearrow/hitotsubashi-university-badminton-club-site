@@ -2,6 +2,8 @@
 
 namespace App\Services\Bbs;
 
+use Illuminate\Support\Facades\DB;
+
 class BbsDeleteService
 {
     public function __construct(string $postId)

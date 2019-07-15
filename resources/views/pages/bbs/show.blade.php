@@ -173,7 +173,7 @@
     </div>
 </div>
 <script>
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     var baseUrl = '{{ url('/') }}';
     $editModal = $('#editModal');
     $editModal.attr('data-is-error') === '1' && $editModal.modal('show');
