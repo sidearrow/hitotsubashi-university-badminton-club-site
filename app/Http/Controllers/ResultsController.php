@@ -2,14 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ResultsService;
+use App\Services\Actions\Results\IndexService;
+use App\Services\Actions\Results\DetailService;
 
 class ResultsController extends Controller
 {
-    public function __invoke(ResultsService $resultsService)
+    public function index(IndexService $service)
     {
-        $viewData = $resultsService->getViewData();
+        $viewData = $service->getViewData();
 
-        return view('pages.results', ['viewData' => $viewData]);
+        return view('pages.results.index', ['viewData' => $viewData]);
+    }
+
+    public function detail(string $resultId)
+    {
+        $service = new DetailService($resultId);
+
+        if ($service->isNotFound()) {
+            return abort(404);
+        }
+        debug($service->getViewData());
+
+        return view('pages.results.detail', [
+            'viewData' => $service->getViewData(),
+        ]);
     }
 }

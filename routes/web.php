@@ -4,7 +4,8 @@ Route::get('/', 'IndexController');
 Route::get('/members', 'MembersController');
 Route::get('/santama', 'SantamaController');
 
-Route::get('/results', 'ResultsController');
+Route::get('/results', 'ResultsController@index');
+Route::get('/results/{resultId}', 'ResultsController@detail');
 
 Route::get('/bbs', 'BbsController@index');
 

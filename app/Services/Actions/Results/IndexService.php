@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Actions\Results;
 
-class ResultsService
+class IndexService
 {
     private const CSV_PATH = 'app/files/results/results.csv';
 
