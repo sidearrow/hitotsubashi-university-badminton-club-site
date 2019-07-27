@@ -75,7 +75,7 @@
         </form>
     </div>
 </div>
-<div class="modal fade" id="editModal" data-is-error="@if($errors->has('editPassword')){{'1'}}@endif">
+<div class="modal fade" id="editModal" data-is-error="{{ $errors->has('editPassword') ? '1' : '' }}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -84,7 +84,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="get" action="{{ url('bbs/' . $viewData->postId . '/edit') }}">
+            <form method="get" action="{{ url('bbs/' . $viewData->postId . '/edit-input') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">

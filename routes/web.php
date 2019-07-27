@@ -9,17 +9,17 @@ Route::get('/results/{resultId}', 'ResultsController@detail');
 
 Route::get('/bbs', 'BbsController@index');
 
-Route::get('/bbs/create', 'Bbs\CreateController@create');
-Route::post('/bbs/create-confirm', 'Bbs\CreateController@confirm');
-Route::get('/bbs/create-complete', 'Bbs\CreateController@completeGet');
-Route::post('/bbs/create-complete', 'Bbs\CreateController@completePost');
+Route::get('/bbs/create-input', 'Bbs\CreateController@input');
+Route::get('/bbs/create-confirm', 'Bbs\CreateController@confirm');
+Route::get('/bbs/create-complete', 'Bbs\CreateController@complete');
+Route::post('/bbs/create', 'Bbs\CreateController@create');
 
 Route::get('/bbs/{postId}', 'BbsController@show');
 
-Route::get('/bbs/{postId}/edit', 'Bbs\EditController@index');
-Route::post('/bbs/{postId}/edit-confirm', 'Bbs\EditController@confirm');
-Route::get('/bbs/{postId}/edit-complete', 'Bbs\EditController@completeGet');
-Route::post('/bbs/{postId}/edit-complete', 'Bbs\EditController@completePost');
+Route::get('/bbs/{postId}/edit-input', 'Bbs\EditController@input');
+Route::get('/bbs/{postId}/edit-confirm', 'Bbs\EditController@confirm');
+Route::get('/bbs/{postId}/edit-complete', 'Bbs\EditController@complete');
+Route::post('/bbs/{postId}/edit', 'Bbs\EditController@edit');
 
 Route::post('/bbs/{postId}/delete', 'BbsController@delete');
 Route::post('/bbs/{postId}/comment', 'BbsController@commentCreate');

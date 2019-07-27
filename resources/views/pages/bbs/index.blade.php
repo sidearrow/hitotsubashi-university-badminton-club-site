@@ -17,8 +17,10 @@
             <a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">旧掲示板１</a><br/>
             <a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板２</a>
         </div>
-        <div class="text-center py-2">
-            <a href="{{ url('/bbs/create') }}" class="btn btn-outline-primary px-4">新規投稿</a>
+        <div class="row justify-content-center py-2">
+            <div class="col-sm-4">
+                <a href="{{ url('/bbs/create-input') }}" class="btn btn-outline-primary btn-block">新規投稿</a>
+            </div>
         </div>
     </section>
     <div class="card mb-5">

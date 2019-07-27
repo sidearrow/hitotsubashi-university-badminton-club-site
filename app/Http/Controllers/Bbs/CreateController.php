@@ -4,37 +4,31 @@ namespace App\Http\Controllers\Bbs;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Bbs\BbsCreateRequest;
-use App\Services\Actions\Bbs\BbsCreateService;
-use App\Services\Actions\Bbs\BbsCreateConfirmService;
 use App\Services\Actions\Bbs\BbsCreateCompleteService;
 
 class CreateController extends Controller
 {
-    public function create()
+    public function input()
     {
-        $service = new BbsCreateService();
-
-        return view('pages.bbs.create', [
-            'viewData' => $service->getViewData(),
-        ]);
+        return view('pages.bbs.create');
     }
 
-    public function confirm(BbsCreateRequest $request)
+    public function confirm()
     {
-        $service = new BbsCreateConfirmService($request);
-
-        return view('pages.bbs.create-confirm', [
-            'viewData' => $service->getViewData(),
-        ]);
+        return view('pages.bbs.create-confirm');
     }
 
-    public function completeGet()
+    public function complete()
     {
         return view('pages.bbs.create-complete');
     }
 
-    public function completePost(BbsCreateRequest $request)
+    public function create(BbsCreateRequest $request)
     {
+        if ($request->isConfirm === '1') {
+            return redirect('bbs/create-confirm')->withInput();
+        }
+
         new BbsCreateCompleteService($request);
 
         return redirect('bbs/create-complete');
