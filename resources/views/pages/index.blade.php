@@ -22,6 +22,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
     <div class="mt-5">
         <h3 class="h3">部活紹介</h3>
         <div style="white-space:pre-line">{{ $viewData->introWording }}</div>

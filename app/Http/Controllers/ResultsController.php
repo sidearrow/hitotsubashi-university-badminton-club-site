@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\Actions\Results\IndexService;
-use App\Services\Actions\Results\DetailService;
 
 class ResultsController extends Controller
 {
@@ -16,15 +15,10 @@ class ResultsController extends Controller
 
     public function detail(string $resultId)
     {
-        $service = new DetailService($resultId);
-
-        if ($service->isNotFound()) {
-            return abort(404);
-        }
-        debug($service->getViewData());
+        $content = file_get_contents(storage_path('app/files/html/league-results/league-results-201901-m.html'));
 
         return view('pages.results.detail', [
-            'viewData' => $service->getViewData(),
+            'content' => $content,
         ]);
     }
 }
