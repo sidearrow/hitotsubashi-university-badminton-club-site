@@ -1,3 +1,18 @@
 html {
   font-size: 13px;
+  position: relative;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  padding-bottom: 45px;
+}
+
+footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
