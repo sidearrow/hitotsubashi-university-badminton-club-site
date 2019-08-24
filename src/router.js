@@ -17,6 +17,6 @@ export default new Router({
     { path: '/results/league', component: () => import('./pages/results/league/Index') },
 
     /* 三多摩大会 */
-    { path: '/sanatama', component: () => import('./pages/santama/Index') }
+    { path: '/santama', component: () => import('./pages/santama/Index') }
   ]
 })

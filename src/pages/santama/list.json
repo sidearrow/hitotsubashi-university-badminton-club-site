@@ -1,0 +1,60 @@
+[
+    {
+        "year": 2016,
+        "files": [
+            {
+                "title": "男子 A シングルス",
+                "file": "santama_2016_msa_res.pdf"
+            },
+            {
+                "title": "男子 A ダブルス",
+                "file": "santama_2016_mda_res.pdf"
+            },
+            {
+                "title": "男子 B シングルス",
+                "file": "santama_2016_msb_res.pdf"
+            },
+            {
+                "title": "男子 B ダブルス",
+                "file": "santama_2016_mdb_res.pdf"
+            },
+            {
+                "title": "女子シングルス",
+                "file": "santama_2016_ws_res.pdf"
+            },
+            {
+                "title": "女子ダブルス",
+                "file": "santama_2016_wd_res.pdf"
+            }
+        ]
+    },
+    {
+        "year": 2015,
+        "files": [
+            {
+                "title": "男子 A シングルス",
+                "file": "santama_2015_msa_res.pdf"
+            },
+            {
+                "title": "男子 A ダブルス",
+                "file": "santama_2015_mda_res.pdf"
+            },
+            {
+                "title": "男子 B シングルス",
+                "file": "santama_2015_msb_res.pdf"
+            },
+            {
+                "title": "男子 B ダブルス",
+                "file": "santama_2015_mdb_res.pdf"
+            },
+            {
+                "title": "女子シングルス",
+                "file": "santama_2015_ws_res.pdf"
+            },
+            {
+                "title": "女子ダブルス",
+                "file": "santama_2015_wd_res.pdf"
+            }
+        ]
+    }
+]

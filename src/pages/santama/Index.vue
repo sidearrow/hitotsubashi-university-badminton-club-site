@@ -1,34 +1,31 @@
 <template>
   <div>
-    <h1 class="mb-5">大会結果</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header alert-main">関東学生バドミントン連盟リーグ</div>
-          <div class="card-body">
-            <div>関東学生バドミントン連盟主催のリーグ戦の結果です。一年に春と秋の２度行なわれます。</div>
-            <div class="row justify-content-center mt-5">
-              <div class="col-md-8">
-                <router-link to="/results/league" class="btn btn-block btn-outline-main">結果を見る</router-link>
-              </div>
-            </div>
+    <h1 class="mb-5">三多摩地区学生バドミントン選手権大会</h1>
+    <h2 class="mb-3">第 53 回大会 （2019 年度）</h2>
+    <section>準備中</section>
+    <h2 class="my-5">過去の結果</h2>
+    <section>
+      <template v-for="(v, i) in results">
+        <div :key="i" class="mt-3">{{ v.year }} 年度</div>
+        <div class="row" :key="i">
+          <div class="col-md-3 col-6 py-1" v-for="(file, j) in v.files" :key="i + '-' + j">
+            <button class="btn btn-block btn-outline-main">{{ file.title }}</button>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 mt-md-0 mt-3">
-        <div class="card">
-          <div class="card-header alert-main">東商戦</div>
-          <div class="card-body text-center py-5">準備中</div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header alert-main">三商戦</div>
-          <div class="card-body text-center py-5">準備中</div>
-        </div>
-      </div>
-    </div>
+      </template>
+    </section>
   </div>
 </template>
+
+<script>
+import results from './list.json';
+
+export default {
+  data: function () {
+    return {
+      results: results,
+    }
+  },
+}
+
+</script>
