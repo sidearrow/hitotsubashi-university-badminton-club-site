@@ -1,6 +1,5 @@
 import env from '@/env/env'
 import firebase from 'firebase/app'
-import 'firebase/firestore'
 
 firebase.initializeApp({
   apiKey    : env.firebase.apiKey,
@@ -8,4 +7,4 @@ firebase.initializeApp({
   projectId : env.firebase.projectId,
 })
 
-export default firebase.firestore()
+export default firebase;

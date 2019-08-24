@@ -1,34 +1,52 @@
 <template>
   <div>
-    <h1 class="mb-5">大会結果</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header alert-main">関東学生バドミントン連盟リーグ</div>
-          <div class="card-body">
-            <div>関東学生バドミントン連盟主催のリーグ戦の結果です。一年に春と秋の２度行なわれます。</div>
-            <div class="row justify-content-center mt-5">
-              <div class="col-md-8">
-                <router-link to="/results/league" class="btn btn-block btn-outline-main">結果を見る</router-link>
+    <h1 class="mb-5">部員情報</h1>
+    <b-tabs>
+      <b-tab :title="`${grade.grade} 年生`" v-for="(grade, i) in memberData" :key="i" fill>
+        <div class="row my-3">
+          <div
+            class="col-lg-4 col-sm-6 py-2"
+            v-for="(member, j) in grade.members"
+            :key="`${i}-${j}`"
+          >
+            <div class="card">
+              <div class="card-body">
+                <div
+                  :class="`h5 pb-1 ${member.gender === 0 ? 'text-info' : 'text-danger'}`"
+                >{{ member.fullName }}</div>
+                <div class="pb-1">
+                  <span
+                    class="border border-dark rounded px-1 mb-1 mr-2 d-inline-block"
+                  >{{ member.faculty }}</span>
+                  <span
+                    class="border border-dark rounded px-1 d-inline-block"
+                  >{{ member.highschool }}</span>
+                </div>
+                <div class="pb-1" v-if="member.positions.length > 0">
+                  <span
+                    class="border border-dark rounded px-1 mr-1 mb-1 d-inline-block"
+                    v-for="(pos, k) in member.position"
+                    :key="`${i}-${j}-${k}`"
+                  >{{ pos }}</span>
+                </div>
+                <div class="pb-1">{{ member.comment }}</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 mt-md-0 mt-3">
-        <div class="card">
-          <div class="card-header alert-main">東商戦</div>
-          <div class="card-body text-center py-5">準備中</div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header alert-main">三商戦</div>
-          <div class="card-body text-center py-5">準備中</div>
-        </div>
-      </div>
-    </div>
+      </b-tab>
+    </b-tabs>
   </div>
 </template>
+
+<script>
+import memberData from "./list";
+
+export default {
+  data: function() {
+    return {
+      memberData: memberData
+    };
+  }
+};
+</script>

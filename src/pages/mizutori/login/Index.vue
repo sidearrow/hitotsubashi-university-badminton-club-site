@@ -9,7 +9,8 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>パスワード</label>
-            <input type="password" class="form-control" />
+            <input type="password" v-model="inputPassword" :class="'form-control ' + (isError ? 'is-invalid' : '')" />
+            <div class="invalid-feedback">{{ errorMessage }}</div>
             <small>現会長の名前をローマ字表記・英小文字のみで入力してください</small>
           </div>
         </div>
@@ -24,15 +25,37 @@
 </template>
 
 <script>
-import db from '@/firebase/firestore'
+import mizutoriAuth from '@/firebase/mizutori-auth'
 
 export default {
   methods: {
-    submit: function (e) {
-      db.collection('auth').where('password', '==', '').get().then((snap) => {
-        console.log(snap)
-      })
+    submit: async function () {
+      this.isError = false
+      this.errorMessage = ''
+
+      if (this.inputPassword.length === 0) {
+        this.isError = true
+        this.errorMessage = 'パスワードは必ず入力してください'
+        return
+      }
+
+      try {
+        await mizutoriAuth.login(this.inputPassword)
+      } catch (err) {
+        this.isError = true
+        this.errorMessage = 'パスワードが間違っています'
+        return
+      }
+
+      this.$router.push('/mizutori')
     },
+  },
+  data: function () {
+    return {
+      inputPassword: '',
+      isError: false,
+      errorMessage: '',
+    }
   },
 }
 </script>
