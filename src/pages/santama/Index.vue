@@ -5,14 +5,14 @@
     <section>準備中</section>
     <h2 class="my-5">過去の結果</h2>
     <section>
-      <template v-for="(v, i) in results">
-        <div :key="i" class="mt-3">{{ v.year }} 年度</div>
-        <div class="row" :key="i">
+      <div v-for="(v, i) in results" :key="i">
+        <div class="mt-3">{{ v.year }} 年度</div>
+        <div class="row">
           <div class="col-md-3 col-6 py-1" v-for="(file, j) in v.files" :key="i + '-' + j">
             <button class="btn btn-block btn-outline-main">{{ file.title }}</button>
           </div>
         </div>
-      </template>
+      </div>
     </section>
   </div>
 </template>

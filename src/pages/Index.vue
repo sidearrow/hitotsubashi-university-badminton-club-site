@@ -1,17 +1,11 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div class="alert alert-main">
+      <div>こちらは β 版です。<br/>最新の情報は <a target="_blank" href="http://jfn.josuikai.net/circle/sports/badminton/index.html">こちら</a> からご確認下さい。</div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+export default {}
 </script>
