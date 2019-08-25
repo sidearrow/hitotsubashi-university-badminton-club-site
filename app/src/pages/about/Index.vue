@@ -3,30 +3,32 @@
     <h1 class="mb-5">部活情報</h1>
     <h2 class="mb-3">役職</h2>
     <section>
-      <div class="row">
-        <div class="col-md-3 col-5 py-1 alert-main">部長</div>
-        <div class="py-1 col">髙橋 真弓</div>
-      </div>
-      <div class="row py-1">
-        <div class="col-md-3 col-5 py-1 alert-main">監督</div>
-        <div class="col py-1">小原 貴文</div>
-      </div>
-      <div class="row py-1">
-        <div class="col-md-3 col-5 py-1 alert-main">コーチ</div>
-        <div class="col py-1">中山 朋子</div>
-      </div>
-      <div class="row mt-2 py-1">
-        <div class="col-md-3 col-5 py-1 alert-main">主将</div>
-        <div class="col py-1">村山 康平</div>
-      </div>
-      <div class="row py-1">
-        <div class="col-md-3 col-5 py-1 alert-main">女子主将</div>
-        <div class="col py-1">植木 さやか</div>
-      </div>
-      <div class="row py-1">
-        <div class="col-md-3 col-5 py-1 alert-main">主務</div>
-        <div class="col py-1">佐藤 和貴</div>
-      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th class="alert-main font-weight-normal">部長</th>
+          <td>髙橋 真弓</td>
+        </tr>
+        <tr>
+          <th class="alert-main font-weight-normal">監督</th>
+          <td>小原 貴文</td>
+        </tr>
+        <tr>
+          <th class="alert-main font-weight-normal">コーチ</th>
+          <td>中山 朋子</td>
+        </tr>
+        <tr>
+          <th class="alert-main font-weight-normal">主将</th>
+          <td>村山 康平</td>
+        </tr>
+        <tr>
+          <th class="alert-main font-weight-normal">女子主将</th>
+          <td>植木 さやか</td>
+        </tr>
+        <tr>
+          <th class="alert-main font-weight-normal">主務</th>
+          <td>佐藤 和貴</td>
+        </tr>
+      </table>
     </section>
     <h2 class="mt-5 mb-3">練習場所</h2>
     <div>小平国際キャンパス体育館</div>

@@ -17,7 +17,7 @@
       </div>
       <div class="row justify-content-center mt-3">
         <div class="col-md-4">
-          <button type="submit" class="btn btn-block btn-main">ログイン</button>
+          <button type="submit" class="btn btn-block btn-outline-main">ログイン</button>
         </div>
       </div>
     </form>
@@ -46,7 +46,6 @@ export default {
         this.errorMessage = 'パスワードが間違っています'
         return
       }
-
       this.$router.push('/mizutori')
     },
   },

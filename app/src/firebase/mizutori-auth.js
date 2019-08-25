@@ -9,6 +9,6 @@ export default {
     return auth.signOut()
   },
   isLogin: function () {
-    return auth.currentUser === null || auth.currentUser.email === env.mizutoriLoginMailAddress;
+    return auth.currentUser !== null && auth.currentUser.email === env.mizutoriLoginMailAddress;
   }
 }

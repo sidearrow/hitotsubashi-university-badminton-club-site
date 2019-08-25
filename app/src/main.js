@@ -4,6 +4,7 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
 import router from './router'
 
+import '@/assets/icon/style.css'
 import '@/assets/scss/main.scss'
 import '@/assets/scss/bootstrap-vue/custom.scss'
 

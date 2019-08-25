@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1 class="mb-5">みずとり会のページ</h1>
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <button class="btn btn-block btn-outline-secondary" @click="clickBtnLogout()">ログアウト</button>
+      </div>
+    </div>
     <div class="card mb-3" v-for="(year, i) in data" :key="i">
       <div class="card-header alert-main">{{ year.year }} 年度</div>
       <div class="card-body">
@@ -17,8 +22,10 @@
 <script>
 import data from './ob-messages.json'
 import obmessages from '@/firebase/obmessages'
+import mizutoriAuth from '@/firebase/mizutori-auth'
 
 export default {
+  beforeCreate: function () {console.log('a')},
   data: function() {
     return {
       data: data
@@ -27,6 +34,10 @@ export default {
   methods: {
     clickBtn: async function (id) {
       window.open(await obmessages.getDownloadURL(id))
+    },
+    clickBtnLogout: async function () {
+      await mizutoriAuth.logout()
+      this.$router.push('/mizutori/login')
     }
   }
 };
