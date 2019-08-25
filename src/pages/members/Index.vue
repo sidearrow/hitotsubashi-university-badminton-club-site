@@ -40,9 +40,11 @@
 </template>
 
 <script>
-import memberData from "./list";
+import meta from '@/meta'
+import memberData from "./list"
 
 export default {
+  metaInfo: meta('members'),
   data: function() {
     return {
       memberData: memberData

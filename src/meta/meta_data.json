@@ -1,0 +1,11 @@
+{
+    "titleTemplate": "%s | 一橋バド",
+    "pages": {
+        "members": {
+            "title": "部員情報"
+        },
+        "results": {
+            "title": "大会結果"
+        }
+    }
+}

@@ -32,3 +32,11 @@
     </div>
   </div>
 </template>
+
+<script>
+import meta from '@/meta'
+
+export default {
+  metaInfo: meta('results')
+}
+</script>
