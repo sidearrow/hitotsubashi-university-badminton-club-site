@@ -21,23 +21,25 @@
               <th class="font-weight-normal bg-light">{{ season.season }}</th>
               <td>
                 <span>{{ season.m }}</span>
-                <span class="h5">
-                  <span class="badge badge-info font-weight-normal ml-3" v-if="season.mFlg === 1">昇格</span>
-                  <span
-                    class="badge badge-secondary font-weight-normal ml-3"
-                    v-if="season.mFlg === -1"
-                  >降格</span>
-                </span>
+                <span
+                  class="border border-main rounded text-main px-2 py-1 ml-3"
+                  v-if="season.mFlg === 1"
+                >昇格</span>
+                <span
+                  class="border border-secondary rounded text-secondary px-2 py-1 ml-3"
+                  v-if="season.mFlg === -1"
+                >降格</span>
               </td>
               <td>
                 <span>{{ season.f }}</span>
-                <span class="h5">
-                  <span class="badge badge-info font-weight-normal ml-3" v-if="season.fFlg === 1">昇格</span>
-                  <span
-                    class="badge badge-secondary font-weight-normal ml-3"
-                    v-if="season.fFlg === -1"
-                  >降格</span>
-                </span>
+                <span
+                  class="border border-main rounded text-main px-2 py-1 ml-3"
+                  v-if="season.fFlg === 1"
+                >昇格</span>
+                <span
+                  class="border border-secondary rounded text-secondary px-2 py-1 ml-3"
+                  v-if="season.fFlg === -1"
+                >降格</span>
               </td>
             </tr>
           </template>
