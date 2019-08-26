@@ -1,11 +1,6 @@
-import env from '@/env/env'
+import config from '@/config'
 import firebase from 'firebase/app'
 
-firebase.initializeApp({
-  apiKey    : env.firebase.apiKey,
-  authDomain: env.firebase.authDomain,
-  projectId : env.firebase.projectId,
-  storageBucket: env.firebase.storageBucket,
-})
+firebase.initializeApp(config.firebase)
 
-export default firebase;
+export default firebase

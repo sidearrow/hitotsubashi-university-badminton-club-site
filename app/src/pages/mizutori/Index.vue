@@ -25,7 +25,6 @@ import obmessages from '@/firebase/obmessages'
 import mizutoriAuth from '@/firebase/mizutori-auth'
 
 export default {
-  beforeCreate: function () {console.log('a')},
   data: function() {
     return {
       data: data

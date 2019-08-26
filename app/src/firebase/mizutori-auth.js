@@ -1,14 +1,14 @@
-import env from '@/env/env'
+import config from '@/config'
 import auth from './init/auth'
 
 export default {
   login: function (password) {
-    return auth.signInWithEmailAndPassword(env.mizutoriLoginMailAddress, password)
+    return auth.signInWithEmailAndPassword(config.mizutoriMailAddress, password)
   },
   logout: function () {
     return auth.signOut()
   },
   isLogin: function () {
-    return auth.currentUser !== null && auth.currentUser.email === env.mizutoriLoginMailAddress;
+    return auth.currentUser !== null && auth.currentUser.email === config.mizutoriMailAddress;
   }
 }
