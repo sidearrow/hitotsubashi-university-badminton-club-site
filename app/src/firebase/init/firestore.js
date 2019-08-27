@@ -1,4 +1,4 @@
 import 'firebase/firestore'
-import firbase from './common'
+import firebase from './common'
 
 export default firebase.firestore()

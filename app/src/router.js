@@ -39,6 +39,12 @@ export default new Router({
       component: () => import('./pages/santama/Index')
     },
 
+    /* 掲示板 */
+    {
+      path: '/bbs',
+      component: () => import('./pages/bbs/Index')
+    },
+
     /* みずとり会 */
     {
       path: '/mizutori',
