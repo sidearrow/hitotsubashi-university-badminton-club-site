@@ -8,6 +8,7 @@
         <b-nav-item class="font-size--1_1" to="/members">部員情報</b-nav-item>
         <b-nav-item class="font-size--1_1" to="/results">大会結果</b-nav-item>
         <b-nav-item class="font-size--1_1" to="/santama">三多摩大会</b-nav-item>
+        <b-nav-item class="font-size--1_1" to="/bbs">掲示板</b-nav-item>
         <b-nav-item class="font-size--1_1" to="/mizutori/login">みずとり会</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto mt-md-0 mt-2">

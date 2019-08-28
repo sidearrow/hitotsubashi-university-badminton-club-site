@@ -44,6 +44,14 @@ export default new Router({
       path: '/bbs',
       component: () => import('./pages/bbs/Index')
     },
+    {
+      path: '/bbs/create',
+      component: () => import('./pages/bbs/Create')
+    },
+    {
+      path: '/bbs/:postId',
+      component: () => import('./pages/bbs/_postId/Index')
+    },
 
     /* みずとり会 */
     {

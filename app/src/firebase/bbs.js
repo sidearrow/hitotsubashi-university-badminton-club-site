@@ -39,7 +39,7 @@ export const postDelete = async (id) => {
   })
 }
 
-export const get = async (id) => {
+export const getPost = async (id) => {
   const post = (await db.collection('bbs-posts').doc(id).get()).data()
   const comments = (await db.collection('bbs-posts').where('parentId', '==', id).get()).docs.map(doc => doc.data())
 
@@ -49,8 +49,8 @@ export const get = async (id) => {
   }
 }
 
-export const getList = async () => {
+export const getPosts = async () => {
   let query = db.collection('bbs-posts')
   query = query.where('parentId', '==', null).where('deletedAt', '==', null)
-  return (await query.get()).docs.map(doc => doc.data())
+  return (await query.get()).docs.map(doc => Object.assign({ id: doc.id }, doc.data()))
 }
