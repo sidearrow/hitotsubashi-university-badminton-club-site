@@ -52,5 +52,7 @@ export const getPost = async (id) => {
 export const getPosts = async () => {
   let query = db.collection('bbs-posts')
   query = query.where('parentId', '==', null).where('deletedAt', '==', null)
+  query = query.orderBy('createdAt', 'desc')
+  query = query.limit(20)
   return (await query.get()).docs.map(doc => Object.assign({ id: doc.id }, doc.data()))
 }

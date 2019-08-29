@@ -14,7 +14,7 @@
           <router-link to="/bbs/create" class="btn btn-outline-primary btn-block">新規投稿</router-link>
         </div>
       </div>
-      <div>
+      <div class="mt-5">
         <div class="mb-4" v-for="(post, i) in posts" :key="i">
           <div>
             <router-link :to="`/bbs/${post.id}`">{{ post.title }}</router-link>
