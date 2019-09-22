@@ -1,3 +1,18 @@
 {
-    "html.format.wrapLineLength": 0
+    "[blade]": {
+        "editor.tabSize": 2
+    },
+    "blade.format.enable": true,
+    "html.format.wrapLineLength": 0,
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/public/assets/bootstrap"
+        }
+    ],
+    "liveSassCompile.settings.includeItems": [
+        "resources/scss/index.scss",
+    ]
 }
