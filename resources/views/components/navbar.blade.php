@@ -7,7 +7,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item"><a class="nav-link" href="{{ url('about') }}">部活情報</a></li>
       <li class="nav-item"><a class="nav-link" href="{{ url('members') }}">部員情報</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ url('result') }}">大会結果</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url('results') }}">大会結果</a></li>
       <li class="nav-item"><a class="nav-link" href="{{ url('santama') }}">三多摩大会</a></li>
       <li class="nav-item"><a class="nav-link" href="{{ url('mizutori') }}">みずとり会</a></li>
     </ul>
