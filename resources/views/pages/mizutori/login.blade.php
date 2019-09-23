@@ -11,8 +11,8 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>パスワード</label>
-        <input type="password" name="mizutori_password" class="form-control" />
-        <div class="invalid-feedback">{{ 'a' }}</div>
+        <input type="password" name="mizutori_password" class="form-control {{ $errors->has('mizutori_password') ? 'is-invalid' : '' }}" />
+        <div class="invalid-feedback">{{ $errors->first('mizutori_password') }}</div>
         <small>現会長の名前をローマ字表記・英小文字のみで入力してください</small>
       </div>
     </div>

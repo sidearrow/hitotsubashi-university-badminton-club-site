@@ -18,4 +18,11 @@ class MizutoriLoginRequest extends FormRequest
             'mizutori_password' => ['required', new MizutoriLoginRule()],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'mizutori_password' => 'パスワード',
+        ];
+    }
 }

@@ -24,8 +24,10 @@ Route::group([
         'middleware' => 'authMizutori'
     ], function () {
         Route::get('/', 'IndexController');
+        Route::get('/ob-messages/{fileName}', 'OBMessagesController');
     });
 
     Route::get('/login', 'LoginGetController');
     Route::post('/login', 'LoginPostController');
+    Route::get('/logout', 'LogoutController');
 });
