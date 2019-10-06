@@ -13,8 +13,6 @@ class IndexController extends Controller
             'membersData' => self::getMembersData(),
         ];
 
-        debug($viewData['membersData']);
-
         return view('pages.members.index', $viewData);
     }
 
