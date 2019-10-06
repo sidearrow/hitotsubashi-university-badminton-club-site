@@ -13,6 +13,8 @@ return [
     'key' => env('APP_KEY'),
     'log' => env('APP_LOG'),
     'cipher' => 'AES-256-CBC',
+
+    'google_site_verification' => env('APP_GOOGLE_SITE_VERIFICATION'),
     'providers' => [
 
         /*

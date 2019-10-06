@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <meta name="google-site-verification" content="" />
+    <meta name="google-site-verification" content="{{ config('app.google_site_verification') }}" />
     <meta name="description" content="一橋大学バドミントン部のホームページです" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400|Roboto:400&display=swap" />
     <link rel="stylesheet" href="{{ asset('assets/style.min.css') }}" />
