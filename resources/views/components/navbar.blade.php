@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-transparent border-bottom border-dark">
   <a class="navbar-brand" href="{{ url('/') }}">一橋大学<br />バドミントン部</a>
-  <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarContent">
+  <button class="navbar-toggler border-0 text-dark" type="button" data-toggle="collapse" data-target="#navbarContent">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navbarContent" class="collapse navbar-collapse">
