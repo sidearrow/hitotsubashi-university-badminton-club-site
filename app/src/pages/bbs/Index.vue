@@ -1,14 +1,15 @@
 <template>
   <div>
-    <h1>掲示板</h1>
+    <h1 class="title-main">掲示板</h1>
     <p>試合の結果などをお知らせします。</p>
     <section class="mb-3">
       <div class="alert alert-primary">
-        <p>旧掲示板はこちらのリンクからご確認ください。</p>
-        <a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">旧掲示板１</a>
+        <p>掲示板はこちらのリンクからご確認ください。</p>
+        <a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">新掲示板</a>
         <br />
-        <a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板２</a>
+        <a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板</a>
       </div>
+      <!--
       <div class="row justify-content-center py-2">
         <div class="col-sm-4">
           <router-link to="/bbs/create" class="btn btn-outline-primary btn-block">新規投稿</router-link>
@@ -27,6 +28,7 @@
           </div>
         </div>
       </div>
+      -->
     </section>
   </div>
 </template>

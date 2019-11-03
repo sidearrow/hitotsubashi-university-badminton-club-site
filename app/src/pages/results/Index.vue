@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mb-5">大会結果</h1>
+    <h1 class="title-main">大会結果</h1>
     <div class="row">
       <div class="col-md-6">
         <div class="card">
@@ -32,11 +32,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import meta from '@/meta'
-
-export default {
-  metaInfo: meta('results')
-}
-</script>

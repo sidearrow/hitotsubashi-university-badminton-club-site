@@ -1,5 +1,5 @@
 html {
-  font-size: 13px;
+  font-size: 12px;
   position: relative;
 }
 
@@ -27,4 +27,17 @@ footer {
 
 .font-size--1_5 {
   font-size: 1.5rem;
+}
+
+.title-main {
+  font-size: 1.75rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.title-sub {
+  font-size: 1.5rem;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dotted;
 }
