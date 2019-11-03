@@ -6,6 +6,7 @@
     <div v-for="(v, i) in results" :key="i">
       <h2 class="title-sub">第 {{ v.time }} 回大会 （{{ v.year }} 年度）</h2>
       <section class="mb-5">
+        <!--
         <div class="mb-3 table-responsive">
           <table class="table table-sm table-bordered">
             <tr class="alert-secondary">
@@ -22,6 +23,7 @@
             </tr>
           </table>
         </div>
+        -->
         <div class="form-row">
           <div class="col-md-3 col-6 py-1" v-for="(file, j) in v.files" :key="i + '-' + j">
             <a

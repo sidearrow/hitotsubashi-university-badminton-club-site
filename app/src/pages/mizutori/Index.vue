@@ -8,7 +8,7 @@
     </div>
     <section class="mb-5" v-for="(year, i) in data" :key="i">
       <h2 class="title-sub">{{ year.year }} 年度</h2>
-      <div class="row">
+      <div class="form-row">
         <div
           class="col-lg-2 col-md-3 col-sm-4 col-6 py-1"
           v-for="(month, j) in year.files"
