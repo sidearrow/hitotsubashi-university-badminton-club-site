@@ -4,12 +4,7 @@
     <form @submit.prevent="submit">
       <div class="row justify-content-center mt-5">
         <div class="col-md-6">
-          <div class="alert alert-info mb-5">
-            <div>
-              みずとり会のページです。
-              <br />コンテンツを見るにはログインしてください。
-            </div>
-          </div>
+          <div class="alert alert-info mb-5">コンテンツを見るにはログインしてください。</div>
           <div class="form-group">
             <label>パスワード</label>
             <input

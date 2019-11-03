@@ -8,7 +8,7 @@ const router = new Router({
   routes: [
     { path: '/', component: () => import('@/pages/Index') },
     { path: '/about', component: () => import('@/pages/about/Index') },
-    { path: '/members', component: () => import('@/pages/members/Index') },
+    { path: '/members', component: () => import('@/pages/members/index/Index') },
     { path: '/results', component: () => import('@/pages/results/Index') },
     { path: '/results/league', component: () => import('@/pages/results/league/Index') },
     { path: '/santama', component: () => import('@/pages/santama/Index') },

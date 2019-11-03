@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title-main">大会結果</h1>
-    <div class="row">
+    <div class="form-row">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header alert-main">関東学生バドミントン連盟リーグ</div>
@@ -21,9 +21,7 @@
           <div class="card-body text-center py-5">準備中</div>
         </div>
       </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-md-6">
+      <div class="col-md-6 mt-3">
         <div class="card">
           <div class="card-header alert-main">三商戦</div>
           <div class="card-body text-center py-5">準備中</div>
