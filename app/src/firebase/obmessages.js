@@ -1,7 +1,7 @@
 import storage from './init/storage'
 
 export default {
-  getDownloadURL: function (fileName) {
-    return storage.ref('ob-messages/obmessage_' + fileName + '.pdf').getDownloadURL()
+  getDownloadURL: function (fileName, year) {
+    return storage.ref(`ob-messages/${year}/obmessage_${fileName}.pdf`).getDownloadURL()
   }
 }

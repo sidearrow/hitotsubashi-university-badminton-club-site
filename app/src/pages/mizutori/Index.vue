@@ -10,17 +10,24 @@
       <h2 class="title-sub">{{ year.year }} 年度</h2>
       <div class="form-row">
         <div
-          class="col-lg-2 col-md-3 col-sm-4 col-6 py-1"
+          class="col-md-3 col-sm-4 col-6 py-1"
           v-for="(month, j) in year.files"
           :key="j"
         >
           <button
             class="btn btn-block btn-outline-main"
-            @click="clickBtn(month.id)"
+            @click="clickBtn(month.id, year.year)"
           >{{ month.title }}</button>
         </div>
       </div>
     </section>
+    <b-alert
+      v-model="showFailOpenFileAlert"
+      class="position-fixed fixed-bottom m-0 rounded-0"
+      style="z-index: 2000;"
+      variant="warning"
+      dismissible
+    >ファイルを開けませんでした。</b-alert>
   </div>
 </template>
 
@@ -32,12 +39,18 @@ import mizutoriAuth from "@/firebase/mizutori-auth";
 export default {
   data: function() {
     return {
-      data: data
+      data: data,
+      showFailOpenFileAlert: false,
     };
   },
   methods: {
-    clickBtn: async function(id) {
-      window.open(await obmessages.getDownloadURL(id));
+    clickBtn: async function(id, year) {
+      try {
+        const url = await obmessages.getDownloadURL(id, year);
+        window.open(url);
+      } catch (e) {
+        this.showFailOpenFileAlert = true;
+      }
     },
     clickBtnLogout: async function() {
       await mizutoriAuth.logout();

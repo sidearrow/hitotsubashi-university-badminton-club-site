@@ -12,21 +12,15 @@
     <section class="mb-5">
       <div class="mb-2">一橋大学 小平国際キャンパス内 体育館</div>
       <div class="row justify-content-center">
-      <div class="text-center col-md-6">
-        <iframe
-          :src="mapUrl"
-          class="w-100"
-          frameborder="0"
-          style="border:0"
-          allowfullscreen
-        ></iframe>
-      </div>
+        <div class="text-center col-md-6">
+          <iframe :src="mapUrl" class="w-100" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
       </div>
     </section>
     <h2 class="title-sub">練習時間</h2>
     <section class="mt-3">
-      <div class="row">
-        <div class="col-lg-8">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
           <table class="table table-bordered">
             <thead>
               <tr class="alert-main">
@@ -71,7 +65,8 @@ export default {
         { position: "主務", name: "	佐藤 和貴" }
       ],
       practiceTimeTable: practiceTimeTable,
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12957.441488774683!2d139.46829484086692!3d35.71735473297284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e69b620ced03%3A0xf68c4deae0feda0c!2z5LiA5qmL5aSn5a2mIOWwj-W5s-Wbvemam-OCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sjp!4v1566569776838!5m2!1sja!2sjp',
+      mapUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12957.441488774683!2d139.46829484086692!3d35.71735473297284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e69b620ced03%3A0xf68c4deae0feda0c!2z5LiA5qmL5aSn5a2mIOWwj-W5s-Wbvemam-OCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sjp!4v1566569776838!5m2!1sja!2sjp"
     };
   }
 };

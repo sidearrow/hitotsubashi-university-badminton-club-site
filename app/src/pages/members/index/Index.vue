@@ -3,10 +3,12 @@
     <h1 class="title-main">部員情報</h1>
     <section class="mb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-4 col-sm-6 col-9">
+        <div class="col-sm-6 col-9 mb-5">
+          <div class="h5 text-center mb-3">男女</div>
           <cmp-graph :chartdata="chartData.gender" />
         </div>
-        <div class="col-lg-4 col-sm-6 col-9">
+        <div class="col-sm-6 col-9 mb-5">
+          <div class="h5 text-center mb-3">学部</div>
           <cmp-graph :chartdata="chartData.faculty" />
         </div>
       </div>
@@ -16,7 +18,7 @@
         <b-tab :title="`${grade.grade} 年生`" v-for="(grade, i) in memberData" :key="i" fill>
           <div class="form-row my-3">
             <div
-              class="col-lg-4 col-sm-6 py-2"
+              class="col-sm-6 py-2"
               v-for="(member, j) in grade.members"
               :key="`${i}-${j}`"
             >
