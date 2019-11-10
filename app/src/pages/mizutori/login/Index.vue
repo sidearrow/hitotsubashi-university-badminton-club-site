@@ -44,7 +44,6 @@ export default {
       try {
         await mizutoriAuth.login(this.inputPassword);
       } catch (err) {
-        console.log(err);
         this.isError = true;
         this.errorMessage = "パスワードが間違っています";
         return;

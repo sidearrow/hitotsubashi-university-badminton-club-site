@@ -6,5 +6,6 @@ export default {
     projectId    : process.env.VUE_APP_FIREBASE_PROJECT_ID,
     storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
   },
-  mizutoriMailAddress: process.env.VUE_APP_MIZUTORI_MAIL_ADDRESS
+  mizutoriMailAddress: process.env.VUE_APP_MIZUTORI_MAIL_ADDRESS,
+  apiBaseUrl: process.env.VUE_APP_API_BASE_URL,
 }

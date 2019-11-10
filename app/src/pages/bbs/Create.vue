@@ -70,7 +70,6 @@ export default {
   methods: {
     submit: function() {
       if (this.isConfirm) {
-        console.log("submit");
         return;
       }
       this.isConfirm = true;

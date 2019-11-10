@@ -15,34 +15,35 @@
           <router-link to="/bbs/create" class="btn btn-outline-primary btn-block">新規投稿</router-link>
         </div>
       </div>
+      -->
       <div class="mt-5">
         <div class="mb-4" v-for="(post, i) in posts" :key="i">
           <div>
             <router-link :to="`/bbs/${post.id}`">{{ post.title }}</router-link>
           </div>
-          <div class="mt-2">
+          <div>
             <div>
-              <span>by {{ post.author }}</span>
+              <span>{{ post.author }}</span>
               <span class="ml-4 text-monospace text-secondary">{{ post.createdAt }}</span>
             </div>
           </div>
         </div>
       </div>
-      -->
     </section>
   </div>
 </template>
 
 <script>
-import { Post, getPosts } from '../../firebase/bbs'
 import { getDateString } from '../../utils'
+import axios from '../../services/axios'
 
 export default {
   created: async function() {
-    this.posts = (await getPosts()).map(post => {
-      post.createdAt = getDateString(post.createdAt.toDate())
-      return post
-    });
+    const data = await axios.get('/bbs')
+    this.posts = data.data.data.map((v) => {
+      v.createdAt = getDateString(new Date(v.createdAt))
+      return v
+    })
   },
   data: function() {
     return {

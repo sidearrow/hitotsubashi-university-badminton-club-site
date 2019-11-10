@@ -81,8 +81,6 @@ const chartData = {
   }
 };
 
-console.log(chartData);
-
 export default {
   data: function() {
     return {
