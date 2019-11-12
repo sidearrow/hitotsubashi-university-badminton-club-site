@@ -10,7 +10,7 @@ const App: React.FC = () => {
       <header>
         <Navbar />
       </header>
-      <main className="container">
+      <main className="container" style={ { marginTop: '70px' } }>
         <Router />
       </main>
     </BrowserRouter>

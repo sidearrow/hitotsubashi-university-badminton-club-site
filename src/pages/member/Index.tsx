@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Member = () => {
+export default () => {
   return (
     <div>member</div>
   );
