@@ -62,6 +62,9 @@ class LeagueResult {
   }
 
   public getMResult(): string {
+    if (this.year === 2011 && this.season === 1) {
+      return '中止';
+    }
     return this.mGroup + ' 部 ' + this.mRank + ' 位';
   }
 
@@ -74,6 +77,9 @@ class LeagueResult {
   }
 
   public getFResult(): string {
+    if (this.year === 2011 && this.season === 1) {
+      return '中止';
+    }
     return this.fGroup + ' 部 ' + this.fRank + ' 位';
   }
 

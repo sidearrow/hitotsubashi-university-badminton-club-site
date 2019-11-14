@@ -3,6 +3,46 @@ import LeagueResult from '../../../models/LeagueResult/LeagueResult';
 
 const leagueResultData = LeagueResult.getData();
 
+const CmpUp: React.FC = () => {
+  return (
+    <span>昇格</span>
+  );
+};
+
+const CmpDown: React.FC = () => {
+  return (
+    <span>降格</span>
+  );
+};
+
+
+type props = {
+  leagueResultRecord: LeagueResult
+};
+const CmpTr: React.FC<props> = props => {
+
+  return (
+    <tr>
+      <th className="font-weight-normal bg-light align-middle">{props.leagueResultRecord.getYear()}</th>
+      <th className="font-weight-normal bg-light">{props.leagueResultRecord.getSeason()}</th>
+      <td>
+        <span className="text-nowrap">
+          <span className="mr-2">{props.leagueResultRecord.getMResult()}</span>
+          {props.leagueResultRecord.getIsMUp() && <CmpUp />}
+          {props.leagueResultRecord.getIsMDown() && <CmpDown />}
+        </span>
+      </td>
+      <td>
+        <span className="text-nowrap">
+          <span className="mr-2">{props.leagueResultRecord.getFResult()}</span>
+          {props.leagueResultRecord.getIsFUp() && <CmpUp />}
+          {props.leagueResultRecord.getIsFDown() && <CmpDown />}
+        </span>
+      </td>
+    </tr>
+  )
+};
+
 export default () => {
   return (
     <div>
@@ -19,26 +59,10 @@ export default () => {
             </thead>
             <tbody>
               {
-                leagueResultData.map(() => {
-                  return ( <div>aaa</div> );
+                leagueResultData.map((leagueResultRecord) => {
+                  return (<CmpTr leagueResultRecord={leagueResultRecord} />);
                 })
               }
-              <tr>
-                <th className="font-weight-normal bg-light align-middle">a</th>
-                <th className="font-weight-normal bg-light">season</th>
-                <td>
-                  <span className="text-nowrap">
-                    <span className="mr-2">season</span>
-                    <span></span>
-                  </span>
-                </td>
-                <td>
-                  <span className="text-nowrap">
-                    <span className="mr-2">season.f</span>
-                    <span></span>
-                  </span>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
