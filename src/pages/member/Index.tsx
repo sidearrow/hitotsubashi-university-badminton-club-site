@@ -1,26 +1,32 @@
 import React, { useState, useCallback } from 'react';
 import Members from './Members';
 
-type PropsCmpMemberCard = {
-  member: any
+type CmpMemberCardProps = {
+  name: string;
+  isMale: boolean;
+  isFemale: boolean;
+  faculty: string;
+  highschool: string;
+  positions: string[];
+  comment: string;
 };
-const CmpMemberCard: React.FC<PropsCmpMemberCard> = (props) => {
+const CmpMemberCard: React.FC<CmpMemberCardProps> = (props) => {
   return (
     <div className="card border-dark">
       <div className="card-body">
-        <div className="h5 pb-1 text-info text-danger">{props.member.name}</div>
+        <div className={'h5 pb-1 text-info ' + (props.isMale ? 'text-info' : 'text-danger')}>{props.name}</div>
         <div className="pb-1">
-          <span className="border border-dark px-1 mb-1 mr-2 d-inline-block">{props.member.faculty}</span>
-          <span className="border border-dark px-1 d-inline-block">{props.member.highschool}</span>
+          <span className="border border-dark px-1 mb-1 mr-2 d-inline-block">{props.faculty}</span>
+          <span className="border border-dark px-1 d-inline-block">{props.highschool}</span>
         </div>
-        {props.member.positions.length > 0 && props.member.positions.map((pos: string, i: number) => {
-            return (
-              <div className="pb-1" key={i}>
-                <span className="border border-dark px-1 mr-1 mb-1 d-inline-block">{pos}</span>
-              </div>
-            )
-          })}
-        <div className="pb-1">{props.member.comment}</div>
+        {props.positions.length > 0 && props.positions.map((pos: string, i: number) => {
+          return (
+            <div className="pb-1" key={i}>
+              <span className="border border-dark px-1 mr-1 mb-1 d-inline-block">{pos}</span>
+            </div>
+          )
+        })}
+        <div className="pb-1">{props.comment}</div>
       </div>
     </div>
   );
@@ -53,7 +59,15 @@ const Member: React.FC = () => {
                   {membersGrade.members.map((member, i) => {
                     return (
                       <div className="col-sm-6 py-2" key={i}>
-                        <CmpMemberCard member={member} />
+                        <CmpMemberCard
+                          name={member.name}
+                          isMale={member.isMale}
+                          isFemale={member.isFemale}
+                          faculty={member.faculty}
+                          highschool={member.highschool}
+                          positions={member.positions}
+                          comment={member.comment}
+                        />
                       </div>
                     )
                   })}
