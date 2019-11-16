@@ -65,7 +65,7 @@ const PageAbout: React.FC = () => {
         <div className="mb-2">一橋大学 小平国際キャンパス内 体育館</div>
         <div className="row justify-content-center">
           <div className="text-center col-md-6">
-            <iframe src={mapUrl} className="w-100" title="map"></iframe>
+            <iframe src={mapUrl} className="w-100" title="map" frameBorder="0"></iframe>
           </div>
         </div>
       </section >
