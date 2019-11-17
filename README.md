@@ -1,1 +1,0 @@
-react de kakinaoshi chu
