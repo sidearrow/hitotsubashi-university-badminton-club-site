@@ -15,7 +15,7 @@
     <header>
       @include('components.cmp_navbar')
     </header>
-    <main class="container bg-white py-5" style="max-width:720px;margin-top:50px">
+    <main class="container bg-white py-5" style="max-width:{{ isset($mainWidthSmall) && $mainWidthSmall ? '540' : '720' }}px;margin-top:50px">
       @yield('main')
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
