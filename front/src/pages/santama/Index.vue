@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1 class="title-main text-center">三多摩地区学生バドミントン選手権大会</h1>
-    <h2 class="title-sub">第 53 回大会 （2019 年度）</h2>
+    <h1 class="hub-h1 text-center">三多摩地区学生バドミントン選手権大会</h1>
+    <h2 class="hub-h2">第 53 回大会 （2019 年度）</h2>
     <section class="mb-5 text-center">準備中</section>
     <div v-for="(v, i) in results" :key="i">
-      <h2 class="title-sub">第 {{ v.time }} 回大会 （{{ v.year }} 年度）</h2>
+      <h2 class="hub-h2">第 {{ v.time }} 回大会 （{{ v.year }} 年度）</h2>
       <section class="mb-5">
         <!--
         <div class="mb-3 table-responsive">

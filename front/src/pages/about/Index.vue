@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1 class="title-main">部活情報</h1>
-    <h2 class="title-sub">役職</h2>
+    <h1 class="hub-h1">部活情報</h1>
+    <h2 class="hub-h2">役職</h2>
     <section class="container mb-5">
       <div v-for="(v, i) in positions" :key="i" class="row mb-1">
         <div class="col-4 col-sm-3 py-1 alert-main">{{ v.position }}</div>
         <div class="col-8 col-sm-9 py-1">{{ v.name }}</div>
       </div>
     </section>
-    <h2 class="title-sub">練習場所</h2>
+    <h2 class="hub-h2">練習場所</h2>
     <section class="mb-5">
       <div class="mb-2">一橋大学 小平国際キャンパス内 体育館</div>
       <div class="row justify-content-center">
@@ -17,7 +17,7 @@
         </div>
       </div>
     </section>
-    <h2 class="title-sub">練習時間</h2>
+    <h2 class="hub-h2">練習時間</h2>
     <section class="mt-3">
       <div class="row justify-content-center">
         <div class="col-md-8">

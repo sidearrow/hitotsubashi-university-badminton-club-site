@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title-main">大会結果</h1>
+    <h1 class="hub-h1">大会結果</h1>
     <div class="form-row">
       <div class="col-md-6">
         <div class="card">

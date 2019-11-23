@@ -16,6 +16,7 @@ const router = new VueRouter({
   { path: '/results/league/:leagueId', component: () => import('@/pages/results/leagueDetail/leagueDetail.vue') },
   { path: '/santama', component: () => import('../pages/santama/Index.vue') },
   { path: '/bbs', component: () => import('../pages/bbs/Index.vue') },
+  { path: '/error', component: () => import('../pages/error/Index.vue') },
   /*
   { path: '/bbs/create', component: () => import('./pages/bbs/Create') },
   { path: '/bbs/:postId', component: () => import('./pages/bbs/_postId/Index') },

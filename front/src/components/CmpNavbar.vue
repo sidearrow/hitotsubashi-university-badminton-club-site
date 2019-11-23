@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar border-bottom border-secondary navbar-light bg-transparent navbar-expand-md">
+  <nav class="navbar navbar-light bg-white navbar-expand-md shadow">
     <router-link class="navbar-brand" to="/" style="line-height: 1.3">
       <span>一橋大学</span>
       <br />
@@ -9,26 +9,20 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div :class="'ml-md-3 navbar-collapse collapse' + (isShowMenu ? ' show' : '')">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <li v-for="(menu, i) in menus" :key="i" class="navbar-item">
-          <router-link :to="menu.path" class="nav-link" @click="toggleMenu">{{ menu.text }}</router-link>
+          <router-link :to="menu.path" class="nav-link" @click.native="toggleMenu">{{ menu.text }}</router-link>
+        </li>
+      </ul>
+      <ul class="mt-md-0 mt-2 navbar-nav">
+        <li>
+          <a target="_blank" href="https://twitter.com/hit_u_bad" class="nav-link">
+            <i class="icon-twitter font-size--1_5"></i>
+            <span class="ml-2 font-size--1_1 align-top">Twitter</span>
+          </a>
         </li>
       </ul>
     </div>
-    <ul class="ml-auto mt-md-0 mt-2 navbar-nav">
-      <li>
-        <a target="_blank" href="https://twitter.com/hit_u_bad" class="nav-link">
-          <i class="icon-twitter font-size--1_5"></i>
-          <span class="ml-2 font-size--1_1 align-top">Twitter</span>
-        </a>
-      </li>
-      <!--
-        <b-nav-item target="_blank" href="https://github.com/sidearrow/hit-u-bad">
-          <i class="icon-github font-size--1_5"></i>
-          <span class="ml-2 font-size--1_1 align-top">GitHub</span>
-        </b-nav-item>
-      -->
-    </ul>
   </nav>
 </template>
 

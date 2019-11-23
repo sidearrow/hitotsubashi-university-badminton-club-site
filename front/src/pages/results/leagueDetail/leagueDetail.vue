@@ -2,8 +2,8 @@
   <div>
     <div v-if="resultData === null"></div>
     <div v-else>
-      <h1 class="title-main">{{ resultData.title }}</h1>
-      <h2 class="title-sub">順位</h2>
+      <h1 class="hub-h1">{{ resultData.title }}</h1>
+      <h2 class="hub-h2">順位</h2>
       <section>
         <table class="table table-bordered">
           <tr v-for="(rank, i) in resultData.rank" :key="i">
@@ -13,7 +13,7 @@
           </tr>
         </table>
       </section>
-      <h2 class="title-sub mt-5">組合せ</h2>
+      <h2 class="hub-h2 mt-5">組合せ</h2>
       <section>
         <div class="table-responsive">
           <table class="table table-bordered">
@@ -34,7 +34,7 @@
           </table>
         </div>
       </section>
-      <h2 class="title-sub mt-5">詳細</h2>
+      <h2 class="hub-h2 mt-5">詳細</h2>
       <section class="row justify-content-center">
         <div class="col-md-6" v-for="(detail, i) in resultData.detail" :key=i>
           <table class="table table-bordered">

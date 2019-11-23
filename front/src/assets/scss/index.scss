@@ -4,20 +4,29 @@
 html {
   font-size: 12px;
   position: relative;
+  height: 100%;
 }
 
 body {
-  min-height: 100vh;
+  height: 100%;
+  background-color: $light;
 }
 
 main {
-  padding-bottom: 45px;
+  background-color: $white;
+  margin-top: -57.5px;
+  padding-top: 57.5px;
+  min-height: calc(100% - 60px);
 }
 
 footer {
-  bottom: 0;
+  height: 60px;
   position: absolute;
   width: 100%;
+  font-size: 0.8rem;
+  text-align: center;
+  color: $secondary;
+  padding-top: 30px;
 }
 
 .font-size--1_1 {
@@ -32,13 +41,13 @@ footer {
   font-size: 1.5rem;
 }
 
-.title-main {
+.hub-h1 {
   font-size: 1.75rem;
   margin-bottom: 3rem;
   text-align: center;
 }
 
-.title-sub {
+.hub-h2 {
   font-size: 1.5rem;
   padding-bottom: 0.25rem;
   margin-bottom: 1rem;

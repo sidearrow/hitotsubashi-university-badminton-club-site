@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title-main">部員情報</h1>
+    <h1 class="hub-h1">部員情報</h1>
     <section>
       <ul class="nav nav-tabs">
         <li class="nav-item" v-for="(grade, i) in memberData" :key="i">

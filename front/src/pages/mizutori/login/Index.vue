@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title-main">みずとり会 ログイン</h1>
+    <h1 class="hub-h1">みずとり会 ログイン</h1>
     <form @submit.prevent="submit">
       <div class="row justify-content-center mt-5">
         <div class="col-md-6">

@@ -8,9 +8,7 @@
       <router-view />
     </div>
   </main>
-  <footer>
-    <!--<cmp-footer></cmp-footer>-->
-  </footer>
+  <footer>(C) 2019 一橋大学バドミントン部</footer>
 </body>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title-main">関東学生バドミントン連盟リーグ</h1>
+    <h1 class="hub-h1">関東学生バドミントン連盟リーグ</h1>
     <div class="row justify-content-center">
       <div class="table-responsive col-md-9">
         <table class="table table-bordered">

@@ -6,14 +6,12 @@ $theme-colors: map-merge(
     "main":       #ac2926,
     "primary":    $primary,
     "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
     "warning":    $warning,
     "light":      $light,
   ),
   $theme-colors
 );
-$font-family-base: Roboto,Noto Sans JP,sans-serif;
+$font-family-base: arial,sans-serif;
 $enable-rounded: false;
 
 @import "node_modules/bootstrap/scss/mixins";
