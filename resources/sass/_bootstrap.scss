@@ -1,5 +1,22 @@
 @import "~bootstrap/scss/_functions";
 @import "~bootstrap/scss/_variables";
+
+$theme-colors: map-merge(
+  (
+    "main":       #ac2926,
+    //"primary":    $primary,
+    "secondary":  $secondary,
+    //"success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "light":      $light,
+    "dark":       $dark,
+  ),
+  $theme-colors
+);
+$font-family-base: arial,sans-serif;
+$enable-rounded: false;
+
 @import "~bootstrap/scss/_mixins";
 @import "~bootstrap/scss/_root";
 @import "~bootstrap/scss/_reboot";
@@ -23,15 +40,15 @@
 @import "~bootstrap/scss/_badge";
 @import "~bootstrap/scss/_jumbotron";
 @import "~bootstrap/scss/_alert";
-@import "~bootstrap/scss/_progress";
-@import "~bootstrap/scss/_media";
+//@import "~bootstrap/scss/_progress";
+//@import "~bootstrap/scss/_media";
 @import "~bootstrap/scss/_list-group";
 @import "~bootstrap/scss/_close";
-@import "~bootstrap/scss/_toasts";
+//@import "~bootstrap/scss/_toasts";
 @import "~bootstrap/scss/_modal";
-@import "~bootstrap/scss/_tooltip";
-@import "~bootstrap/scss/_popover";
+//@import "~bootstrap/scss/_tooltip";
+//@import "~bootstrap/scss/_popover";
 @import "~bootstrap/scss/_carousel";
-@import "~bootstrap/scss/_spinners";
+//@import "~bootstrap/scss/_spinners";
 @import "~bootstrap/scss/_utilities";
-@import "~bootstrap/scss/_print";
+//@import "~bootstrap/scss/_print";

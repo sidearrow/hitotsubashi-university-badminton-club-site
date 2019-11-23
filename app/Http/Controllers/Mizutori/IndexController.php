@@ -9,6 +9,10 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return view('pages.mizutori.index');
+        $data = json_decode(file_get_contents(storage_path('app/files/ob_messages.json')), true);
+
+        return view('pages.mizutori.index', [
+            'data' => $data,
+        ]);
     }
 }

@@ -2,7 +2,9 @@
     "private": true,
     "scripts": {
         "dev-js": "parcel watch resources/js/index.js -d public/js",
-        "dev-css": "parcel watch resources/sass/index.scss -d public/css"
+        "dev-css": "parcel watch resources/sass/index.scss -d public/css",
+        "build-js": "parcel build resources/js/index.js -d public/js --no-source-maps",
+        "build-css": "parcel build resources/sass/index.scss -d public/css --no-source-maps"
     },
     "devDependencies": {
         "bootstrap": "^4.3.1",

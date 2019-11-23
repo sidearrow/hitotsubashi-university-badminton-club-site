@@ -8,7 +8,6 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="google-site-verification" content="" />
     <meta name="description" content="一橋大学バドミントン部のホームページです" />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400|Roboto:400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
   </head>
   <body class="bg-light">

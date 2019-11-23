@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Result;
+namespace App\Http\Controllers\Bbs;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,6 +9,6 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return view('pages.result.index');
+        return view('pages.bbs.index');
     }
 }

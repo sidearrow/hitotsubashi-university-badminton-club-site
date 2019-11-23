@@ -9,6 +9,10 @@ class LeagueController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return view('pages.result.league');
+        $data = json_decode(file_get_contents(storage_path('app/files/league_results.json')), true);
+
+        return view('pages.result.league', [
+            'data' => $data,
+        ]);
     }
 }
