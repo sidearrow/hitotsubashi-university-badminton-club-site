@@ -11,11 +11,15 @@ body {
 }
 
 main {
+  margin-top: -57.5px;
+  margin-bottom: 40px;
+  padding-top: 90px;
   padding-bottom: 45px;
+  min-height: calc(100% - 80px);
 }
 
 footer {
-  bottom: 0;
+  height: 40px;
   position: absolute;
   width: 100%;
 }
