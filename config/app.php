@@ -2,9 +2,9 @@
 
 return [
     'name' => env('APP_NAME', 'Laravel'),
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV'),
     'debug' => env('APP_DEBUG', false),
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL'),
     'asset_url' => env('ASSET_URL', null),
     'timezone' => 'UTC',
     'locale' => 'ja-jp',
