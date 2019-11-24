@@ -13,7 +13,7 @@
   <div class="form-row">
     @foreach ($year['files'] as $month)
     <div class="col-md-3 col-sm-4 col-6 py-1">
-      <a class="btn btn-block btn-outline-main" href="{{ url("mizutori/files/obmessages/{$month['fileName']}") }}" __target="blank">{{ $month['title'] }}</a>
+      <a class="btn btn-block btn-outline-main" href="{{ url("mizutori/files/obmessages/{$month['fileName']}") }}" target="_blank">{{ $month['title'] }}</a>
     </div>
     @endforeach
   </div>
