@@ -79,4 +79,5 @@ return [
     ],
 
     'password_mizutori' => env('PASSWORD_MIZUTORI'),
+    'google_site_verification' => env('GOOGLE_SITE_VERIFICATION'),
 ];
