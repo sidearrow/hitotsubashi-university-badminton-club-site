@@ -27,7 +27,7 @@ $menuArray = [
 ];
 ?>
 <nav class="navbar navbar-light bg-white navbar-expand-md shadow">
-  <a class="navbar-brand" href="/" style="line-height: 1.3">
+  <a class="navbar-brand" href="{{ url('/') }}" style="line-height: 1.3">
     <span>一橋大学</span>
     <br />
     <span>バドミントン部</span>
