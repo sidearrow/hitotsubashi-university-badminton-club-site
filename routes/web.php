@@ -1,0 +1,25 @@
+<?php
+
+//Route::get('/', 'Index\Index');
+
+use App\Http\Middleware\AuthMizutoriMiddleware;
+
+Route::get('/', 'Index\IndexController');
+Route::get('/about', 'About\IndexController');
+Route::get('/member', 'Member\IndexController');
+
+Route::get('/result', 'Result\IndexController');
+Route::get('/result/league', 'Result\LeagueController');
+
+Route::get('/santama', 'Santama\IndexController');
+
+Route::get('/bbs', 'Bbs\IndexController');
+
+Route::get('/mizutori/login', 'Mizutori\LoginController');
+Route::post('/mizutori/login', 'Mizutori\LoginPostController');
+
+Route::group(['middleware' => AuthMizutoriMiddleware::class], function () {
+    Route::get('/mizutori', 'Mizutori\IndexController');
+    Route::get('/mizutori/files/{dirName}/{fileName}', 'Mizutori\FileController');
+    Route::get('/mizutori/logout', 'Mizutori\LogoutController');
+});

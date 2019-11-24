@@ -1,0 +1,50 @@
+@import "./bootstrap";
+
+html {
+  font-size: 12px;
+  position: relative;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+main {
+  margin-top: -57.5px;
+  margin-bottom: 40px;
+  padding-top: 90px;
+  padding-bottom: 45px;
+  min-height: calc(100% - 80px);
+}
+
+footer {
+  height: 40px;
+  position: absolute;
+  width: 100%;
+}
+
+.font-size--1_1 {
+  font-size: 1.1rem;
+}
+
+.font-size--1_25 {
+  font-size: 1.25rem;
+}
+
+.font-size--1_5 {
+  font-size: 1.5rem;
+}
+
+.hub-h1 {
+  font-size: 1.75rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.hub-h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dotted;
+}

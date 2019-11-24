@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "scripts": {
+        "dev-js": "parcel watch resources/js/index.js -d public/js --no-source-maps",
+        "dev-css": "parcel watch resources/sass/index.scss -d public/css --no-source-maps",
+        "build-js": "parcel build resources/js/index.js -d public/js --no-source-maps",
+        "build-css": "parcel build resources/sass/index.scss -d public/css --no-source-maps"
+    },
+    "devDependencies": {
+        "bootstrap": "^4.3.1",
+        "jquery": "^3.4.1",
+        "parcel": "^1.12.4",
+        "popper.js": "^1.16.0",
+        "sass": "^1.23.7"
+    }
+}
