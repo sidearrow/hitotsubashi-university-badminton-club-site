@@ -14,6 +14,7 @@ Route::get('/result/league', 'Result\LeagueController');
 Route::get('/santama', 'Santama\IndexController');
 
 Route::get('/bbs', 'Bbs\IndexController');
+Route::get('/bbs/list/{prop}/{dir}/{page}', 'Bbs\IndexController');
 
 Route::get('/mizutori/login', 'Mizutori\LoginController');
 Route::post('/mizutori/login', 'Mizutori\LoginPostController');

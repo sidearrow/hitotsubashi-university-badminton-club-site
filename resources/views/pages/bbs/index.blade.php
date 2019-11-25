@@ -11,4 +11,18 @@
     <a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板</a>
   </div>
 </section>
+<section>
+  @foreach($posts as $post)
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5>{{ $post['title'] }}</h5>
+      <div class="mb-3">{{ $post['contentShort'] }}</div>
+      <div>
+        <span>{{ $post['author'] }}</span>
+        <span className="ml-4 text-monospace text-secondary">{{ $post['createdAt'] }}</span>
+      </div>
+    </div>
+  </div>
+  @endforeach
+</section>
 @endsection
