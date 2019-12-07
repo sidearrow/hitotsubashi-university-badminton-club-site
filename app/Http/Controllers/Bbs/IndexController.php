@@ -22,7 +22,7 @@ class IndexController extends Controller
     public function __invoke(Request $request)
     {
         $orderColumn = self::PROP_COLUMN_MAPPING[$request->route('prop')]
-            ?? self::PROP_COLUMN_MAPPING['create-dt'];
+            ?? self::PROP_COLUMN_MAPPING['create'];
 
         $orderDir = $request->route('dir') === 'asc'
             ? DirectionEnum::asc()
@@ -65,7 +65,7 @@ class IndexController extends Controller
         $paginationService = new PaginationService($pageNum, self::LIMIT, TBbsPost::getCount());
         $pageNumArray = $paginationService->getPageList();
         $pageLinkArray = array_map(function (int $pageNum) use ($request) {
-            return self::getUrl();
+            //return self::getUrl();
         }, $pageNumArray);
 
         $paginationData = [
@@ -74,6 +74,7 @@ class IndexController extends Controller
             'pageLinkArray', '',
             'metaText' => $paginationService->getMetaText(),
         ];
+        debug($paginationData);
 
         return view('pages.bbs.index', [
             'posts'          => $viewData,

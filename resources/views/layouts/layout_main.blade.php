@@ -22,7 +22,9 @@
   </main>
   <footer class="text-center"><small>(C) {{ date('Y') }} 一橋大学バドミントン部</small></footer>
   @include('components.cmp_xrea_ad')
-  <script src="{{ asset('js/index.js') }}"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+  @yield('script')
 </body>
 
 </html>
