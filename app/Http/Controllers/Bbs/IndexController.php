@@ -29,7 +29,7 @@ class IndexController extends Controller
             : DirectionEnum::desc();
 
         $pageNum = (int) ($request->route('page') ?? 1);
-        $offset = ($pageNum - 1) * self::LIMIT + 1;
+        $offset = ($pageNum - 1) * self::LIMIT;
 
         $posts = TBbsPost::getPosts(self::LIMIT, $offset, $orderColumn, $orderDir);
         $idArray = array_map(function (TBbsPost $record) {

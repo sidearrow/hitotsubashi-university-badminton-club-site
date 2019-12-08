@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\Bbs;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Bbs\BbsCreateRequest;
+use App\Services\BbsService;
 
 class CreatePostController extends Controller
 {
-    public function __invoke()
+    public function __invoke(BbsCreateRequest $request, BbsService $bbsService)
     {
-        return view('pages.bbs.create');
+        $bbsService->createPost(
+            null,
+            $request->getInputTitle(),
+            $request->getInputAuthor(),
+            $request->getInputContent(),
+            $request->getInputPassword(),
+        );
+
+        return redirect('bbs/create-complete');
     }
 }

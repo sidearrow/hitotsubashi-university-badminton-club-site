@@ -10,7 +10,7 @@
       <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#modalConfirm">投稿</button>
     </div>
     <div class="col-md-3 col-6">
-      <button type="button" class="btn btn-block btn-outline-secondary">戻る</button>
+      <a href="{{ url('bbs') }}" class="btn btn-block btn-outline-secondary">投稿一覧へ</a>
     </div>
   </div>
   <div class="modal fade" id="modalConfirm">
@@ -24,14 +24,17 @@
         </div>
         <div class="modal-body">
           <p>投稿しますか</p>
-          <div class="form-row justify-content-center mt-2">
-            <div class="col-md-4 col-6">
-              <button type="submit" class="btn btn-block btn-info">投稿</button>
+          <form method="POST" action="{{ url('bbs/create') }}">
+            @csrf
+            <div class="form-row justify-content-center mt-2">
+              <div class="col-md-4 col-6">
+                <button type="submit" class="btn btn-block btn-info">投稿</button>
+              </div>
+              <div class="col-md-4 col-6">
+                <button type="button" class="btn btn-block btn-outline-secondary" data-dismiss="modal">キャンセル</button>
+              </div>
             </div>
-            <div class="col-md-4 col-6">
-              <button type="button" class="btn btn-block btn-outline-secondary" data-dismiss="modal">キャンセル</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
