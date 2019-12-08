@@ -10,6 +10,7 @@ Route::get('/member', 'Member\IndexController');
 
 Route::get('/result', 'Result\IndexController');
 Route::get('/result/league', 'Result\LeagueController');
+Route::get('/result/league/{leagueId}', 'Result\LeagueDetailController');
 
 Route::get('/santama', 'Santama\IndexController');
 

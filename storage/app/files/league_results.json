@@ -1,5 +1,30 @@
 [
     {
+        "year": "2019",
+        "season": [
+            {
+                "id": "201902",
+                "season": "秋",
+                "m": "4 部 4 位",
+                "f": "5 部 4 位",
+                "mFlg": 0,
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
+            },
+            {
+                "id": "201901",
+                "season": "春",
+                "m": "4 部 5 位",
+                "f": "5 部 5 位",
+                "mFlg": 0,
+                "fFlg": 0,
+                "detailIdM": "201901m",
+                "detailIdF": null
+            }
+        ]
+    },
+    {
         "year": "2018",
         "season": [
             {
