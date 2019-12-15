@@ -6,7 +6,7 @@
     <section class="container mb-5">
         @foreach($position as $pos)
       <div class="row mb-1">
-        <div class="col-4 col-sm-3 py-1 alert-main">{{ $pos['positionName'] }}</div>
+        <div class="col-4 col-sm-3 py-1 alert-secondary">{{ $pos['positionName'] }}</div>
         <div class="col-8 col-sm-9 py-1">{{ $pos['name'] }}</div>
       </div>
       @endforeach
@@ -26,7 +26,7 @@
         <div class="col-md-8">
           <table class="table table-bordered">
             <thead>
-              <tr class="alert-main">
+              <tr class="alert-secondary">
                 <th class="text-center"></th>
                 <th class="text-center">授業期</th>
                 <th class="text-center">休業期</th>
@@ -35,7 +35,7 @@
             <tbody>
                 @foreach($practiceTime['label'] as $i => $label)
               <tr>
-                <th class="text-center alert-main">{{ $label }}</th>
+                <th class="text-center alert-secondary">{{ $label }}</th>
                 <td class="text-center">{{ $practiceTime['default'][$i] ?? '-' }}</td>
                 <td class="text-center">{{ $practiceTime['vacation'][$i] ?? '-' }}</td>
               </tr>

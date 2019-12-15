@@ -23,7 +23,11 @@
           <th class="font-weight-normal bg-light">{{ $season['season'] }}</th>
           <td>
             <span class="text-nowrap">
+              @if($season['detailIdM'] !== null)
+              <span class="mr-2"><a href="{{ url("result/league/{$season['detailIdM']}") }}">{{ $season['m'] }}</a></span>
+              @else
               <span class="mr-2">{{ $season['m'] }}</span>
+              @endif
               <span>
                 <cmp-badge :flg="season.mFlg" />
               </span>

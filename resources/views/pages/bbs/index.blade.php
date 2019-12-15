@@ -11,6 +11,7 @@
     <a href="http://bbs.mottoki.com/?bbs=ikkyo_bad" target="_blank">旧掲示板</a>
   </div>
 </section>
+{{--
 <div class="form-row justify-content-center mt-2">
   <div class="col-md-4">
     <a href="{{ url('bbs/create') }}" class="btn btn-block btn-outline-info">新規投稿</a>
@@ -116,6 +117,7 @@
     </div>
   </div>
 </div>
+--}}
 @endsection
 
 @section('script')

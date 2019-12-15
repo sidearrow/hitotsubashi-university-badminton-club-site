@@ -33,7 +33,9 @@
                 "m": "5 部 1 位",
                 "f": "5 部 5 位",
                 "mFlg": 1,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201801",
@@ -41,7 +43,9 @@
                 "m": "5 部 2 位",
                 "f": "5 部 3 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -54,7 +58,9 @@
                 "m": "5 部 1 位",
                 "f": "5 部 5 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201701",
@@ -62,7 +68,9 @@
                 "m": "5 部 2 位",
                 "f": "5 部 5 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -75,7 +83,9 @@
                 "m": "5 部 2 位",
                 "f": "5 部 4 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201601",
@@ -83,7 +93,9 @@
                 "m": "5 部 4 位",
                 "f": "4 部 6 位",
                 "mFlg": 0,
-                "fFlg": -1
+                "fFlg": -1,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -96,7 +108,9 @@
                 "m": "5 部 4 位",
                 "f": "4 部 6 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201501",
@@ -104,7 +118,9 @@
                 "m": "5 部 2 位",
                 "f": "4 部 4 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -117,7 +133,9 @@
                 "m": "5 部 2 位",
                 "f": "4 部 2 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201401",
@@ -125,7 +143,9 @@
                 "m": "5 部 4 位",
                 "f": "4 部 3 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -138,7 +158,9 @@
                 "m": "5 部 3 位",
                 "f": "4 部 3 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201301",
@@ -146,7 +168,9 @@
                 "m": "5 部 2 位",
                 "f": "4 部 1 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -159,7 +183,9 @@
                 "m": "5 部 2 位",
                 "f": "5 部 1 位",
                 "mFlg": 0,
-                "fFlg": 1
+                "fFlg": 1,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201201",
@@ -167,7 +193,9 @@
                 "m": "5 部 2 位",
                 "f": "5 部 1 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -180,7 +208,9 @@
                 "m": "5 部 3 位",
                 "f": "5 部 2 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201101",
@@ -188,7 +218,9 @@
                 "m": "中止",
                 "f": "中止",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -201,7 +233,9 @@
                 "m": "5 部 4 位",
                 "f": "5 部 2 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "201001",
@@ -209,7 +243,9 @@
                 "m": "5 部 4 位",
                 "f": "5 部 4 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -222,7 +258,9 @@
                 "m": "5 部 4 位",
                 "f": "5 部 3 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "200901",
@@ -230,7 +268,9 @@
                 "m": "5 部 3 位",
                 "f": "6 部 1 位",
                 "mFlg": 0,
-                "fFlg": 1
+                "fFlg": 1,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -243,7 +283,9 @@
                 "m": "5 部 3 位",
                 "f": "6 部 2 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "200801",
@@ -251,7 +293,9 @@
                 "m": "5 部 3 位",
                 "f": "5 部 6 位",
                 "mFlg": 0,
-                "fFlg": -1
+                "fFlg": -1,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -264,7 +308,9 @@
                 "m": "5 部 5 位",
                 "f": "5 部 5 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "200701",
@@ -272,7 +318,9 @@
                 "m": "4 部 6 位",
                 "f": "5 部 5 位",
                 "mFlg": -1,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     },
@@ -285,7 +333,9 @@
                 "m": "4 部 5 位",
                 "f": "5 部 2 位",
                 "mFlg": 0,
-                "fFlg": 0
+                "fFlg": 0,
+                "detailIdM": null,
+                "detailIdF": null
             },
             {
                 "id": "200601",
@@ -293,7 +343,9 @@
                 "m": "4 部 3 位",
                 "f": "4 部 6 位",
                 "mFlg": 0,
-                "fFlg": -1
+                "fFlg": -1,
+                "detailIdM": null,
+                "detailIdF": null
             }
         ]
     }

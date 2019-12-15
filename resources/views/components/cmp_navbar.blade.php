@@ -27,11 +27,7 @@ $menuArray = [
 ];
 ?>
 <nav class="navbar navbar-light bg-white navbar-expand-md shadow">
-  <a class="navbar-brand" href="{{ url('/') }}" style="line-height: 1.3">
-    <span>一橋大学</span>
-    <br />
-    <span>バドミントン部</span>
-  </a>
+  <a class="navbar-brand" href="{{ url('/') }}">一橋大学 バドミントン部</a>
   <button type="button" class="border-0 navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
     <span class="navbar-toggler-icon"></span>
   </button>
