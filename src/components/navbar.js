@@ -8,7 +8,7 @@ const menuArray = [
   },
   {
     text: "部員情報",
-    path: "/member",
+    path: "/member-intro",
   },
   {
     text: "大会結果",
