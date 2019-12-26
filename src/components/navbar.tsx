@@ -47,7 +47,7 @@ const Component: React.FC = () => {
       <div className={`ml-md-3 navbar-collapse collapse ${isMenuShow ? "show" : ""}`}>
         <ul className="navbar-nav mr-auto">
           {menuArray.map((v, i) => (
-            <li className="navbar-item">
+            <li className="navbar-item" key={i}>
               <Link className="nav-link" to={v.path} key={i} >{v.text}</Link>
             </li>
           ))}

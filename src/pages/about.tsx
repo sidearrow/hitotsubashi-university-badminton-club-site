@@ -78,8 +78,8 @@ const AboutPage: React.FC = () => (
     <h1 className="hub-h1">部活情報</h1>
     <h2 className="hub-h2">役職</h2>
     <section className="container mb-5">
-      {positions.map(position => (
-        <div className="row mb-1 justify-content-center">
+      {positions.map((position, i) => (
+        <div className="row mb-1 justify-content-center" key={i}>
           <div className="col-4 col-md-3 py-1 alert-secondary">{position.positionName}</div>
           <div className="col-8 col-md-6 py-1">{position.name}</div>
         </div>
@@ -107,8 +107,8 @@ const AboutPage: React.FC = () => (
               </tr>
             </thead>
             <tbody>
-              {practiceTimeTableContent.map(row => (
-                <tr>
+              {practiceTimeTableContent.map((row, i) => (
+                <tr key={i}>
                   <th className="text-center alert-secondary">{row.title}</th>
                   <td className="text-center">{row.default || '-'}</td>
                   <td className="text-center">{row.vacation || '-'}</td>

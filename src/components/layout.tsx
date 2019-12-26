@@ -3,7 +3,7 @@ import * as React from "react"
 import Navbar from "./navbar"
 import "./sass/index.scss"
 
-const Component: React.FC = props => (
+const Layout: React.FC = props => (
   <div className="bg-light h-100">
     <Navbar />
     <div
@@ -23,4 +23,4 @@ const Component: React.FC = props => (
   </div>
 )
 
-export default Component
+export default Layout
