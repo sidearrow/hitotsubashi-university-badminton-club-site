@@ -72,46 +72,46 @@ const practiceTimeTableContent = [
   }
 ];
 
-const AboutPage = () => (
+const AboutPage: React.FC = () => (
   <Layout>
     <SEO title="部活情報" />
-    <h1 class="hub-h1">部活情報</h1>
-    <h2 class="hub-h2">役職</h2>
-    <section class="container mb-5">
+    <h1 className="hub-h1">部活情報</h1>
+    <h2 className="hub-h2">役職</h2>
+    <section className="container mb-5">
       {positions.map(position => (
-        <div class="row mb-1 justify-content-center">
-          <div class="col-4 col-md-3 py-1 alert-secondary">{position.positionName}</div>
-          <div class="col-8 col-md-6 py-1">{position.name}</div>
+        <div className="row mb-1 justify-content-center">
+          <div className="col-4 col-md-3 py-1 alert-secondary">{position.positionName}</div>
+          <div className="col-8 col-md-6 py-1">{position.name}</div>
         </div>
       ))}
     </section>
-    <h2 class="hub-h2">練習場所</h2>
-    <section class="mb-5">
-      <div class="mb-2">一橋大学 小平国際キャンパス内 体育館</div>
-      <div class="row justify-content-center">
-        <div class="text-center col-md-6">
-          { /*<iframe :src="mapUrl" class="w-100" frameborder="0" style="border:0" allowfullscreen></iframe>*/}
+    <h2 className="hub-h2">練習場所</h2>
+    <section className="mb-5">
+      <div className="mb-2">一橋大学 小平国際キャンパス内 体育館</div>
+      <div className="row justify-content-center">
+        <div className="text-center col-md-6">
+          { /*<iframe :src="mapUrl" className="w-100" frameborder="0" style="border:0" allowfullscreen></iframe>*/}
         </div>
       </div>
     </section>
-    <h2 class="hub-h2">練習時間</h2>
-    <section class="mt-3">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <table class="table">
+    <h2 className="hub-h2">練習時間</h2>
+    <section className="mt-3">
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <table className="table">
             <thead>
-              <tr class="alert-secondary">
-                <th class="text-center"></th>
-                <th class="text-center">授業期</th>
-                <th class="text-center">休業期</th>
+              <tr className="alert-secondary">
+                <th className="text-center"></th>
+                <th className="text-center">授業期</th>
+                <th className="text-center">休業期</th>
               </tr>
             </thead>
             <tbody>
               {practiceTimeTableContent.map(row => (
                 <tr>
-                  <th class="text-center alert-secondary">{row.title}</th>
-                  <td class="text-center">{row.default || '-'}</td>
-                  <td class="text-center">{row.vacation || '-'}</td>
+                  <th className="text-center alert-secondary">{row.title}</th>
+                  <td className="text-center">{row.default || '-'}</td>
+                  <td className="text-center">{row.vacation || '-'}</td>
                 </tr>
               ))}
             </tbody>
