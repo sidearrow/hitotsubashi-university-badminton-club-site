@@ -31,7 +31,7 @@ const menuArray = [
 const Component: React.FC = () => {
   const [isMenuShow, setIsMenuShow] = useState(false);
   const handleToggleMenu = useCallback(() => {
-    setIsMenuShow(() => !isMenuShow)
+    setIsMenuShow(isMenuShow => !isMenuShow)
   }, [])
 
   return (
@@ -52,7 +52,7 @@ const Component: React.FC = () => {
             </li>
           ))}
         </ul>
-        <ul className="mt-md-0 mt-2 navbar-nav" >
+        <ul className="mt-md-0 mt-2 navbar-nav">
           <li>
             <a
               target="_blank"

@@ -3,17 +3,14 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-export default class LeagueResultPages extends React.Component {
-  render() {
-    console.log(this.props.data)
-    return (
-      <Layout>
-        <SEO title="部活情報" />
-        <h1 class="hub-h1">リーグ戦結果</h1>
-      </Layout>
-    )
-  }
-}
+const Component: React.FC = () => (
+  <Layout>
+    <SEO title="部活情報" />
+    <h1 className="hub-h1">リーグ戦結果</h1>
+  </Layout>
+)
+
+export default Component
 
 export const IndexQuery = graphql`
   query {
