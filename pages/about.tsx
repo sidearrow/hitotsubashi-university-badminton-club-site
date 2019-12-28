@@ -1,7 +1,6 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 
 const positions = [
   {
@@ -74,7 +73,6 @@ const practiceTimeTableContent = [
 
 const AboutPage: React.FC = () => (
   <Layout>
-    <SEO title="部活情報" />
     <h1 className="hub-h1">部活情報</h1>
     <h2 className="hub-h2">役職</h2>
     <section className="container mb-5">

@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import members from '../files/member.json'
 
 const Component: React.FC = () => {
