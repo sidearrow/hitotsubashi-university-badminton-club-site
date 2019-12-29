@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const positions = [
   {
@@ -73,9 +74,10 @@ const practiceTimeTableContent = [
 
 const AboutPage: React.FC = () => (
   <Layout>
+    <SEO title="部活情報" />
     <h1 className="hub-h1">部活情報</h1>
-    <h2 className="hub-h2">役職</h2>
-    <section className="container mb-5">
+    <section className="section">
+      <h2 className="hub-h2">役職</h2>
       {positions.map((position, i) => (
         <div className="row mb-1 justify-content-center" key={i}>
           <div className="col-4 col-md-3 py-1 alert-secondary">{position.positionName}</div>
@@ -83,8 +85,8 @@ const AboutPage: React.FC = () => (
         </div>
       ))}
     </section>
-    <h2 className="hub-h2">練習場所</h2>
-    <section className="mb-5">
+    <section className="section">
+      <h2 className="hub-h2">練習場所</h2>
       <div className="mb-2">一橋大学 小平国際キャンパス内 体育館</div>
       <div className="row justify-content-center">
         <div className="text-center col-md-6">
@@ -92,13 +94,13 @@ const AboutPage: React.FC = () => (
         </div>
       </div>
     </section>
-    <h2 className="hub-h2">練習時間</h2>
-    <section className="mt-3">
+    <section className="section">
+      <h2 className="hub-h2">練習時間</h2>
       <div className="row justify-content-center">
         <div className="col-md-8">
-          <table className="table">
+          <table className="table is-bordered">
             <thead>
-              <tr className="alert-secondary">
+              <tr>
                 <th className="text-center"></th>
                 <th className="text-center">授業期</th>
                 <th className="text-center">休業期</th>
@@ -107,7 +109,7 @@ const AboutPage: React.FC = () => (
             <tbody>
               {practiceTimeTableContent.map((row, i) => (
                 <tr key={i}>
-                  <th className="text-center alert-secondary">{row.title}</th>
+                  <th className="text-center">{row.title}</th>
                   <td className="text-center">{row.default || '-'}</td>
                   <td className="text-center">{row.vacation || '-'}</td>
                 </tr>
