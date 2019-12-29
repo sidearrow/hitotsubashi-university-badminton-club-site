@@ -5,8 +5,10 @@ import { Link } from 'gatsby';
 const Component: React.FC = () => {
   return (
     <Layout>
-      <h1 className="hub-h1">大会結果</h1>
-      <Link to="result/league">リーグ戦</Link>
+      <section className="section">
+        <h1 className="hub-h1">大会結果</h1>
+        <Link to="result/league">リーグ戦</Link>
+      </section>
     </Layout>
   )
 }

@@ -36,20 +36,20 @@ const Component: React.FC = () => {
   };
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">一橋大学 バドミントン部</Link>
-        <a role="button" className={`navbar-burger burger ${isActiveMenu ? 'is-active' : ''}`} onClick={handleToggleMenu}>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div className={`navbar-menu ${isActiveMenu ? 'is-active' : ''}`}>
-        <div className="navbar-start">
-          {menuArray.map((menu, i) => (
-            <Link to={menu.path} key={i} className="navbar-item" onClick={handleToggleMenu}>{menu.text}</Link>
-          ))}
+    <nav className="navbar navbar-expand-lg bg-main navbar-dark">
+      <div className="container">
+        <Link to="/" className="navbar-brand font-weight-bold">一橋大学<br/>バドミントン部</Link>
+        <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className={`navbar-collapse collapse ${isActiveMenu ? 'show' : ''}`}>
+          <ul className="navbar-nav ml-auto">
+            {menuArray.map((menu, i) => (
+              <li className="nav-item" key={i}>
+                <Link to={menu.path} className="nav-link" onClick={handleToggleMenu}>{menu.text}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </nav>

@@ -73,19 +73,20 @@ const practiceTimeTableContent = [
 ];
 
 const AboutPage: React.FC = () => (
-  <Layout>
+  <Layout isShowPageTitle={true} pageTitle="部活情報" pageSubTitle={null}>
     <SEO title="部活情報" />
-    <h1 className="hub-h1">部活情報</h1>
-    <section className="section">
+    <section>
       <h2 className="hub-h2">役職</h2>
-      {positions.map((position, i) => (
-        <div className="row mb-1 justify-content-center" key={i}>
-          <div className="col-4 col-md-3 py-1 alert-secondary">{position.positionName}</div>
-          <div className="col-8 col-md-6 py-1">{position.name}</div>
-        </div>
-      ))}
+      <div className="container">
+        {positions.map((position, i) => (
+          <div className="row mb-2">
+            <div className="col-6 col-md-4 p-2 alert-secondary font-weight-bold">{position.positionName}</div>
+            <div className="col-6 col-md-8 py-2">{position.name}</div>
+          </div>
+        ))}
+      </div>
     </section>
-    <section className="section">
+    <section className="mt-5">
       <h2 className="hub-h2">練習場所</h2>
       <div className="mb-2">一橋大学 小平国際キャンパス内 体育館</div>
       <div className="row justify-content-center">
@@ -94,30 +95,26 @@ const AboutPage: React.FC = () => (
         </div>
       </div>
     </section>
-    <section className="section">
+    <section className="mt-5">
       <h2 className="hub-h2">練習時間</h2>
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <table className="table is-bordered">
-            <thead>
-              <tr>
-                <th className="text-center"></th>
-                <th className="text-center">授業期</th>
-                <th className="text-center">休業期</th>
-              </tr>
-            </thead>
-            <tbody>
-              {practiceTimeTableContent.map((row, i) => (
-                <tr key={i}>
-                  <th className="text-center">{row.title}</th>
-                  <td className="text-center">{row.default || '-'}</td>
-                  <td className="text-center">{row.vacation || '-'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <table className="table table-bordered">
+        <thead className="alert-secondary">
+          <tr>
+            <th className="text-center"></th>
+            <th className="text-center">授業期</th>
+            <th className="text-center">休業期</th>
+          </tr>
+        </thead>
+        <tbody>
+          {practiceTimeTableContent.map((row, i) => (
+            <tr key={i}>
+              <th className="text-center alert-secondary">{row.title}</th>
+              <td className="text-center">{row.default || '-'}</td>
+              <td className="text-center">{row.vacation || '-'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </section>
   </Layout>
 )

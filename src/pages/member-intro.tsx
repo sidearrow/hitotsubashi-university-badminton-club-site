@@ -10,37 +10,37 @@ const Component: React.FC = () => {
     setActiveTabIndex(() => i)
   }, []);
 
-  return (<Layout>
-    <h1 className="hub-h1">部員情報</h1>
-    <section className="section">
-      <div className="tabs is-centered">
-        <ul>
-          {members.map((v, i) => (
-            <li className={i === activeTabIndex ? 'is-active' : ''} onClick={e => handleClickTab(i)}>
-              <a>{v.grade}年生</a>
-            </li>
-          ))}
-        </ul>
+  return (
+    <Layout isShowPageTitle={true} pageTitle="部員紹介" pageSubTitle="2019 年 5 月現在">
+      <div className="form-row">
+        {members.map((v, i) => (
+          <div className="col-3">
+            <button className={`btn btn-block btn-outline-main ${i === activeTabIndex ? 'active' : ''}`} onClick={e => handleClickTab(i)}>
+              <a>{v.grade} 年生</a>
+            </button>
+          </div>
+        ))}
       </div>
-      {members.map((v, i) => (
-        <div style={{ display: i === activeTabIndex ? '' : 'none' }}>
-          {v.members.map(member => (
-            <div style={{ marginBottom: 30 }}>
-              <div className={`hub-h2 pb-1 ${member.gender === 0 ? 'has-text-info' : 'has-text-danger'}`}>{member.fullName}</div>
-              <div className="tags">
-                <span className="tag is-info is-light">{member.faculty}</span>
-                <span className="tag is-info is-light">{member.highschool}</span>
-                {member.positions.map(pos => (
-                  <span className="tag is-info is-light">{pos}</span>
-                ))}
+      <div className="mt-5">
+        {members.map((v, i) => (
+          <div className="row" style={{ display: i === activeTabIndex ? '' : 'none' }}>
+            {v.members.map(member => (
+              <div className="col-md-6" style={{ marginBottom: 30 }}>
+                <div className={`h4 pb-1 ${member.gender === 0 ? 'text-info' : 'text-danger'}`}>{member.fullName}</div>
+                <div className="mb-2">
+                  <span className="px-2 border border-dark d-inline-block mr-2 mt-2">{member.faculty}</span>
+                  <span className="px-2 border border-dark d-inline-block mr-2 mt-2">{member.highschool}</span>
+                  {member.positions.map(pos => (
+                    <span className="px-2 border border-dark d-inline-block mr-2 mt-2">{pos}</span>
+                  ))}
+                </div>
+                <div className="pb-1">{member.comment}</div>
               </div>
-              <div className="pb-1">{member.comment}</div>
-            </div>
-          ))}
-        </div>
-      ))}
-    </section>
-  </Layout>)
+            ))}
+          </div>
+        ))}
+      </div>
+    </Layout>)
 }
 
 export default Component

@@ -24,6 +24,7 @@
     "typescript": "^3.7.4"
   },
   "devDependencies": {
+    "bootstrap": "^4.4.1",
     "prettier": "^1.19.1"
   },
   "license": "MIT",
