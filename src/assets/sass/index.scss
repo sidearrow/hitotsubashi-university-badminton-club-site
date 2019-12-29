@@ -1,39 +1,12 @@
 @import "./bulma";
 
 html {
-  font-size: 14px;
-  position: relative;
-  height: 100%;
-}
-
-body ,body > div, body > div > div {
-  height: 100%;
+  font-size: 13px;
 }
 
 main {
-  margin-top: -57.5px;
-  margin-bottom: 40px;
-  padding-top: 90px;
-  padding-bottom: 45px;
-  min-height: calc(100% - 80px);
-}
-
-footer {
-  height: 40px;
-  position: absolute;
-  width: 100%;
-}
-
-.font-size--1_1 {
-  font-size: 1.1rem;
-}
-
-.font-size--1_25 {
-  font-size: 1.25rem;
-}
-
-.font-size--1_5 {
-  font-size: 1.5rem;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .hub-h1 {

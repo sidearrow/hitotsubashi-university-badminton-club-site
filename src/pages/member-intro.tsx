@@ -23,10 +23,10 @@ const Component: React.FC = () => {
         </ul>
       </div>
       {members.map((v, i) => (
-        <div className="columns" style={{ display: i === activeTabIndex ? '' : 'none' }}>
+        <div style={{ display: i === activeTabIndex ? '' : 'none' }}>
           {v.members.map(member => (
-            <div className="column is-full">
-              <div className={`h5 pb-1 ${member.gender === 0 ? 'text-info' : 'text-danger'}`}>{member.fullName}</div>
+            <div style={{ marginBottom: 30 }}>
+              <div className={`hub-h2 pb-1 ${member.gender === 0 ? 'has-text-info' : 'has-text-danger'}`}>{member.fullName}</div>
               <div className="tags">
                 <span className="tag is-info is-light">{member.faculty}</span>
                 <span className="tag is-info is-light">{member.highschool}</span>
