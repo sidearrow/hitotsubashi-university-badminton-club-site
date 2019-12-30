@@ -38,7 +38,7 @@ const Component: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-main navbar-dark">
       <div className="container">
-        <Link to="/" className="navbar-brand font-weight-bold">一橋大学<br/>バドミントン部</Link>
+        <Link to="/" className="navbar-brand" style={{lineHeight: 1.3}}>一橋大学<br/>バドミントン部</Link>
         <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
           <span className="navbar-toggler-icon"></span>
         </button>

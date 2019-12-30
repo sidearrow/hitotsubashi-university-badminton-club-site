@@ -24,14 +24,14 @@ const Component: React.FC = props => {
   return (
     <Layout isShowPageTitle={true} pageTitle="みずとり会" pageSubTitle="みずとり会のページです。">
       {obMessages.map((v, i) => (
-        <>
+        <div key={i}>
           <h2 className="hub-h2" key={i}>{v.year} 年</h2>
           <div className="mb-3">
             {v.files.map((vFile, i) => (
               <a className="mr-2 v-inline-block" href="#" key={i} onClick={e => { clickLink(`ob-messages/obmessage_${vFile.id}.pdf`) }}>{vFile.title}</a>
             ))}
           </div>
-        </>
+        </div>
       ))}
     </Layout>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
 
 type Props = {
-  title: string;
-  subtitle: string | null;
+  title?: string;
+  subtitle?: string | null;
 }
 
 const PageTitle: React.FC<Props> = props => (
