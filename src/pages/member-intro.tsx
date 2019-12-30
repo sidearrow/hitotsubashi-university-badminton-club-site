@@ -11,7 +11,7 @@ const Component: React.FC = () => {
   }, []);
 
   return (
-    <Layout isShowPageTitle={true} pageTitle="部員紹介" pageSubTitle="2019 年 5 月現在">
+    <Layout isShowPageTitle={true} pageTitle="部員紹介" pageSubTitle="2018年7月現在、私達一橋大学バドミントン部は男子22名、女子5名の計25名で活動しています。">
       <div className="form-row">
         {members.map((v, i) => (
           <div className="col-3">

@@ -9,7 +9,7 @@ const PageTitle: React.FC<Props> = props => (
   <div className="jumbotron alert-main mb-0">
     <div className="container">
       <h1 className="title">{props.title}</h1>
-      {props.subtitle && (<p className="subtitle">{props.subtitle}</p>)}
+      {props.subtitle && (<p className="subtitle" style={{ whiteSpace: 'pre-wrap' }}>{props.subtitle}</p>)}
     </div>
   </div>
 );
