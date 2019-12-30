@@ -1,6 +1,6 @@
 import AbstractCsvModel from "./AbstractCsvModel";
 
-type CsvLeagueResult = {
+export type CsvLeagueResult = {
   league_id: string,
   title: string,
   gender: string,
@@ -21,5 +21,9 @@ export default class CsvLeagueResultModel extends AbstractCsvModel {
 
   public get() {
     return <CsvLeagueResult[]>super.get();
+  }
+
+  public static getSeasonValue(season: string): string {
+    return season === '1' ? '春' : season === '2' ? '秋' : '';
   }
 };
