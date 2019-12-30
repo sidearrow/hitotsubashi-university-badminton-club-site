@@ -1,39 +1,27 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "",
+  "name": "hit-u-bad-next",
   "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start"
+  },
   "dependencies": {
-    "@types/react-helmet": "^5.0.14",
+    "@material-ui/core": "^4.8.1",
+    "@material-ui/icons": "^4.5.1",
+    "@zeit/next-sass": "^1.0.1",
+    "bootstrap": "^4.4.1",
+    "dotenv": "^8.2.0",
     "firebase": "^7.6.1",
-    "gatsby": "^2.18.12",
-    "gatsby-image": "^2.2.34",
-    "gatsby-plugin-manifest": "^2.2.31",
-    "gatsby-plugin-offline": "^3.0.27",
-    "gatsby-plugin-react-helmet": "^3.1.16",
-    "gatsby-plugin-sass": "^2.1.26",
-    "gatsby-plugin-typescript": "^2.1.23",
-    "gatsby-source-filesystem": "^2.1.40",
-    "gatsby-transformer-csv": "^2.1.21",
+    "next": "9.1.6",
     "node-sass": "^4.13.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.4"
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
   },
   "devDependencies": {
-    "bootstrap": "^4.4.1",
-    "prettier": "^1.19.1"
-  },
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "@types/react": "^16.9.17",
+    "typescript": "^3.7.4"
   }
 }

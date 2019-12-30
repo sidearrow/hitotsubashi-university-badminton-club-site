@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import mizutoriAuthService from '../../services/mizutoriAuthService';
-import { navigate } from 'gatsby';
+import Router from 'next/router';
 
 import obMessages from '../../data/ob_messages.json';
 import Layout from '../../components/layout';
@@ -9,7 +9,7 @@ import storageService from '../../services/storageService';
 const Component: React.FC = props => {
   useEffect(() => {
     if (!mizutoriAuthService.isLogin()) {
-      navigate('mizutori/login');
+      Router.push('/mizutori/login');
     };
   }, []);
 

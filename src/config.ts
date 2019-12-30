@@ -1,10 +1,14 @@
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+
 export default {
-  googleSiteVerification: process.env.GATSBY_APP_GOOGLE_SITE_VERIFICATION,
+  googleSiteVerification: publicRuntimeConfig.env.googleSiteVerification,
   firebase: {
-    apiKey: process.env.GATSBY_APP_FIREBASE_API_KEY,
-    authDomain: process.env.GATSBY_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.GATSBY_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.GATSBY_APP_FIREBASE_STORAGE_BUCKET,
+    apiKey: publicRuntimeConfig.env.firebaseApiKey,
+    authDomain: publicRuntimeConfig.env.firebaseAuthDomain,
+    projectId: publicRuntimeConfig.env.firebaseProjectId,
+    storageBucket: publicRuntimeConfig.env.firebaseStorageBucket,
   },
-  mizutoriMailAddress: process.env.GATSBY_APP_MIZUTORI_MAIL_ADDRESS
+  mizutoriMailAddress: publicRuntimeConfig.env.mizutoriMailAddress,
 }

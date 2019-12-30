@@ -1,5 +1,5 @@
-import { Link } from "gatsby"
 import React from "react"
+import Link from "next/link";
 
 const menuArray = [
   {
@@ -28,7 +28,7 @@ const menuArray = [
   },
 ]
 
-const Component: React.FC = () => {
+const Navbar: React.FC = () => {
 
   const [isActiveMenu, setIsActiveMeun] = React.useState(false);
   const handleToggleMenu = () => {
@@ -38,7 +38,9 @@ const Component: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-main navbar-dark">
       <div className="container">
-        <Link to="/" className="navbar-brand" style={{lineHeight: 1.3}}>一橋大学<br/>バドミントン部</Link>
+        <Link href="/">
+          <a className="navbar-brand" style={{ lineHeight: 1.3 }}>一橋大学<br />バドミントン部</a>
+        </Link>
         <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -46,7 +48,9 @@ const Component: React.FC = () => {
           <ul className="navbar-nav ml-auto">
             {menuArray.map((menu, i) => (
               <li className="nav-item" key={i}>
-                <Link to={menu.path} className="nav-link" onClick={handleToggleMenu}>{menu.text}</Link>
+                <Link href={menu.path}>
+                  <a className="nav-link" onClick={handleToggleMenu}>{menu.text}</a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -56,4 +60,4 @@ const Component: React.FC = () => {
   );
 }
 
-export default Component
+export default Navbar

@@ -1,15 +1,17 @@
 import React from 'react'
-import { navigate } from 'gatsby';
+import Router from 'next/router';
 
 import Layout from '../../components/layout';
 import mizutoriAuthService from '../../services/mizutoriAuthService';
 
 const Component = () => {
+  /*const [inputPassword, setInputPassword] = React.useState('');*/
   const [isError, setIsError] = React.useState(false);
   const handleClickLogin = async () => {
     try {
-      await mizutoriAuthService.login(document.getElementById('inputPassword').value);
-      navigate('mizutori');
+      const elInputPassword = document.getElementById('inputPassword') as HTMLInputElement;
+      await mizutoriAuthService.login(elInputPassword.value);
+      Router.push('/mizutori');
     } catch (e) {
       setIsError(true);
     }
