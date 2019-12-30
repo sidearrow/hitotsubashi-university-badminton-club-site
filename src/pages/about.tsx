@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const pageDiscription = "関東学生バドミントン連盟男子は4部、女子は5部に所属しています。"
   + "\n男女・経験者大学始め関係なく、リーグでの昇格を目指して日々練習に励んでいます。";
@@ -76,6 +77,7 @@ const practiceTimeTableContent = [
 
 const AboutPage: React.FC = () => (
   <Layout isShowPageTitle={true} pageTitle="部活情報" pageSubTitle={pageDiscription}>
+    <SEO title="部活情報" />
     <section>
       <h2 className="hub-h2">役職</h2>
       <div className="container">

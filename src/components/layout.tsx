@@ -1,10 +1,9 @@
-import React from 'react';
-import Head from 'next/head';
-import Navbar from './navbar';
-import PageTitle from './pageTitle';
-import config from '../config';
+import * as React from "react"
 
-import '../assets/sass/index.scss';
+import Navbar from "./navbar"
+import "../assets/sass/index.scss"
+import PageTitle from "./pageTitle";
+import Head from "./head";
 
 type Props = {
   isShowPageTitle?: boolean;
@@ -12,14 +11,11 @@ type Props = {
   pageSubTitle?: string | null;
 };
 
-const Layout: React.FC<Props> = (props) => (
-  <>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-      <meta name="google-site-verification" content={config.googleSiteVerification} />
-    </Head>
-    <div className="bg-light" style={{
+const Layout: React.FC<Props> = props => {
+  return (
+    <>
+      <Head title={props.pageTitle} />
+      <div className="bg-light" style={{
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -34,7 +30,8 @@ const Layout: React.FC<Props> = (props) => (
       </div>
         </footer>
       </div>
-  </>
-);
+    </>
+  );
+};
 
-export default Layout;
+export default Layout

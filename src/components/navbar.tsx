@@ -1,5 +1,5 @@
+import { Link } from "gatsby"
 import React from "react"
-import Link from "next/link";
 
 const menuArray = [
   {
@@ -22,13 +22,9 @@ const menuArray = [
     text: "掲示板",
     path: "/bbs",
   },
-  {
-    text: "みずとり会",
-    path: "/mizutori",
-  },
 ]
 
-const Navbar: React.FC = () => {
+const Component: React.FC = () => {
 
   const [isActiveMenu, setIsActiveMeun] = React.useState(false);
   const handleToggleMenu = () => {
@@ -38,9 +34,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-main navbar-dark">
       <div className="container">
-        <Link href="/">
-          <a className="navbar-brand" style={{ lineHeight: 1.3 }}>一橋大学<br />バドミントン部</a>
-        </Link>
+        <Link to="/" className="navbar-brand" style={{lineHeight: 1.3}}>一橋大学<br/>バドミントン部</Link>
         <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -48,9 +42,7 @@ const Navbar: React.FC = () => {
           <ul className="navbar-nav ml-auto">
             {menuArray.map((menu, i) => (
               <li className="nav-item" key={i}>
-                <Link href={menu.path}>
-                  <a className="nav-link" onClick={handleToggleMenu}>{menu.text}</a>
-                </Link>
+                <Link to={menu.path} className="nav-link" onClick={handleToggleMenu}>{menu.text}</Link>
               </li>
             ))}
           </ul>
@@ -60,4 +52,4 @@ const Navbar: React.FC = () => {
   );
 }
 
-export default Navbar
+export default Component
