@@ -4,7 +4,7 @@ import React from "react"
 const menuArray = [
   {
     text: "部活情報",
-    path: "/about",
+    path: "/info",
   },
   {
     text: "部員情報",

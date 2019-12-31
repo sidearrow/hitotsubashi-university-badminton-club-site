@@ -77,7 +77,6 @@ const practiceTimeTableContent = [
 
 const AboutPage: React.FC = () => (
   <Layout isShowPageTitle={true} pageTitle="部活情報" pageSubTitle={pageDiscription}>
-    <SEO title="部活情報" />
     <section>
       <h2 className="hub-h2">役職</h2>
       <div className="container">

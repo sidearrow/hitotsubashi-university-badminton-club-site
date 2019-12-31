@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import config from '../config';
 
-const fontUrl = 'https://fonts.googleapis.com/css?family=Noto+Serif+JP|Roboto:300&display=swap';
+const fontUrl = 'https://fonts.googleapis.com/css?family=Noto+Sans+JP|Roboto&display=swap';
 
 type Props = {
   title?: string;

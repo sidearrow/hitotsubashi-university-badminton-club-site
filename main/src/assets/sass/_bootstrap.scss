@@ -13,7 +13,7 @@ $theme-colors: map-merge(
   ),
   $theme-colors
 );
-$font-family-base: Roboto,Noto Sans JP,sans-serif;
+$font-family-base: 'Noto Sans JP', 'Roboto', sans-serif;
 $enable-rounded: false;
 
 @import "node_modules/bootstrap/scss/mixins";
