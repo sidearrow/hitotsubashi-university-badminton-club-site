@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import members from '../files/member.json'
+import Layout from "../../components/layout"
+import members from '../../files/member.json'
+import config from '../../config/configIndex';
 
 const Component: React.FC = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -11,7 +11,7 @@ const Component: React.FC = () => {
   }, []);
 
   return (
-    <Layout isShowPageTitle={true} pageTitle="部員紹介" pageSubTitle="2018年7月現在、私達一橋大学バドミントン部は男子22名、女子5名の計25名で活動しています。">
+    <Layout pageMetadata={config.pageMetadata.infoMember}>
       <div className="form-row">
         {members.map((v, i) => (
           <div className="col-3" key={i}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import config from '../config/configIndex';
 
 type Props = {
   pageContext: {
@@ -40,8 +40,7 @@ const Component: React.FC<Props> = ({ pageContext }) => {
   ) => reamrks === '' ? `${group} 部 ${rank} 位` : reamrks;
 
   return (
-    <Layout isShowPageTitle={true} pageTitle="リーグ戦" pageSubTitle="関東学生バドミントン連盟リーグ、リーグ戦の結果です">
-      <SEO title="リーグ戦" />
+    <Layout pageMetadata={config.pageMetadata.resultLeague}>
       <table className="table table-bordered">
         <thead className="alert-secondary">
           <th>年度</th>

@@ -4,25 +4,22 @@ import Navbar from "./navbar"
 import "../assets/sass/index.scss"
 import PageTitle from "./pageHeader";
 import Head from "./head";
+import { PageMetadata } from "../config/configPageMetadata";
 
-type Props = {
-  isShowPageTitle?: boolean;
-  pageTitle?: string;
-  pageSubTitle?: string | null;
-};
-
-const Layout: React.FC<Props> = props => {
+const Layout: React.FC<{
+  pageMetadata: PageMetadata
+}> = props => {
   return (
     <>
-      <Head title={props.pageTitle} />
+      <Head pageMetadata={props.pageMetadata} />
       <div className="bg-light" style={{
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
       }}>
         <Navbar />
-        {props.isShowPageTitle
-          && (<PageTitle title={props.pageTitle} description={props.pageSubTitle} />)}
+        {props.pageMetadata.title
+          && (<PageTitle title={props.pageMetadata.title} description={props.pageMetadata.description} />)}
         <main className="container bg-white" style={{ flex: 1 }}>{props.children}</main>
         <footer className="footer py-5">
           <div className="container text-center text-secondary">

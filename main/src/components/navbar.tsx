@@ -1,31 +1,16 @@
 import { Link } from "gatsby"
 import React from "react"
+import config from "../config/configIndex";
 
-const menuArray = [
-  {
-    text: "部活情報",
-    path: "/info",
-  },
-  {
-    text: "部員情報",
-    path: "/member-intro",
-  },
-  {
-    text: "大会結果",
-    path: "/result",
-  },
-  {
-    text: "三多摩大会",
-    path: "/santama",
-  },
-  {
-    text: "掲示板",
-    path: "/bbs",
-  },
+const menuList = [
+  config.pageMetadata.infoIndex,
+  config.pageMetadata.infoMember,
+  config.pageMetadata.resultIndex,
+  config.pageMetadata.resultLeague,
+  config.pageMetadata.bbs,
 ]
 
 const Component: React.FC = () => {
-
   const [isActiveMenu, setIsActiveMeun] = React.useState(false);
   const handleToggleMenu = () => {
     setIsActiveMeun(!isActiveMenu);
@@ -40,9 +25,9 @@ const Component: React.FC = () => {
         </button>
         <div className={`navbar-collapse collapse ${isActiveMenu ? 'show' : ''}`}>
           <ul className="navbar-nav ml-auto">
-            {menuArray.map((menu, i) => (
+            {menuList.map((menu, i) => (
               <li className="nav-item" key={i}>
-                <Link to={menu.path} className="nav-link" onClick={handleToggleMenu}>{menu.text}</Link>
+                <Link to={menu.path} className="nav-link" onClick={handleToggleMenu}>{menu.title}</Link>
               </li>
             ))}
           </ul>
