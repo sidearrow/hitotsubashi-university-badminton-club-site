@@ -1,10 +1,10 @@
-import React, { version } from 'react'
-import { graphql } from 'gatsby';
-import Layout from '../../components/layout';
-import leagueResultData from '../../data/league_results.json';
-import SEO from '../../components/seo';
+import React from 'react'
+import Layout from '../components/layout';
+import leagueResultData from '../data/league_results.json';
+import SEO from '../components/seo';
 
-const Component: React.FC = () => {
+const Component: React.FC = ({ pageContext }) => {
+  console.log(pageContext)
   const badge = (flg: Number) => {
     if (flg === 0) {
       return '';
