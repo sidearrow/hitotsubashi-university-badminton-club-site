@@ -1,7 +1,6 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 
 const pageDiscription = "関東学生バドミントン連盟男子は4部、女子は5部に所属しています。"
   + "\n男女・経験者大学始め関係なく、リーグでの昇格を目指して日々練習に励んでいます。";

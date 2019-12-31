@@ -1,3 +1,10 @@
+export type PageMeta = {
+  title: string;
+  path: string;
+  description: string | null;
+  breadcrumb: string[];
+};
+
 export default [
   {
     title: 'HOME',
@@ -36,4 +43,4 @@ export default [
     description: '関東学生バドミントン連盟リーグ、リーグ戦の結果です',
     breadcrumb: ['index', 'result', 'league'],
   },
-];
+] as PageMeta[];
