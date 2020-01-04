@@ -4,9 +4,8 @@ import config from "../config/configIndex";
 
 const menuList = [
   config.pageMetadata.infoIndex,
-  config.pageMetadata.infoMember,
   config.pageMetadata.resultIndex,
-  config.pageMetadata.resultLeague,
+  config.pageMetadata.santama,
   config.pageMetadata.bbs,
 ]
 
@@ -17,23 +16,25 @@ const Component: React.FC = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-main navbar-dark">
-      <div className="container">
-        <Link to="/" className="navbar-brand" style={{lineHeight: 1.3}}>一橋大学<br/>バドミントン部</Link>
-        <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className={`navbar-collapse collapse ${isActiveMenu ? 'show' : ''}`}>
-          <ul className="navbar-nav ml-auto">
-            {menuList.map((menu, i) => (
-              <li className="nav-item" key={i}>
-                <Link to={menu.path} className="nav-link" onClick={handleToggleMenu}>{menu.title}</Link>
-              </li>
-            ))}
-          </ul>
+    <>
+      <nav className="navbar navbar-expand-sm bg-white navbar-light">
+        <div className="container">
+          <Link to="/" className="navbar-brand" style={{ lineHeight: 1.3 }}>一橋大学 バドミントン部</Link>
+          <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
+            <span className="navbar-toggler-icon"></span>
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <nav className="navbar navbar-expand-sm bg-white navbar-light border-bottom border-dark pb-0">
+        <div className={`container collapse d-sm-block ${isActiveMenu ? 'show' : 'd-none'}`}>
+          <div className="row">
+            {menuList.map((menu, i) => (
+              <Link to={menu.path} className="hub-nav-link col-sm-3 col-12 text-sm-center mb-sm-0 mb-2" onClick={handleToggleMenu} key={i}>{menu.title}</Link>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
 

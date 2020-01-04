@@ -21,3 +21,14 @@ main {
   margin-bottom: 1rem;
   border-bottom: 1px dotted;
 }
+
+.hub-nav-link {
+  border-bottom: solid 3px transparent;
+  color: #212529;
+  padding-bottom: 0.25rem;
+  &:hover {
+    color: #ac2926 !important;
+    border-color: #ac2926;
+    text-decoration: none;
+  }
+}
