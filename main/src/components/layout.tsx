@@ -2,7 +2,7 @@ import * as React from "react"
 
 import Navbar from "./navbar"
 import "../assets/sass/index.scss"
-import PageTitle from "./pageHeader";
+import PageHeader from "./pageHeader";
 import Head from "./head";
 import { PageMetadata } from "../config/configPageMetadata";
 
@@ -18,8 +18,8 @@ const Layout: React.FC<{
         flexDirection: 'column',
       }}>
         <Navbar />
-        {props.pageMetadata.title
-          && (<PageTitle title={props.pageMetadata.title} description={props.pageMetadata.description} />)}
+        {props.pageMetadata.title !== 'HOME'
+          && (<PageHeader pageMetadata={props.pageMetadata} />)}
         <main className="container bg-white" style={{ flex: 1 }}>{props.children}</main>
         <footer className="footer py-5">
           <div className="container text-center text-secondary">

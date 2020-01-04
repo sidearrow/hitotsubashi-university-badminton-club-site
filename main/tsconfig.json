@@ -16,6 +16,6 @@
   "include": [
     "./types/**/*",
     "./gatsby-node/**/*",
-    "./src/**/*"
+    "./src/**/*",
   ]
 }

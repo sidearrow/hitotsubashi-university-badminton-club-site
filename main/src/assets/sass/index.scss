@@ -26,7 +26,7 @@ main {
   border-bottom: solid 3px transparent;
   color: #212529;
   padding-bottom: 0.25rem;
-  &:hover {
+  &:hover,&.active {
     color: #ac2926 !important;
     border-color: #ac2926;
     text-decoration: none;

@@ -18,15 +18,15 @@ export type PageMetadata = {
 
 const pageMetadata: { [key in PageKey]: PageMetadata } = {
   index: {
-    title: null,
+    title: 'HOME',
     path: '/',
-    description: '一橋大学体育会バドミントン部は、関東学生バドミントン連盟男子4部、女子5部に所属し、リーグでの昇格を目指して週3～5日練習に取り組んでいます。',
+    description: '一橋大学体育会バドミントン部は、関東学生バドミントン連盟男子 4 部、女子 5 部に所属し、リーグでの昇格を目指して週 3 ～ 5 日練習に取り組んでいます。',
     breadcrumb: ['index'],
   },
   infoIndex: {
     title: '部活情報',
     path: '/info',
-    description: '一橋大学体育会バドミントン部は、関東学生バドミントン連盟男子4部、女子5部に所属し、リーグでの昇格を目指して週3～5日練習に取り組んでいます。',
+    description: '一橋大学体育会バドミントン部は、関東学生バドミントン連盟男子 4 部、女子 5 部に所属し、リーグでの昇格を目指して週 3 ～ 5 日練習に取り組んでいます。',
     breadcrumb: ['index', 'infoIndex'],
   },
   infoMember: {

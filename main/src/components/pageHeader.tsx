@@ -1,16 +1,28 @@
 import React from 'react';
+import { Link } from 'gatsby';
+import config from '../config/configIndex';
+import { PageMetadata } from '../config/configPageMetadata';
 
 type Props = {
-  title?: string
-  description?: string | null
-  breadcrumb?: []
+  pageMetadata: PageMetadata;
 }
 
 const PageHeader: React.FC<Props> = props => (
-  <div className="jumbotron alert-main mb-0">
+  <div className="jumbotron mb-0 border-bottom border-dark">
     <div className="container">
-      <h1 className="title">{props.title}</h1>
-      {props.description && (<p className="subtitle" style={{ whiteSpace: 'pre-wrap' }}>{props.description}</p>)}
+      <div>
+        <ol className="breadcrumb bg-transparent">
+          {props.pageMetadata.breadcrumb.map((v, i) => (
+            <li className="breadcrumb-item">
+              {props.pageMetadata.breadcrumb.length - 1 === i
+                ? <span>{config.pageMetadata[v].title}</span>
+                : <Link to={config.pageMetadata[v].path}>{config.pageMetadata[v].title}</Link>}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <h1 className="title">{props.pageMetadata.title}</h1>
+      <p className="subtitle" style={{ whiteSpace: 'pre-wrap' }}>{props.pageMetadata.description}</p>
     </div>
   </div>
 );

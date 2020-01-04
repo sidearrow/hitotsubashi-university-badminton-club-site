@@ -2,9 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import config from "../config/configIndex";
-
-const pageDiscription = "関東学生バドミントン連盟男子は4部、女子は5部に所属しています。"
-  + "\n男女・経験者大学始め関係なく、リーグでの昇格を目指して日々練習に励んでいます。";
+import { Link } from "@reach/router";
 
 const positions = [
   {
@@ -77,11 +75,23 @@ const practiceTimeTableContent = [
 
 const AboutPage: React.FC = () => (
   <Layout pageMetadata={config.pageMetadata.infoIndex}>
+    <section className="mb-5 form-row">
+      {[config.pageMetadata.infoMember, config.pageMetadata.infoAnnualSchedule].map((v, i) => (
+        <div className="col-md-4" key={i}>
+          <div className="card h-100 border-dark">
+            <div className="card-body">
+              <Link to={v.path} className="stretched-link">{v.title}</Link>
+              <div>{v.description}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
     <section>
       <h2 className="hub-h2">役職</h2>
       <div className="container">
         {positions.map((position, i) => (
-          <div className="row mb-2">
+          <div className="row mb-2" key={i}>
             <div className="col-6 col-md-4 p-2 alert-secondary font-weight-bold">{position.positionName}</div>
             <div className="col-6 col-md-8 py-2">{position.name}</div>
           </div>

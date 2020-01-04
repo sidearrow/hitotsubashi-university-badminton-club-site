@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import config from "../config/configIndex";
+import logo from '../assets/img/logo.png';
 
 const menuList = [
   config.pageMetadata.infoIndex,
@@ -19,7 +20,9 @@ const Component: React.FC = () => {
     <>
       <nav className="navbar navbar-expand-sm bg-white navbar-light">
         <div className="container">
-          <Link to="/" className="navbar-brand" style={{ lineHeight: 1.3 }}>一橋大学 バドミントン部</Link>
+          <Link to="/">
+            <img src={logo} height={60} />
+          </Link>
           <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
             <span className="navbar-toggler-icon"></span>
           </button>
