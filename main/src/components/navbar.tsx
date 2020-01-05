@@ -1,12 +1,14 @@
 import { Link } from "gatsby"
 import React from "react"
 import config from "../config/configIndex";
+import logo from '../assets/img/logo.png';
 
 const menuList = [
   config.pageMetadata.infoIndex,
   config.pageMetadata.resultIndex,
   config.pageMetadata.santama,
   config.pageMetadata.bbs,
+  config.pageMetadata.mizutori,
 ]
 
 const Component: React.FC = () => {
@@ -19,8 +21,10 @@ const Component: React.FC = () => {
     <>
       <nav className="navbar navbar-expand-sm bg-white navbar-light">
         <div className="container">
-          <Link to="/" className="navbar-brand">一橋大学 バドミントン部</Link>
-          <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
+          <Link to="/" >
+            <img src={logo} style={{maxWidth: 'calc(100% - 50px)'}} />
+          </Link>
+          <button className="navbar-toggler border-0 position-absolute" type="button" onClick={handleToggleMenu} style={{right:0}}>
             <span className="navbar-toggler-icon"></span>
           </button>
         </div>
@@ -29,7 +33,7 @@ const Component: React.FC = () => {
         <div className={`container collapse d-sm-block ${isActiveMenu ? 'show' : 'd-none'}`}>
           <div className="row">
             {menuList.map((menu, i) => (
-              <Link to={menu.path} className="hub-nav-link col-sm-3 col-12 text-sm-center mb-sm-0 mb-2" onClick={handleToggleMenu} key={i}>{menu.title}</Link>
+              <Link to={menu.path} className="hub-nav-link col-sm-2 col-12 text-sm-center mb-sm-0 mb-2 text-nowrap" onClick={handleToggleMenu} key={i}>{menu.title}</Link>
             ))}
           </div>
         </div>

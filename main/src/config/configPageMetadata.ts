@@ -6,6 +6,7 @@ export type PageKey = 'index'
   | 'resultLeague'
   | 'santama'
   | 'bbs'
+  | 'mizutori'
   | '404'
   ;
 
@@ -64,6 +65,12 @@ const pageMetadata: { [key in PageKey]: PageMetadata } = {
     path: '/santama',
     description: '三多摩地区学生バドミントン選手権大会',
     breadcrumb: ['index', 'santama'],
+  },
+  mizutori: {
+    title: 'みずとり会',
+    path: '/mizutori',
+    description: 'みずとり会のページです',
+    breadcrumb: ['index', 'mizutori'],
   },
   "404": {
     title: 'ページが見つかりません',
