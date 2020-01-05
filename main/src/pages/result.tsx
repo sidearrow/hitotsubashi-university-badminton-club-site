@@ -1,18 +1,13 @@
 import React from 'react'
 import Layout from '../components/layout';
-import { Link } from 'gatsby';
 import config from '../config/configIndex';
+import PageCardList from '../components/pageCardList';
 
 const Component: React.FC = () => {
   return (
     <Layout pageMetadata={config.pageMetadata.resultIndex}>
-      <section className="section">
-        <div>
-          <Link to="/result/league">リーグ戦</Link>
-        </div>
-        <div>
-          <Link to="/result/sansho">三商戦</Link>
-        </div>
+      <section>
+        <PageCardList pageList={[config.pageMetadata.resultLeague, config.pageMetadata.resultSansho]} />
       </section>
     </Layout>
   )

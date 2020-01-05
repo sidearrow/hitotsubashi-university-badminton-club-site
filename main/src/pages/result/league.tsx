@@ -1,29 +1,9 @@
 import React from 'react'
-import Layout from '../components/layout';
-import config from '../config/configIndex';
+import Layout from '../../components/layout';
+import config from '../../config/configIndex';
+import data from '../../data/league_results.json';
 
-type Props = {
-  pageContext: {
-    data: {
-      year: string;
-      season: string;
-      data: {
-        league_id: string,
-        title: string,
-        gender: string,
-        year: string,
-        season: string,
-        group: string,
-        rank: string,
-        up_flg: string,
-        down_flg: string,
-        remarks: string,
-      }[]
-    }[]
-  }
-};
-
-const Component: React.FC<Props> = ({ pageContext }) => {
+const Component: React.FC = () => {
   const badge = (upFlg: boolean, downFlg: boolean) => {
     if (!upFlg && !downFlg) {
       return '';
@@ -48,7 +28,7 @@ const Component: React.FC<Props> = ({ pageContext }) => {
           <th>女子</th>
         </thead>
         <tbody>
-          {pageContext.data.map((v, i) => (
+          {data.map((v, i) => (
             <tr key={i}>
               <td className="text-nowrap">{`${v.year} ${v.season === '1' ? '春' : '秋'}`}</td>
               <td><span className="pr-2">{getResultString(v.data[0].group, v.data[0].rank, v.data[0].remarks)}</span>{badge(v.data[0].up_flg === '1', v.data[0].down_flg === '1')}</td>

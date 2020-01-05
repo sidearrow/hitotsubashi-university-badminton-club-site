@@ -3,6 +3,7 @@ import React from "react"
 import Layout from "../components/layout"
 import config from "../config/configIndex";
 import { Link } from "@reach/router";
+import PageCardList from "../components/pageCardList";
 
 const positions = [
   {
@@ -75,17 +76,8 @@ const practiceTimeTableContent = [
 
 const AboutPage: React.FC = () => (
   <Layout pageMetadata={config.pageMetadata.infoIndex}>
-    <section className="mb-5 form-row">
-      {[config.pageMetadata.infoMember, config.pageMetadata.infoAnnualSchedule].map((v, i) => (
-        <div className="col-md-4" key={i}>
-          <div className="card h-100 border-dark">
-            <div className="card-body">
-              <Link to={v.path} className="stretched-link">{v.title}</Link>
-              <div>{v.description}</div>
-            </div>
-          </div>
-        </div>
-      ))}
+    <section className="mb-5">
+      <PageCardList pageList={[config.pageMetadata.infoMember, config.pageMetadata.infoAnnualSchedule]} />
     </section>
     <section>
       <h2 className="hub-h2">役職</h2>

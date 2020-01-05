@@ -1,3 +1,4 @@
+/*
 require('ts-node').register({
   compilerOptions: {
     module: 'commonjs',
@@ -6,3 +7,4 @@ require('ts-node').register({
 });
 
 exports.createPages = require('./src/gatsby-node/index').createPages;
+*/
