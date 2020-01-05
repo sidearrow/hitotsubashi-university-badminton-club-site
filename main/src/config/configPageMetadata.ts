@@ -4,6 +4,7 @@ export type PageKey = 'index'
   | 'infoAnnualSchedule'
   | 'resultIndex'
   | 'resultLeague'
+  | 'resultSansho'
   | 'santama'
   | 'bbs'
   | 'mizutori'
@@ -53,6 +54,12 @@ const pageMetadata: { [key in PageKey]: PageMetadata } = {
     path: '/result/league',
     description: '関東学生バドミントン連盟リーグ、リーグ戦の結果です',
     breadcrumb: ['index', 'resultIndex', 'resultLeague'],
+  },
+  resultSansho: {
+    title: '三商戦 結果',
+    path: '/result/sansho',
+    description: '三商戦の結果です。毎年開催される、神戸大学・大阪市立大学との定期戦です。',
+    breadcrumb: ['index', 'resultIndex', 'resultSansho'],
   },
   bbs: {
     title: '掲示板',

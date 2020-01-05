@@ -7,7 +7,12 @@ const Component: React.FC = () => {
   return (
     <Layout pageMetadata={config.pageMetadata.resultIndex}>
       <section className="section">
-        <Link to="result/league">リーグ戦</Link>
+        <div>
+          <Link to="/result/league">リーグ戦</Link>
+        </div>
+        <div>
+          <Link to="/result/sansho">三商戦</Link>
+        </div>
       </section>
     </Layout>
   )
