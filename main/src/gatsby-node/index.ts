@@ -1,23 +1,43 @@
-import axios from 'axios';
 import path from 'path';
 import { GatsbyNode } from 'gatsby';
 
-const http = axios.create({
-  baseURL: 'http://localhost:3000',
-});
+export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql }) => {
+  const { createPage } = actions;
 
-const getLeagueResultData = async () => {
-  return await http.get('/league-result');
-}
+  type AllMarkdown = {
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          frontmatter: {
+            path: string;
+          }
+        }
+      }[]
+    }
+  };
+  const allMarkdown: { data?: AllMarkdown } = await graphql(`
+    {
+      allMarkdownRemark(limit: 1000) {
+        edges {
+          node {
+            frontmatter {
+              path
+            }
+          }
+        }
+      }
+    }
+  `);
 
-export const createPages: GatsbyNode['createPages'] = async ({
-  actions: {createPage}
-}) => {
-  const leagueResultData = await getLeagueResultData();
+  if (typeof allMarkdown.data === 'undefined') {
+    return;
+  }
 
-  createPage({
-    path: '/result/league',
-    component: path.resolve('src/templates/league.tsx'),
-    context: { data: leagueResultData.data }
+  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: path.resolve('src/templates/markdown.tsx'),
+      context: {}
+    });
   });
 }
