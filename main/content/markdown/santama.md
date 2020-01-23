@@ -1,8 +1,10 @@
 ---
 path: /santama
 title: 三多摩大会
+breadcrumbs:
+  - path: /
+    text: HOME
+  - path: /santama
+    text: 三多摩大会
 ---
-
-# 三多摩地区学生バドミントン選手権大会
-
-- 2019 年
+- [第 50 回（2015 年度）](/santama/2015)

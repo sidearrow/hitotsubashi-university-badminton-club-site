@@ -15,7 +15,7 @@ export type PageMetadata = {
   title: string | null;
   path: string;
   description: string;
-  breadcrumb: PageKey[];
+  breadcrumb: string[];
 };
 
 const pageMetadata: { [key in PageKey]: PageMetadata } = {
