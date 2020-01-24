@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-import config from '../config/configIndex';
 import { PageMetadata } from '../config/configPageMetadata';
 
 type Data = {
@@ -20,7 +19,6 @@ type Data = {
 };
 
 export default ({ data }: { data: Data }) => {
-  console.log(data)
   const pageMetadata: PageMetadata = {
     path: data.markdownRemark.path,
     title: data.markdownRemark.frontmatter.title,
