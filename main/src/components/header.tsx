@@ -13,7 +13,7 @@ const Header: React.FC = () => (
         </Link>
       </div>
     </nav>
-    <div className="position-relative bg-white">
+    <div className="position-relative bg-white border-bottom border-dark">
       <div className="container-fluid main-container header-nav-box">
         {menuList.map((menu, i) => (
             <Link to={menu.path} className="header-nav-item" key={i}>{menu.text}</Link>
