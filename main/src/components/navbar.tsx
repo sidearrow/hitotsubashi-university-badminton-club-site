@@ -1,15 +1,8 @@
 import { Link } from "gatsby"
 import React from "react"
-import config from "../config/configIndex";
 import logo from '../assets/img/logo.png';
 
-const menuList = [
-  config.pageMetadata.infoIndex,
-  config.pageMetadata.resultIndex,
-  config.pageMetadata.santama,
-  config.pageMetadata.bbs,
-  config.pageMetadata.mizutori,
-]
+import menuList from '../data/nav_list.json';
 
 const Component: React.FC = () => {
   const [isActiveMenu, setIsActiveMeun] = React.useState(false);
@@ -33,7 +26,7 @@ const Component: React.FC = () => {
         <div className={`container collapse d-sm-block ${isActiveMenu ? 'show' : 'd-none'}`}>
           <div className="row">
             {menuList.map((menu, i) => (
-              <Link to={menu.path} className="hub-nav-link col-sm-2 col-12 text-sm-center mb-sm-0 mb-2 text-nowrap" onClick={handleToggleMenu} key={i}>{menu.title}</Link>
+              <Link to={menu.path} className="hub-nav-link col-sm-2 col-12 text-sm-center mb-sm-0 mb-2 text-nowrap" onClick={handleToggleMenu} key={i}>{menu.text}</Link>
             ))}
           </div>
         </div>

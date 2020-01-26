@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from '../components/layout';
-import config from '../config/configIndex';
+import pageMetadata from '../pageMetaData';
 
 const Component: React.FC = () => {
   return (
-    <Layout pageMetadata={config.pageMetadata.mizutori}>
+    <Layout pageMetadata={pageMetadata.mizutori}>
       <div>準備中</div>
     </Layout>
   )

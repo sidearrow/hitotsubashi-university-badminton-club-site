@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from '../components/layout';
-import config from '../config/configIndex';
+import pageMetadata from '../pageMetaData';
 
 const Component: React.FC = () => {
   return (
-    <Layout pageMetadata={config.pageMetadata.bbs}>
+    <Layout pageMetadata={pageMetadata.bbs}>
       <section>
         <p>掲示板はこちらのリンクからご確認ください。</p>
         <a href="http://hitotsubashibad.bbs.fc2.com/" target="_blank">新掲示板</a>

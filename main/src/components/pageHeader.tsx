@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import config from '../config/configIndex';
-import { PageMetadata } from '../config/configPageMetadata';
+import { PageMetadata } from '../pageMetaData';
 
 type Props = {
   pageMetadata: PageMetadata;
@@ -13,10 +12,10 @@ const PageHeader: React.FC<Props> = props => (
       <div>
         <ol className="breadcrumb bg-transparent">
           {props.pageMetadata.breadcrumb.map((v, i) => (
-            <li className="breadcrumb-item">
+            <li className="breadcrumb-item" key={i}>
               {props.pageMetadata.breadcrumb.length - 1 === i
-                ? <span>{config.pageMetadata[v].title}</span>
-                : <Link to={config.pageMetadata[v].path}>{config.pageMetadata[v].title}</Link>}
+                ? <span>{v.text}</span>
+                : <Link to={v.path}>{v.text}</Link>}
             </li>
           ))}
         </ol>

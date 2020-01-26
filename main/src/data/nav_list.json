@@ -1,0 +1,22 @@
+[
+  {
+    "text": "部活情報",
+    "path": "/info"
+  },
+  {
+    "text": "試合結果",
+    "path": "/result"
+  },
+  {
+    "text": "三多摩大会",
+    "path": "/santama"
+  },
+  {
+    "text": "掲示板",
+    "path": "/bbs"
+  },
+  {
+    "text": "みずとり会",
+    "path": "/mizutori"
+  }
+]
