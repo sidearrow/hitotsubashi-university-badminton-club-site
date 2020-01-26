@@ -7,4 +7,7 @@ breadcrumbs:
   - path: /santama
     text: 三多摩大会
 ---
-- [第 50 回（2015 年度）](/santama/2015)
+
+# 三多摩大会
+
+[第 50 回（2015 年度）](/santama/2015)

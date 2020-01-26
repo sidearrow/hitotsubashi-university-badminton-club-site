@@ -9,6 +9,18 @@ breadclumbs:
     path: /info
 ---
 
+# 部活情報
+
+一橋大学体育会バドミントン部は、関東学生バドミントン連盟男子 4 部、女子 5 部に所属し、リーグでの昇格を目指して週 3 ～ 5 日練習に取り組んでいます。
+
+----
+
+[部員情報](/info/member)
+
+[年間スケジュール](/info/annual-schedule)
+
+----
+
 ## 役職
 
 <div class="container"><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">部長</div><div class="col-6 col-md-8 py-2">髙橋 真弓</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">監督</div><div class="col-6 col-md-8 py-2">小原 貴文</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">コーチ</div><div class="col-6 col-md-8 py-2">中山 朋子</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">主将</div><div class="col-6 col-md-8 py-2">村山 康平</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">女子主将</div><div class="col-6 col-md-8 py-2">植木 さやか</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">主務</div><div class="col-6 col-md-8 py-2">佐藤 和貴</div></div></div>

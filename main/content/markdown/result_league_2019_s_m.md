@@ -3,7 +3,11 @@ path: /result/league/2019-s-m
 title: リーグ戦結果 2019年春期男子
 description: リーグ戦結果 2019年春期男子
 ---
+
+# リーグ戦結果 2019年春期男子
+
 ## 結果概要
+
 <div class="table-scroll">
 
 |          | 千葉 | 日大経済 | 国士舘 | 北里 | 山梨学院 | 一橋 | 順位 |
