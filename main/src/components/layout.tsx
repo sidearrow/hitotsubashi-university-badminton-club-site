@@ -4,7 +4,7 @@ import Navbar from "./navbar"
 import "../assets/sass/index.scss"
 import PageHeader from "./pageHeader";
 import Head from "./head";
-import { PageMetadata } from "../config/configPageMetadata";
+import { PageMetadata } from "../pageMetaData";
 
 const Layout: React.FC<{
   pageMetadata: PageMetadata
@@ -20,7 +20,7 @@ const Layout: React.FC<{
         <Navbar />
         {props.pageMetadata.title !== 'HOME'
           && (<PageHeader pageMetadata={props.pageMetadata} />)}
-        <main className="container bg-white" style={{ flex: 1 }}>{props.children}</main>
+        <main className="container bg-white main-container" style={{ flex: 1 }}>{props.children}</main>
         <footer className="footer py-5">
           <div className="container">
             <div className="text-right">
