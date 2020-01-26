@@ -13,14 +13,10 @@ const Layout: React.FC<{
   return (
     <>
       <Head pageMetadata={props.pageMetadata} />
-      <div style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-      }}>
+      <div className="content">
         <Navbar />
         <UnofficialAlert />
-        <main className="container bg-white main-container" style={{ flex: 1 }}>{props.children}</main>
+        <main className="container" style={{ flex: 1 }}>{props.children}</main>
         <Footer />
       </div>
     </>

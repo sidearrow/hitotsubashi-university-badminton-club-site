@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 
 const Footer = () => (
   <footer className="footer py-5">
-    <div className="container-fluid main-container">
+    <div className="container">
       <div className="text-right">
         <span>
           <a href="https://twitter.com/hit_u_bad" target="__blank">

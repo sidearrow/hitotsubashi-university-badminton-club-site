@@ -8,7 +8,7 @@ type Props = {
 
 const PageHeader: React.FC<Props> = props => (
   <div className="jumbotron mb-0 border-bottom border-dark px-0">
-    <div className="container main-container">
+    <div className="container">
       <div>
         <ol className="breadcrumb bg-transparent">
           {props.pageMetadata.breadcrumb.map((v, i) => (

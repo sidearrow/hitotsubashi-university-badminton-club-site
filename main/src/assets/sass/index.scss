@@ -7,7 +7,13 @@
 @import "../../../node_modules/@fortawesome/fontawesome-free/css/brands.min.css";
 
 html {
-  font-size: 13px;
+  font-size: 14px;
+}
+
+.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
@@ -15,19 +21,11 @@ main {
   padding-bottom: 50px;
 }
 
-.main-container {
+.container {
+  width: 100%;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-right: auto;
+  margin-left: auto;
   max-width: 720px;
-}
-
-.hub-h1 {
-  font-size: 1.75rem;
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.hub-h2 {
-  font-size: 1.5rem;
-  padding-bottom: 0.25rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px dotted;
 }
