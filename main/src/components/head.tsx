@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import config from '../config/configIndex';
-import { PageMetadata } from '../config/configPageMetadata';
+import { PageMetadata } from '../pageMetaData';
 
 const fontUrl = 'https://fonts.googleapis.com/css?family=Noto+Sans+JP|Roboto&display=swap';
 const metaKeywords = [

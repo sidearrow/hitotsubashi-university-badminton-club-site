@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 
 import Layout from "../../components/layout"
 import members from '../../files/member.json'
-import config from '../../config/configIndex';
+import pageMetadata from '../../pageMetaData';
 
 const Component: React.FC = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -11,7 +11,7 @@ const Component: React.FC = () => {
   }, []);
 
   return (
-    <Layout pageMetadata={config.pageMetadata.infoMember}>
+    <Layout pageMetadata={pageMetadata.infoMember}>
       <div className="form-row">
         {members.map((v, i) => (
           <div className="col-3" key={i}>

@@ -2,11 +2,11 @@ import React from 'react';
 import Layout from '../../components/layout';
 import './annual-schedule.css';
 import data from './annual-schedule.json';
-import config from '../../config/configIndex';
+import pageMetadata from '../../pageMetaData';
 
 const Component: React.FC = () => {
   return (
-    <Layout pageMetadata={config.pageMetadata.infoAnnualSchedule}>
+    <Layout pageMetadata={pageMetadata.infoAnnualSchedule}>
       <ul className="timeline">
         {data.map(v => (
           <li>

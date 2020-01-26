@@ -45,6 +45,12 @@ const pageMetadata: { [key in string]: PageMetadata } = {
     description: 'みずとり会のページです',
     breadcrumb: [],
   },
+  "404": {
+    title: 'ページが見つかりません',
+    path: '/404',
+    description: 'ページが見つかりません',
+    breadcrumb: [],
+  }
 };
 
 export default pageMetadata;
