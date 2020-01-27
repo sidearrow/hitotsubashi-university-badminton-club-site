@@ -12,6 +12,12 @@
     border-bottom: 1px dotted;
   }
 
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
   a {
     color: #ac2926;
   }
@@ -40,6 +46,10 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     white-space: nowrap;
+  }
+
+  .table-noheader thead {
+    display: none;
   }
 
   table {

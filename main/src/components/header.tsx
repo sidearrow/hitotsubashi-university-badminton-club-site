@@ -6,7 +6,7 @@ import menuList from '../data/nav_list.json';
 
 const Header: React.FC = () => (
   <>
-    <nav className="position-relative bg-white">
+    <nav className="position-relative bg-white pt-3">
       <div className="container">
         <Link to="/" >
           <img src={logo} style={{ maxWidth: '100%' }} />

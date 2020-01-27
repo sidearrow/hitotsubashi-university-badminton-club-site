@@ -29,3 +29,10 @@ main {
   margin-left: auto;
   max-width: 720px;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
