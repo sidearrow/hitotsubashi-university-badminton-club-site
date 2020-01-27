@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 
-const script = document.createElement('script');
-script.src = 'https://platform.twitter.com/widgets.js';
-script.async = true;
-script.charset = 'utf-8';
 
 const TwitterTimeline: React.FC = () => {
   useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://platform.twitter.com/widgets.js';
+    script.async = true;
+    script.charset = 'utf-8';
+
     const el = document.getElementById('twitterTimelineScript');
     el !== null && el.replaceWith(script);
   });
