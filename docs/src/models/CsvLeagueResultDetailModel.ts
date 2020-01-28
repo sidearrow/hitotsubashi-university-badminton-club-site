@@ -1,39 +1,33 @@
 import AbstractCsvModel from "./AbstractCsvModel";
 
-type CsvLeagueResultDetail = {
-  callage_name: string,
-  callage_name_short: string,
-  rank: string,
-  w: string,
-  l: string,
-  wl1: string,
-  w1: string,
-  l1: string,
-  wl2: string,
-  w2: string,
-  l2: string,
-  wl3: string,
-  w3: string,
-  l3: string,
-  wl4: string,
-  w4: string,
-  l4: string,
-  wl5: string,
-  w5: string,
-  l5: string,
-  wl6: string,
-  w6: string,
-  l6: string,
-  remarks: string,
+export type CsvLeagueResultDetail = {
+  no1: string;
+  no2: string;
+  name11: string;
+  name12: string;
+  mc1: string;
+  s01: string;
+  s11: string;
+  s12: string;
+  s21: string;
+  s22: string;
+  s31: string;
+  s32: string;
+  s02: string;
+  name21: string;
+  name22: string;
+  mc2: string;
+  remarks: string;
 };
 
 export default class CsvLeagueResultDetailModel extends AbstractCsvModel {
   public constructor(leagueId: string) {
     super();
-    this.setFileName(`league/${leagueId}/${leagueId}_league_result_detail.csv`);
+
+    this.setFileName(`league/league_result_${leagueId}_detail.csv`);
   }
 
   public get() {
-    return <CsvLeagueResultDetail[]> super.get();
+    return <CsvLeagueResultDetail[]>super.get();
   }
 }
