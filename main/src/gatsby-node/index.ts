@@ -15,6 +15,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
       }[]
     }
   };
+
   const allMarkdown: { data?: AllMarkdown } = await graphql(`
     {
       allMarkdownRemark(limit: 1000) {
@@ -39,5 +40,13 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
       component: path.resolve('src/templates/markdown.tsx'),
       context: {}
     });
+  });
+
+  createPage({
+    path: 'result/league/201911',
+    component: path.resolve('src/templates/leagueResult.tsx'),
+    context: {
+      leagueId: '201911',
+    }
   });
 }

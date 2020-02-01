@@ -24,5 +24,6 @@ module.exports = {
         plugins: [`gatsby-remark-copy-linked-files`],
       },
     },
+    `gatsby-transformer-csv`,
   ],
 }
