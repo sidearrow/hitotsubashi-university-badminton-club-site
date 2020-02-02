@@ -58,12 +58,16 @@
 
     thead {
       background-color: #e2e3e5;
+      td {
+        white-space: nowrap;
+      }
     }
 
     th,
     td {
       border: 1px solid lightgray;
       padding: 0.5rem;
+      white-space: nowrap;
     }
   }
 }
