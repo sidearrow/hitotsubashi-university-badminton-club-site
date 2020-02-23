@@ -16,7 +16,7 @@ const Layout: React.FC<{
       <div className="content">
         <Navbar />
         <UnofficialAlert />
-        <main className="container" style={{ flex: 1 }}>{props.children}</main>
+        <main className="container main-content" style={{ flex: 1 }}>{props.children}</main>
         <Footer />
       </div>
     </>

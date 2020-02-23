@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react'
 
-import Layout from "../../components/layout"
-import members from '../../files/member.json'
-import pageMetadata from '../../pageMetaData';
+import Layout from "../components/layout"
+import members from '../files/member.json'
+import pageMetadata from '../pageMetaData';
 
 const Component: React.FC = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);

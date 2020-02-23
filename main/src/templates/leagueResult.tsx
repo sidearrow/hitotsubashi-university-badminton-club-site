@@ -84,9 +84,6 @@ const Component: React.FC<{
     leagueId: Number;
   }
 }> = ({ data, pageContext }) => {
-  console.log(pageContext)
-  console.log(data)
-
   const getCallageName = (gameNo: string): string => {
     const node = data.team.edges.find(v => v.node.game_no === gameNo);
     return typeof node === 'undefined' ? '' : node.node.name;
@@ -120,7 +117,7 @@ const Component: React.FC<{
 
   return (
     <Layout pageMetadata={pageMetadata}>
-      <div className="markdown">
+      <div>
         <h1>{data.summary.edges[0].node.title}</h1>
         <h2>対戦表</h2>
         <div className="table-responsive">
@@ -128,8 +125,8 @@ const Component: React.FC<{
             <thead>
               <tr>
                 <td></td>
-                {data.team.edges.map(v => <td>{v.node.name_short}</td>)}
-                <td>順位</td>
+                {data.team.edges.map(v => <td className="text-center">{v.node.name_short}</td>)}
+                <td className="text-center">順位</td>
               </tr>
             </thead>
             <tbody>
@@ -142,7 +139,7 @@ const Component: React.FC<{
                   <td className="text-center">{teamScore(v.node.w4, v.node.l4, v.node.wl1 === '1')}</td>
                   <td className="text-center">{teamScore(v.node.w5, v.node.l5, v.node.wl1 === '1')}</td>
                   <td className="text-center">{teamScore(v.node.w6, v.node.l6, v.node.wl1 === '1')}</td>
-                  <td className="text-right">{v.node.rank}</td>
+                  <td className="text-center">{v.node.rank}</td>
                 </tr>
               ))}
             </tbody>
@@ -158,12 +155,13 @@ const Component: React.FC<{
                   {v.edges.map(v => (
                     <tr>
                       <td>{v.node.name11}{v.node.name12 !== '' && (<><br />{v.node.name12}</>)}</td>
-                      <td>{v.node.s01}</td>
-                      <td>
+                      <td className="text-center">{v.node.s01}</td>
+                      <td className="text-center">
                         <div>{gameScore(v.node.s11, v.node.s12)}</div>
                         <div>{gameScore(v.node.s21, v.node.s22)}</div>
                         <div>{v.node.s31 !== '' && v.node.s32 !== '' && gameScore(v.node.s31, v.node.s32)}</div>
                       </td>
+                      <td className="text-center">{v.node.s02}</td>
                     </tr>
                   ))}
                 </tbody>

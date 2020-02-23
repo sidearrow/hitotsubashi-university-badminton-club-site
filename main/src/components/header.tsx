@@ -1,26 +1,33 @@
 import { Link } from "gatsby"
-import React from "react"
-import logo from '../assets/img/logo.png';
+import React, { useState, useCallback } from "react"
 
 import menuList from '../data/nav_list.json';
 
-const Header: React.FC = () => (
-  <>
-    <nav className="position-relative bg-white pt-3">
-      <div className="container">
-        <Link to="/" >
-          <img src={logo} style={{ maxWidth: '100%' }} />
-        </Link>
-      </div>
-    </nav>
-    <div className="position-relative bg-white border-bottom border-dark">
-      <div className="container header-nav-box">
-        {menuList.map((menu, i) => (
-            <Link to={menu.path} className="header-nav-item" key={i}>{menu.text}</Link>
-        ))}
-      </div>
-    </div>
-  </>
-);
+const Header: React.FC = () => {
+  const [isShow, setIsShow] = useState(false);
+  const handleToggleMenu = () => setIsShow(!isShow);
+
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <div className="container">
+          <Link to="/" className="navbar-brand">一橋大学 バドミントン部</Link>
+          <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className={`collapse navbar-collapse ${isShow ? '' : 'd-none'}`}>
+            <ul className="navbar-nav ml-auto">
+              {menuList.map((menu, i) => (
+                <li className="nav-item" key={i}>
+                  <Link to={menu.path} className="nav-link text-dark">{menu.text}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+}
 
 export default Header;

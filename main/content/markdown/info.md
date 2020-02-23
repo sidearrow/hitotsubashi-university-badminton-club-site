@@ -15,9 +15,9 @@ breadclumbs:
 
 ----
 
-[部員情報](/info/member)
+[部員情報](/member)
 
-[年間スケジュール](/info/annual-schedule)
+[年間スケジュール](/annual-schedule)
 
 ----
 

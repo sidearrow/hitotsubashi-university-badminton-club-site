@@ -20,19 +20,3 @@ main {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-
-.container {
-  width: 100%;
-  padding-right: 2rem;
-  padding-left: 2rem;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 720px;
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-}

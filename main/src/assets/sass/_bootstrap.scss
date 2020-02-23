@@ -1,18 +1,19 @@
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-
-$theme-colors: map-merge(
-  (
-    "main":       #ac2926,
-    "secondary":  $secondary,
-    "info":       $info,
-    "light":      $light,
-  ),
-  $theme-colors
+$theme-colors: (
+  "main": #ac2926
 );
-$font-family-base: 'Noto Sans JP', 'Roboto', sans-serif;
+$font-family-base: arial, sans-serif;
+$font-size-base: 0.9rem;
 $enable-rounded: false;
 
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 720px,
+  xl: 720px
+);
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
 @import "node_modules/bootstrap/scss/root";
 @import "node_modules/bootstrap/scss/reboot";
@@ -28,8 +29,8 @@ $enable-rounded: false;
 //@import "node_modules/bootstrap/scss/button-group";
 //@import "node_modules/bootstrap/scss/input-group";
 //@import "node_modules/bootstrap/scss/custom-forms";
-//@import "node_modules/bootstrap/scss/nav";
-//@import "node_modules/bootstrap/scss/navbar";
+@import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/navbar";
 @import "node_modules/bootstrap/scss/card";
 @import "node_modules/bootstrap/scss/breadcrumb";
 //@import "node_modules/bootstrap/scss/pagination";
