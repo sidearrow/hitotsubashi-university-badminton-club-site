@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import Navbar from "./header"
+import Navbar from "./navbar"
 import "../assets/sass/index.scss"
 import Head from "./head";
 import { PageMetadata } from "../pageMetaData";
@@ -13,10 +13,16 @@ const Layout: React.FC<{
   return (
     <>
       <Head pageMetadata={props.pageMetadata} />
-      <div className="content">
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+      }}>
         <Navbar />
         <UnofficialAlert />
-        <main className="container main-content" style={{ flex: 1 }}>{props.children}</main>
+        <main className="section">
+          <div className="container main-content" style={{ flex: 1 }}>{props.children}</div>
+        </main>
         <Footer />
       </div>
     </>

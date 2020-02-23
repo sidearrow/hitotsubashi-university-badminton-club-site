@@ -4,37 +4,58 @@ import Layout from "../components/layout"
 import members from '../files/member.json'
 import pageMetadata from '../pageMetaData';
 
+type Member = {
+  gender: number;
+  name: string;
+  faculty: string;
+  highschool: string;
+  comment: string;
+  positions: string[];
+};
+
 const Component: React.FC = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const handleClickTab = useCallback((i) => {
     setActiveTabIndex(() => i)
   }, []);
 
+  const cmpMember = (member: Member) => (
+    <div className="content">
+        <div className={`title is-5 ${member.gender === 0 ? 'text-info' : 'text-danger'}`}>{member.name}</div>
+        <div className="tags are-medium">
+          <span className="tag is-light">{member.faculty}</span>
+          <span className="tag is-light">{member.highschool}</span>
+          {member.positions.map((pos, i) => (
+            <span className="tag is-light" key={i}>{pos}</span>
+          ))}
+        </div>
+        <div className="pb-1">{member.comment}</div>
+    </div>
+  );
+
   return (
     <Layout pageMetadata={pageMetadata.infoMember}>
-      <div className="form-row">
+      <div className="content">
         {members.map((v, i) => (
           <div className="col-3" key={i}>
-            <button className={`btn btn-block btn-outline-main ${i === activeTabIndex ? 'active' : ''}`} onClick={e => handleClickTab(i)}>
-              <a>{v.grade} 年生</a>
-            </button>
+            <a className={`btn btn-block btn-outline-main ${i === activeTabIndex ? 'active' : ''}`} onClick={e => handleClickTab(i)}>{v.grade} 年生
+            </a>
           </div>
         ))}
       </div>
-      <div className="mt-5">
+      <div>
         {members.map((v, i) => (
-          <div className="row" key={i} style={{ display: i === activeTabIndex ? '' : 'none' }}>
+          <div className="columns is-multiline" key={i} style={{ display: i === activeTabIndex ? '' : 'none' }}>
             {v.members.map((member, i) => (
-              <div className="col-md-6" key={i} style={{ marginBottom: 30 }}>
-                <div className={`h4 pb-1 ${member.gender === 0 ? 'text-info' : 'text-danger'}`}>{member.fullName}</div>
-                <div className="mb-2">
-                  <span className="px-2 border border-dark d-inline-block mr-2 mt-2">{member.faculty}</span>
-                  <span className="px-2 border border-dark d-inline-block mr-2 mt-2">{member.highschool}</span>
-                  {member.positions.map((pos, i) => (
-                    <span className="px-2 border border-dark d-inline-block mr-2 mt-2" key={i}>{pos}</span>
-                  ))}
-                </div>
-                <div className="pb-1">{member.comment}</div>
+              <div className="column is-half is-narrow" key={i} style={{ marginBottom: 30 }}>
+                {cmpMember({
+                  gender: member.gender,
+                  name: member.fullName,
+                  highschool: member.highschool,
+                  faculty: member.faculty,
+                  comment: member.comment,
+                  positions: member.positions,
+                })}
               </div>
             ))}
           </div>

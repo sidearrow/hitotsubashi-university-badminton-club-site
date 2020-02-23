@@ -1,4 +1,5 @@
-@import "./bootstrap";
+//@import "./bootstrap";
+@import "./bulma";
 @import "./markdown";
 @import "./header";
 @import "./footer";
@@ -8,12 +9,6 @@
 
 html {
   font-size: 14px;
-}
-
-.content {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 main {
