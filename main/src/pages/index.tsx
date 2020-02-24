@@ -1,7 +1,7 @@
 import * as React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import pageMetadata from "../pageMetaData";
-import TwitterTimeline from "../components/twitterTImeline";
+import TwitterTimeline from "../components/TwitterTImeline";
 
 import logo from '../assets/img/logo.svg';
 

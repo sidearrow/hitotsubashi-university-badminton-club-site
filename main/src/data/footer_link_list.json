@@ -4,10 +4,6 @@
     "path": "/"
   },
   {
-    "text": "ABOUT",
-    "path": "/info"
-  },
-  {
     "text": "部員紹介",
     "path": "/info/member"
   },

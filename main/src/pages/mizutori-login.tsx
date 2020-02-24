@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import pageMetadata from '../pageMetaData';
 import { navigate } from 'gatsby';
 import Auth from '../auth';

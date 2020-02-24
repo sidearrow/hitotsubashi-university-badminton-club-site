@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react"
-import Navbar from "./navbar"
-import Head from "./head";
+import Navbar from "./Navbar"
+import Head from "./Head";
 import { PageMetadata } from "../pageMetaData";
-import Footer from "./footer";
-import UnofficialAlert from "./unofficialAlert";
-import AuthProvider, { AuthContext, AuthStatus } from "../AuthProvider";
+import Footer from "./Footer";
+import UnofficialAlert from "./UnofficialAlert";
+import AuthProvider from "../AuthProvider";
 
 import "../assets/sass/index.scss"
 
