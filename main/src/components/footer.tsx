@@ -8,8 +8,8 @@ const Footer = () => (
     <div className="container">
       <div className="columns">
         <div className="column is-half">
-          {footerLinkList.map((v) => (
-            <div>
+          {footerLinkList.map((v, i) => (
+            <div key={i}>
               <Link to={v.path} className="d-inline-block mr-3">{v.text}</Link>
             </div>
           ))}

@@ -117,7 +117,7 @@ const Component: React.FC<{
 
   return (
     <Layout pageMetadata={pageMetadata}>
-      <div>
+      <div className="section">
         <h1>{data.summary.edges[0].node.title}</h1>
         <h2>対戦表</h2>
         <div className="table-responsive">
@@ -133,13 +133,13 @@ const Component: React.FC<{
               {data.team.edges.map(v => (
                 <tr>
                   <td>{v.node.name}</td>
-                  <td className="text-center">{teamScore(v.node.w1, v.node.l1, v.node.wl1 === '1')}</td>
-                  <td className="text-center">{teamScore(v.node.w2, v.node.l2, v.node.wl1 === '1')}</td>
-                  <td className="text-center">{teamScore(v.node.w3, v.node.l3, v.node.wl1 === '1')}</td>
-                  <td className="text-center">{teamScore(v.node.w4, v.node.l4, v.node.wl1 === '1')}</td>
-                  <td className="text-center">{teamScore(v.node.w5, v.node.l5, v.node.wl1 === '1')}</td>
-                  <td className="text-center">{teamScore(v.node.w6, v.node.l6, v.node.wl1 === '1')}</td>
-                  <td className="text-center">{v.node.rank}</td>
+                  <td className="has-text-centered">{teamScore(v.node.w1, v.node.l1, v.node.wl1 === '1')}</td>
+                  <td className="has-text-centered">{teamScore(v.node.w2, v.node.l2, v.node.wl1 === '1')}</td>
+                  <td className="has-text-centered">{teamScore(v.node.w3, v.node.l3, v.node.wl1 === '1')}</td>
+                  <td className="has-text-centered">{teamScore(v.node.w4, v.node.l4, v.node.wl1 === '1')}</td>
+                  <td className="has-text-centered">{teamScore(v.node.w5, v.node.l5, v.node.wl1 === '1')}</td>
+                  <td className="has-text-centered">{teamScore(v.node.w6, v.node.l6, v.node.wl1 === '1')}</td>
+                  <td className="has-text-centered">{v.node.rank}</td>
                 </tr>
               ))}
             </tbody>
@@ -155,13 +155,13 @@ const Component: React.FC<{
                   {v.edges.map(v => (
                     <tr>
                       <td>{v.node.name11}{v.node.name12 !== '' && (<><br />{v.node.name12}</>)}</td>
-                      <td className="text-center">{v.node.s01}</td>
-                      <td className="text-center">
+                      <td className="has-text-centered">{v.node.s01}</td>
+                      <td className="has-text-centered">
                         <div>{gameScore(v.node.s11, v.node.s12)}</div>
                         <div>{gameScore(v.node.s21, v.node.s22)}</div>
                         <div>{v.node.s31 !== '' && v.node.s32 !== '' && gameScore(v.node.s31, v.node.s32)}</div>
                       </td>
-                      <td className="text-center">{v.node.s02}</td>
+                      <td className="has-text-centered">{v.node.s02}</td>
                     </tr>
                   ))}
                 </tbody>

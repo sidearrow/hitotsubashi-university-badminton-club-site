@@ -4,7 +4,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
+        name: '一橋大学バドミントン部',
         start_url: '/',
         background_color: '#ac2926',
         theme_color: '#ac2926',
