@@ -25,8 +25,8 @@ const Layout: React.FC<{
           flexShrink: 1,
           flexBasis: 0,
           width: '100%',
-        }}>
-          <div className="section" style={{ paddingTop: 0 }}>{props.children}</div>
+          paddingTop: 0,
+        }}>{props.children}
         </main>
         <Footer />
       </div>

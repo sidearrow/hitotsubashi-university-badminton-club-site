@@ -30,7 +30,7 @@ export default ({ data }: { data: Data }) => {
 
   return (
     <Layout pageMetadata={pageMetadata}>
-      <div className="markdown">
+      <div className="section">
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div>
         {pageMetadata.path === '/result/sansho' && <SanshoTable />}
       </div>
