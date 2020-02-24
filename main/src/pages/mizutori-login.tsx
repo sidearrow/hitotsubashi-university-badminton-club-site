@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../components/layout';
 import pageMetadata from '../pageMetaData';
-import { mizutoriLogin } from '../auth';
 import { navigate } from 'gatsby';
+import Auth from '../auth';
 
 const Component: React.FC = () => {
-  const login = async () => {
-    const inputPassword = (document.getElementById('inputPassword') as HTMLInputElement).value;
-    const res = await mizutoriLogin(inputPassword);
-    if (res) {
-      navigate('/mizutori');
-    }
-  };
+  useEffect(() => {
+    document.getElementById('loginButton')?.addEventListener('click', async () => {
+      const inputPassword = (document.getElementById('inputPassword') as HTMLInputElement).value;
+      const isLoginSuccess = await (new Auth).login(inputPassword);
+      if (isLoginSuccess) {
+        navigate('/mizutori');
+      }
+    });
+  }, []);
 
   return (
     <Layout pageMetadata={pageMetadata.mizutori}>
@@ -24,7 +26,7 @@ const Component: React.FC = () => {
                   <input className="input" type="password" id="inputPassword" placeholder="パスワード" />
                 </div>
                 <div className="content has-text-centered">
-                  <button className="button is-primary is-outlined" onClick={login}>ログイン</button>
+                  <button className="button is-primary is-outlined" id="loginButton">ログイン</button>
                 </div>
               </div>
             </div>

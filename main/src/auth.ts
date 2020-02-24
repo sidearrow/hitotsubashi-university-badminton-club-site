@@ -1,23 +1,32 @@
-import { firebaseAuth } from "./firebase"
+import Firebase from "./firebase"
 import constant from "./constant";
 
-export const mizutoriLogin = async (password: string) => {
-  try {
-    await firebaseAuth.signInWithEmailAndPassword(constant.mizutoriEmail, password);
-    return true;
-  } catch (e) {
-    return false;
+export default class Auth {
+  private firebaseAuth: firebase.auth.Auth;
+
+  public constructor() {
+    const firebase = new Firebase();
+    this.firebaseAuth = firebase.getAuth();
   }
-}
 
-export const isMizutoriLogin = (): Promise<boolean> => {
-  return new Promise((resolve, _) => {
-    firebaseAuth.onAuthStateChanged((user) => {
-      resolve(user?.email === constant.mizutoriEmail);
+  public async login(password: string) {
+    try {
+      await this.firebaseAuth.signInWithEmailAndPassword(constant.mizutoriEmail, password);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  public isLogin(): Promise<boolean> {
+    return new Promise((resolve, _) => {
+      this.firebaseAuth.onAuthStateChanged((user) => {
+        resolve(user?.email === constant.mizutoriEmail);
+      });
     });
-  });
-}
+  }
 
-export const mizutoriLogout = () => {
-  firebaseAuth.signOut();
+  public logout() {
+    this.firebaseAuth.signOut();
+  }
 }

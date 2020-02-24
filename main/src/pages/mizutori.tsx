@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout';
 import pageMetadata from '../pageMetaData';
-import { isMizutoriLogin, mizutoriLogout } from '../auth';
 import { navigate } from 'gatsby';
+import Auth from '../auth';
 
 const Component: React.FC = () => {
   const [isShow, setIsShow] = useState(false);
 
   const logout = () => {
-    mizutoriLogout();
+    (new Auth).logout();
     navigate('/mizutori-login');
   };
 
   useEffect(() => {
     (async () => {
-      const isLogin = await isMizutoriLogin();
+      const isLogin = await (new Auth).isLogin();
       isLogin ? setIsShow(true) : navigate('/mizutori-login');
     })();
   }, []);
