@@ -12,6 +12,7 @@ type Data = {
       path: string;
       title: string;
       description: string;
+      isAuthRequired: boolean | null;
       breadcrumbs: {
         path: string;
         text: string;
@@ -29,7 +30,10 @@ export default ({ data }: { data: Data }) => {
   };
 
   return (
-    <Layout pageMetadata={pageMetadata}>
+    <Layout
+      pageMetadata={pageMetadata}
+      isAuthRequired={data.markdownRemark.frontmatter.isAuthRequired || false}
+    >
       <div className="section">
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div>
         {pageMetadata.path === '/result/sansho' && <SanshoTable />}
@@ -48,6 +52,7 @@ export const pageQuery = graphql`
         path
         title
         description
+        isAuthRequired
         breadcrumbs {
           path
           text

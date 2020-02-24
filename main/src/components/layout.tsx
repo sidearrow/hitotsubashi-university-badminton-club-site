@@ -1,28 +1,30 @@
 import React, { useEffect, useContext } from "react"
-
 import Navbar from "./navbar"
-import "../assets/sass/index.scss"
 import Head from "./head";
 import { PageMetadata } from "../pageMetaData";
 import Footer from "./footer";
 import UnofficialAlert from "./unofficialAlert";
-import Firebase from "../firebase";
-import AuthProvider from "../AuthProvider";
+import AuthProvider, { AuthContext, AuthStatus } from "../AuthProvider";
+
+import "../assets/sass/index.scss"
 
 const Layout: React.FC<{
-  pageMetadata: PageMetadata
+  pageMetadata: PageMetadata;
+  isAuthRequired?: boolean;
 }> = props => {
   useEffect(() => {
+    /*
     document.querySelectorAll('.storage-link').forEach(async (el) => {
       const href = el.getAttribute('href') || '';
-      if (href.substr(0, 3) !== '**/') return;
+      if (href.substr(0, 3) !== '**') return;
       const url = await (new Firebase).getStorageDownloadUrl(href.substr(3));
       el.setAttribute('href', url);
     });
+    */
   });
 
   return (
-    <AuthProvider>
+    <AuthProvider isAuthRequired={props.isAuthRequired || false}>
       <Head pageMetadata={props.pageMetadata} />
       <div style={{
         minHeight: '100vh',
