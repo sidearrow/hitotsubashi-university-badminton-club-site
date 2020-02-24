@@ -35,6 +35,7 @@ const Component: React.FC = () => {
 
   return (
     <Layout pageMetadata={pageMetadata.infoMember}>
+      <h1>部員紹介</h1>
       <div className="content">
         {members.map((v, i) => (
           <div className="col-3" key={i}>

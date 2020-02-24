@@ -20,8 +20,13 @@ const Layout: React.FC<{
       }}>
         <Navbar />
         <UnofficialAlert />
-        <main className="section">
-          <div className="container main-content" style={{ flex: 1 }}>{props.children}</div>
+        <main className="container main-content" style={{
+          flexGrow: 1,
+          flexShrink: 1,
+          flexBasis: 0,
+          width: '100%',
+        }}>
+          <div className="section" style={{ paddingTop: 0 }}>{props.children}</div>
         </main>
         <Footer />
       </div>

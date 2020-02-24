@@ -7,6 +7,7 @@ import pageMetadata from '../pageMetaData';
 const Component: React.FC = () => {
   return (
     <Layout pageMetadata={pageMetadata.infoAnnualSchedule}>
+      <h1>年間スケジュール</h1>
       <ul className="timeline">
         {data.map(v => (
           <li>

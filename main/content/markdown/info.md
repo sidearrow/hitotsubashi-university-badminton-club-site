@@ -23,7 +23,18 @@ breadclumbs:
 
 ## 役職
 
-<div class="container"><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">部長</div><div class="col-6 col-md-8 py-2">髙橋 真弓</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">監督</div><div class="col-6 col-md-8 py-2">小原 貴文</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">コーチ</div><div class="col-6 col-md-8 py-2">中山 朋子</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">主将</div><div class="col-6 col-md-8 py-2">村山 康平</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">女子主将</div><div class="col-6 col-md-8 py-2">植木 さやか</div></div><div class="row mb-2"><div class="col-6 col-md-4 p-2 alert-secondary font-weight-bold">主務</div><div class="col-6 col-md-8 py-2">佐藤 和貴</div></div></div>
+<div class="table-scroll table-noheader">
+
+| | |
+|---|---|
+| 部長 | 髙橋 真弓 |
+| 監督 | 小原 貴文 |
+| コーチ | 中山 朋子 |
+| 主将 | 村山 康平 |
+| 女子主将 | 植木 さやか |
+| 主務 | 佐藤 和貴 |
+
+</div>
 
 ## 練習場所
 

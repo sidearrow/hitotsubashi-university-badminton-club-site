@@ -13,12 +13,10 @@ const TwitterTimeline: React.FC = () => {
   });
 
   return (
-    <div className="card border-dark">
-      <div className="card-body">
-        <div className="h2 text-center mb-3">Twitter</div>
-        <a className="twitter-timeline" data-height="600" data-theme="light" data-chrome="noheader" href="https://twitter.com/hit_u_bad?ref_src=twsrc%5Etfw"></a>
-        <span id="twitterTimelineScript"></span>
-      </div>
+    <div>
+      <h2 className="h2">Twitter</h2>
+      <a className="twitter-timeline" data-height="600" data-theme="light" data-chrome="noheader" href="https://twitter.com/hit_u_bad?ref_src=twsrc%5Etfw"></a>
+      <span id="twitterTimelineScript"></span>
     </div>
   );
 }
