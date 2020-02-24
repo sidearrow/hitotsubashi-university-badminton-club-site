@@ -9,8 +9,12 @@ const Footer = () => (
       <div className="columns">
         <div className="column is-half">
           {footerLinkList.map((v, i) => (
-            <div key={i}>
-              <Link to={v.path} className="d-inline-block mr-3">{v.text}</Link>
+            <div className="menu" key={i}>
+              <ul className="menu-list">
+                <li className="menu-label">
+                  <Link to={v.path}>{v.text}</Link>
+                </li>
+              </ul>
             </div>
           ))}
         </div>
@@ -43,7 +47,7 @@ const Footer = () => (
         </div>
       </div>
       <hr className="spacer is-1" />
-      <div className="has-text-centered">{`© ${new Date().getFullYear()} 一橋大学バドミントン部`}</div>
+      <div className="has-text-centered is-size-7">{`© ${new Date().getFullYear()} 一橋大学バドミントン部`}</div>
     </div>
   </footer>
 );

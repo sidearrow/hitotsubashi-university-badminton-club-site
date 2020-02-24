@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/storage';
 import constant from './constant';
 
 export default class Firebase {
@@ -14,5 +15,11 @@ export default class Firebase {
 
   public getAuth() {
     return Firebase.instance.auth();
+  }
+
+  public async getStorageDownloadUrl(path: string) {
+    const storage = Firebase.instance.storage();
+    const url: string = await storage.ref(path).getDownloadURL();
+    return url;
   }
 }

@@ -1,5 +1,6 @@
 import { Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import { AuthContext, AuthStatus } from "../AuthProvider";
 
 type NavLink = {
   text: string;
@@ -54,34 +55,47 @@ const navLinks: NavLinks = [
     text: '掲示板',
     path: '/bbs',
   },
-  {
-    text: 'みずとり会',
-    path: '/mizutori',
-  }
 ];
 
 const Navbar: React.FC = () => {
   const [isShow, setIsShow] = useState(false);
   const handleToggleMenu = () => setIsShow(!isShow);
 
+  const authStatus = useContext(AuthContext);
+
   const cmpNavLinks = (links: NavLinks) => (
     <>
       {links.map((v, i) => {
         return 'links' in v
           ? (
-            <li className="navbar-item has-dropdown is-hoverable" key={i}>
+            <div className="navbar-item has-dropdown is-hoverable" key={i}>
               <a className="navbar-link">{v.text}</a>
               <div className="navbar-dropdown">{
                 v.links.map((w, j) => (
                   <Link className="navbar-item" to={w.path} key={j}>{w.text}</Link>
                 ))
               }</div>
-            </li>
+            </div>
           )
           : (
             <Link to={v.path} className="navbar-item" key={i}>{v.text}</Link>
           );
       })}
+      <div className="navbar-item has-dropdown is-hoverable">
+        <Link className="navbar-link" to={authStatus === AuthStatus.Login ? 'mizutori' : '#'}>
+          <span style={{ marginRight: '1rem' }}>みずとり会</span>
+          {authStatus === AuthStatus.NotLogin
+            && (<span className="tag is-light">未ログイン</span>)}
+          {authStatus === AuthStatus.Login
+            && (<span className="tag is-light">ログイン中</span>)}
+        </Link>
+        <div className="navbar-dropdown">
+          {authStatus !== AuthStatus.Login
+            && (<Link className="navbar-item" to="/mizutori-login">ログインページ</Link>)}
+          {authStatus === AuthStatus.Login
+            && (<a className="navbar-item">ログアウト</a>)}
+        </div>
+      </div>
     </>
   );
 

@@ -27,6 +27,7 @@ const Component: React.FC = () => {
             <div className="content has-text-right">
               <button className="button is-primary is-outlined" onClick={logout}>ログアウト</button>
             </div>
+            <div><a href="**/obmessage/obmessage_201909.pdf" className="storage-link" target="__blank" data-path="obmessage/obmessage_201909.pdf">aaaaa</a></div>
           </div>
         )
         : (

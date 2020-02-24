@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useEffect, useContext } from "react"
 
 import Navbar from "./navbar"
 import "../assets/sass/index.scss"
@@ -6,12 +6,23 @@ import Head from "./head";
 import { PageMetadata } from "../pageMetaData";
 import Footer from "./footer";
 import UnofficialAlert from "./unofficialAlert";
+import Firebase from "../firebase";
+import AuthProvider from "../AuthProvider";
 
 const Layout: React.FC<{
   pageMetadata: PageMetadata
 }> = props => {
+  useEffect(() => {
+    document.querySelectorAll('.storage-link').forEach(async (el) => {
+      const href = el.getAttribute('href') || '';
+      if (href.substr(0, 3) !== '**/') return;
+      const url = await (new Firebase).getStorageDownloadUrl(href.substr(3));
+      el.setAttribute('href', url);
+    });
+  });
+
   return (
-    <>
+    <AuthProvider>
       <Head pageMetadata={props.pageMetadata} />
       <div style={{
         minHeight: '100vh',
@@ -26,11 +37,10 @@ const Layout: React.FC<{
           flexBasis: 0,
           width: '100%',
           paddingTop: 0,
-        }}>{props.children}
-        </main>
+        }}>{props.children}</main>
         <Footer />
       </div>
-    </>
+    </AuthProvider>
   );
 };
 
