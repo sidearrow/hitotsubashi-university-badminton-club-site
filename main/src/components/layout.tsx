@@ -12,17 +12,6 @@ const Layout: React.FC<{
   pageMetadata: PageMetadata;
   isAuthRequired?: boolean;
 }> = props => {
-  useEffect(() => {
-    /*
-    document.querySelectorAll('.storage-link').forEach(async (el) => {
-      const href = el.getAttribute('href') || '';
-      if (href.substr(0, 3) !== '**') return;
-      const url = await (new Firebase).getStorageDownloadUrl(href.substr(3));
-      el.setAttribute('href', url);
-    });
-    */
-  });
-
   return (
     <AuthProvider isAuthRequired={props.isAuthRequired || false}>
       <Head pageMetadata={props.pageMetadata} />

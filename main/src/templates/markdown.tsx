@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import { PageMetadata } from '../pageMetaData';
 import SanshoTable from '../components/sanshoTable';
+import ObMessage from '../components/ObMessage';
 
 type Data = {
   markdownRemark: {
@@ -36,6 +37,12 @@ export default ({ data }: { data: Data }) => {
     >
       <div className="section">
         <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div>
+        {pageMetadata.path === '/mizutori' && (
+          <>
+            <h2>OB通信</h2>
+            <ObMessage />
+          </>
+        )}
         {pageMetadata.path === '/result/sansho' && <SanshoTable />}
       </div>
     </Layout>

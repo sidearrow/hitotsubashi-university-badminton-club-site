@@ -23,6 +23,9 @@ const Component: React.FC = () => {
             <div className="card">
               <div className="card-content">
                 <div className="content">
+                  <div className="is-size-5">みずとり会 ログイン</div>
+                  </div>
+                <div className="content">
                   <input className="input" type="password" id="inputPassword" placeholder="パスワード" />
                 </div>
                 <div className="content has-text-centered">
