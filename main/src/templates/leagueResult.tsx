@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { PageMetadata } from '../pageMetaData';
+import BreadCrumb from '../components/BreadCrumb';
 
 type LeagueResultSummary = {
   name: string;
@@ -38,32 +39,30 @@ type LeagueResult = {
   detail: LeagueResultDetail;
 };
 
-const SummaryTable: React.FC<{ data: LeagueResultSummary }> = ({ data }) => {
-  return (
-    <div className="table-responsive">
-      <table>
-        <thead>
+const SummaryTable: React.FC<{ data: LeagueResultSummary }> = ({ data }) => (
+  <div className="table-container">
+    <table>
+      <thead>
+        <tr>
+          <td>大学名</td>
+          <td className="text-center">順位</td>
+          {data.map(v => <td className="text-center">{v.nameShort}</td>)}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map(v => (
           <tr>
-            <td>大学名</td>
-            <td className="text-center">順位</td>
-            {data.map(v => <td className="text-center">{v.nameShort}</td>)}
+            <td>{v.name}</td>
+            <td className="has-text-centered">{v.rank}</td>
+            {v.resultDetail.map(v => (
+              <td className="has-text-centered">{v === null ? '-' : `${v.winNum} ${v.isWin ? '○' : '×'} ${v.loseNum}`}</td>
+            ))}
           </tr>
-        </thead>
-        <tbody>
-          {data.map(v => (
-            <tr>
-              <td>{v.name}</td>
-              <td className="has-text-centered">{v.rank}</td>
-              {v.resultDetail.map(v => (
-                <td className="has-text-centered">{v === null ? '-' : `${v.winNum} ${v.isWin ? '○' : '×'} ${v.loseNum}`}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-};
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
 
 const DetailTable: React.FC<{ data: LeagueResultDetail }> = ({ data }) => (
   <>{data.map(v => (
@@ -96,8 +95,6 @@ const Component: React.FC<{
 }> = ({ pageContext }) => {
   const data: LeagueResult = require(`../data/league/league_result_detail_${pageContext.leagueId}.json`);
 
-  console.log(data)
-
   const pageMetadata: PageMetadata = {
     path: `/result/league/${pageContext.leagueId}`,
     title: data.title,
@@ -108,6 +105,11 @@ const Component: React.FC<{
   return (
     <Layout pageMetadata={pageMetadata}>
       <div className="section">
+        <BreadCrumb props={[
+          { text: 'HOME', path: '/' },
+          { text: 'リーグ戦', path: '/league' },
+          { text: data.title, path: null }
+        ]} />
         <h1>{data.title}</h1>
         <h2>対戦表</h2>
         <SummaryTable data={data.summary} />
