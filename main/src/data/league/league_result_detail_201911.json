@@ -29,6 +29,12 @@
                     "winNum": 3,
                     "loseNum": 2,
                     "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 4,
+                    "loseNum": 1,
+                    "remarks": ""
                 }
             ]
         },
@@ -59,6 +65,12 @@
                     "isWin": true,
                     "winNum": 3,
                     "loseNum": 2,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 4,
+                    "loseNum": 1,
                     "remarks": ""
                 }
             ]
@@ -91,6 +103,12 @@
                     "winNum": 4,
                     "loseNum": 1,
                     "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 5,
+                    "loseNum": 0,
+                    "remarks": ""
                 }
             ]
         },
@@ -121,6 +139,12 @@
                     "isWin": false,
                     "winNum": 2,
                     "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 0,
+                    "loseNum": 5,
                     "remarks": ""
                 }
             ]
@@ -153,7 +177,13 @@
                     "loseNum": 2,
                     "remarks": ""
                 },
-                null
+                null,
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                }
             ]
         },
         {
@@ -189,15 +219,16 @@
                     "winNum": 2,
                     "loseNum": 3,
                     "remarks": ""
-                }
+                },
+                null
             ]
         }
     ],
     "detail": [
         {
             "callageName": "国士舘大学",
-            "winNum": "0",
-            "loseNum": "5",
+            "winNum": 0,
+            "loseNum": 5,
             "games": [
                 {
                     "name1": [
@@ -317,8 +348,8 @@
         },
         {
             "callageName": "千葉大学",
-            "winNum": "1",
-            "loseNum": "4",
+            "winNum": 1,
+            "loseNum": 4,
             "games": [
                 {
                     "name1": [
@@ -442,8 +473,8 @@
         },
         {
             "callageName": "北里大学",
-            "winNum": "5",
-            "loseNum": "0",
+            "winNum": 5,
+            "loseNum": 0,
             "games": [
                 {
                     "name1": [
@@ -563,8 +594,8 @@
         },
         {
             "callageName": "日本大学経済学部",
-            "winNum": "1",
-            "loseNum": "4",
+            "winNum": 1,
+            "loseNum": 4,
             "games": [
                 {
                     "name1": [
@@ -688,8 +719,8 @@
         },
         {
             "callageName": "山梨学院大学",
-            "winNum": "2",
-            "loseNum": "3",
+            "winNum": 2,
+            "loseNum": 3,
             "games": [
                 {
                     "name1": [

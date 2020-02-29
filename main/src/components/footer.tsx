@@ -14,8 +14,11 @@ const FooterIconItem: React.FC<{
       <i className={props.icon}></i>
     </span>
     {typeof props.path === 'undefined'
-      ? <span>{props.text}</span>
-      : <Link to={props.path} target={props.isTargetBlank ? '__blank' : undefined}>{props.text}</Link>}
+      && <span>{props.text}</span>}
+    {props.isTargetBlank
+      && <a href={props.path} target="__blank">{props.text}</a>}
+    {!props.isTargetBlank && props.path
+      && <Link to={props.path} target={props.isTargetBlank ? '__blank' : undefined}>{props.text}</Link>}
   </div>
 );
 
