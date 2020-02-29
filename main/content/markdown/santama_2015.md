@@ -21,4 +21,4 @@ description: 第 50 回三多摩大会
 - <a target="_blank" href="#" data-storage="santama/santama_2015_msb_re.pdf">男子シングルスB</a>
 - <a target="_blank" href="#" data-storage="santama/santama_2015_mdb_re.pdf">男子ダブルスA</a>
 - <a target="_blank" href="#" data-storage="santama/santama_2015_ws_re.pdf">女子シングルス</a>
-- <a target="_blank" href="#" data-storage="santama/santama_2015_wd_re.pdf">女子シングルス</a>
+- <a target="_blank" href="#" data-storage="santama/santama_2015_wd_re.pdf">女子ダブルス</a>

@@ -14,22 +14,30 @@ const Layout: React.FC<{
   isAuthRequired?: boolean;
 }> = props => {
   useEffect(() => {
-      document.querySelectorAll('[data-storage]').forEach(async (el) => {
-        const storagePath = el.getAttribute('data-storage');
+    document.querySelectorAll('[data-storage]').forEach(el => {
+      if (el.getAttribute('href') !== '#') {
+        return;
+      }
+      const storagePath = el.getAttribute('data-storage');
+      if (storagePath === null) {
+        return;
+      }
 
-        if (storagePath === null) {
+      el.addEventListener('click', async (e) => {
+        if ((e.target as HTMLElement).getAttribute('href') !== '#') {
           return;
         }
-
+        e.preventDefault();
         let url;
         try {
-          url = await(new Firebase).getStorageDownloadUrl(storagePath);
+          url = await (new Firebase).getStorageDownloadUrl(storagePath);
         } catch {
           url = '/404';
         }
         el.setAttribute('href', url);
         (el as HTMLElement).click();
-      })
+      });
+    })
   });
 
   return (
