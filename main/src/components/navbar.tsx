@@ -109,8 +109,8 @@ const Navbar: React.FC = () => {
     <>
       <nav className="navbar has-shadow">
         <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item is-size-5">一橋大学 バドミントン部</Link>
+          <div className="navbar-brand" style={{ alignItems: 'center' }}>
+            <Link to="/" className="navbar-item is-size-6 has-text-weight-semibold">一橋大学<br />バドミントン部</Link>
             <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" onClick={handleToggleMenu}>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
