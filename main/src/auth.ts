@@ -1,5 +1,5 @@
 import Firebase from "./firebase"
-import constant from "./constant";
+import constant from "./config";
 
 export default class Auth {
   private firebaseAuth: firebase.auth.Auth;

@@ -6,6 +6,7 @@ const constant = {
     storageBucket: process.env.GATSBY_FIREBASE_STORAGE_BUCKET,
     appId: process.env.GATSBY_FIREBASE_APP_ID,
   },
+  googleSiteVerification: process.env.GATSBY_GOOGLE_SITE_VERIFICATION || '',
   mizutoriEmail: process.env.GATSBY_MIZUTORI_EMAIL || '',
 }
 

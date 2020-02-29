@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
-import constant from './constant';
+import constant from './config';
 
 export default class Firebase {
   private static instance: firebase.app.App;
