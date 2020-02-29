@@ -21,8 +21,8 @@ const Component: React.FC = () => {
   }, []);
 
   const cmpMember = (member: Member) => (
-    <div className="content">
-      <div className={`title is-5 ${member.gender === 0 ? 'text-info' : 'text-danger'}`}>{member.name}</div>
+    <div>
+      <h5 className={`${member.gender === 0 ? 'text-info' : 'text-danger'}`}>{member.name}</h5>
       <div className="tags are-medium">
         <span className="tag is-light">{member.faculty}</span>
         <span className="tag is-light">{member.highschool}</span>
@@ -46,7 +46,7 @@ const Component: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="content">
+        <div>
           {members.map((v, i) => (
             <div className="columns is-multiline" key={i} style={{ display: i === activeTabIndex ? '' : 'none' }}>
               {v.members.map((member, i) => (

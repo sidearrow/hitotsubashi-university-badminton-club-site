@@ -107,7 +107,7 @@ const Component: React.FC<{
       <div className="section">
         <BreadCrumb props={[
           { text: 'HOME', path: '/' },
-          { text: 'リーグ戦', path: '/league' },
+          { text: 'リーグ戦', path: '/result/league' },
           { text: data.title, path: null }
         ]} />
         <h1>{data.title}</h1>
