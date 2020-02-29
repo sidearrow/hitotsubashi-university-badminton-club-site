@@ -1,9 +1,8 @@
-import React, { useState, useCallback, useContext } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import Layout from "../components/Layout"
-import members from '../files/member.json'
+import members from '../data/member.json'
 import pageMetadata from '../pageMetaData';
-import { AuthContext } from '../AuthProvider';
 
 type Member = {
   gender: number;
