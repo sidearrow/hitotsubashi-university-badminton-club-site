@@ -5,8 +5,7 @@ import pageMetadata from "../pageMetaData";
 
 const NotFoundPage = () => (
   <Layout pageMetadata={pageMetadata[404]}>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <h1>ページが見つかりません</h1>
   </Layout>
 )
 

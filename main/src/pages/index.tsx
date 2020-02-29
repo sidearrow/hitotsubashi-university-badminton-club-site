@@ -17,7 +17,8 @@ const IndexPage: React.FC = () => (
       </div>
     </div>
     <div className="section">
-      <TwitterTimeline />
+      <h2>Twitter</h2>
+        <TwitterTimeline />
     </div>
   </Layout>
 );

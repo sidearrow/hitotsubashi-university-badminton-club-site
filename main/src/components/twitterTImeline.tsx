@@ -13,8 +13,7 @@ const TwitterTimeline: React.FC = () => {
   });
 
   return (
-    <div>
-      <h2 className="h2">Twitter</h2>
+    <div style={{ maxWidth: '360px', marginLeft: 'auto', marginRight: 'auto' }}>
       <a className="twitter-timeline" data-height="600" data-theme="light" data-chrome="noheader" href="https://twitter.com/hit_u_bad?ref_src=twsrc%5Etfw"></a>
       <span id="twitterTimelineScript"></span>
     </div>

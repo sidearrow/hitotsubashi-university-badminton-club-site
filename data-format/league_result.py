@@ -22,7 +22,7 @@ with open(file_path_team, encoding='utf-8') as f:
         })
 
         resultDetail = []
-        for i in range(1, 6):
+        for i in range(1, 7):
             i = str(i)
             if row['wl' + i] == '' and row['remarks' + i] == '':
                 resultDetail.append(None)

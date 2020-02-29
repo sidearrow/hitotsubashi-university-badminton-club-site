@@ -3,51 +3,41 @@ import React from 'react';
 import footerLinkList from '../data/footer_link_list.json'
 import { Link } from 'gatsby';
 
-const Footer = () => (
-  <footer className="footer py-5">
+const FooterIconItem: React.FC<{
+  icon: string;
+  text: string;
+  path?: string;
+  isTargetBlank?: boolean;
+}> = (props) => (
+  <div style={{ marginBottom: '0.5rem' }}>
+    <span className={`icon ${props.path ? 'has-text-primary' : ''}`} style={{ marginRight: '0.25rem' }} >
+      <i className={props.icon}></i>
+    </span>
+    {typeof props.path === 'undefined'
+      ? <span>{props.text}</span>
+      : <Link to={props.path} target={props.isTargetBlank ? '__blank' : undefined}>{props.text}</Link>}
+  </div>
+);
+
+const Footer: React.FC = () => (
+  <footer className="footer">
     <div className="container">
       <div className="columns">
         <div className="column is-half">
           {footerLinkList.map((v, i) => (
-            <div className="menu" key={i}>
-              <ul className="menu-list">
-                <li className="menu-label">
-                  <Link to={v.path}>{v.text}</Link>
-                </li>
-              </ul>
-            </div>
+            <FooterIconItem icon='fas fa-chevron-right' text={v.text} path={v.path} />
           ))}
         </div>
         <div className="column is-half">
-          <div className="text-right">
-            <div>
-              <span className="icon">
-                <i className="far fa-envelope"></i>
-              </span>
-              <span>hit.bad.team2017@gmail.com</span>
-            </div>
-            <hr className="spacer is-1" />
-            <div>
-              <a href="https://twitter.com/hit_u_bad" target="__blank">
-                <span className="icon">
-                  <i className="fab fa-twitter"></i>
-                </span>
-                <span className="ml-2">Twitter</span>
-              </a>
-            </div>
-            <div>
-              <a href="https://github.com/sidearrow/hit-u-bad" target="__blank">
-                <span className="icon">
-                  <i className="fab fa-github"></i>
-                </span>
-                <span className="ml-2">GitHub</span>
-              </a>
-            </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <FooterIconItem icon='far fa-envelope' text='hit.bad.team2017@gmail.com' />
           </div>
+          <FooterIconItem icon='fab fa-twitter' text='Twitter' path='https://twitter.com/hit_u_bad' isTargetBlank={true} />
+          <FooterIconItem icon='fab fa-github' text='GitHub' path='https://github.com/sidearrow/hit-u-bad' isTargetBlank={true} />
         </div>
       </div>
       <hr className="spacer is-1" />
-      <div className="has-text-centered is-size-7">{`© ${new Date().getFullYear()} 一橋大学バドミントン部`}</div>
+      <div className="has-text-centered is-size-7">{`© ${new Date().getFullYear()} 一橋大学 バドミントン部`}</div>
     </div>
   </footer>
 );
