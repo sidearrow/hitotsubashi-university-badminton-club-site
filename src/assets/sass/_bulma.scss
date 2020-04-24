@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+$main: #ac2926;
+$main-light: #eed4d4;
+
+$primary: $main;
+$info: $main-light;
+$link: $main;
+
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+@import "../../../node_modules/bulma/sass/utilities/_all";
+@import "../../../node_modules/bulma/sass/base/_all";
+@import "../../../node_modules/bulma/sass/elements/_all";
+@import "../../../node_modules/bulma/sass/form/_all";
+@import "../../../node_modules/bulma/sass/components/_all";
+@import "../../../node_modules/bulma/sass/grid/_all";
+@import "../../../node_modules/bulma/sass/layout/_all";
+
+@import "../../../node_modules/bulma-timeline/src/sass/index.sass";

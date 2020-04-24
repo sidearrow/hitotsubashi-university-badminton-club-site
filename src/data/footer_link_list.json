@@ -1,0 +1,30 @@
+[
+  {
+    "text": "HOME",
+    "path": "/"
+  },
+  {
+    "text": "部員紹介",
+    "path": "/info/member"
+  },
+  {
+    "text": "年間スケジュール",
+    "path": "/info/annual-schedule"
+  },
+  {
+    "text": "大会結果",
+    "path": "/result"
+  },
+  {
+    "text": "三多摩大会",
+    "path": "/santama"
+  },
+  {
+    "text": "掲示板",
+    "path": "/bbs"
+  },
+  {
+    "text": "みずとり会",
+    "path": "/mizutori"
+  }
+]

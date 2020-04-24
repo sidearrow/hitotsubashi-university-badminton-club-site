@@ -1,0 +1,92 @@
+[
+  {
+    "path": "/",
+    "title": "HOME",
+    "description": "一橋大学体育会バドミントン部は、関東学生バドミントン連盟男子 4 部、女子 5 部に所属し、リーグでの昇格を目指して週 3 ～ 5 日練習に取り組んでいます。",
+    "breadcrumbs": [],
+    "template": "tmplIndex.tsx"
+  },
+  {
+    "path": "/member",
+    "title": "部員情報",
+    "description": "2018年7月現在、私達一橋大学バドミントン部は男子22名、女子5名の計25名で活動しています。",
+    "breadcrumbs": [],
+    "template": "tmplMember.tsx"
+  },
+  {
+    "path": "/schedule",
+    "title": "年間スケジュール",
+    "description": "一橋大学バドミントン部の年間スケジュールです。",
+    "breadcrumbs": [],
+    "template": "tmplSchedule.tsx"
+  },
+  {
+    "path": "/result",
+    "title": "大会結果",
+    "description": "",
+    "breadcrumbs": [],
+    "markdown": "result.md"
+  },
+  {
+    "path": "/result/league",
+    "title": "リーグ戦",
+    "description": "りーぐ",
+    "breadcrumbs": [],
+    "markdown": "result_league.md"
+  },
+  {
+    "path": "/result/league/${param}",
+    "title": "リーグ戦",
+    "description": "りーぐ",
+    "breadcrumbs": [],
+    "params": [
+      "201911"
+    ],
+    "markdown": "result_league_${param}.md"
+  },
+  {
+    "path": "/result/sansho",
+    "title": "三商戦 結果",
+    "description": "三商戦の結果です。毎年開催される、神戸大学・大阪市立大学との定期戦です。",
+    "breadcrumbs": [],
+    "markdown": "result_sansho.md"
+  },
+  {
+    "path": "/santama",
+    "title": "三多摩大会",
+    "description": "三多摩大会",
+    "breadcrumbs": [],
+    "markdown": "santama.md"
+  },
+  {
+    "path": "/santama/${param}",
+    "title": "三多摩大会",
+    "description": "三多摩大会",
+    "breadcrumbs": [],
+    "params": [
+      "2015"
+    ],
+    "markdown": "santama_${param}.md"
+  },
+  {
+    "path": "/bbs",
+    "title": "掲示板",
+    "description": "他大の方の書き込みも大歓迎です。練習試合のお誘いなどありましたらどうぞ。新歓関係などの個人的な質問はCONTACTからメールでも受け付けています。興味のある方は是非ともご連絡を。",
+    "breadcrumbs": [],
+    "markdown": "bbs.md"
+  },
+  {
+    "path": "/mizutori",
+    "title": "みずとり会",
+    "description": "みずとり会のページです",
+    "breadcrumbs": [],
+    "markdown": "mizutori.md"
+  },
+  {
+    "path": "/error-404",
+    "title": "ページが見つかりません",
+    "description": "ページが見つかりません",
+    "breadcrumbs": [],
+    "template": "tmplError404.tsx"
+  }
+]
