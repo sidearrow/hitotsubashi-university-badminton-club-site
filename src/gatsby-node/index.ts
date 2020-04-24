@@ -8,18 +8,46 @@ export type AboutMarkdownRemark = {
     path: string;
     title: string;
     description: string;
+    positions: {
+      positionKey: string;
+      positionValue: string;
+    }[];
+    practiceTime: {
+      mon: string;
+      tue: string;
+      wed: string;
+      thu: string;
+      fri: string;
+      sat: string;
+      san: string;
+      remarks: string;
+    }[];
   }
 };
 
 export const createPages: GatsbyNode['createPages'] = async ({ actions: { createPage }, graphql }) => {
   const aboutMarkdown: { data?: { markdownRemark: AboutMarkdownRemark } } = await graphql(`
     {
-      markdownRemark(frontmatter: {template: {eq: "TmplAbout"}}) {
+      markdownRemark(frontmatter: {template: {eq: "AboutPageTemplate"}}) {
         frontmatter {
           template
           path
           title
           description
+          positions {
+            positionKey
+            positionValue
+          }
+          practiceTime {
+            mon
+            tue
+            wed
+            thu
+            fri
+            sat
+            san
+            remarks
+          }
         }
       }
     }

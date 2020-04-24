@@ -23,15 +23,15 @@ const FooterIconItem: React.FC<{
 );
 
 const Footer: React.FC = () => (
-  <footer className="footer">
+  <footer className="footer py-5 bg-light">
     <div className="container">
-      <div className="columns">
-        <div className="column is-half">
+      <div className="row">
+        <div className="col-md-6">
           {footerLinkList.map((v, i) => (
             <FooterIconItem icon='fas fa-chevron-right' text={v.text} path={v.path} />
           ))}
         </div>
-        <div className="column is-half">
+        <div className="col-md-6">
           <div style={{ marginBottom: '1rem' }}>
             <FooterIconItem icon='far fa-envelope' text='hit.bad.team2017@gmail.com' />
           </div>
@@ -39,8 +39,10 @@ const Footer: React.FC = () => (
           <FooterIconItem icon='fab fa-github' text='GitHub' path='https://github.com/sidearrow/hit-u-bad' isTargetBlank={true} />
         </div>
       </div>
-      <hr className="spacer is-1" />
-      <div className="has-text-centered is-size-7">{`© ${new Date().getFullYear()} 一橋大学 バドミントン部`}</div>
+      <hr className="" />
+      <div className="text-center">
+        <small>{`© ${new Date().getFullYear()} 一橋大学 バドミントン部`}</small>
+      </div>
     </div>
   </footer>
 );

@@ -1,25 +1,27 @@
 import * as React from "react"
 import Layout from "../components/Layout"
-import pageMetadata from "../pageMetaData";
-import TwitterTimeline from "../components/TwitterTImeline";
 import logo from '../assets/img/logo.svg';
 
 const IndexPage: React.FC = () => (
-  <Layout pageMetadata={pageMetadata.index}>
-    <div className="section">
-      <div className="has-text-centered content">
+  <Layout>
+    <section>
+      <div className="text-center mb-3">
         <img src={logo} />
       </div>
-      <div className="has-text-centered content">
-        <div className="is-size-2">一橋大学</div>
-        <div className="is-size-2">バドミントン部</div>
+      <div className="text-center">
+        <div className="display-4">一橋大学</div>
+        <div className="display-4">バドミントン部</div>
         <div>Hitotsubashi University Badminton Club was established in 1952.</div>
       </div>
-    </div>
-    <div className="section">
-      <h2>Twitter</h2>
-        <TwitterTimeline />
-    </div>
+    </section>
+    <section className="form-row mt-5">
+      <div className="col-6">
+        <a target="_blank" href="https://twitter.com/hit_u_bad" className="btn btn-block btn-outline-main py-3">Twitter</a>
+      </div>
+      <div className="col-6">
+        <a href="#" className="btn btn-block btn-outline-main py-3">Instagram</a>
+      </div>
+    </section>
   </Layout>
 );
 

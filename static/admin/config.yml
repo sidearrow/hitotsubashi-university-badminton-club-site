@@ -4,12 +4,29 @@ backend:
 media_folder: static/img
 public_folder: /img
 collections:
-  - name: 'pages'
-    label: 'Pages'
+  - name: "pages"
+    label: "Pages"
     files:
-      - file: 'src/pages/about.md'
-        label: 'About'
-        name: 'about'
+      - file: src/pages/about.md
+        label: 部活概要
+        name: about
         fields:
-          - {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'about'}
-          - {label: 'Description', name: 'description', widget: 'string'}
+          - {label: Description, name: description, widget: string}
+          - label: 役職
+            name: positions
+            widget: list
+            fields:
+              - {label: 役職名, name: positionKey, widget: string}
+              - {label: 名前, name: positionValue, widget: string}
+          - label: 練習日時
+            name: practiceTime
+            widget: "list"
+            fields:
+              - {label: "月", name: "mon", widget: "string"}
+              - {label: "火", name: "tue", widget: "string"}
+              - {label: "水", name: "wen", widget: "string"}
+              - {label: "木", name: "thu", widget: "string"}
+              - {label: "金", name: "fri", widget: "string"}
+              - {label: "土", name: "sat", widget: "string"}
+              - {label: "日", name: "san", widget: "string"}
+              - {label: "備考", name: "remarks", widget: "string"}
