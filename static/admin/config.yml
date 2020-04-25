@@ -11,7 +11,8 @@ collections:
         label: 部活概要
         name: about
         fields:
-          - { label: Description, name: description, widget: string }
+          - { label: タイトル, name: title, widget: string }
+          - { label: 説明, name: description, widget: string }
           - label: 役職
             name: positions
             widget: list
@@ -61,7 +62,7 @@ collections:
                   widget: select,
                   options: [{ label: 男, value: 0 }, { label: 女, value: 1 }],
                 }
-              - [label: 出身高校, name: highschool, widget: string]
+              - { label: 出身高校, name: highschool, widget: string }
               - label: 役職
                 name: positions
                 widget: list
