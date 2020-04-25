@@ -1,0 +1,850 @@
+{
+    "title": "2019年度 男子春リーグ",
+    "summary": [
+        {
+            "name": "千葉大学",
+            "nameShort": "千葉",
+            "resultDetail": [
+                null,
+                {
+                    "isWin": false,
+                    "winNum": 1,
+                    "loseNum": 4,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 4,
+                    "loseNum": 1,
+                    "remarks": ""
+                }
+            ]
+        },
+        {
+            "name": "日本大学経済学部",
+            "nameShort": "日大経済",
+            "resultDetail": [
+                {
+                    "isWin": true,
+                    "winNum": 4,
+                    "loseNum": 1,
+                    "remarks": ""
+                },
+                null,
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 4,
+                    "loseNum": 1,
+                    "remarks": ""
+                }
+            ]
+        },
+        {
+            "name": "国士舘大学",
+            "nameShort": "国士舘",
+            "resultDetail": [
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                },
+                null,
+                {
+                    "isWin": true,
+                    "winNum": 5,
+                    "loseNum": 0,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 4,
+                    "loseNum": 1,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 5,
+                    "loseNum": 0,
+                    "remarks": ""
+                }
+            ]
+        },
+        {
+            "name": "山梨学院大学",
+            "nameShort": "山梨学院",
+            "resultDetail": [
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 0,
+                    "loseNum": 5,
+                    "remarks": ""
+                },
+                null,
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 0,
+                    "loseNum": 5,
+                    "remarks": ""
+                }
+            ]
+        },
+        {
+            "name": "一橋大学",
+            "nameShort": "一橋",
+            "resultDetail": [
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 1,
+                    "loseNum": 4,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                },
+                null,
+                {
+                    "isWin": true,
+                    "winNum": 3,
+                    "loseNum": 2,
+                    "remarks": ""
+                }
+            ]
+        },
+        {
+            "name": "北里大学",
+            "nameShort": "北里",
+            "resultDetail": [
+                {
+                    "isWin": false,
+                    "winNum": 1,
+                    "loseNum": 4,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 1,
+                    "loseNum": 4,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 0,
+                    "loseNum": 5,
+                    "remarks": ""
+                },
+                {
+                    "isWin": true,
+                    "winNum": 5,
+                    "loseNum": 0,
+                    "remarks": ""
+                },
+                {
+                    "isWin": false,
+                    "winNum": 2,
+                    "loseNum": 3,
+                    "remarks": ""
+                },
+                null
+            ]
+        }
+    ],
+    "detail": [
+        {
+            "callageName": "国士舘大学",
+            "winNum": 0,
+            "loseNum": 5,
+            "games": [
+                {
+                    "name1": [
+                        "村山"
+                    ],
+                    "name2": [
+                        "藤井"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            11,
+                            21
+                        ],
+                        [
+                            12,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "吉田"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            12,
+                            21
+                        ],
+                        [
+                            16,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "小山",
+                        "須山"
+                    ],
+                    "name2": [
+                        "小川",
+                        "藤井"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            10,
+                            21
+                        ],
+                        [
+                            15,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "青木",
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "松井",
+                        "吉田"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            18,
+                            21
+                        ],
+                        [
+                            10,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "平松"
+                    ],
+                    "name2": [
+                        "栗田"
+                    ],
+                    "isMc1": true,
+                    "isMc2": true,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            16,
+                            21
+                        ],
+                        [
+                            16,
+                            21
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "callageName": "千葉大学",
+            "winNum": 1,
+            "loseNum": 4,
+            "games": [
+                {
+                    "name1": [
+                        "村山"
+                    ],
+                    "name2": [
+                        "神保"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            9,
+                            21
+                        ],
+                        [
+                            11,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "斎藤"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 1,
+                    "score": [
+                        [
+                            19,
+                            21
+                        ],
+                        [
+                            21,
+                            13
+                        ],
+                        [
+                            21,
+                            18
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "青木",
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "清水",
+                        "有澤"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            12,
+                            21
+                        ],
+                        [
+                            8,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "小山",
+                        "須山"
+                    ],
+                    "name2": [
+                        "神保",
+                        "北澤"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            18,
+                            21
+                        ],
+                        [
+                            17,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "木口"
+                    ],
+                    "name2": [
+                        "仲本"
+                    ],
+                    "isMc1": true,
+                    "isMc2": true,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            18,
+                            21
+                        ],
+                        [
+                            29,
+                            30
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "callageName": "北里大学",
+            "winNum": 5,
+            "loseNum": 0,
+            "games": [
+                {
+                    "name1": [
+                        "村山"
+                    ],
+                    "name2": [
+                        "倉井"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 0,
+                    "score": [
+                        [
+                            21,
+                            17
+                        ],
+                        [
+                            21,
+                            16
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "小山"
+                    ],
+                    "name2": [
+                        "服部"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 0,
+                    "score": [
+                        [
+                            21,
+                            11
+                        ],
+                        [
+                            21,
+                            13
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "青木",
+                        "小川"
+                    ],
+                    "name2": [
+                        "倉井",
+                        "平井"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 0,
+                    "score": [
+                        [
+                            21,
+                            16
+                        ],
+                        [
+                            21,
+                            14
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "小山",
+                        "須山"
+                    ],
+                    "name2": [
+                        "金子",
+                        "服部"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 0,
+                    "score": [
+                        [
+                            21,
+                            12
+                        ],
+                        [
+                            21,
+                            10
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "青木"
+                    ],
+                    "name2": [
+                        "平井"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 0,
+                    "score": [
+                        [
+                            21,
+                            18
+                        ],
+                        [
+                            21,
+                            18
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "callageName": "日本大学経済学部",
+            "winNum": 1,
+            "loseNum": 4,
+            "games": [
+                {
+                    "name1": [
+                        "村山"
+                    ],
+                    "name2": [
+                        "小林"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            19,
+                            21
+                        ],
+                        [
+                            14,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "青鹿"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            10,
+                            21
+                        ],
+                        [
+                            13,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "小山",
+                        "須山"
+                    ],
+                    "name2": [
+                        "河原",
+                        "江澤"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            13,
+                            21
+                        ],
+                        [
+                            11,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "青木",
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "中島",
+                        "青鹿"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 1,
+                    "score": [
+                        [
+                            19,
+                            21
+                        ],
+                        [
+                            21,
+                            14
+                        ],
+                        [
+                            21,
+                            13
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "木口"
+                    ],
+                    "name2": [
+                        "河原"
+                    ],
+                    "isMc1": true,
+                    "isMc2": true,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            14,
+                            21
+                        ],
+                        [
+                            6,
+                            21
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "callageName": "山梨学院大学",
+            "winNum": 2,
+            "loseNum": 3,
+            "games": [
+                {
+                    "name1": [
+                        "小山"
+                    ],
+                    "name2": [
+                        "佐藤"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 1,
+                    "score": [
+                        [
+                            19,
+                            21
+                        ],
+                        [
+                            22,
+                            20
+                        ],
+                        [
+                            21,
+                            13
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "市川"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 1,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            21,
+                            15
+                        ],
+                        [
+                            19,
+                            21
+                        ],
+                        [
+                            12,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "小山",
+                        "須山"
+                    ],
+                    "name2": [
+                        "佐藤",
+                        "桑原"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            10,
+                            21
+                        ],
+                        [
+                            18,
+                            21
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "青木",
+                        "佐藤"
+                    ],
+                    "name2": [
+                        "市川",
+                        "御子柴"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 2,
+                    "loseNum": 0,
+                    "score": [
+                        [
+                            21,
+                            11
+                        ],
+                        [
+                            21,
+                            7
+                        ]
+                    ]
+                },
+                {
+                    "name1": [
+                        "青木"
+                    ],
+                    "name2": [
+                        "桑原"
+                    ],
+                    "isMc1": false,
+                    "isMc2": false,
+                    "winNum": 0,
+                    "loseNum": 2,
+                    "score": [
+                        [
+                            19,
+                            21
+                        ],
+                        [
+                            19,
+                            21
+                        ]
+                    ]
+                }
+            ]
+        }
+    ]
+}
