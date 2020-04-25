@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { AboutMarkdownRemark } from '../gatsby-node';
+import { AboutPageQueryResponse } from '../gatsby-node/createPageGraphql';
 
 export const AboutPageTemplate: React.FC<{
   title: string;
@@ -57,8 +57,9 @@ export const AboutPageTemplate: React.FC<{
 };
 
 const AboutPageTemplateWrapper: React.FC<{
-  pageContext: { markdownData: AboutMarkdownRemark }
+  pageContext: { markdownData: AboutPageQueryResponse }
 }> = ({ pageContext: { markdownData } }) => {
+  console.log(markdownData)
   return (
     <AboutPageTemplate
       title={markdownData.frontmatter.title}

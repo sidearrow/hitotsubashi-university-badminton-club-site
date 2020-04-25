@@ -1,3 +1,12 @@
+import { string, number } from "prop-types";
+
+export interface PageQueryResponse {
+  frontmatter: {
+    path: string;
+    template: string;
+  }
+};
+
 const aboutPageQuery = `
   {
     markdownRemark(frontmatter: {template: {eq: "AboutPageTemplate"}}) {
@@ -25,36 +34,7 @@ const aboutPageQuery = `
   }
 `
 
-const memberPageQuery = `
-  {
-    markdownRemark(frontmatter: {template: {eq: "AboutPageTemplate"}}) {
-      frontmatter {
-        template
-        path
-        title
-        description
-        members {
-          comment
-          faculty
-          fullName
-          gender
-          grade
-          highschool
-          positions
-        }
-      }
-    }
-  }
-`
-
-export interface PageQueryResponse {
-  frontmatter: {
-    path: string;
-    template: string;
-  }
-};
-
-type AboutPageQueryResponse = {
+export type AboutPageQueryResponse = {
   frontmatter: {
     template: string;
     path: string;
@@ -76,6 +56,46 @@ type AboutPageQueryResponse = {
     }[];
   }
 }
+
+const memberPageQuery = `
+  {
+    markdownRemark(frontmatter: {template: {eq: "MemberPageTemplate"}}) {
+      frontmatter {
+        template
+        path
+        title
+        description
+        members {
+          comment
+          faculty
+          fullName
+          gender
+          grade
+          highschool
+          positions
+        }
+      }
+    }
+  }
+`
+
+export type MemberPageQueryResponse = {
+  frontmatter: {
+    template: string;
+    path: string;
+    title: string;
+    description: string;
+    members: {
+      comment: string;
+      faculty: string;
+      fullName: string;
+      gender: number;
+      grade: number;
+      highschool: string;
+      positions: string[];
+    }[];
+  }
+};
 
 export const queryList = [
   aboutPageQuery,
