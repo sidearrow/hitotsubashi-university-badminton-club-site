@@ -1,7 +1,4 @@
 ---
-<<<<<<< HEAD
-title: 部活紹介
-=======
 template: AboutPageTemplate
 path: "/about"
 title: "部活情報"
@@ -36,5 +33,4 @@ practiceTime:
     sat: "13:00～18:00"
     san: ""
     remarks: "水曜日は男子練"
->>>>>>> develop
 ---
