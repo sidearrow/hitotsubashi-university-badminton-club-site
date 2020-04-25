@@ -11,22 +11,59 @@ collections:
         label: 部活概要
         name: about
         fields:
-          - {label: Description, name: description, widget: string}
+          - { label: Description, name: description, widget: string }
           - label: 役職
             name: positions
             widget: list
             fields:
-              - {label: 役職名, name: positionKey, widget: string}
-              - {label: 名前, name: positionValue, widget: string}
+              - { label: 役職名, name: positionKey, widget: string }
+              - { label: 名前, name: positionValue, widget: string }
           - label: 練習日時
             name: practiceTime
             widget: "list"
             fields:
-              - {label: "月", name: "mon", widget: "string"}
-              - {label: "火", name: "tue", widget: "string"}
-              - {label: "水", name: "wen", widget: "string"}
-              - {label: "木", name: "thu", widget: "string"}
-              - {label: "金", name: "fri", widget: "string"}
-              - {label: "土", name: "sat", widget: "string"}
-              - {label: "日", name: "san", widget: "string"}
-              - {label: "備考", name: "remarks", widget: "string"}
+              - { label: "月", name: "mon", widget: "string" }
+              - { label: "火", name: "tue", widget: "string" }
+              - { label: "水", name: "wen", widget: "string" }
+              - { label: "木", name: "thu", widget: "string" }
+              - { label: "金", name: "fri", widget: "string" }
+              - { label: "土", name: "sat", widget: "string" }
+              - { label: "日", name: "san", widget: "string" }
+              - { label: "備考", name: "remarks", widget: "string" }
+      - file: arc/pages/member.md
+        label: 部員情報
+        name: member
+        fields:
+          - { label: タイトル, name: title, widget: string }
+          - { label: 説明, name: description, widget: string }
+          - label: 部員
+            name: mambers
+            widget: list
+            fields:
+              - { label: 名前, name: fullName, widget: string }
+              - {
+                  label: 学年,
+                  name: grade,
+                  widget: number,
+                  valueType: int,
+                  min: 1,
+                  max: 4,
+                }
+              - {
+                  label: 学部,
+                  name: faculty,
+                  widget: select,
+                  options: [商学部, 経済学部, 法学部, 社会学部],
+                }
+              - {
+                  label: 性別,
+                  name: gender,
+                  widget: select,
+                  options: [{ label: 男, value: 0 }, { label: 女, value: 1 }],
+                }
+              - [label: 出身高校, name: highschool, widget: string]
+              - label: 役職
+                name: positions
+                widget: list
+                default: []
+              - { label: コメント, name: comment, widget: string }
