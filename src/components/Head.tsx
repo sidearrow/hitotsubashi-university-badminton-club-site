@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import config from '../config';
 
-const fontUrl = 'https://fonts.googleapis.com/css?family=Noto+Sans+JP|Roboto&display=swap';
 const metaKeywords = [
   '一橋',
   '大学',
@@ -11,15 +10,17 @@ const metaKeywords = [
   '体育会',
 ];
 
-const Head = () => (
+const Head: React.FC<{
+  title: string;
+  description: string;
+}> = ({ title, description }) => (
   <Helmet>
     <meta charSet="utf-8" />
-    <title>一橋大学バドミントン部</title>
+    <title>{ title === '' ? '' : `${title} | ` }一橋大学バドミントン部</title>
     <meta name="google-site-verification" content={config.googleSiteVerification} />
-    <meta name="description" content="" />
+    <meta name="description" content={description} />
     <meta name="keywords" content={metaKeywords.join(',')} />
     <meta name="theme-color" content="#ac2926" />
-    <link href={fontUrl} rel="stylesheet" />
   </Helmet>
 );
 

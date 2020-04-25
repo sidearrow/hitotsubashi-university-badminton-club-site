@@ -1,11 +1,30 @@
-import { string, number } from "prop-types";
-
 export interface PageQueryResponse {
   frontmatter: {
     path: string;
     template: string;
+    title: string;
+    description: string;
   }
+  html: string;
 };
+
+export const markdownPagesQuery = `
+{
+  allMarkdownRemark(filter: {frontmatter: {template: {eq: "MarkdownTemplate"}}}) {
+    edges {
+      node {
+        frontmatter {
+          template
+          path
+          title
+          description
+        }
+        html
+      }
+    }
+  }
+}
+`;
 
 const aboutPageQuery = `
   {
@@ -32,7 +51,7 @@ const aboutPageQuery = `
       }
     }
   }
-`
+`;
 
 export type AboutPageQueryResponse = {
   frontmatter: {

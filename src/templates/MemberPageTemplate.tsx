@@ -15,10 +15,14 @@ export const MemberPageTemplate: React.FC<{
     positions: string[];
   }[];
 }> = ({ title, description, members }) => {
-  const membersGroupByGrade: { [key: number]: Object[] } = {
+  const membersGroupByGrade: { [key: number]: (typeof members) } = {
     4: [], 3: [], 2: [], 1: [],
   };
   members.forEach(member => membersGroupByGrade[member.grade].push(member));
+
+  const Badge: React.FC<{ val: string }> = ({ val }) => (
+    <small className="border border-dark rounded d-inline-block p-1 mr-1">{val}</small>
+  );
 
   return (
     <>
@@ -28,7 +32,11 @@ export const MemberPageTemplate: React.FC<{
         <>
           <h2>{k} 年生</h2>
           <section>{membersGroupByGrade[k].map(member => (
-            <div>a</div>
+            <div>
+              <h5 className={member.gender === 0 ? 'text-info' : 'text-danger'}>{member.fullName}</h5>
+              <div>{[member.faculty, member.highschool].concat(member.positions).map(v => <Badge val={v} />)}</div>
+              <p className="mt-2">{member.comment}</p>
+            </div>
           ))}</section>
         </>
       ))}
@@ -39,7 +47,7 @@ export const MemberPageTemplate: React.FC<{
 const MemberPageTemplateWrapper: React.FC<{
   pageContext: { markdownData: MemberPageQueryResponse }
 }> = ({ pageContext: { markdownData } }) => (
-  <Layout>
+  <Layout title={markdownData.frontmatter.title} description={markdownData.frontmatter.description}>
     <MemberPageTemplate
       title={markdownData.frontmatter.title}
       description={markdownData.frontmatter.description}

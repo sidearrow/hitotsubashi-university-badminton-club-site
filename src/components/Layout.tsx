@@ -9,7 +9,8 @@ import "../assets/sass/index.scss"
 import Firebase from "../firebase";
 
 const Layout: React.FC<{
-  pageMetadata?: PageMetadata;
+  title: string;
+  description: string;
   isAuthRequired?: boolean;
 }> = props => {
   useEffect(() => {
@@ -41,7 +42,10 @@ const Layout: React.FC<{
 
   return (
     <AuthProvider isAuthRequired={props.isAuthRequired || false}>
-      <Head />
+      <Head
+        title={props.title}
+        description={props.description}
+      />
       <div style={{
         minHeight: '100vh',
         display: 'flex',

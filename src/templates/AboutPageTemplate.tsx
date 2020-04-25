@@ -21,7 +21,7 @@ export const AboutPageTemplate: React.FC<{
   }[];
 }> = ({ title, description, positions, practiceTime }) => {
   return (
-    <Layout>
+    <>
       <h1>{title}</h1>
       <p>{description}</p>
       <h2>役職</h2>
@@ -44,29 +44,30 @@ export const AboutPageTemplate: React.FC<{
         </thead>
         <tbody>
           {[['mon', '月'], ['tue', '火'], ['wed', '水'], ['thu', '木'], ['fri', '金'], ['sat', '土'], ['san', '日'], ['remarks', '備考']].map(v => (
-              <tr>
-                <th className="alert-secondary text-center">{v[1]}</th>
-                <td className="text-center">{practiceTime[0][v[0]]}</td>
-                <td className="text-center">{practiceTime[1][v[0]]}</td>
-              </tr>
-            ))}
+            <tr>
+              <th className="alert-secondary text-center">{v[1]}</th>
+              <td className="text-center">{practiceTime[0][v[0]]}</td>
+              <td className="text-center">{practiceTime[1][v[0]]}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
-    </Layout>
+    </>
   )
 };
 
 const AboutPageTemplateWrapper: React.FC<{
   pageContext: { markdownData: AboutPageQueryResponse }
 }> = ({ pageContext: { markdownData } }) => {
-  console.log(markdownData)
   return (
-    <AboutPageTemplate
-      title={markdownData.frontmatter.title}
-      description={markdownData.frontmatter.description}
-      positions={markdownData.frontmatter.positions}
-      practiceTime={markdownData.frontmatter.practiceTime}
-    />
+    <Layout title={markdownData.frontmatter.title} description={markdownData.frontmatter.description}>
+      <AboutPageTemplate
+        title={markdownData.frontmatter.title}
+        description={markdownData.frontmatter.description}
+        positions={markdownData.frontmatter.positions}
+        practiceTime={markdownData.frontmatter.practiceTime}
+      />
+    </Layout>
   );
 };
 

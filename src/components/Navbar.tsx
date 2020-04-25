@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
   const authStatus = useContext(AuthContext);
 
   const cmpNavLinks = (links: NavLinks) => (
-    <ul className="navbar-nav">
+    <ul className="navbar-nav ml-auto">
       {links.map((v, i) => (
         <li className="nav-item">
           <Link to={v.path} className="nav-link" key={i}>{v.text}</Link>
@@ -66,13 +66,13 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-main">
-        <div className="container">
+      <nav className="navbar navbar-expand-lg navbar-light shadow">
+        <div className="container d-flex">
           <Link to="/" className="navbar-brand">一橋大学<br />バドミントン部</Link>
-          <button className="navbar-toggler" type="button">
+          <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className={`navbar-collapse ${isShow ? 'is-active' : ''}`}>
+          <div className={`navbar-collapse collapse ${isShow ? 'show' : ''}`}>
             {cmpNavLinks(navLinks)}
           </div>
         </div>
