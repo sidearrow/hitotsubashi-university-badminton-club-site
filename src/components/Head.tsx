@@ -17,7 +17,7 @@ const Head: React.FC<{
   <Helmet>
     <meta charSet="utf-8" />
     <title>{ title === '' ? '' : `${title} | ` }一橋大学バドミントン部</title>
-    <meta name="google-site-verification" content={config.googleSiteVerification} />
+    <meta name="google-site-verification" content="GwKaCAPJJGs62_4LGniFH-oxWWIDqDODoGd6eK28__0" />
     <meta name="description" content={description} />
     <meta name="keywords" content={metaKeywords.join(',')} />
     <meta name="theme-color" content="#ac2926" />
