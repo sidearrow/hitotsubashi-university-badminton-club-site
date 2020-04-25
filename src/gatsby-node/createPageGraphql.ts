@@ -19,7 +19,6 @@ export const markdownPagesQuery = `
           path
           title
           description
-          isAuthRequired
         }
         html
       }

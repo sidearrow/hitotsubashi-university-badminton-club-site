@@ -5,11 +5,7 @@
   },
   {
     "text": "部員紹介",
-    "path": "/info/member"
-  },
-  {
-    "text": "年間スケジュール",
-    "path": "/info/annual-schedule"
+    "path": "/member"
   },
   {
     "text": "大会結果",

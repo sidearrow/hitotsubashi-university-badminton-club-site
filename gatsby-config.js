@@ -14,15 +14,6 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-transformer-csv',
     'gatsby-plugin-sass',
-    /*
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'markdown-pages',
-        path: `${__dirname}/content`,
-      },
-    },
-    */
     {
       resolve: 'gatsby-source-filesystem',
       options: {

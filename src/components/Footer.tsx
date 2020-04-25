@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import footerLinkList from '../data/footer_link_list.json'
-import { Link } from 'gatsby';
+import config from '../config';
 
 const FooterIconItem: React.FC<{
   icon: string;
@@ -9,8 +10,8 @@ const FooterIconItem: React.FC<{
   path?: string;
   isTargetBlank?: boolean;
 }> = (props) => (
-  <div style={{ marginBottom: '0.5rem' }}>
-    <span className={`icon ${props.path ? 'has-text-primary' : ''}`} style={{ marginRight: '0.25rem' }} >
+  <div className="mb-2">
+    <span className={`icon mr-2 ${props.path ? 'text-main' : ''}`}>
       <i className={props.icon}></i>
     </span>
     {typeof props.path === 'undefined'
@@ -28,18 +29,19 @@ const Footer: React.FC = () => (
       <div className="row">
         <div className="col-md-6">
           {footerLinkList.map((v, i) => (
-            <FooterIconItem icon='fas fa-chevron-right' text={v.text} path={v.path} />
+            <FooterIconItem icon='fas fa-chevron-right' key={i} text={v.text} path={v.path} />
           ))}
         </div>
         <div className="col-md-6">
-          <div style={{ marginBottom: '1rem' }}>
+          <div className="mb-3">
             <FooterIconItem icon='far fa-envelope' text='hit.bad.team2017@gmail.com' />
           </div>
-          <FooterIconItem icon='fab fa-twitter' text='Twitter' path='https://twitter.com/hit_u_bad' isTargetBlank={true} />
-          <FooterIconItem icon='fab fa-github' text='GitHub' path='https://github.com/sidearrow/hit-u-bad' isTargetBlank={true} />
+          <FooterIconItem icon='fab fa-twitter' text='Twitter' path={config.url.twitter} isTargetBlank={true} />
+          <FooterIconItem icon='fab fa-instagram' text='Instagram' path={config.url.instagram} isTargetBlank={true} />
+          <FooterIconItem icon='fab fa-github' text='GitHub' path={config.url.github} isTargetBlank={true} />
         </div>
       </div>
-      <hr className="" />
+      <hr />
       <div className="text-center">
         <small>{`© ${new Date().getFullYear()} 一橋大学 バドミントン部`}</small>
       </div>

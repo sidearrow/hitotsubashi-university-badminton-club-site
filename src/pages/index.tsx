@@ -1,6 +1,7 @@
 import * as React from "react"
 import Layout from "../components/Layout"
 import logo from '../assets/img/logo.svg';
+import config from '../config';
 
 const IndexPage: React.FC = () => (
   <Layout
@@ -19,10 +20,10 @@ const IndexPage: React.FC = () => (
     </section>
     <section className="form-row mt-5">
       <div className="col-6">
-        <a target="_blank" href="https://twitter.com/hit_u_bad" className="btn btn-block btn-outline-main py-3">Twitter</a>
+        <a target="_blank" href={config.url.twitter} className="btn btn-block btn-outline-main py-3">Twitter</a>
       </div>
       <div className="col-6">
-        <a href="#" className="btn btn-block btn-outline-main py-3">Instagram</a>
+        <a target="_blank" href={config.url.instagram} className="btn btn-block btn-outline-main py-3">Instagram</a>
       </div>
     </section>
   </Layout>
