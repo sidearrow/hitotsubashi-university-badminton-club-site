@@ -15,6 +15,10 @@ const navLinks: NavLinks = [
     path: '/about',
   },
   {
+    text: '部員情報',
+    path: '/member',
+  },
+  {
     text: '大会情報',
     path: '/result',
   },
