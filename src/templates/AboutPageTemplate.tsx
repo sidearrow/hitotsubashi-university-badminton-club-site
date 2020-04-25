@@ -22,6 +22,7 @@ export const AboutPageTemplate: React.FC<{
 }> = ({ title, description, positions, practiceTime }) => {
   return (
     <>
+    <div className="main-content">
       <h1>{title}</h1>
       <p>{description}</p>
       <h2>役職</h2>
@@ -52,6 +53,7 @@ export const AboutPageTemplate: React.FC<{
           ))}
         </tbody>
       </table>
+      </div>
     </>
   )
 };

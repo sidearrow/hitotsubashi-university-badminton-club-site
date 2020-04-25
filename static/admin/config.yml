@@ -31,14 +31,14 @@ collections:
               - { label: "土", name: "sat", widget: "string" }
               - { label: "日", name: "san", widget: "string" }
               - { label: "備考", name: "remarks", widget: "string" }
-      - file: arc/pages/member.md
+      - file: src/pages/member.md
         label: 部員情報
         name: member
         fields:
           - { label: タイトル, name: title, widget: string }
           - { label: 説明, name: description, widget: string }
           - label: 部員
-            name: mambers
+            name: members
             widget: list
             fields:
               - { label: 名前, name: fullName, widget: string }

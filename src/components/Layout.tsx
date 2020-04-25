@@ -52,7 +52,7 @@ const Layout: React.FC<{
         flexDirection: 'column',
       }}>
         <Navbar />
-        <main className="container main-content py-5" style={{
+        <main className="container py-5" style={{
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,

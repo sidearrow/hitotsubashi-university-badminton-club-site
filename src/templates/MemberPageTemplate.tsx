@@ -20,9 +20,11 @@ export const MemberPageTemplate: React.FC<{
   };
   members.forEach(member => membersGroupByGrade[member.grade].push(member));
 
-  const Badge: React.FC<{ val: string }> = ({ val }) => (
-    <small className="border border-dark rounded d-inline-block p-1 mr-1">{val}</small>
-  );
+  const Badge: React.FC<{ val: string }> = ({ val }) => {
+    return val === '' ? (<></>) : (
+      <small className="border border-dark rounded d-inline-block p-1 mr-1">{val}</small>
+    )
+  };
 
   return (
     <>

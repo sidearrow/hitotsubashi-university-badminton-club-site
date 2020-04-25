@@ -3,12 +3,17 @@ import { MemberPageTemplate } from '../../templates/MemberPageTemplate';
 
 const MemberPagePreview: React.FC<{
   entry: any
-}> = ({ entry }) => (
-  <MemberPageTemplate
-    title={entry.getIn(['data', 'title'])}
-    description={entry.getIn(['data', 'description'])}
-    members={entry.getIn(['data', 'members'])}
-  />
-);
+}> = ({ entry }) => {
+  const data = entry.toJS();
+  console.log(data);
+
+  return (
+    <MemberPageTemplate
+      title={data.data.title}
+      description={data.data.description}
+      members={data.data.members}
+    />
+  )
+};
 
 export default MemberPagePreview;
