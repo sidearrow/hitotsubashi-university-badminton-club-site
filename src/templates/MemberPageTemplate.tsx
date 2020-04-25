@@ -27,7 +27,7 @@ export const MemberPageTemplate: React.FC<{
   };
 
   return (
-    <>
+    <Layout title={title} description={description}>
       <h1>{title}</h1>
       <p>{description}</p>
       {[4, 3, 2, 1].map(k => (
@@ -42,20 +42,18 @@ export const MemberPageTemplate: React.FC<{
           ))}</section>
         </>
       ))}
-    </>
+    </Layout>
   );
 };
 
 const MemberPageTemplateWrapper: React.FC<{
   pageContext: { markdownData: MemberPageQueryResponse }
 }> = ({ pageContext: { markdownData } }) => (
-  <Layout title={markdownData.frontmatter.title} description={markdownData.frontmatter.description}>
-    <MemberPageTemplate
-      title={markdownData.frontmatter.title}
-      description={markdownData.frontmatter.description}
-      members={markdownData.frontmatter.members}
-    />
-  </Layout>
+  <MemberPageTemplate
+    title={markdownData.frontmatter.title}
+    description={markdownData.frontmatter.description}
+    members={markdownData.frontmatter.members}
+  />
 );
 
 export default MemberPageTemplateWrapper;

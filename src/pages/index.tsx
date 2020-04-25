@@ -3,7 +3,10 @@ import Layout from "../components/Layout"
 import logo from '../assets/img/logo.svg';
 
 const IndexPage: React.FC = () => (
-  <Layout>
+  <Layout
+    title=''
+    description='一橋大学バドミントン部のホームページです'
+  >
     <section>
       <div className="text-center mb-3">
         <img src={logo} />

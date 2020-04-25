@@ -2,6 +2,7 @@ import { Link, navigate } from "gatsby"
 import React, { useState, useContext } from "react"
 import { AuthContext, AuthStatus } from "../AuthProvider";
 import Auth from "../auth";
+import logo from '../assets/img/logo.svg';
 
 type NavLink = {
   text: string;
@@ -26,18 +27,15 @@ const navLinks: NavLinks = [
     text: '掲示板',
     path: '/bbs',
   },
+  {
+    text: 'みずとり会',
+    path: '/mizutori',
+  }
 ];
 
 const Navbar: React.FC = () => {
   const [isShow, setIsShow] = useState(false);
   const handleToggleMenu = () => setIsShow(!isShow);
-
-  const logout = () => {
-    (new Auth).logout();
-    navigate('/mizutori/login');
-  };
-
-  const authStatus = useContext(AuthContext);
 
   const cmpNavLinks = (links: NavLinks) => (
     <ul className="navbar-nav ml-auto">
@@ -46,21 +44,6 @@ const Navbar: React.FC = () => {
           <Link to={v.path} className="nav-link" key={i}>{v.text}</Link>
         </li>
       ))}
-      {/*
-      <Link className="navbar-link" to={authStatus === AuthStatus.Login ? 'mizutori' : ''}>
-        <span style={{ marginRight: '1rem' }}>みずとり会</span>
-        {authStatus === AuthStatus.NotLogin
-          && (<span className="tag is-light">未ログイン</span>)}
-        {authStatus === AuthStatus.Login
-          && (<span className="tag is-light">ログイン中</span>)}
-      </Link>
-      <div className="navbar-dropdown">
-        {authStatus !== AuthStatus.Login
-          && (<Link className="navbar-item" to="/mizutori-login">ログインページ</Link>)}
-        {authStatus === AuthStatus.Login
-          && (<a className="navbar-item" onClick={logout}>ログアウト</a>)}
-      </div>
-        */}
     </ul>
   );
 
@@ -68,7 +51,9 @@ const Navbar: React.FC = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light shadow">
         <div className="container d-flex">
-          <Link to="/" className="navbar-brand">一橋大学<br />バドミントン部</Link>
+          <Link to="/" className="">
+            <img src={logo} height="60px" />
+          </Link>
           <button className="navbar-toggler border-0" type="button" onClick={handleToggleMenu}>
             <span className="navbar-toggler-icon"></span>
           </button>

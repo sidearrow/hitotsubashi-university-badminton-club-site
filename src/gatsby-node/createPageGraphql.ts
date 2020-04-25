@@ -4,6 +4,7 @@ export interface PageQueryResponse {
     template: string;
     title: string;
     description: string;
+    isAuthRequired?: boolean;
   }
   html: string;
 };
@@ -18,6 +19,7 @@ export const markdownPagesQuery = `
           path
           title
           description
+          isAuthRequired
         }
         html
       }

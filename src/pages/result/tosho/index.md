@@ -1,4 +1,5 @@
 ---
+template: MarkdownTemplate
 path: /result/tosho
 title: 東商戦
 description:

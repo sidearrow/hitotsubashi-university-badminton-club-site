@@ -68,3 +68,10 @@ collections:
                 widget: list
                 default: []
               - { label: コメント, name: comment, widget: string }
+      - file: src/pages/result/league.md
+        label: リーグ戦 結果
+        name: markdown
+        fields:
+          - { label: タイトル, name: title, widget: string }
+          - { label: 説明, name: description, widget: string }
+          - { label: 本文, name: body, widget: markdown }

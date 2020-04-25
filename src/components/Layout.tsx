@@ -13,6 +13,8 @@ const Layout: React.FC<{
   description: string;
   isAuthRequired?: boolean;
 }> = props => {
+  const isAuthRequired = props.isAuthRequired || false;
+
   useEffect(() => {
     document.querySelectorAll('[data-storage]').forEach(el => {
       if (el.getAttribute('href') !== '#') {
@@ -41,7 +43,7 @@ const Layout: React.FC<{
   });
 
   return (
-    <AuthProvider isAuthRequired={props.isAuthRequired || false}>
+    <AuthProvider isAuthRequired={isAuthRequired}>
       <Head
         title={props.title}
         description={props.description}
@@ -52,13 +54,20 @@ const Layout: React.FC<{
         flexDirection: 'column',
       }}>
         <Navbar />
-        <main className="container py-5" style={{
+        <main className="container py-5 main-content" style={{
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,
           width: '100%',
           paddingTop: 0,
-        }}>{props.children}</main>
+        }}>
+          {isAuthRequired && (
+            <div className="text-right">
+              <button className="btn btn-outline-dark">みずとり会<br />ログアウト</button>
+            </div>
+          )}
+          <div>{props.children}</div>
+        </main>
         <Footer />
       </div>
     </AuthProvider>

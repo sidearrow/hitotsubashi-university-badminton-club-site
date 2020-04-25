@@ -20,7 +20,7 @@ const AuthProvider: React.FC<{
       const isLogin = await (new Auth).isLogin();
       setAuthStatus(isLogin ? AuthStatus.Login : AuthStatus.NotLogin);
       if (props.isAuthRequired && !isLogin) {
-        navigate('/mizutori-login');
+        navigate('/mizutori/login');
         return;
       }
     })();

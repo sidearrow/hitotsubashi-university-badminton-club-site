@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import Layout from '../components/Layout';
-import pageMetadata from '../pageMetaData';
+import Layout from '../../components/Layout';
+import pageMetadata from '../../pageMetaData';
 import { navigate } from 'gatsby';
-import Auth from '../auth';
+import Auth from '../../auth';
 
 const Component: React.FC = () => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const Component: React.FC = () => {
   }, []);
 
   return (
-    <Layout pageMetadata={pageMetadata.mizutori}>
+    <Layout title="みずとり会 ログイン" description="みずとり会 ログインページ">
       <div className="section">
         <div className="columns">
           <div className="column is-half is-offset-one-quarter">
