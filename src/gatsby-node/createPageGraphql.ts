@@ -35,20 +35,7 @@ const aboutPageQuery = `
         path
         title
         description
-        positions {
-          positionKey
-          positionValue
-        }
-        practiceTime {
-          mon
-          tue
-          wed
-          thu
-          fri
-          sat
-          san
-          remarks
-        }
+        pageContentFile
       }
     }
   }
@@ -60,20 +47,7 @@ export type AboutPageQueryResponse = {
     path: string;
     title: string;
     description: string;
-    positions: {
-      positionKey: string;
-      positionValue: string;
-    }[];
-    practiceTime: {
-      mon: string;
-      tue: string;
-      wed: string;
-      thu: string;
-      fri: string;
-      sat: string;
-      san: string;
-      remarks: string;
-    }[];
+    pageContentFile: string;
   }
 }
 

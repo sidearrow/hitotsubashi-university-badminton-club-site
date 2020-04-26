@@ -13,7 +13,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions: { create
 
     createPage({
       path: res.data.markdownRemark.frontmatter.path,
-      component: path.resolve(`src/templates/${res.data.markdownRemark.frontmatter.template}.tsx`),
+      component: path.resolve(`src/templates/CoreTemplate.tsx`),
       context: {
         markdownData: res.data.markdownRemark
       }

@@ -1,14 +1,15 @@
 import React from 'react';
-import { AboutPageTemplate } from '../../templates/AboutPageTemplate';
+import { TemplateDispatcher } from '../../templates/CoreTemplate';
 
 const AboutPreview: React.FC = ({ entry }: any) => {
   const data = entry.toJS();
+
   return (
-    <AboutPageTemplate
+    <TemplateDispatcher
       title={data.data.title}
       description={data.data.description}
-      positions={data.data.positions}
-      practiceTime={data.data.practiceTime}
+      templateFile={data.data.template}
+      pageContent={data.data.pageContent}
     />
   )
 };

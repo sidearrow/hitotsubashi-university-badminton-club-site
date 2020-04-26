@@ -1,25 +1,15 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { AboutPageQueryResponse } from '../gatsby-node/createPageGraphql';
+import { PageContentAbout } from '../pageContentType';
 
-export const AboutPageTemplate: React.FC<{
+const AboutPageTemplate: React.FC<{
   title: string;
   description: string;
-  positions: {
-    positionKey: string;
-    positionValue: string;
-  }[];
-  practiceTime: {
-    mon: string;
-    tue: string;
-    wed: string;
-    thu: string;
-    fri: string;
-    sat: string;
-    san: string;
-    remarks: string;
-  }[];
-}> = ({ title, description, positions, practiceTime }) => {
+  pageContent: PageContentAbout;
+}> = ({ title, description, pageContent }) => {
+  const positions = pageContent.positions;
+  const practiceTimeList = pageContent.practiceTimeList;
+
   return (
     <Layout title={title} description={description}>
       <div className="main-content">
@@ -29,8 +19,8 @@ export const AboutPageTemplate: React.FC<{
         <section className="container">
           {positions.map(v => (
             <div className="row mb-1">
-              <div className="col-md-4 col-6 py-1 alert-secondary">{v.positionKey}</div>
-              <div className="col-md-8 col-6 py-1">{v.positionValue}</div>
+              <div className="col-md-4 col-6 py-1 alert-secondary">{v.pos}</div>
+              <div className="col-md-8 col-6 py-1">{v.name}</div>
             </div>
           ))}
         </section>
@@ -44,11 +34,11 @@ export const AboutPageTemplate: React.FC<{
             </tr>
           </thead>
           <tbody>
-            {[['mon', '月'], ['tue', '火'], ['wed', '水'], ['thu', '木'], ['fri', '金'], ['sat', '土'], ['san', '日'], ['remarks', '備考']].map(v => (
+            {practiceTimeList.map(v => (
               <tr>
-                <th className="alert-secondary text-center">{v[1]}</th>
-                <td className="text-center">{practiceTime[0][v[0]]}</td>
-                <td className="text-center">{practiceTime[1][v[0]]}</td>
+                <th className="alert-secondary text-center">{v.headline}</th>
+                <td className="text-center">{v.tsujyo}</td>
+                <td className="text-center">{v.kyugyo}</td>
               </tr>
             ))}
           </tbody>
@@ -58,17 +48,4 @@ export const AboutPageTemplate: React.FC<{
   )
 };
 
-const AboutPageTemplateWrapper: React.FC<{
-  pageContext: { markdownData: AboutPageQueryResponse }
-}> = ({ pageContext: { markdownData } }) => {
-  return (
-    <AboutPageTemplate
-      title={markdownData.frontmatter.title}
-      description={markdownData.frontmatter.description}
-      positions={markdownData.frontmatter.positions}
-      practiceTime={markdownData.frontmatter.practiceTime}
-    />
-  );
-};
-
-export default AboutPageTemplateWrapper;
+export default AboutPageTemplate;
