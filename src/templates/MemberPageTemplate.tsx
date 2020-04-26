@@ -1,20 +1,14 @@
 import React from 'react';
-import { MemberPageQueryResponse } from "../gatsby-node/createPageGraphql";
 import Layout from '../components/Layout';
+import { PageContentMember } from '../pageContentType';
 
 export const MemberPageTemplate: React.FC<{
   title: string;
   description: string;
-  members: {
-    comment: string;
-    faculty: string;
-    fullName: string;
-    gender: number;
-    grade: number;
-    highschool: string;
-    positions: string[];
-  }[];
-}> = ({ title, description, members }) => {
+  pageContent: PageContentMember
+}> = ({ title, description, pageContent }) => {
+  const members = pageContent;
+
   const membersGroupByGrade: { [key: number]: (typeof members) } = {
     4: [], 3: [], 2: [], 1: [],
   };
@@ -46,14 +40,4 @@ export const MemberPageTemplate: React.FC<{
   );
 };
 
-const MemberPageTemplateWrapper: React.FC<{
-  pageContext: { markdownData: MemberPageQueryResponse }
-}> = ({ pageContext: { markdownData } }) => (
-  <MemberPageTemplate
-    title={markdownData.frontmatter.title}
-    description={markdownData.frontmatter.description}
-    members={markdownData.frontmatter.members}
-  />
-);
-
-export default MemberPageTemplateWrapper;
+export default MemberPageTemplate;

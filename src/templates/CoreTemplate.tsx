@@ -1,5 +1,5 @@
 import React from 'react';
-import { AboutPageQueryResponse } from '../gatsby-node/createPageGraphql';
+import { PageQueryResponse } from '../gatsby-node/createPageGraphql';
 
 type TemplateComponent<T> = React.FC<{
   title: string;
@@ -20,20 +20,22 @@ export const TemplateDispatcher: React.FC<{
       description={description}
       pageContent={pageContent}
     />
-)};
+  )
+};
 
 const TemplateDispatcherWrapper: React.FC<{
-  pageContext: { markdownData: AboutPageQueryResponse }
-}> = ({ pageContext: { markdownData } }) => {
-  const pageContent = require('../../static/files/' + markdownData.frontmatter.pageContentFile);
+  pageContext: { data: PageQueryResponse }
+}> = ({ pageContext: { data: markdownData } }) => {
+  const pageContent = require('../../static/files/page-content/' + markdownData.frontmatter.pageContentFile);
 
   return (
-  <TemplateDispatcher
-    title={markdownData.frontmatter.title}
-    description={markdownData.frontmatter.description}
-    templateFile={markdownData.frontmatter.template}
-    pageContent={pageContent}
-  />
-)};
+    <TemplateDispatcher
+      title={markdownData.frontmatter.title}
+      description={markdownData.frontmatter.description}
+      templateFile={markdownData.frontmatter.template}
+      pageContent={pageContent}
+    />
+  )
+};
 
 export default TemplateDispatcherWrapper;

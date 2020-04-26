@@ -6,4 +6,4 @@ require('ts-node').register({
 });
 
 exports.createPages = require('./src/gatsby-node/index').createPages;
-exports.onCreateNode = require('./src/gatsby-node/index').onCreateNode;
+//exports.onCreateNode = require('./src/gatsby-node/index').onCreateNode;

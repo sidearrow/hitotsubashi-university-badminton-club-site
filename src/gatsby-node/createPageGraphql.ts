@@ -4,14 +4,14 @@ export interface PageQueryResponse {
     template: string;
     title: string;
     description: string;
-    isAuthRequired?: boolean;
+    pageContentFile: string;
   }
   html: string;
 };
 
 export const markdownPagesQuery = `
 {
-  allMarkdownRemark(filter: {frontmatter: {template: {eq: "MarkdownTemplate"}}}) {
+  allMarkdownRemark {
     edges {
       node {
         frontmatter {
@@ -19,6 +19,7 @@ export const markdownPagesQuery = `
           path
           title
           description
+          pageContentFile
         }
         html
       }
@@ -26,72 +27,3 @@ export const markdownPagesQuery = `
   }
 }
 `;
-
-const aboutPageQuery = `
-  {
-    markdownRemark(frontmatter: {template: {eq: "AboutPageTemplate"}}) {
-      frontmatter {
-        template
-        path
-        title
-        description
-        pageContentFile
-      }
-    }
-  }
-`;
-
-export type AboutPageQueryResponse = {
-  frontmatter: {
-    template: string;
-    path: string;
-    title: string;
-    description: string;
-    pageContentFile: string;
-  }
-}
-
-const memberPageQuery = `
-  {
-    markdownRemark(frontmatter: {template: {eq: "MemberPageTemplate"}}) {
-      frontmatter {
-        template
-        path
-        title
-        description
-        members {
-          comment
-          faculty
-          fullName
-          gender
-          grade
-          highschool
-          positions
-        }
-      }
-    }
-  }
-`
-
-export type MemberPageQueryResponse = {
-  frontmatter: {
-    template: string;
-    path: string;
-    title: string;
-    description: string;
-    members: {
-      comment: string;
-      faculty: string;
-      fullName: string;
-      gender: number;
-      grade: number;
-      highschool: string;
-      positions: string[];
-    }[];
-  }
-};
-
-export const queryList = [
-  aboutPageQuery,
-  memberPageQuery,
-];

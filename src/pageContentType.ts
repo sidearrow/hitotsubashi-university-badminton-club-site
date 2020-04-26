@@ -13,3 +13,14 @@ export interface PracticeTimeList {
   tsujyo: string;
   kyugyo: string;
 }
+
+export type PageContentMember = {
+  fileUrl: string;
+  fullName: string;
+  grade: number;
+  gender: number;
+  faculty: string;
+  highschool: string;
+  positions: string[];
+  comment: string;
+}[]
