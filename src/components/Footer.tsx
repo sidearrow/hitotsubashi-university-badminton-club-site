@@ -4,6 +4,16 @@ import { Link } from 'gatsby';
 import footerLinkList from '../data/footer_link_list.json'
 import config from '../config';
 
+import ImgSocialGithub from '../assets/img/social-github.svg';
+import ImgSocialTwitter from '../assets/img/social-twitter.svg';
+import ImgSocialInstagram from '../assets/img/social-instagram.svg';
+
+const socailIconLinkList = [
+  { imgSrc: ImgSocialTwitter, href: config.url.twitter },
+  { imgSrc: ImgSocialInstagram, href: config.url.instagram },
+  { imgSrc: ImgSocialGithub, href: config.url.github },
+];
+
 const FooterIconItem: React.FC<{
   icon: string;
   text: string;
@@ -36,9 +46,15 @@ const Footer: React.FC = () => (
           <div className="mb-3">
             <FooterIconItem icon='far fa-envelope' text='hit.bad.team2017@gmail.com' />
           </div>
-          <FooterIconItem icon='fab fa-twitter' text='Twitter' path={config.url.twitter} isTargetBlank={true} />
-          <FooterIconItem icon='fab fa-instagram' text='Instagram' path={config.url.instagram} isTargetBlank={true} />
-          <FooterIconItem icon='fab fa-github' text='GitHub' path={config.url.github} isTargetBlank={true} />
+          <div className="text-center mt-5">
+            {socailIconLinkList.map(v => (
+              <span className="mx-3">
+              <a href={v.href} target="_blank">
+                <img src={v.imgSrc} width="50px" />
+              </a>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
       <hr />

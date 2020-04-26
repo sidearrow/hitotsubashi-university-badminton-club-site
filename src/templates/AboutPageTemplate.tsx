@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { PageContentAbout } from '../pageContentType';
+import { Link } from 'gatsby';
 
 const AboutPageTemplate: React.FC<{
   title: string;
@@ -15,6 +16,9 @@ const AboutPageTemplate: React.FC<{
       <div className="main-content">
         <h1>{title}</h1>
         <p>{description}</p>
+        <p>
+          <Link to="/schedule">年間スケジュール</Link>
+        </p>
         <h2>役職</h2>
         <section className="container">
           {positions.map(v => (
