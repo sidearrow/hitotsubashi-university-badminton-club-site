@@ -8,6 +8,7 @@ const Layout: React.FC<{
   title: string;
   description: string;
   isAuthRequired?: boolean;
+  isFullWidth?: boolean;
 }> = props => {
   return (
     <>
@@ -21,7 +22,7 @@ const Layout: React.FC<{
         flexDirection: 'column',
       }}>
         <Navbar />
-        <main className="container py-5 main-content" style={{
+        <main className={props.isFullWidth !== true ? 'container py-5 main-content' : ''} style={{
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,
