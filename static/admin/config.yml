@@ -74,4 +74,9 @@ collections:
         fields:
           - { label: タイトル, name: title, widget: string }
           - { label: 説明, name: description, widget: string }
-          - { label: 本文, name: body, widget: code }
+          - label: 本文
+            name: body
+            widget: file
+            media_library:
+              config:
+                multiple: false
