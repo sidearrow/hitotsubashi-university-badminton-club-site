@@ -1,5 +1,5 @@
 import React from 'react';
-import Firebase from '../firebase';
+import Firebase from '../FirebaseService';
 
 const StorageLink: React.FC<{ path: string }> = ({ path, children }) => {
   const handleClick = async (e: React.MouseEvent) => {

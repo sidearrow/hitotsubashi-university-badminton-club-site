@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { PageContentAbout } from '../pageContentType';
 import { Link } from 'gatsby';
+import CmpAuthGuard from '../components/CmpAuthGuard';
 
 const MizutoriPageTemplate: React.FC<{
   title: string;
@@ -10,7 +11,9 @@ const MizutoriPageTemplate: React.FC<{
 }> = ({ title, description, pageContent }) => {
   return (
     <Layout title={title} description={description}>
-      <div>MIZUTORI</div>
+      <CmpAuthGuard>
+        <div>MIZUTORI</div>
+      </CmpAuthGuard>
     </Layout>
   )
 };
