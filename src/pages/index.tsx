@@ -22,7 +22,7 @@ const IndexPage: React.FC = () => (
           <Carousel>
             {imgList.map(v => (
               <Carousel.Item>
-                <img className="w-100" src={v} style={{ msFilter: 'blur(0.5px)', filter: 'blur(0.5px)' }} />
+                <img className="w-100" src={v} />
               </Carousel.Item>
             ))}
           </Carousel>
