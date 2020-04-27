@@ -1,5 +1,5 @@
 ---
-template: MarkdownTemplate
+contentType: markdown
 path: /santama
 title: 三多摩大会
 breadcrumbs:

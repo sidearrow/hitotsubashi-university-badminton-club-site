@@ -1,5 +1,5 @@
 ---
-template: MarkdownTemplate
+contentType: markdown
 path: /result/league
 title: リーグ戦結果
 description: 関東学生バドミントン連盟リーグ、リーグ戦の結果です

@@ -4,7 +4,7 @@ backend:
 media_folder: static/files
 public_folder: /img
 collections:
-  - name: "pages"
+  - name: "common"
     label: "固定ページ"
     folder: "markdown"
     create: false

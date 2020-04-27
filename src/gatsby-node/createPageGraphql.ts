@@ -1,5 +1,6 @@
 export interface PageQueryResponse {
   frontmatter: {
+    contentType: 'json' | 'markdown';
     path: string;
     template: string;
     title: string;
@@ -15,6 +16,7 @@ export const markdownPagesQuery = `
     edges {
       node {
         frontmatter {
+          contentType
           template
           path
           title

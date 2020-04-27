@@ -1,4 +1,5 @@
 ---
+contentType: json
 template: "SchedulePageTemplate"
 path: "/schedule"
 title: "年間スケジュール"

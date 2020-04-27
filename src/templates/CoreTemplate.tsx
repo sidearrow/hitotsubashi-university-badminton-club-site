@@ -1,17 +1,26 @@
 import React from 'react';
+import { MarkdownTemplate } from './MarkdownTemplate';
 import { PageQueryResponse } from '../gatsby-node/createPageGraphql';
 
-type TemplateComponent<T> = React.FC<{
-  title: string;
-  description: string;
-}>;
-
 export const TemplateDispatcher: React.FC<{
+  contentType: 'json' | 'markdown';
   title: string;
   description: string;
   templateFile: string;
   pageContent: Object
-}> = ({ title, description, templateFile, pageContent }) => {
+  html: string;
+}> = ({ contentType, title, description, templateFile, pageContent, html }) => {
+
+  if (contentType === 'markdown') {
+    return (
+      <MarkdownTemplate
+        title={title}
+        description={description}
+        html={html}
+      />
+    );
+  }
+
   const Template = require(`./${templateFile}`).default;
 
   return (
@@ -36,10 +45,12 @@ const TemplateDispatcherWrapper: React.FC<{
 
   return (
     <TemplateDispatcher
+      contentType={markdownData.frontmatter.contentType}
       title={markdownData.frontmatter.title}
       description={markdownData.frontmatter.description}
       templateFile={markdownData.frontmatter.template}
       pageContent={pageContent}
+      html={markdownData.html}
     />
   )
 };

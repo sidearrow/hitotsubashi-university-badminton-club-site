@@ -1,4 +1,5 @@
 ---
+contentType: json
 template: AboutPageTemplate
 path: /about
 title: 部活情報

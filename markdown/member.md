@@ -1,4 +1,5 @@
 ---
+contentType: json
 template: "MemberPageTemplate"
 path: "/member"
 title: "部員情報"
