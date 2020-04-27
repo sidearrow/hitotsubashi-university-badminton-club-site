@@ -32,14 +32,12 @@ const CmpAuthGuard: React.FC = ({ children }) => {
   }, []);
 
   if (isNowLoading) {
-    /*
     return (
       <div className="text-center">
         <span className="spinner-grow spinner-grow-sm"></span>
         <span className="ml-2">ログイン情報取得中......</span>
       </div>
     );
-    */
   }
 
   if (isLogin) {

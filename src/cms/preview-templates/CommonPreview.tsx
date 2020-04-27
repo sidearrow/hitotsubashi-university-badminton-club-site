@@ -3,6 +3,7 @@ import { TemplateDispatcher } from '../../templates/CoreTemplate';
 
 const AboutPreview: React.FC = ({ entry }: any) => {
   const data = entry.toJS();
+  console.log(data)
 
   return (
     <TemplateDispatcher

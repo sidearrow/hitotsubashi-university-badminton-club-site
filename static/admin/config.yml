@@ -13,24 +13,7 @@ collections:
         fields:
           - { label: タイトル, name: title, widget: string }
           - { label: 説明, name: description, widget: string }
-          - label: 役職
-            name: positions
-            widget: list
-            fields:
-              - { label: 役職名, name: positionKey, widget: string }
-              - { label: 名前, name: positionValue, widget: string }
-          - label: 練習日時
-            name: practiceTime
-            widget: "list"
-            fields:
-              - { label: "月", name: "mon", widget: "string" }
-              - { label: "火", name: "tue", widget: "string" }
-              - { label: "水", name: "wen", widget: "string" }
-              - { label: "木", name: "thu", widget: "string" }
-              - { label: "金", name: "fri", widget: "string" }
-              - { label: "土", name: "sat", widget: "string" }
-              - { label: "日", name: "san", widget: "string" }
-              - { label: "備考", name: "remarks", widget: "string" }
+          - { label: ページコンテンツ, name: pageContent, widget: code, default_language: json, allow_language_selection: false, output_code_only: true }
       - file: src/pages/member.md
         label: 部員情報
         name: about
@@ -42,7 +25,7 @@ collections:
         name: markdown
         fields:
           - { label: タイトル, name: title, widget: string }
-          - { label: 説明, name: description, widget: string }
+          - { label: 説明, name: description, widget: number }
           - label: 本文
             name: body
             widget: file
