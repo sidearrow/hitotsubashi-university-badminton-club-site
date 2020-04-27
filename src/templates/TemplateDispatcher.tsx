@@ -3,17 +3,19 @@ import { MarkdownTemplate } from './MarkdownTemplate';
 import { PageQueryResponse } from '../gatsby-node/createPageGraphql';
 
 export const TemplateDispatcher: React.FC<{
+  isPreview?: boolean;
   contentType: 'json' | 'markdown';
   title: string;
   description: string;
   templateFile: string;
   pageContent: Object
   html: string;
-}> = ({ contentType, title, description, templateFile, pageContent, html }) => {
+}> = ({ isPreview, contentType, title, description, templateFile, pageContent, html }) => {
 
   if (contentType === 'markdown') {
     return (
       <MarkdownTemplate
+        isPreview={isPreview || false}
         title={title}
         description={description}
         html={html}
@@ -25,6 +27,7 @@ export const TemplateDispatcher: React.FC<{
 
   return (
     <Template
+      isPreview={isPreview || false}
       title={title}
       description={description}
       pageContent={pageContent}

@@ -10,11 +10,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions: { create
   }
 
   res.data.allMarkdownRemark.edges.map(edge => {
-    const template = edge.node.frontmatter.template === 'MarkdownTemplate' ? 'MarkdownTemplate' : 'CoreTemplate';
-
     createPage({
       path: edge.node.frontmatter.path,
-      component: path.resolve(`src/templates/${template}.tsx`),
+      component: path.resolve(`src/templates/TemplateDispatcher.tsx`),
       context: {
         data: edge.node,
       }

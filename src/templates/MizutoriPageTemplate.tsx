@@ -5,15 +5,17 @@ import { Link } from 'gatsby';
 import CmpAuthGuard from '../components/CmpAuthGuard';
 
 const MizutoriPageTemplate: React.FC<{
+  isPreview: boolean;
   title: string;
   description: string;
   pageContent: PageContentAbout;
-}> = ({ title, description, pageContent }) => {
+}> = ({ isPreview, title, description, pageContent }) => {
+  const main = (<div>MIZUTORI</div>)
+
   return (
     <Layout title={title} description={description}>
-      <CmpAuthGuard>
-        <div>MIZUTORI</div>
-      </CmpAuthGuard>
+      {isPreview && main}
+      {!isPreview && (<CmpAuthGuard>{main}</CmpAuthGuard>)}
     </Layout>
   )
 };

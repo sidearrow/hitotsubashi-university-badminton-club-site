@@ -2,12 +2,14 @@ import React from 'react';
 import Layout from '../components/Layout';
 
 export const MarkdownTemplate: React.FC<{
+  isPreview: boolean;
   title: string;
   description: string;
   html: string;
-}> = ({ title, description, html }) => (
+}> = ({ isPreview, title, description, html }) => (
   <Layout title={title} description={description}>
-    <div dangerouslySetInnerHTML={{ __html: html }}></div>
+    {isPreview && (<div>{html}</div>)}
+    {!isPreview && (<div dangerouslySetInnerHTML={{ __html: html }}></div>)}
   </Layout>
 );
 

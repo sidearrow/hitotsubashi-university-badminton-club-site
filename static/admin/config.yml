@@ -8,6 +8,8 @@ collections:
     label: "固定ページ"
     folder: "markdown"
     create: false
+    delete: false
+    sortableFields: ["title"]
     fields:
       - { label: "タイトル", name: "title", widget: "string" }
       - { label: "説明", name: "description", widget: "string" }
