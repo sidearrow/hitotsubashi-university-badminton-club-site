@@ -4,7 +4,7 @@ export interface PageQueryResponse {
     template: string;
     title: string;
     description: string;
-    pageContentFile: string;
+    content: string;
   }
   html: string;
 };
@@ -19,7 +19,7 @@ export const markdownPagesQuery = `
           path
           title
           description
-          pageContentFile
+          content
         }
         html
       }

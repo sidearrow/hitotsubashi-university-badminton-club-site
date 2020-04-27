@@ -26,7 +26,13 @@ export const TemplateDispatcher: React.FC<{
 const TemplateDispatcherWrapper: React.FC<{
   pageContext: { data: PageQueryResponse }
 }> = ({ pageContext: { data: markdownData } }) => {
-  const pageContent = require('../../static/files/page-content/' + markdownData.frontmatter.pageContentFile);
+
+  let pageContent;
+  try {
+    pageContent = JSON.parse(markdownData.frontmatter.content);
+  } catch {
+    pageContent = [];
+  }
 
   return (
     <TemplateDispatcher
