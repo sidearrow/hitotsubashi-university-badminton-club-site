@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '../components/Layout';
 import './schedule.css';
 
 type PageContent = {
@@ -13,7 +12,7 @@ export const Component: React.FC<{
   description: string;
   pageContent: PageContent
 }> = ({ title, description, pageContent }) => (
-  <Layout title={title} description={description}>
+  <>
     <h1>{title}</h1>
     <p>{description}</p>
     <ul className="timeline">
@@ -25,7 +24,7 @@ export const Component: React.FC<{
         </li>
       ))}
     </ul>
-  </Layout>
+  </>
 );
 
 export default Component;

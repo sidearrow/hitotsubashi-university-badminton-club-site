@@ -6,6 +6,10 @@ export interface PageQueryResponse {
     title: string;
     description: string;
     content: string;
+    breadcrumbs: {
+      path: string | null;
+      text: string;
+    }[]
   }
   html: string;
 };
@@ -22,6 +26,10 @@ export const markdownPagesQuery = `
           title
           description
           content
+          breadcrumbs {
+            path
+            text
+          }
         }
         html
       }

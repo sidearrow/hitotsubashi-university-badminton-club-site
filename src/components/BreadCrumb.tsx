@@ -1,19 +1,27 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-export type BreadCrumbLink = {
-  text: string;
-  path: string | null;
-};
+const Breadcrumb: React.FC<{
+  breadcrumb: {
+    text: string;
+    path: string | null;
+  }[];
+}> = ({ breadcrumb }) => (
+  <nav className="mb-5">
+    <ul className="breadcrumb bg-transparent">
+      {breadcrumb.map(v => {
+        if (v.path === null) {
+          return (<li className="breadcrumb-item active">{v.text}</li>);
+        }
 
-const BreadCrumb: React.FC<{ props: BreadCrumbLink[] }> = ({ props }) => (
-  <nav className="breadcrumb" aria-label="breadcrumbs">
-    <ul>{props.map(link => (
-    <li className={link.path === null ? 'is-active' : ''}>
-      <Link to={link.path || '#'}>{link.text}</Link>
-    </li>
-    ))}</ul>
+        return (
+          <li className="breadcrumb-item">
+            <Link to={v.path}>{v.text}</Link>
+          </li>
+        );
+      })}
+    </ul>
   </nav>
 );
 
-export default BreadCrumb;
+export default Breadcrumb;

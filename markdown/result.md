@@ -3,6 +3,11 @@ contentType: markdown
 path: /result
 title: 試合結果
 description:
+breadcrumbs:
+  - text: TOP
+    path: /
+  - text: 試合結果
+    path: null
 ---
 
 # 試合結果

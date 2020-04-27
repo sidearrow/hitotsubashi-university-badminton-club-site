@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '../components/Layout';
 import { PageContentMember } from '../pageContentType';
 
 export const MemberPageTemplate: React.FC<{
@@ -21,7 +20,7 @@ export const MemberPageTemplate: React.FC<{
   };
 
   return (
-    <Layout title={title} description={description}>
+    <>
       <h1>{title}</h1>
       <p>{description}</p>
       {[4, 3, 2, 1].map(k => (
@@ -36,7 +35,7 @@ export const MemberPageTemplate: React.FC<{
           ))}</section>
         </>
       ))}
-    </Layout>
+    </>
   );
 };
 

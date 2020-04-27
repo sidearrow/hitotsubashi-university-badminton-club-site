@@ -1,6 +1,8 @@
 import React from 'react';
 import { MarkdownTemplate } from './MarkdownTemplate';
 import { PageQueryResponse } from '../gatsby-node/createPageGraphql';
+import Layout from '../components/Layout';
+import Breadcrumb from '../components/BreadCrumb';
 
 export const TemplateDispatcher: React.FC<{
   isPreview?: boolean;
@@ -10,10 +12,15 @@ export const TemplateDispatcher: React.FC<{
   templateFile: string;
   pageContent: Object
   html: string;
-}> = ({ isPreview, contentType, title, description, templateFile, pageContent, html }) => {
+  breadcrumbs: {
+    text: string;
+    path: string | null;
+  }[];
+}> = ({ isPreview, contentType, title, description, templateFile, pageContent, html, breadcrumbs }) => {
 
+  let commonTemplate;
   if (contentType === 'markdown') {
-    return (
+    commonTemplate = (
       <MarkdownTemplate
         isPreview={isPreview || false}
         title={title}
@@ -21,17 +28,23 @@ export const TemplateDispatcher: React.FC<{
         html={html}
       />
     );
+  } else {
+    const Template = require(`./${templateFile}`).default;
+    commonTemplate = (
+      <Template
+        isPreview={isPreview || false}
+        title={title}
+        description={description}
+        pageContent={pageContent}
+      />
+    );
   }
 
-  const Template = require(`./${templateFile}`).default;
-
   return (
-    <Template
-      isPreview={isPreview || false}
-      title={title}
-      description={description}
-      pageContent={pageContent}
-    />
+    <Layout title={title} description={description}>
+      {breadcrumbs !== null && (<Breadcrumb breadcrumb={breadcrumbs} />)}
+      <>{commonTemplate}</>
+    </Layout>
   )
 };
 
@@ -54,6 +67,7 @@ const TemplateDispatcherWrapper: React.FC<{
       templateFile={markdownData.frontmatter.template}
       pageContent={pageContent}
       html={markdownData.html}
+      breadcrumbs={markdownData.frontmatter.breadcrumbs}
     />
   )
 };
