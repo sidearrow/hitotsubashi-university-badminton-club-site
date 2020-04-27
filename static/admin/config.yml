@@ -5,30 +5,11 @@ media_folder: static/files
 public_folder: /img
 collections:
   - name: "pages"
-    label: "Pages"
-    files:
-      - file: src/pages/about.md
-        label: 部活概要
-        name: about
-        fields:
-          - { label: タイトル, name: title, widget: string }
-          - { label: 説明, name: description, widget: string }
-          - { label: ページコンテンツ, name: pageContent, widget: code, default_language: json, allow_language_selection: false, output_code_only: true }
-      - file: src/pages/member.md
-        label: 部員情報
-        name: about
-        fields:
-          - { label: タイトル, name: title, widget: string }
-          - { label: 説明, name: description, widget: string }
-      - file: src/pages/result/league.md
-        label: リーグ戦 結果
-        name: markdown
-        fields:
-          - { label: タイトル, name: title, widget: string }
-          - { label: 説明, name: description, widget: number }
-          - label: 本文
-            name: body
-            widget: file
-            media_library:
-              config:
-                multiple: false
+    label: "固定ページ"
+    folder: "markdown"
+    create: false
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "説明", name: "description", widget: "string" }
+      - { label: "コンテンツ", name: "content", widget: "code", default_language: "json", allow_language_selection: false, output_code_only: true }
+      - { label: "本文", name: "body", widget: "markdown" }
