@@ -23,6 +23,10 @@ const navLinks: NavLinks = [
     path: '/result',
   },
   {
+    text: '三多摩大会',
+    path: '/santama',
+  },
+  {
     text: '掲示板',
     path: '/bbs',
   },
@@ -32,19 +36,19 @@ const navLinks: NavLinks = [
   },
 ];
 
-const CmpNavbar: React.FC = () => {
-  const cmpNavLinks = (links: NavLinks) => (
-    <ul className="navbar-nav ml-auto">
-      {links.map((v, i) => (
-        <li className="nav-item" key={i}>
-          <Link to={v.path} className="nav-link">
-            {v.text}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
+const CmpNavLinks: React.FC = () => (
+  <ul className="navbar-nav ml-auto">
+    {navLinks.map((v, i) => (
+      <li className="nav-item" key={i}>
+        <Link to={v.path} className="nav-link">
+          {v.text}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
 
+const CmpNavbar: React.FC = () => {
   return (
     <>
       <Navbar className="shadow" expand="lg">
@@ -63,7 +67,7 @@ const CmpNavbar: React.FC = () => {
           </Link>
           <Navbar.Toggle className="border-0" />
           <Navbar.Collapse className="justify-content-end">
-            {cmpNavLinks(navLinks)}
+            <CmpNavLinks />
           </Navbar.Collapse>
         </div>
       </Navbar>

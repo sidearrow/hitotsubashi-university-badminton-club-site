@@ -23,4 +23,4 @@ export type PageContentMember = {
   highschool: string;
   positions: string[];
   comment: string;
-}[]
+}[];

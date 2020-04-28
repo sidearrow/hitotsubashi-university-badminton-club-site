@@ -5,7 +5,7 @@ title: 三多摩大会
 breadcrumbs:
   - path: /
     text: HOME
-  - path: /santama
+  - path: null
     text: 三多摩大会
 ---
 

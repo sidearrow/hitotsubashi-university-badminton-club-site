@@ -1,7 +1,5 @@
 import React from 'react';
-import { PageContentAbout } from '../pageContentType';
 import CmpAuthGuard from '../components/CmpAuthGuard';
-import StorageLink from '../components/StorageLink';
 
 const MizutoriPageTemplate: React.FC<{
   isPreview: boolean;
@@ -30,11 +28,15 @@ const MizutoriPageTemplate: React.FC<{
         .map(year => (
           <>
             <h2>{year} 年</h2>
-            {obmsgList[year].map(v => (
-              <span className="mr-1">
-                <StorageLink path={`obmessage/obmessage_${v.id}.pdf`}>
+            {obmsgList[year].map((v, i) => (
+              <span className="mr-1" key={i}>
+                <a
+                  href="#"
+                  data-storage={`obmessage/obmessage_${v.id}.pdf`}
+                  target="_blank"
+                >
                   {v.name}
-                </StorageLink>
+                </a>
               </span>
             ))}
           </>

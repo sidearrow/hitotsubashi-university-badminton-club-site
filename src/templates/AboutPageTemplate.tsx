@@ -19,8 +19,8 @@ const AboutPageTemplate: React.FC<{
       </p>
       <h2>役職</h2>
       <section className="container">
-        {positions.map(v => (
-          <div className="row mb-1">
+        {positions.map((v, i) => (
+          <div key={i} className="row mb-1">
             <div className="col-md-4 col-6 py-1 alert-secondary">{v.pos}</div>
             <div className="col-md-8 col-6 py-1">{v.name}</div>
           </div>
@@ -36,8 +36,8 @@ const AboutPageTemplate: React.FC<{
           </tr>
         </thead>
         <tbody>
-          {practiceTimeList.map(v => (
-            <tr>
+          {practiceTimeList.map((v, i) => (
+            <tr key={i}>
               <th className="alert-secondary text-center">{v.headline}</th>
               <td className="text-center">{v.tsujyo}</td>
               <td className="text-center">{v.kyugyo}</td>
@@ -46,7 +46,7 @@ const AboutPageTemplate: React.FC<{
         </tbody>
       </table>
     </div>
-  )
+  );
 };
 
 export default AboutPageTemplate;

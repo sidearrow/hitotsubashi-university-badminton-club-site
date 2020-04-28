@@ -1,17 +1,26 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": "."
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
   },
   "plugins": [
     "@typescript-eslint",
+    "import",
     "prettier"
   ],
   "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    "plugin:react/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "plugin:prettier/recommended"
   ],
   "settings": {
     "import/resolver": {
@@ -21,6 +30,7 @@
         ],
         "extensions": [
           ".js",
+          ".jsx",
           ".ts",
           ".tsx"
         ]
@@ -28,6 +38,7 @@
     },
     "import/extensions": [
       ".js",
+      ".jsx",
       ".ts",
       ".tsx"
     ],
@@ -39,7 +50,6 @@
     }
   },
   "rules": {
-    "prettier/prettier": "error",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -49,6 +59,10 @@
         "ts": "never",
         "tsx": "never"
       }
+    ],
+    "prettier/prettier": "error",
+    "react/prop-types": [
+      "off"
     ]
   }
 }

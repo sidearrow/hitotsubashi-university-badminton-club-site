@@ -34,8 +34,8 @@ export const MemberPageTemplate: React.FC<{
         <>
           <h2>{k} 年生</h2>
           <section>
-            {membersGroupByGrade[k].map(member => (
-              <div>
+            {membersGroupByGrade[k].map((member, i) => (
+              <div key={i}>
                 <h5
                   className={member.gender === 0 ? 'text-info' : 'text-danger'}
                 >
@@ -44,8 +44,8 @@ export const MemberPageTemplate: React.FC<{
                 <div>
                   {[member.faculty, member.highschool]
                     .concat(member.positions)
-                    .map(v => (
-                      <Badge val={v} />
+                    .map((v, i) => (
+                      <Badge key={i} val={v} />
                     ))}
                 </div>
                 <p className="mt-2">{member.comment}</p>

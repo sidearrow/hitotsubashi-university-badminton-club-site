@@ -28,7 +28,10 @@ const ObMessage: React.FC = () => (
       <div className="content" key={year}>
         <h5>{year}</h5>
         {obMessages[year].map((v, i) => (
-          <span style={{ display: 'inline-block', marginRight: '0.5rem' }}>
+          <span
+            key={i}
+            style={{ display: 'inline-block', marginRight: '0.5rem' }}
+          >
             <StorageLink path={`obmessage/obmessage_${v.id}.pdf`} key={i}>
               {v.name}
             </StorageLink>

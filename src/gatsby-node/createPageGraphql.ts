@@ -9,10 +9,10 @@ export interface PageQueryResponse {
     breadcrumbs: {
       path: string | null;
       text: string;
-    }[]
-  }
+    }[];
+  };
   html: string;
-};
+}
 
 export const markdownPagesQuery = `
 {
