@@ -18,7 +18,7 @@ const StorageLink: React.FC<{ path: string }> = ({ path, children }) => {
     e.target.click();
   };
 
-  return (<a target="__blank" onClick={async (e) => await handleClick(e)}>{children}</a>);
+  return (<a target="__blank" onClick={async (e) => await handleClick(e)} style={{ cursor: 'pointer' }}>{children}</a>);
 };
 
 export default StorageLink;
