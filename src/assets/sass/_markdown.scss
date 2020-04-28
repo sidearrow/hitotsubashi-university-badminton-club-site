@@ -3,25 +3,25 @@
     color: #ac2926;
   }
 
-  /*
   ul {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-left: 2rem;
+    margin-top: 0.25rem;
+    padding-left: 1rem;
     list-style-type: none;
 
     li {
       margin-bottom: 0.25rem;
+      & > p {
+        display: inline;
+      }
     }
 
     li::before {
       content: "-";
-      color: #ac2926;
+      color: #696969;
       font-weight: 900;
       padding-right: 1rem;
     }
   }
-  */
 
   .table-scroll {
     display: block;
