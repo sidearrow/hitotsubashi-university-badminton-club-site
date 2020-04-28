@@ -1,7 +1,7 @@
 import React from 'react';
 import { TemplateDispatcher } from '../templates/TemplateDispatcher';
 
-const AboutPreview: React.FC = ({ entry ,widgetFor }: any) => {
+const AboutPreview: React.FC = ({ entry, widgetFor }: any) => {
   const data = entry.toJS().data;
 
   let pageContent;
@@ -9,11 +9,9 @@ const AboutPreview: React.FC = ({ entry ,widgetFor }: any) => {
     try {
       pageContent = JSON.parse(data.content);
     } catch {
-      return (<div>JSON の解析に失敗しました</div>);
+      return <div>JSON の解析に失敗しました</div>;
     }
   }
-
-  console.log(pageContent)
 
   return (
     <TemplateDispatcher
@@ -26,7 +24,7 @@ const AboutPreview: React.FC = ({ entry ,widgetFor }: any) => {
       pageContent={pageContent}
       breadcrumbs={null}
     />
-  )
+  );
 };
 
 export default AboutPreview;

@@ -13,6 +13,6 @@ const config = {
     instagram: 'https://www.instagram.com/hitotsubashi_badminton/',
     github: 'https://github.com/sidearrow/hit-u-bad',
   },
-}
+};
 
 export default config;

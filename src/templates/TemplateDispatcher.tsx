@@ -10,14 +10,22 @@ export const TemplateDispatcher: React.FC<{
   title: string;
   description: string;
   templateFile: string;
-  pageContent: Object
+  pageContent: Record<string, any>;
   html: string;
   breadcrumbs: {
     text: string;
     path: string | null;
   }[];
-}> = ({ isPreview, contentType, title, description, templateFile, pageContent, html, breadcrumbs }) => {
-
+}> = ({
+  isPreview,
+  contentType,
+  title,
+  description,
+  templateFile,
+  pageContent,
+  html,
+  breadcrumbs,
+}) => {
   let commonTemplate;
   if (contentType === 'markdown') {
     commonTemplate = (
@@ -42,16 +50,15 @@ export const TemplateDispatcher: React.FC<{
 
   return (
     <Layout title={title} description={description}>
-      {breadcrumbs !== null && (<Breadcrumb breadcrumb={breadcrumbs} />)}
+      {breadcrumbs !== null && <Breadcrumb breadcrumb={breadcrumbs} />}
       <div className=" main-content">{commonTemplate}</div>
     </Layout>
-  )
+  );
 };
 
 const TemplateDispatcherWrapper: React.FC<{
-  pageContext: { data: PageQueryResponse }
+  pageContext: { data: PageQueryResponse };
 }> = ({ pageContext: { data: markdownData } }) => {
-
   let pageContent;
   try {
     pageContent = JSON.parse(markdownData.frontmatter.content);
@@ -69,7 +76,7 @@ const TemplateDispatcherWrapper: React.FC<{
       html={markdownData.html}
       breadcrumbs={markdownData.frontmatter.breadcrumbs}
     />
-  )
+  );
 };
 
 export default TemplateDispatcherWrapper;

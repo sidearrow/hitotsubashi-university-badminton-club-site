@@ -11,7 +11,7 @@ const Breadcrumb: React.FC<{
     <ul className="breadcrumb bg-transparent">
       {breadcrumb.map(v => {
         if (v.path === null) {
-          return (<li className="breadcrumb-item active">{v.text}</li>);
+          return <li className="breadcrumb-item active">{v.text}</li>;
         }
 
         return (

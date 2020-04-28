@@ -1,12 +1,12 @@
-import { Link } from "gatsby"
-import React, { useState } from "react"
+import { Link } from 'gatsby';
+import React from 'react';
 import logo from '../assets/img/logo.svg';
 import { Navbar } from 'react-bootstrap';
 
 type NavLink = {
   text: string;
   path: string;
-}
+};
 type NavLinks = NavLink[];
 
 const navLinks: NavLinks = [
@@ -28,8 +28,8 @@ const navLinks: NavLinks = [
   },
   {
     text: 'みずとり会',
-    path: '/mizutori'
-  }
+    path: '/mizutori',
+  },
 ];
 
 const CmpNavbar: React.FC = () => {
@@ -37,7 +37,9 @@ const CmpNavbar: React.FC = () => {
     <ul className="navbar-nav ml-auto">
       {links.map((v, i) => (
         <li className="nav-item" key={i}>
-          <Link to={v.path} className="nav-link">{v.text}</Link>
+          <Link to={v.path} className="nav-link">
+            {v.text}
+          </Link>
         </li>
       ))}
     </ul>
@@ -50,7 +52,15 @@ const CmpNavbar: React.FC = () => {
           <Link to="/" className="navbar-brand">
             <img src={logo} height="50px" />
           </Link>
-          <Link to="/" className="navbar-brand d-inline-block mr-auto" style={{ lineHeight: 1.3 }}>一橋大学<br />バドミントン部</Link>
+          <Link
+            to="/"
+            className="navbar-brand d-inline-block mr-auto"
+            style={{ lineHeight: 1.3 }}
+          >
+            一橋大学
+            <br />
+            バドミントン部
+          </Link>
           <Navbar.Toggle className="border-0" />
           <Navbar.Collapse className="justify-content-end">
             {cmpNavLinks(navLinks)}
@@ -59,6 +69,6 @@ const CmpNavbar: React.FC = () => {
       </Navbar>
     </>
   );
-}
+};
 
 export default CmpNavbar;
