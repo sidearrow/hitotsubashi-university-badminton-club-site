@@ -13,6 +13,8 @@ const AboutPreview: React.FC = ({ entry ,widgetFor }: any) => {
     }
   }
 
+  console.log(pageContent)
+
   return (
     <TemplateDispatcher
       isPreview={true}
@@ -22,6 +24,7 @@ const AboutPreview: React.FC = ({ entry ,widgetFor }: any) => {
       templateFile={data.template}
       html={widgetFor('body')}
       pageContent={pageContent}
+      breadcrumbs={null}
     />
   )
 };
