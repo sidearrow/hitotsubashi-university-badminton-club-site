@@ -13,5 +13,5 @@ collections:
     fields:
       - { label: "タイトル", name: "title", widget: "string" }
       - { label: "説明", name: "description", widget: "string" }
-      - { label: "コンテンツ", name: "content", widget: "code", default_language: "json", allow_language_selection: false, output_code_only: true }
-      - { label: "本文", name: "body", widget: "markdown" }
+      - { label: "コンテンツ", name: "content", widget: "code", default_language: "json", allow_language_selection: false, output_code_only: true, required: false }
+      - { label: "本文", name: "body", widget: "markdown", required: false }
