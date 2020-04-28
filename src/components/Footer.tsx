@@ -63,8 +63,8 @@ const Footer: React.FC = () => (
             />
           </div>
           <div className="text-center mt-5">
-            {socailIconLinkList.map(v => (
-              <span className="mx-3">
+            {socailIconLinkList.map((v, i) => (
+              <span className="mx-3" key={i}>
                 <a href={v.href} target="_blank">
                   <img src={v.imgSrc} width="50px" />
                 </a>

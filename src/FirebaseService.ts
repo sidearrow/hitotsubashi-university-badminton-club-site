@@ -4,20 +4,23 @@ import 'firebase/storage';
 import config from './config';
 
 export default class FirebaseService {
-  private static App: firebase.app.App | null = null;
-  private static Auth: firebase.auth.Auth | null = null;
+  private static app: firebase.app.App | null = null;
+  private static auth: firebase.auth.Auth | null = null;
+  private static storage: firebase.storage.Storage | null = null;
 
-  public static init() {
-    if (typeof window === 'object' && FirebaseService.App === null) {
-      FirebaseService.App = firebase.initializeApp(config.firebase);
-      FirebaseService.Auth = FirebaseService.App.auth();
+  public constructor() {
+    if (typeof window === 'object' && FirebaseService.app === null) {
+      FirebaseService.app = firebase.initializeApp(config.firebase);
+      FirebaseService.auth = FirebaseService.app.auth();
+      FirebaseService.storage = FirebaseService.app.storage();
     }
   }
 
-  public static async login(password: string): Promise<boolean> {
+  public async login(password: string): Promise<boolean> {
     try {
-      await FirebaseService.Auth?.signInWithEmailAndPassword(
-        config.mizutoriEmail, password
+      await FirebaseService.auth?.signInWithEmailAndPassword(
+        config.mizutoriEmail,
+        password
       );
     } catch (_) {
       return false;
@@ -26,10 +29,10 @@ export default class FirebaseService {
     return true;
   }
 
-  public static isLogin(): Promise<boolean> {
+  public isLogin(): Promise<boolean> {
     return new Promise((resolve, _) => {
       try {
-        FirebaseService.Auth?.onAuthStateChanged((user) => {
+        FirebaseService.auth?.onAuthStateChanged(user => {
           resolve(user?.email === config.mizutoriEmail);
         });
       } catch (e) {
@@ -38,13 +41,15 @@ export default class FirebaseService {
     });
   }
 
-  public static logout() {
-    return FirebaseService.Auth?.signOut();
+  public logout() {
+    return FirebaseService.auth?.signOut();
   }
 
-  public async getStorageDownloadUrl(path: string) {
-    const storage = FirebaseService.App?.storage();
-    const url: string = await storage?.ref(path).getDownloadURL();
-    return url;
+  public async getStorageDownloadUrl(path: string): Promise<string | null> {
+    try {
+      return await FirebaseService.storage?.ref(path).getDownloadURL();
+    } catch {
+      return null;
+    }
   }
 }

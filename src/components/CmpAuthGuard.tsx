@@ -6,8 +6,10 @@ const CmpAuthGuard: React.FC = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [isLoginFail, setIsLoginFail] = useState(false);
 
+  const firebaseService = new FirebaseService();
+
   const handleLogout = () => {
-    FirebaseService.logout()?.then(() => {
+    firebaseService.logout()?.then(() => {
       setIsLogin(false);
     });
   };
@@ -17,7 +19,7 @@ const CmpAuthGuard: React.FC = ({ children }) => {
       'inputPassword'
     ) as HTMLInputElement).value;
     setIsNowLoading(true);
-    FirebaseService.login(inputPassword).then(v => {
+    firebaseService.login(inputPassword).then(v => {
       setIsLogin(v);
       setIsLoginFail(!v);
       setIsNowLoading(false);
@@ -25,8 +27,7 @@ const CmpAuthGuard: React.FC = ({ children }) => {
   };
 
   useEffect(() => {
-    FirebaseService.init();
-    FirebaseService.isLogin().then(res => {
+    firebaseService.isLogin().then(res => {
       setIsNowLoading(false);
       setIsLogin(res);
     });

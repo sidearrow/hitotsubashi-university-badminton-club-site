@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './Navbar';
 import Head from './Head';
 import Footer from './Footer';
 import '../assets/sass/index.scss';
+import { setEventStorageLink } from '../domUtils';
 
 const Layout: React.FC<{
   title: string;
@@ -10,6 +11,10 @@ const Layout: React.FC<{
   isAuthRequired?: boolean;
   isFullWidth?: boolean;
 }> = props => {
+  useEffect(() => {
+    setEventStorageLink();
+  }, []);
+
   return (
     <>
       <Head title={props.title} description={props.description} />
