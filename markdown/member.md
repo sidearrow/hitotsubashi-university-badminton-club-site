@@ -1,9 +1,9 @@
 ---
 contentType: json
-template: "MemberPageTemplate"
-path: "/member"
-title: "部員情報"
-description: "2018年7月現在、私達一橋大学バドミントン部は男子22名、女子5名の計25名で活動しています。"
+template: MemberPageTemplate
+path: /member
+title: 部員情報
+description: 2018年7月現在、私達一橋大学バドミントン部は男子22名、女子5名の計25名で活動しています。
 breadcrumbs:
   - text: HOME
     path: /
@@ -11,128 +11,6 @@ breadcrumbs:
     path: null
 content: |
   [
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "青木 純",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "商学部",
-          "highschool": "佐倉（千葉）",
-          "positions": [
-              "主将"
-          ],
-          "comment": "性格なまいき。身長は187cmと長く、そして細い。目線も視線も上からである。ボス。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "伊賀 翼",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "経済学部",
-          "highschool": "逗子開成（神奈川）",
-          "positions": [
-              "学連係"
-          ],
-          "comment": "男子校出身でありながら、我が部の美脚担当。得意技はマジレス。登場曲は「翼をください」。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "小川 怜",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "社会学部",
-          "highschool": "サレジオ学院（神奈川）",
-          "positions": [
-              "副将"
-          ],
-          "comment": "横浜の真ん中に住むイケメン。天然なのかあほなのか珍発言をすることが多々あるがピュアなだけに違いない。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "木口 憲明",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "経済学部",
-          "highschool": "新潟（新潟）",
-          "positions": [
-              "OB広報係",
-              "HP管理係"
-          ],
-          "comment": "キノコ。「ゲス極」。NEWSの手越君が大好き。外食に頼りきりの生活をしている。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "北亦 信也",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "法学部",
-          "highschool": "桐蔭（和歌山）",
-          "positions": [
-              "みずとり係"
-          ],
-          "comment": "一発芸のクオリティに定評がある法学部生。一人暮らしの部屋がすごいことになっているらしい。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "古賀 朱音",
-          "grade": 4,
-          "gender": 1,
-          "faculty": "社会学部",
-          "highschool": "名大附属（愛知）",
-          "positions": [
-              "女子主将",
-              "学連係"
-          ],
-          "comment": "唯一の3女。唯一の売れ残り。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "蜂谷 隆太",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "社会学部",
-          "highschool": "一関第一（岩手）",
-          "positions": [
-              "主務"
-          ],
-          "comment": "通称はちやま、はっちー。先輩に対して非常に丁寧に接し、仕事もできるが、寝坊癖が欠点。ミズノ系男子。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "馬場 耀平",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "社会学部",
-          "highschool": "相模原中等（神奈川）",
-          "positions": [
-              "会計係"
-          ],
-          "comment": "ばばんご。長距離走に長け、オフの日や合宿中には自主的にシャトルランをする。根性の塊だが、足をつりやすい。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "松田 幹矢",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "経済学部",
-          "highschool": "浅野（神奈川）",
-          "positions": [
-              "体育館係"
-          ],
-          "comment": "合格発表の日に入部を決めた浅野っ子。田児賢一とリーチョンウェイを心の底からリスペクトする。カイリューが好き。"
-      },
-      {
-          "fileUrl": "in_preparation.png",
-          "fullName": "山内 塔太",
-          "grade": 4,
-          "gender": 0,
-          "faculty": "経済学部",
-          "highschool": "国際情報（新潟）",
-          "positions": [
-              "OB係"
-          ],
-          "comment": "控えめで素直な新潟人だった。最近は授業にも行かず、彼女もできて、いわゆる大学生に変わってしまった。"
-      },
       {
           "fileUrl": "in_preparation.png",
           "fullName": "植木 さやか",
