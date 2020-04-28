@@ -3,6 +3,13 @@ contentType: markdown
 path: /santama/2015
 title: 第 50 回 三多摩大会（2015 年度）
 description: 第 50 回三多摩大会
+breadcrumbs:
+  - text: HOME
+    path: /
+  - text: 三多摩大会
+    path: /santama
+  - text: 2015 年
+    path: null
 ---
 
 # 第 50 回 三多摩大会（2015 年度）

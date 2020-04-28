@@ -5,12 +5,12 @@ export const MarkdownTemplate: React.FC<{
   title: string;
   description: string;
   html: string;
-}> = ({ isPreview, title, description, html }) => {
+}> = ({ isPreview, html }) => {
   if (isPreview) {
-    return (<div>{html}</div>);
+    return <div>{html}</div>;
   }
 
-  return (<div dangerouslySetInnerHTML={{ __html: html }}></div>);
-}
+  return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
+};
 
 export default MarkdownTemplate;

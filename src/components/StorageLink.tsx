@@ -10,7 +10,7 @@ const StorageLink: React.FC<{ path: string }> = ({ path, children }) => {
 
     let url;
     try {
-      url = await (new Firebase).getStorageDownloadUrl(path);
+      url = await new Firebase().getStorageDownloadUrl(path);
     } catch {
       url = '/404';
     }
@@ -18,7 +18,14 @@ const StorageLink: React.FC<{ path: string }> = ({ path, children }) => {
     e.target.click();
   };
 
-  return (<a target="__blank" onClick={async (e) => await handleClick(e)} style={{ cursor: 'pointer' }}>{children}</a>);
+  return (
+    <a
+      target="__blank"
+      onClick={async e => await handleClick(e)}
+      style={{ cursor: 'pointer' }}
+    >
+      {children}
+    </a>
+  );
 };
-
 export default StorageLink;

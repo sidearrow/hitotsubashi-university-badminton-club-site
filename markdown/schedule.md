@@ -4,6 +4,11 @@ template: "SchedulePageTemplate"
 path: "/schedule"
 title: "年間スケジュール"
 description: "年間スケジュール"
+breadcrumbs:
+  - text: HOME
+    path: /
+  - text: 年間スケジュール
+    path: null
 content: |
   [
     {

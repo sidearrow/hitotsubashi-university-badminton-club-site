@@ -3,11 +3,11 @@ contentType: markdown
 path: /bbs
 title: 掲示板
 description: 他大の方の書き込みも大歓迎です。練習試合のお誘いなどありましたらどうぞ。新歓関係などの個人的な質問はCONTACTからメールでも受け付けています。興味のある方は是非ともご連絡を。
-breadclumbs:
+breadcrumbs:
   - text: HOME
     path: /
-  - text: 部活情報
-    path: /info
+  - text: 掲示板
+    path: null
 ---
 
 # 掲示板

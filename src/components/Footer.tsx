@@ -55,7 +55,7 @@ const Footer: React.FC = () => (
             />
           ))}
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mt-3 mt-md-0">
           <div className="mb-3">
             <FooterIconItem
               icon="far fa-envelope"
@@ -73,7 +73,7 @@ const Footer: React.FC = () => (
           </div>
         </div>
       </div>
-      <hr />
+      <hr className="my-4" />
       <div className="text-center">
         <small>{`© ${new Date().getFullYear()} 一橋大学 バドミントン部`}</small>
       </div>

@@ -3,6 +3,13 @@ contentType: markdown
 path: /result/league
 title: リーグ戦結果
 description: 関東学生バドミントン連盟リーグ、リーグ戦の結果です
+breadcrumbs:
+  - text: HOME
+    path: /
+  - text: 大会結果
+    path: /result
+  - text: リーグ戦結果
+    path: null
 ---
 
 # リーグ戦結果

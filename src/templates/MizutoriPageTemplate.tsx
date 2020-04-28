@@ -20,30 +20,33 @@ const MizutoriPageTemplate: React.FC<{
     }
     obmsgList[v.year].push(v);
   });
-  console.log(obmsgList)
 
   const main = (
     <>
       <h1>{title}</h1>
       <p>{description}</p>
-      {Object.keys(obmsgList).reverse().map(year => (
-        <>
-          <h2>{year} 年</h2>
-          {obmsgList[year].map(v => (
-            <span className="mr-1">
-              <StorageLink path={`obmessage/obmessage_${v.id}.pdf`}>{v.name}</StorageLink>
-            </span>
-          ))}
-        </>
-      ))}
+      {Object.keys(obmsgList)
+        .reverse()
+        .map(year => (
+          <>
+            <h2>{year} 年</h2>
+            {obmsgList[year].map(v => (
+              <span className="mr-1">
+                <StorageLink path={`obmessage/obmessage_${v.id}.pdf`}>
+                  {v.name}
+                </StorageLink>
+              </span>
+            ))}
+          </>
+        ))}
     </>
-  )
+  );
 
   if (isPreview) {
     return main;
   }
 
-  return (<CmpAuthGuard>{main}</CmpAuthGuard>);
+  return <CmpAuthGuard>{main}</CmpAuthGuard>;
 };
 
 export default MizutoriPageTemplate;
