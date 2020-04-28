@@ -43,7 +43,7 @@ export const TemplateDispatcher: React.FC<{
   return (
     <Layout title={title} description={description}>
       {breadcrumbs !== null && (<Breadcrumb breadcrumb={breadcrumbs} />)}
-      <>{commonTemplate}</>
+      <div className=" main-content">{commonTemplate}</div>
     </Layout>
   )
 };

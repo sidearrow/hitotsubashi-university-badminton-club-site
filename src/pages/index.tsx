@@ -1,7 +1,5 @@
 import * as React from "react"
 import Layout from "../components/Layout"
-import logo from '../assets/img/logo.svg';
-import config from '../config';
 import { Carousel } from 'react-bootstrap';
 
 const imgList = [
@@ -29,7 +27,7 @@ const IndexPage: React.FC = () => (
         </div>
       </div>
     </div>
-    <section className="container mt-5">
+    <section className="container my-5">
       <div className="text-center">
         <div style={{fontSize: '2.5rem'}}>一橋大学<br/>バドミントン部</div>
         <div>Hitotsubashi University Badminton Club was established in 1952.</div>

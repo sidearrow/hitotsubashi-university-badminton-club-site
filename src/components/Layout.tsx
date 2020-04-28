@@ -22,7 +22,7 @@ const Layout: React.FC<{
         flexDirection: 'column',
       }}>
         <Navbar />
-        <main className={props.isFullWidth !== true ? 'container py-5 main-content' : ''} style={{
+        <main className={props.isFullWidth !== true ? 'container py-5' : ''} style={{
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,
