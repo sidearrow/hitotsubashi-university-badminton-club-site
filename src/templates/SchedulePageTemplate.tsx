@@ -17,9 +17,9 @@ export const Component: React.FC<{
     <p>{description}</p>
     <ul className="timeline">
       {pageContent.map((v, i) => (
-        <li key={i} className="mb-5">
+        <li key={i} className="mb-4">
           <p>{v.date}</p>
-          <h5>{v.title}</h5>
+          <h5 className="mt-1 mb-2">{v.title}</h5>
           <p>{v.description}</p>
         </li>
       ))}
