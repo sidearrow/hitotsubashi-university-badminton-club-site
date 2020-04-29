@@ -1,8 +1,14 @@
 backend:
   name: git-gateway
   branch: master
+  commit_messages:
+    create: "[netlify-cms] Create {{collection}} '{{slug}}'"
+    update: "[netlify-cms] Update {{collection}} '{{slug}}'"
+    delete: "[netlify-cms] Delete {{collection}} '{{slug}}'"
+    uploadMedia: "[netlify-cms] Upload file '{{path}}'"
+    deleteMedia: "[netlify-cms] Delete file '{{path}}'"
 media_folder: static/files
-public_folder: /img
+public_folder: /files
 collections:
   - name: "common"
     label: "固定ページ"
@@ -13,5 +19,13 @@ collections:
     fields:
       - { label: "タイトル", name: "title", widget: "string" }
       - { label: "説明", name: "description", widget: "string" }
-      - { label: "コンテンツ", name: "content", widget: "code", default_language: "json", allow_language_selection: false, output_code_only: true, required: false }
+      - {
+          label: "コンテンツ",
+          name: "content",
+          widget: "code",
+          default_language: "json",
+          allow_language_selection: false,
+          output_code_only: true,
+          required: false,
+        }
       - { label: "本文", name: "body", widget: "markdown", required: false }

@@ -3,9 +3,9 @@ import Layout from '../components/Layout';
 import { Carousel } from 'react-bootstrap';
 
 const imgList = [
-  'files/img/top-img1.jpg',
-  'files/img/top-img2.jpg',
-  'files/img/top-img3.jpg',
+  'files/top-img1.jpg',
+  'files/top-img2.jpg',
+  'files/top-img3.jpg',
 ];
 
 const IndexPage: React.FC = () => (
