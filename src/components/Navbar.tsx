@@ -1,50 +1,32 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import logo from '../assets/img/logo.svg';
-import { Navbar } from 'react-bootstrap';
-
-type NavLink = {
-  text: string;
-  path: string;
-};
-type NavLinks = NavLink[];
-
-const navLinks: NavLinks = [
-  {
-    text: '部活情報',
-    path: '/about',
-  },
-  {
-    text: '部員情報',
-    path: '/member',
-  },
-  {
-    text: '大会情報',
-    path: '/result',
-  },
-  {
-    text: '三多摩大会',
-    path: '/santama',
-  },
-  {
-    text: '掲示板',
-    path: '/bbs',
-  },
-  {
-    text: 'みずとり会',
-    path: '/mizutori',
-  },
-];
+import { Navbar, NavDropdown } from 'react-bootstrap';
+import navLinks from '../data/nav-links.json';
 
 const CmpNavLinks: React.FC = () => (
   <ul className="navbar-nav ml-auto">
-    {navLinks.map((v, i) => (
-      <li className="nav-item" key={i}>
-        <Link to={v.path} className="nav-link">
-          {v.text}
-        </Link>
-      </li>
-    ))}
+    {navLinks.map((v, i) => {
+      if ('links' in v) {
+        return (
+          <NavDropdown title={v.text} id="nav-dropdown">
+            {v.links?.map((v, i) => (
+              <NavDropdown.Item key={i} href={v.path}>
+                {v.text}
+              </NavDropdown.Item>
+            ))}
+          </NavDropdown>
+        );
+      }
+
+      return (
+        <li className="nav-item" key={i}>
+          <Link to={v.path} className="nav-link">
+            {v.text}
+          </Link>
+        </li>
+      );
+    })}
   </ul>
 );
 

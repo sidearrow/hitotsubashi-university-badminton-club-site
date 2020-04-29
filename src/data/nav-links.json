@@ -1,0 +1,52 @@
+[
+  {
+    "text": "部活情報",
+    "links": [
+      {
+        "text": "部活情報",
+        "path": "/about"
+      },
+      {
+        "text": "新歓情報",
+        "path": "/shinkan"
+      },
+      {
+        "text": "部員情報",
+        "path": "/member"
+      },
+      {
+        "text": "年間スケジュール",
+        "path": "/schedule"
+      }
+    ]
+  },
+  {
+    "text": "大会結果",
+    "links": [
+      {
+        "text": "リーグ戦",
+        "path": "/result/league"
+      },
+      {
+        "text": "東商戦",
+        "path": "/result/tosho"
+      },
+      {
+        "text": "三商戦",
+        "path": "/result/sansho"
+      }
+    ]
+  },
+  {
+    "text": "三多摩大会",
+    "path": "/santama"
+  },
+  {
+    "text": "掲示板",
+    "path": "/bbs"
+  },
+  {
+    "text": "みずとり会",
+    "path": "/mizutori"
+  }
+]
