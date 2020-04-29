@@ -30,5 +30,13 @@ module.exports = {
       },
     },
     'gatsby-plugin-catch-links',
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: [
+          'UA-164925120-1',
+        ],
+      },
+    }
   ],
 }
