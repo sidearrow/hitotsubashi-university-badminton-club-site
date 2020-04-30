@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FirebaseService from '../FirebaseService';
+import { setEventStorageLink } from '../domUtils';
 
 const CmpAuthGuard: React.FC = ({ children }) => {
   const [isNowLoading, setIsNowLoading] = useState(true);
@@ -23,6 +24,9 @@ const CmpAuthGuard: React.FC = ({ children }) => {
       setIsLogin(v);
       setIsLoginFail(!v);
       setIsNowLoading(false);
+      if (v) {
+        setEventStorageLink();
+      }
     });
   };
 
