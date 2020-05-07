@@ -1,5 +1,4 @@
 ---
-contentType: markdown
 path: /schedule
 title: 年間スケジュール
 description: 年間スケジュール

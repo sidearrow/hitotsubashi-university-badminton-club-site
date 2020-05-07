@@ -1,5 +1,4 @@
 ---
-contentType: markdown
 path: /result
 title: 試合結果
 description:

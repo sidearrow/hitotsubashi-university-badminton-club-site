@@ -1,5 +1,4 @@
 ---
-contentType: markdown
 path: /sitemap
 title: サイトマップ
 breadcrumbs:

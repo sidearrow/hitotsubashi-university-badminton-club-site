@@ -91,3 +91,18 @@
     }
   }
 }
+
+#page-member {
+  li {
+    &::before {
+      content: none;
+      padding-right: 0;
+    }
+    list-style: none;
+    font-size: 0.75rem;
+    display: inline-block;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: 1px solid black;
+  }
+}
