@@ -1,7 +1,7 @@
 ---
-path: "/mizutori"
-title: "みずとり会"
-description: "みずとり会のページです"
+path: /mizutori
+title: みずとり会
+description: みずとり会のページです
 breadcrumbs:
   - text: HOME
     path: /
@@ -14,6 +14,7 @@ isAuthRequired: true
 
 ## みずとり会会則
 
+[みずとり会会則](/**storage**/mizutori/mizutorikai-kaisoku.pdf)
 
 ## OB 通信
 
@@ -21,6 +22,7 @@ isAuthRequired: true
 
 [1月号](/**storage**/obmessage/obmessage_202001.pdf)
 [2月号](/**storage**/obmessage/obmessage_202002.pdf)
+[3月号](/**storage**/obmessage/obmessage_202003.pdf)
 
 ### 2019 年
 
