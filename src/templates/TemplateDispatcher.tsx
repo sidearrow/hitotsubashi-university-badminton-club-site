@@ -3,6 +3,7 @@ import { MarkdownTemplate } from './MarkdownTemplate';
 import { PageQueryResponse } from '../gatsby-node/createPageGraphql';
 import Layout from '../components/Layout';
 import Breadcrumb from '../components/BreadCrumb';
+import CmpAuthGuard from '../components/CmpAuthGuard';
 
 export const TemplateDispatcher: React.FC<{
   isPreview?: boolean;
@@ -13,9 +14,10 @@ export const TemplateDispatcher: React.FC<{
     text: string;
     path: string | null;
   }[];
-}> = ({ isPreview, title, description, html, breadcrumbs }) => {
-  return (
-    <Layout title={title} description={description}>
+  isAuthRequired: boolean;
+}> = ({ isPreview, title, description, html, breadcrumbs, isAuthRequired }) => {
+  const main = (
+    <>
       {breadcrumbs !== null && <Breadcrumb breadcrumb={breadcrumbs} />}
       <div className=" main-content">
         <MarkdownTemplate
@@ -25,6 +27,20 @@ export const TemplateDispatcher: React.FC<{
           html={html}
         />
       </div>
+    </>
+  );
+
+  if (!isPreview && isAuthRequired) {
+    return (
+      <Layout title={title} description={description}>
+        <CmpAuthGuard>{main}</CmpAuthGuard>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout title={title} description={description}>
+      {main}
     </Layout>
   );
 };
@@ -38,6 +54,7 @@ const TemplateDispatcherWrapper: React.FC<{
       description={markdownData.frontmatter.description}
       html={markdownData.html}
       breadcrumbs={markdownData.frontmatter.breadcrumbs}
+      isAuthRequired={Boolean(markdownData.frontmatter.isAuthRequired)}
     />
   );
 };

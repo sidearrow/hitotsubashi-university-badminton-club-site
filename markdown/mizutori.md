@@ -7,6 +7,7 @@ breadcrumbs:
     path: /
   - text: みずとり会
     path: null
+isAuthRequired: true
 ---
 
 # みずとり会のページ
