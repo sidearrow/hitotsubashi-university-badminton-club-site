@@ -1,6 +1,6 @@
 .main-content {
   a {
-    color: #ac2926;
+    display: inline-block;
   }
 
   ul {
@@ -51,6 +51,43 @@
       border: 1px solid lightgray;
       padding: 0.5rem;
       white-space: nowrap;
+
+      &[align="center"] {
+        text-align: center;
+      }
+    }
+  }
+
+  .timeline {
+    ul {
+      list-style-type: none;
+      position: relative;
+    }
+    ul:before {
+      content: " ";
+      background: #d4d9df;
+      display: inline-block;
+      position: absolute;
+      left: 29px;
+      width: 2px;
+      height: 100%;
+      z-index: 400;
+    }
+    ul > li {
+      margin: 20px 0;
+      padding-left: 50px;
+    }
+    ul > li:before {
+      content: " ";
+      background: white;
+      display: inline-block;
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid #ac2926;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      z-index: 400;
     }
   }
 }

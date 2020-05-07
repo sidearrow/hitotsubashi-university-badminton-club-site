@@ -1,6 +1,5 @@
 ---
-contentType: json
-template: "MizutoriPageTemplate"
+contentType: markdown
 path: "/mizutori"
 title: "みずとり会"
 description: "みずとり会のページです"
@@ -9,692 +8,131 @@ breadcrumbs:
     path: /
   - text: みずとり会
     path: null
-content: |
-  [
-    {
-      "id": 200501,
-      "year": 2005,
-      "name": "第1号"
-    },
-    {
-      "id": 200502,
-      "year": 2005,
-      "name": "第2号"
-    },
-    {
-      "id": 200503,
-      "year": 2005,
-      "name": "第3号"
-    },
-    {
-      "id": 200504,
-      "year": 2005,
-      "name": "第4号"
-    },
-    {
-      "id": 200505,
-      "year": 2005,
-      "name": "第5号"
-    },
-    {
-      "id": 200506,
-      "year": 2005,
-      "name": "第6号"
-    },
-    {
-      "id": 200507,
-      "year": 2005,
-      "name": "第7号"
-    },
-    {
-      "id": 200508,
-      "year": 2005,
-      "name": "第8号"
-    },
-    {
-      "id": 200601,
-      "year": 2006,
-      "name": "第1号"
-    },
-    {
-      "id": 200602,
-      "year": 2006,
-      "name": "第2号"
-    },
-    {
-      "id": 200603,
-      "year": 2006,
-      "name": "第3号"
-    },
-    {
-      "id": 200604,
-      "year": 2006,
-      "name": "第4号"
-    },
-    {
-      "id": 200605,
-      "year": 2006,
-      "name": "第5号"
-    },
-    {
-      "id": 200606,
-      "year": 2006,
-      "name": "第6号"
-    },
-    {
-      "id": 200607,
-      "year": 2006,
-      "name": "第7号"
-    },
-    {
-      "id": 200608,
-      "year": 2006,
-      "name": "第8号"
-    },
-    {
-      "id": 200701,
-      "year": 2007,
-      "name": "第1号"
-    },
-    {
-      "id": 200702,
-      "year": 2007,
-      "name": "第2号"
-    },
-    {
-      "id": 200703,
-      "year": 2007,
-      "name": "第3号"
-    },
-    {
-      "id": 200704,
-      "year": 2007,
-      "name": "第4号"
-    },
-    {
-      "id": 200705,
-      "year": 2007,
-      "name": "第5号"
-    },
-    {
-      "id": 200706,
-      "year": 2007,
-      "name": "第6号"
-    },
-    {
-      "id": 200707,
-      "year": 2007,
-      "name": "第7号"
-    },
-    {
-      "id": 200708,
-      "year": 2007,
-      "name": "第8号"
-    },
-    {
-      "id": 200709,
-      "year": 2007,
-      "name": "第9号"
-    },
-    {
-      "id": 200710,
-      "year": 2007,
-      "name": "第10号"
-    },
-    {
-      "id": 200711,
-      "year": 2007,
-      "name": "第11号"
-    },
-    {
-      "id": 200801,
-      "year": 2008,
-      "name": "第1号"
-    },
-    {
-      "id": 200802,
-      "year": 2008,
-      "name": "第2号"
-    },
-    {
-      "id": 200803,
-      "year": 2008,
-      "name": "第3号"
-    },
-    {
-      "id": 200804,
-      "year": 2008,
-      "name": "第4号"
-    },
-    {
-      "id": 200805,
-      "year": 2008,
-      "name": "第5号"
-    },
-    {
-      "id": 200806,
-      "year": 2008,
-      "name": "第6号"
-    },
-    {
-      "id": 200807,
-      "year": 2008,
-      "name": "第7号"
-    },
-    {
-      "id": 200808,
-      "year": 2008,
-      "name": "第8号"
-    },
-    {
-      "id": 200901,
-      "year": 2009,
-      "name": "第1号"
-    },
-    {
-      "id": 200902,
-      "year": 2009,
-      "name": "第2号"
-    },
-    {
-      "id": 200903,
-      "year": 2009,
-      "name": "第3号"
-    },
-    {
-      "id": 200904,
-      "year": 2009,
-      "name": "第4号"
-    },
-    {
-      "id": 200905,
-      "year": 2009,
-      "name": "第5号"
-    },
-    {
-      "id": 201111,
-      "year": 2011,
-      "name": "11月号"
-    },
-    {
-      "id": 201112,
-      "year": 2011,
-      "name": "12月号"
-    },
-    {
-      "id": 201201,
-      "year": 2012,
-      "name": "1月号"
-    },
-    {
-      "id": 201202,
-      "year": 2012,
-      "name": "2月号"
-    },
-    {
-      "id": 201203,
-      "year": 2012,
-      "name": "3月号"
-    },
-    {
-      "id": 201204,
-      "year": 2012,
-      "name": "4月号"
-    },
-    {
-      "id": 201205,
-      "year": 2012,
-      "name": "5月号"
-    },
-    {
-      "id": 201206,
-      "year": 2012,
-      "name": "6月号"
-    },
-    {
-      "id": 201207,
-      "year": 2012,
-      "name": "7月号"
-    },
-    {
-      "id": 201208,
-      "year": 2012,
-      "name": "8月号"
-    },
-    {
-      "id": 201209,
-      "year": 2012,
-      "name": "9月号"
-    },
-    {
-      "id": 201212,
-      "year": 2012,
-      "name": "12月号"
-    },
-    {
-      "id": 201301,
-      "year": 2013,
-      "name": "1月号"
-    },
-    {
-      "id": 201302,
-      "year": 2013,
-      "name": "2月号"
-    },
-    {
-      "id": 201303,
-      "year": 2013,
-      "name": "3月号"
-    },
-    {
-      "id": 201304,
-      "year": 2013,
-      "name": "4月号"
-    },
-    {
-      "id": 201305,
-      "year": 2013,
-      "name": "5月号"
-    },
-    {
-      "id": 201306,
-      "year": 2013,
-      "name": "6月号"
-    },
-    {
-      "id": 201307,
-      "year": 2013,
-      "name": "7月号"
-    },
-    {
-      "id": 201308,
-      "year": 2013,
-      "name": "8月号"
-    },
-    {
-      "id": 201309,
-      "year": 2013,
-      "name": "9月号"
-    },
-    {
-      "id": 201310,
-      "year": 2013,
-      "name": "10月号"
-    },
-    {
-      "id": 201311,
-      "year": 2013,
-      "name": "11月号"
-    },
-    {
-      "id": 201312,
-      "year": 2013,
-      "name": "12月号"
-    },
-    {
-      "id": 201401,
-      "year": 2014,
-      "name": "1月号"
-    },
-    {
-      "id": 201402,
-      "year": 2014,
-      "name": "2月号"
-    },
-    {
-      "id": 201403,
-      "year": 2014,
-      "name": "3月号"
-    },
-    {
-      "id": 201404,
-      "year": 2014,
-      "name": "4月号"
-    },
-    {
-      "id": 201405,
-      "year": 2014,
-      "name": "5月号"
-    },
-    {
-      "id": 201406,
-      "year": 2014,
-      "name": "6月号"
-    },
-    {
-      "id": 201407,
-      "year": 2014,
-      "name": "7月号"
-    },
-    {
-      "id": 201408,
-      "year": 2014,
-      "name": "8月号"
-    },
-    {
-      "id": 201409,
-      "year": 2014,
-      "name": "9月号"
-    },
-    {
-      "id": 201410,
-      "year": 2014,
-      "name": "10月号"
-    },
-    {
-      "id": 201411,
-      "year": 2014,
-      "name": "11月号"
-    },
-    {
-      "id": 201412,
-      "year": 2014,
-      "name": "12月号"
-    },
-    {
-      "id": 201501,
-      "year": 2015,
-      "name": "1月号"
-    },
-    {
-      "id": 201502,
-      "year": 2015,
-      "name": "2月号"
-    },
-    {
-      "id": 201503,
-      "year": 2015,
-      "name": "3月号"
-    },
-    {
-      "id": 201504,
-      "year": 2015,
-      "name": "4月号"
-    },
-    {
-      "id": 201505,
-      "year": 2015,
-      "name": "5月号"
-    },
-    {
-      "id": 201506,
-      "year": 2015,
-      "name": "6月号"
-    },
-    {
-      "id": 201507,
-      "year": 2015,
-      "name": "7月号"
-    },
-    {
-      "id": 201508,
-      "year": 2015,
-      "name": "8月号"
-    },
-    {
-      "id": 201509,
-      "year": 2015,
-      "name": "9月号"
-    },
-    {
-      "id": 201510,
-      "year": 2015,
-      "name": "10月号"
-    },
-    {
-      "id": 201511,
-      "year": 2015,
-      "name": "11月号"
-    },
-    {
-      "id": 201512,
-      "year": 2015,
-      "name": "12月号"
-    },
-    {
-      "id": 201601,
-      "year": 2016,
-      "name": "1月号"
-    },
-    {
-      "id": 201602,
-      "year": 2016,
-      "name": "2月号"
-    },
-    {
-      "id": 201603,
-      "year": 2016,
-      "name": "3月号"
-    },
-    {
-      "id": 201604,
-      "year": 2016,
-      "name": "4月号"
-    },
-    {
-      "id": 201605,
-      "year": 2016,
-      "name": "5月号"
-    },
-    {
-      "id": 201606,
-      "year": 2016,
-      "name": "6月号"
-    },
-    {
-      "id": 201607,
-      "year": 2016,
-      "name": "7月号"
-    },
-    {
-      "id": 201608,
-      "year": 2016,
-      "name": "8月号"
-    },
-    {
-      "id": 201609,
-      "year": 2016,
-      "name": "9月号"
-    },
-    {
-      "id": 201610,
-      "year": 2016,
-      "name": "10月号"
-    },
-    {
-      "id": 201611,
-      "year": 2016,
-      "name": "11月号"
-    },
-    {
-      "id": 201612,
-      "year": 2016,
-      "name": "12月号"
-    },
-    {
-      "id": 201701,
-      "year": 2017,
-      "name": "1月号"
-    },
-    {
-      "id": 201702,
-      "year": 2017,
-      "name": "2月号"
-    },
-    {
-      "id": 201703,
-      "year": 2017,
-      "name": "3月号"
-    },
-    {
-      "id": 201704,
-      "year": 2017,
-      "name": "4月号"
-    },
-    {
-      "id": 201705,
-      "year": 2017,
-      "name": "5月号"
-    },
-    {
-      "id": 201706,
-      "year": 2017,
-      "name": "6月号"
-    },
-    {
-      "id": 201707,
-      "year": 2017,
-      "name": "7月号"
-    },
-    {
-      "id": 201708,
-      "year": 2017,
-      "name": "8月号"
-    },
-    {
-      "id": 201709,
-      "year": 2017,
-      "name": "9月号"
-    },
-    {
-      "id": 201710,
-      "year": 2017,
-      "name": "10月号"
-    },
-    {
-      "id": 201711,
-      "year": 2017,
-      "name": "11月号"
-    },
-    {
-      "id": 201712,
-      "year": 2017,
-      "name": "12月号"
-    },
-    {
-      "id": 201801,
-      "year": 2018,
-      "name": "1月号"
-    },
-    {
-      "id": 201802,
-      "year": 2018,
-      "name": "2月号"
-    },
-    {
-      "id": 201803,
-      "year": 2018,
-      "name": "3月号"
-    },
-    {
-      "id": 201804,
-      "year": 2018,
-      "name": "4月号"
-    },
-    {
-      "id": 201805,
-      "year": 2018,
-      "name": "5月号"
-    },
-    {
-      "id": 201806,
-      "year": 2018,
-      "name": "6月号"
-    },
-    {
-      "id": 201807,
-      "year": 2018,
-      "name": "7月号"
-    },
-    {
-      "id": 201808,
-      "year": 2018,
-      "name": "8月号"
-    },
-    {
-      "id": 201809,
-      "year": 2018,
-      "name": "9月号"
-    },
-    {
-      "id": 201810,
-      "year": 2018,
-      "name": "10月号"
-    },
-    {
-      "id": 201811,
-      "year": 2018,
-      "name": "11月号"
-    },
-    {
-      "id": 201812,
-      "year": 2018,
-      "name": "12月号"
-    },
-    {
-      "id": 201901,
-      "year": 2019,
-      "name": "1月号"
-    },
-    {
-      "id": 201902,
-      "year": 2019,
-      "name": "2月号"
-    },
-    {
-      "id": 201903,
-      "year": 2019,
-      "name": "3月号"
-    },
-    {
-      "id": 201904,
-      "year": 2019,
-      "name": "4月号"
-    },
-    {
-      "id": 201905,
-      "year": 2019,
-      "name": "5月号"
-    },
-    {
-      "id": 201906,
-      "year": 2019,
-      "name": "6月号"
-    },
-    {
-      "id": 201907,
-      "year": 2019,
-      "name": "7月号"
-    },
-    {
-      "id": 201908,
-      "year": 2019,
-      "name": "8月号"
-    },
-    {
-      "id": 201909,
-      "year": 2019,
-      "name": "9月号"
-    },
-    {
-      "id": 201910,
-      "year": 2019,
-      "name": "10月号"
-    },
-    {
-      "id": 201911,
-      "year": 2019,
-      "name": "11月号"
-    },
-    {
-      "id": 201912,
-      "year": 2019,
-      "name": "12月号"
-    },
-    {
-      "id": 202001,
-      "year": 2020,
-      "name": "1月号"
-    }
-  ]
 ---
+
+# みずとり会のページ
+
+## みずとり会会則
+
+
+## OB 通信
+
+### 2020 年
+
+[1月号](/**storage**/obmessage/obmessage_202001.pdf)
+[2月号](/**storage**/obmessage/obmessage_202002.pdf)
+
+### 2019 年
+
+[1月号](/**storage**/obmessage/obmessage_201901.pdf)
+[2月号](/**storage**/obmessage/obmessage_201902.pdf)
+[3月号](/**storage**/obmessage/obmessage_201903.pdf)
+[4月号](/**storage**/obmessage/obmessage_201904.pdf)
+[5月号](/**storage**/obmessage/obmessage_201905.pdf)
+[6月号](/**storage**/obmessage/obmessage_201906.pdf)
+[7月号](/**storage**/obmessage/obmessage_201907.pdf)
+[8月号](/**storage**/obmessage/obmessage_201908.pdf)
+[9月号](/**storage**/obmessage/obmessage_201909.pdf)
+[10月号](/**storage**/obmessage/obmessage_201910.pdf)
+[11月号](/**storage**/obmessage/obmessage_201911.pdf)
+[12月号](/**storage**/obmessage/obmessage_201912.pdf)
+
+### 2018 年
+
+[1月号](/**storage**/obmessage/obmessage_201801.pdf)
+[2月号](/**storage**/obmessage/obmessage_201802.pdf)
+[3月号](/**storage**/obmessage/obmessage_201803.pdf)
+[4月号](/**storage**/obmessage/obmessage_201804.pdf)
+[5月号](/**storage**/obmessage/obmessage_201805.pdf)
+[6月号](/**storage**/obmessage/obmessage_201806.pdf)
+[7月号](/**storage**/obmessage/obmessage_201807.pdf)
+[8月号](/**storage**/obmessage/obmessage_201808.pdf)
+[9月号](/**storage**/obmessage/obmessage_201809.pdf)
+[10月号](/**storage**/obmessage/obmessage_201810.pdf)
+[11月号](/**storage**/obmessage/obmessage_201811.pdf)
+[12月号](/**storage**/obmessage/obmessage_201812.pdf)
+
+### 2017 年
+
+[1月号](/**storage**/obmessage/obmessage_201701.pdf)
+[2月号](/**storage**/obmessage/obmessage_201702.pdf)
+[3月号](/**storage**/obmessage/obmessage_201703.pdf)
+[4月号](/**storage**/obmessage/obmessage_201704.pdf)
+[5月号](/**storage**/obmessage/obmessage_201705.pdf)
+[6月号](/**storage**/obmessage/obmessage_201706.pdf)
+[7月号](/**storage**/obmessage/obmessage_201707.pdf)
+[8月号](/**storage**/obmessage/obmessage_201708.pdf)
+[9月号](/**storage**/obmessage/obmessage_201709.pdf)
+[10月号](/**storage**/obmessage/obmessage_201710.pdf)
+[11月号](/**storage**/obmessage/obmessage_201711.pdf)
+[12月号](/**storage**/obmessage/obmessage_201712.pdf)
+
+### 2016 年
+
+[1月号](/**storage**/obmessage/obmessage_201601.pdf)
+[2月号](/**storage**/obmessage/obmessage_201602.pdf)
+[3月号](/**storage**/obmessage/obmessage_201603.pdf)
+[4月号](/**storage**/obmessage/obmessage_201604.pdf)
+[5月号](/**storage**/obmessage/obmessage_201605.pdf)
+[6月号](/**storage**/obmessage/obmessage_201606.pdf)
+[7月号](/**storage**/obmessage/obmessage_201607.pdf)
+[8月号](/**storage**/obmessage/obmessage_201608.pdf)
+[9月号](/**storage**/obmessage/obmessage_201609.pdf)
+[10月号](/**storage**/obmessage/obmessage_201610.pdf)
+[11月号](/**storage**/obmessage/obmessage_201611.pdf)
+[12月号](/**storage**/obmessage/obmessage_201612.pdf)
+
+### 2015 年
+
+[1月号](/**storage**/obmessage/obmessage_201501.pdf)
+[2月号](/**storage**/obmessage/obmessage_201502.pdf)
+[3月号](/**storage**/obmessage/obmessage_201503.pdf)
+[4月号](/**storage**/obmessage/obmessage_201504.pdf)
+[5月号](/**storage**/obmessage/obmessage_201505.pdf)
+[6月号](/**storage**/obmessage/obmessage_201506.pdf)
+[7月号](/**storage**/obmessage/obmessage_201507.pdf)
+[8月号](/**storage**/obmessage/obmessage_201508.pdf)
+[9月号](/**storage**/obmessage/obmessage_201509.pdf)
+[10月号](/**storage**/obmessage/obmessage_201510.pdf)
+[11月号](/**storage**/obmessage/obmessage_201511.pdf)
+[12月号](/**storage**/obmessage/obmessage_201512.pdf)
+
+### 2014 年
+
+[1月号](/**storage**/obmessage/obmessage_201401.pdf)
+[2月号](/**storage**/obmessage/obmessage_201402.pdf)
+[3月号](/**storage**/obmessage/obmessage_201403.pdf)
+[4月号](/**storage**/obmessage/obmessage_201404.pdf)
+[5月号](/**storage**/obmessage/obmessage_201405.pdf)
+[6月号](/**storage**/obmessage/obmessage_201406.pdf)
+[7月号](/**storage**/obmessage/obmessage_201407.pdf)
+[8月号](/**storage**/obmessage/obmessage_201408.pdf)
+[9月号](/**storage**/obmessage/obmessage_201409.pdf)
+[10月号](/**storage**/obmessage/obmessage_201410.pdf)
+[11月号](/**storage**/obmessage/obmessage_201411.pdf)
+[12月号](/**storage**/obmessage/obmessage_201412.pdf)
+
+### 2013 年
+
+[1月号](/**storage**/obmessage/obmessage_201301.pdf)
+[2月号](/**storage**/obmessage/obmessage_201302.pdf)
+[3月号](/**storage**/obmessage/obmessage_201303.pdf)
+[4月号](/**storage**/obmessage/obmessage_201304.pdf)
+[5月号](/**storage**/obmessage/obmessage_201305.pdf)
+[6月号](/**storage**/obmessage/obmessage_201306.pdf)
+[7月号](/**storage**/obmessage/obmessage_201307.pdf)
+[8月号](/**storage**/obmessage/obmessage_201308.pdf)
+[9月号](/**storage**/obmessage/obmessage_201309.pdf)
+[10月号](/**storage**/obmessage/obmessage_201310.pdf)
+[11月号](/**storage**/obmessage/obmessage_201311.pdf)
+[12月号](/**storage**/obmessage/obmessage_201312.pdf)
+
+### 2012 年
+
+[4月号](/**storage**/obmessage/obmessage_201204.pdf)
+[5月号](/**storage**/obmessage/obmessage_201205.pdf)
+[6月号](/**storage**/obmessage/obmessage_201206.pdf)
+[7月号](/**storage**/obmessage/obmessage_201207.pdf)
+[8月号](/**storage**/obmessage/obmessage_201208.pdf)
+[9月号](/**storage**/obmessage/obmessage_201209.pdf)
+[12月号](/**storage**/obmessage/obmessage_201212.pdf)
