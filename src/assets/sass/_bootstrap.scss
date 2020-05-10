@@ -12,6 +12,10 @@ $container-max-widths: (
 
 $link-color: #ac2926;
 
+$headings-line-height: 1.5;
+$line-height-base: 1.65;
+$gray-dark: #546e7a;
+
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/mixins";

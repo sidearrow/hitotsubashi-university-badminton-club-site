@@ -16,7 +16,7 @@ const IndexPage: React.FC = () => (
   >
     <div className="container-fluid">
       <div className="row justify-content-center">
-        <div className="col-lg-6 col-md-8 p-0">
+        <div className="p-0" style={{ maxWidth: '540px' }}>
           <Carousel>
             {imgList.map((v, i) => (
               <Carousel.Item key={i}>

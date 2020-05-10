@@ -41,7 +41,7 @@ breadcrumbs:
 - 経済学部
 - 湘南（神奈川）
 - 元 副将
-- 元 みずとり係"
+- 元 みずとり係
 
 <font color="red">西川 遥</font>
 

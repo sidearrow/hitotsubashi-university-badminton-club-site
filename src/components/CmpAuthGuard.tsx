@@ -34,6 +34,9 @@ const CmpAuthGuard: React.FC = ({ children }) => {
     firebaseService.isLogin().then(res => {
       setIsNowLoading(false);
       setIsLogin(res);
+      if (res) {
+        setEventStorageLink();
+      }
     });
   }, []);
 

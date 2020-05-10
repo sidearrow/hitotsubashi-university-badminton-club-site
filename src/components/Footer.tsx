@@ -43,38 +43,33 @@ const FooterIconItem: React.FC<{
 
 const Footer: React.FC = () => (
   <footer className="footer py-5 bg-light">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          {footerLinkList.map((v, i) => (
-            <FooterIconItem
-              icon="fas fa-chevron-right"
-              key={i}
-              text={v.text}
-              path={v.path}
-            />
-          ))}
-        </div>
-        <div className="col-md-6 mt-3 mt-md-0">
-          <div className="mb-3">
-            <FooterIconItem
-              icon="far fa-envelope"
-              text="hit.bad.team2017@gmail.com"
-            />
-          </div>
-          <div className="text-center mt-5">
-            {socailIconLinkList.map((v, i) => (
-              <span className="mx-3" key={i}>
-                <a href={v.href} target="_blank" rel="noopener noreferrer">
-                  <img src={v.imgSrc} width="50px" />
-                </a>
-              </span>
+    <div className="container text-center">
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <div className="row">
+            {footerLinkList.map((v, i) => (
+              <div className="col-md-4 col-6 text-nowrap mb-1" key={i}>
+                <Link to={v.path}>{v.text}</Link>
+              </div>
             ))}
           </div>
         </div>
       </div>
-      <hr className="my-4" />
-      <div className="text-center">
+      <section className="mt-3">
+        <h6>連絡先</h6>
+        <span>hit.bad.team2017@gmail.com</span>
+      </section>
+      <div className="text-center mt-5 w-100">
+        {socailIconLinkList.map((v, i) => (
+          <span className="mx-3" key={i}>
+            <a href={v.href} target="_blank" rel="noopener noreferrer">
+              <img src={v.imgSrc} width="50px" />
+            </a>
+          </span>
+        ))}
+      </div>
+      <hr className="my-5" />
+      <div>
         <small>{`© ${new Date().getFullYear()} 一橋大学 バドミントン部`}</small>
       </div>
     </div>
