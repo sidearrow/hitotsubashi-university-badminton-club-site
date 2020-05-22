@@ -7,23 +7,13 @@ const Breadcrumb: React.FC<{
     path: string | null;
   }[];
 }> = ({ breadcrumb }) => (
-  <nav className="mb-5">
-    <ul className="breadcrumb bg-transparent">
-      {breadcrumb.map((v, i) => {
-        if (v.path === null) {
-          return (
-            <li className="breadcrumb-item active" key={i}>
-              {v.text}
-            </li>
-          );
-        }
-
-        return (
-          <li className="breadcrumb-item" key={i}>
-            <Link to={v.path}>{v.text}</Link>
-          </li>
-        );
-      })}
+  <nav className="breadcrumb">
+    <ul>
+      {breadcrumb.map((v, i) => (
+        <li key={i} className={v.path === null ? 'is-active' : ''}>
+          <Link to={v.path || ''}>{v.text}</Link>
+        </li>
+      ))}
     </ul>
   </nav>
 );

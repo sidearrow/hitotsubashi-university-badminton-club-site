@@ -14,6 +14,7 @@ const IndexPage: React.FC = () => (
     description="一橋大学バドミントン部のホームページです"
     isFullWidth={true}
   >
+    {/*
     <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="p-0" style={{ maxWidth: '540px' }}>
@@ -27,15 +28,18 @@ const IndexPage: React.FC = () => (
         </div>
       </div>
     </div>
-    <section className="container my-5">
-      <div className="text-center">
-        <div style={{ fontSize: '2.5rem' }}>
-          一橋大学
-          <br />
-          バドミントン部
-        </div>
-        <div>
-          Hitotsubashi University Badminton Club was established in 1952.
+            */}
+    <section className="hero is-primary is-bold is-medium">
+      <div className="hero-body">
+        <div className="container" style={{ textAlign: 'center' }}>
+          <div style={{ fontSize: '2.3rem' }}>
+            一橋大学
+            <br />
+            バドミントン部
+          </div>
+          <div style={{ marginTop: '0.5rem' }}>
+            Hitotsubashi University Badminton Club was established in 1952.
+          </div>
         </div>
       </div>
     </section>

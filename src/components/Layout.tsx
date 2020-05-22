@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import Navbar from './Navbar';
 import Head from './Head';
-import Footer from './Footer';
 import '../assets/sass/index.scss';
 import { setEventStorageLink } from '../domUtils';
+import { CmpNavbar } from './navbar/navbar.cmp';
+import { CmpFooter } from './footer/footer.cmp';
 
 const Layout: React.FC<{
   title: string;
@@ -24,7 +24,7 @@ const Layout: React.FC<{
           flexDirection: 'column',
         }}
       >
-        <Navbar />
+        <CmpNavbar />
         <main
           className={props.isFullWidth !== true ? 'container py-5' : ''}
           style={{
@@ -35,9 +35,17 @@ const Layout: React.FC<{
             paddingTop: 0,
           }}
         >
-          <div>{props.children}</div>
+          <div
+            style={
+              props.isFullWidth
+                ? {}
+                : { maxWidth: '720px', margin: '3rem auto' }
+            }
+          >
+            {props.children}
+          </div>
         </main>
-        <Footer />
+        <CmpFooter />
       </div>
     </>
   );
