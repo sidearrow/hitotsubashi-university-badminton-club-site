@@ -1,4 +1,5 @@
 ---
+pageId: shinkan
 path: /shinkan
 title: 新歓情報
 description: 新歓情報

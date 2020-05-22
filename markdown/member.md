@@ -1,4 +1,5 @@
 ---
+pageId: member
 path: /member
 title: 部員情報
 description: 2020 年 4 月現在、私達一橋大学バドミントン部は男子 13 名、女子 4 名の計 17 名で活動しています。

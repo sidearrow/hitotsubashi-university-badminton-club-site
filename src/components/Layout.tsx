@@ -8,7 +8,6 @@ import { setEventStorageLink } from '../domUtils';
 const Layout: React.FC<{
   title: string;
   description: string;
-  isAuthRequired?: boolean;
   isFullWidth?: boolean;
 }> = props => {
   useEffect(() => {
