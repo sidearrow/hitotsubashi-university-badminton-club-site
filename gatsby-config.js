@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    siteUrl: 'https://hit-u-bad.netlify.app',
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
@@ -12,7 +15,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript',
-    'gatsby-transformer-csv',
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',
@@ -22,7 +24,6 @@ module.exports = {
       },
     },
     'gatsby-transformer-remark',
-    'gatsby-transformer-csv',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
@@ -30,6 +31,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-catch-links',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/admin/*'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
