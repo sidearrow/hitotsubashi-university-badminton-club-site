@@ -1,9 +1,8 @@
 import React from 'react';
-import { MarkdownTemplate } from './MarkdownTemplate';
 import { PageQueryResponse } from '../gatsby-node/createPageGraphql';
 import Layout from '../components/Layout';
 import { CmpBreadcrumb } from '../components/breadcrumb/breadcrumb.cmp';
-import CmpAuthGuard from '../components/CmpAuthGuard';
+import { AuthGuard } from '../components/AuthGuard';
 
 export const TemplateDispatcher: React.FC<{
   isPreview?: boolean;
@@ -15,35 +14,19 @@ export const TemplateDispatcher: React.FC<{
     path: string | null;
   }[];
   isAuthRequired: boolean;
-}> = ({ isPreview, title, description, html, breadcrumbs, isAuthRequired }) => {
-  const main = (
-    <>
-      <div className="container">
+}> = ({ isPreview, title, description, html, breadcrumbs, isAuthRequired }) => (
+  <Layout title={title} description={description}>
+    <div className="container">
+      <AuthGuard isAuthRequired={isAuthRequired}>
         {breadcrumbs !== null && <CmpBreadcrumb breadcrumb={breadcrumbs} />}
-        <MarkdownTemplate
-          isPreview={isPreview || false}
-          title={title}
-          description={description}
-          html={html}
-        />
-      </div>
-    </>
-  );
-
-  if (!isPreview && isAuthRequired) {
-    return (
-      <Layout title={title} description={description}>
-        <CmpAuthGuard>{main}</CmpAuthGuard>
-      </Layout>
-    );
-  }
-
-  return (
-    <Layout title={title} description={description}>
-      {main}
-    </Layout>
-  );
-};
+        <div className="main-content">
+          {isPreview && <>{html}</>}
+          {!isPreview && <div dangerouslySetInnerHTML={{ __html: html }}></div>}
+        </div>
+      </AuthGuard>
+    </div>
+  </Layout>
+);
 
 const TemplateDispatcherWrapper: React.FC<{
   pageContext: { data: PageQueryResponse };

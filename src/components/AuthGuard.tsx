@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import FirebaseService from '../FirebaseService';
 import { setEventStorageLink } from '../domUtils';
 
-const CmpAuthGuard: React.FC = ({ children }) => {
+export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
+  isAuthRequired,
+  children,
+}) => {
+  if (!isAuthRequired) {
+    return <>{children}</>;
+  }
+
   const [isNowLoading, setIsNowLoading] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
   const [isLoginFail, setIsLoginFail] = useState(false);
@@ -98,5 +105,3 @@ const CmpAuthGuard: React.FC = ({ children }) => {
     </>
   );
 };
-
-export default CmpAuthGuard;
