@@ -13,6 +13,12 @@ const config = {
     instagram: 'https://www.instagram.com/hitotsubashi_badminton/',
     github: 'https://github.com/sidearrow/hit-u-bad',
   },
+  siteMetaData: {
+    siteName: '一橋大学バドミントン部',
+    url: 'https://hit-u-bad.netlify.app',
+    twitterId: 'hit_u_bad',
+    themeColor: '#ac2926',
+  },
 };
 
 export default config;
