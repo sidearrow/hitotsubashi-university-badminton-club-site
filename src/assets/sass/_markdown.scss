@@ -3,6 +3,14 @@
     display: inline-block;
   }
 
+  a:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
   ul {
     margin-top: 0.25rem;
     padding-left: 1rem;

@@ -2,15 +2,8 @@
 @import "./markdown";
 @import "./header";
 
-@import "../../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css";
-@import "../../../node_modules/@fortawesome/fontawesome-free/css/brands.min.css";
-@import "../../../node_modules/@fortawesome/fontawesome-free/css/regular.min.css";
-@import "../../../node_modules/@fortawesome/fontawesome-free/css/solid.min.css";
-
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
-
 body {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
 h1 {

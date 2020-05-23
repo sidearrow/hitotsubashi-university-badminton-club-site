@@ -1,22 +1,28 @@
 import React, { useEffect } from 'react';
-import Navbar from './Navbar';
 import Head from './Head';
-import Footer from './Footer';
 import '../assets/sass/index.scss';
 import { setEventStorageLink } from '../domUtils';
+import { CmpNavbar } from './navbar/navbar.cmp';
+import { CmpFooter } from './footer/footer.cmp';
 
 const Layout: React.FC<{
   title: string;
   description: string;
-  isFullWidth?: boolean;
-}> = props => {
+}> = ({ title, description, children }) => {
   useEffect(() => {
     setEventStorageLink();
   }, []);
 
+  const styleMainContainer: React.CSSProperties = {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+    marginTop: '50px',
+  };
+
   return (
     <>
-      <Head title={props.title} description={props.description} />
+      <Head title={title} description={description} />
       <div
         style={{
           minHeight: '100vh',
@@ -24,20 +30,11 @@ const Layout: React.FC<{
           flexDirection: 'column',
         }}
       >
-        <Navbar />
-        <main
-          className={props.isFullWidth !== true ? 'container py-5' : ''}
-          style={{
-            flexGrow: 1,
-            flexShrink: 1,
-            flexBasis: 0,
-            width: '100%',
-            paddingTop: 0,
-          }}
-        >
-          <div>{props.children}</div>
+        <CmpNavbar />
+        <main className="py-5" style={styleMainContainer}>
+          <div>{children}</div>
         </main>
-        <Footer />
+        <CmpFooter />
       </div>
     </>
   );

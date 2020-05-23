@@ -24,6 +24,10 @@
     "text": "大会結果",
     "links": [
       {
+        "text": "大会結果一覧",
+        "path": "/result"
+      },
+      {
         "text": "リーグ戦",
         "path": "/result/league"
       },
@@ -38,15 +42,20 @@
     ]
   },
   {
-    "text": "三多摩大会",
-    "path": "/santama"
-  },
-  {
-    "text": "掲示板",
-    "path": "/bbs"
-  },
-  {
-    "text": "みずとり会",
-    "path": "/mizutori"
+    "text": null,
+    "links": [
+      {
+        "text": "三多摩大会",
+        "path": "/santama"
+      },
+      {
+        "text": "掲示板",
+        "path": "/bbs"
+      },
+      {
+        "text": "みずとり会",
+        "path": "/mizutori"
+      }
+    ]
   }
 ]
