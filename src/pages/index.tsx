@@ -29,7 +29,7 @@ const IndexPage: React.FC = () => (
       </div>
     </div>
             */}
-    <section className="hero is-primary is-bold is-medium">
+    <section className="hero">
       <div className="hero-body">
         <div className="container" style={{ textAlign: 'center' }}>
           <div style={{ fontSize: '2.3rem' }}>
@@ -40,6 +40,16 @@ const IndexPage: React.FC = () => (
           <div style={{ marginTop: '0.5rem' }}>
             Hitotsubashi University Badminton Club was established in 1952.
           </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div className="tile is-ancestor">
+        <div className="tile is-parent">
+          <div className="tile is-child box">aaaa</div>
+        </div>
+        <div className="tile is-parent">
+          <div className="tile is-child box">aaaa</div>
         </div>
       </div>
     </section>

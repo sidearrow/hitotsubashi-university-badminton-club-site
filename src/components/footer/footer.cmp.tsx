@@ -33,11 +33,6 @@ const CmpFooter: React.FC = () => (
       </section>
       <hr />
       <section>
-        <h6>メールアドレス</h6>
-        <span>hit.bad.team2017@gmail.com</span>
-      </section>
-      <hr />
-      <section>
         {socailIconLinkList.map((v, i) => (
           <a
             href={v.href}
@@ -49,6 +44,11 @@ const CmpFooter: React.FC = () => (
             <img src={v.imgSrc} width="50px" />
           </a>
         ))}
+      </section>
+      <hr />
+      <section>
+        <h6>連絡先</h6>
+        <span>hit.bad.team2017@gmail.com</span>
       </section>
       <hr className="my-5" />
       <div>

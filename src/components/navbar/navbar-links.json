@@ -24,6 +24,10 @@
     "text": "大会結果",
     "links": [
       {
+        "text": "大会結果一覧",
+        "path": "/result"
+      },
+      {
         "text": "リーグ戦",
         "path": "/result/league"
       },
