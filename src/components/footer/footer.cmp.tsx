@@ -16,7 +16,7 @@ const socailIconLinkList = [
 
 const CmpFooter: React.FC = () => (
   <footer
-    className="has-background-light"
+    className="bg-light"
     style={{ paddingTop: '3rem', paddingBottom: '3rem' }}
   >
     <div className="container" style={{ textAlign: 'center' }}>

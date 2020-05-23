@@ -8,8 +8,7 @@ import { CmpFooter } from './footer/footer.cmp';
 const Layout: React.FC<{
   title: string;
   description: string;
-  isFullWidth?: boolean;
-}> = ({ title, description, isFullWidth, children }) => {
+}> = ({ title, description, children }) => {
   useEffect(() => {
     setEventStorageLink();
   }, []);
@@ -19,11 +18,6 @@ const Layout: React.FC<{
     flexShrink: 1,
     flexBasis: 0,
   };
-
-  if (!isFullWidth) {
-    styleMainContainer.maxWidth = '720px';
-    styleMainContainer.padding = '3rem 0';
-  }
 
   return (
     <>
@@ -36,10 +30,7 @@ const Layout: React.FC<{
         }}
       >
         <CmpNavbar />
-        <main
-          className={`container ${isFullWidth ? '' : 'is-fluid'}`}
-          style={styleMainContainer}
-        >
+        <main className="container py-5" style={styleMainContainer}>
           <div>{children}</div>
         </main>
         <CmpFooter />

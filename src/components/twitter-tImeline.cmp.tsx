@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const TwitterTimeline: React.FC = () => {
+const CmpTwitterTimeline: React.FC = () => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://platform.twitter.com/widgets.js';
@@ -25,4 +25,4 @@ const TwitterTimeline: React.FC = () => {
   );
 };
 
-export default TwitterTimeline;
+export { CmpTwitterTimeline };
