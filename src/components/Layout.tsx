@@ -17,6 +17,7 @@ const Layout: React.FC<{
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
+    marginTop: '50px',
   };
 
   return (
@@ -30,7 +31,7 @@ const Layout: React.FC<{
         }}
       >
         <CmpNavbar />
-        <main className="container py-5" style={styleMainContainer}>
+        <main className="py-5" style={styleMainContainer}>
           <div>{children}</div>
         </main>
         <CmpFooter />

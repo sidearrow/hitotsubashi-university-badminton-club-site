@@ -2,7 +2,7 @@ import React from 'react';
 import { MarkdownTemplate } from './MarkdownTemplate';
 import { PageQueryResponse } from '../gatsby-node/createPageGraphql';
 import Layout from '../components/Layout';
-import Breadcrumb from '../components/BreadCrumb';
+import { CmpBreadcrumb } from '../components/breadcrumb/breadcrumb.cmp';
 import CmpAuthGuard from '../components/CmpAuthGuard';
 
 export const TemplateDispatcher: React.FC<{
@@ -18,8 +18,8 @@ export const TemplateDispatcher: React.FC<{
 }> = ({ isPreview, title, description, html, breadcrumbs, isAuthRequired }) => {
   const main = (
     <>
-      {breadcrumbs !== null && <Breadcrumb breadcrumb={breadcrumbs} />}
-      <div className=" main-content">
+      <div className="container">
+        {breadcrumbs !== null && <CmpBreadcrumb breadcrumb={breadcrumbs} />}
         <MarkdownTemplate
           isPreview={isPreview || false}
           title={title}

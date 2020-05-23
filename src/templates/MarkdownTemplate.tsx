@@ -7,10 +7,15 @@ export const MarkdownTemplate: React.FC<{
   html: string;
 }> = ({ isPreview, html }) => {
   if (isPreview) {
-    return <div>{html}</div>;
+    return <div className="main-content">{html}</div>;
   }
 
-  return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
+  return (
+    <div
+      className="main-content"
+      dangerouslySetInnerHTML={{ __html: html }}
+    ></div>
+  );
 };
 
 export default MarkdownTemplate;

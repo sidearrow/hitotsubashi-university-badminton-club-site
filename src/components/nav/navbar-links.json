@@ -42,15 +42,20 @@
     ]
   },
   {
-    "text": "三多摩大会",
-    "path": "/santama"
-  },
-  {
-    "text": "掲示板",
-    "path": "/bbs"
-  },
-  {
-    "text": "みずとり会",
-    "path": "/mizutori"
+    "text": null,
+    "links": [
+      {
+        "text": "三多摩大会",
+        "path": "/santama"
+      },
+      {
+        "text": "掲示板",
+        "path": "/bbs"
+      },
+      {
+        "text": "みずとり会",
+        "path": "/mizutori"
+      }
+    ]
   }
 ]
