@@ -10,16 +10,15 @@ backend:
 media_folder: static/files
 public_folder: /files
 collections:
-  - name: "common"
+  - name: common
     label: "ページ"
-    folder: "markdown"
-    create: true
-    delete: true
+    folder: markdown
+    create: false
+    delete: false
     sortableFields: ["pageId", "title"]
     identifier_field: pageId
     fields:
-      - { label: "ページ ID", name: "pageId", widget: "string" }
-      - { label: "URL パス", name: "path", widget: "string" }
+      - { label: "URL", name: "path", widget: "string" }
       - { label: "タイトル", name: "title", widget: "string" }
       - { label: "説明", name: "description", widget: "string" }
       - { label: "本文", name: "body", widget: "markdown", required: false }

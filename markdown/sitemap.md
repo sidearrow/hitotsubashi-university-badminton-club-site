@@ -1,5 +1,4 @@
 ---
-pageId: sitemap
 path: /sitemap
 title: サイトマップ
 breadcrumbs:

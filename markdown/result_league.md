@@ -1,5 +1,4 @@
 ---
-pageId: result_league
 path: /league-result
 title: リーグ戦結果
 description: 関東学生バドミントン連盟リーグ、リーグ戦の結果です
