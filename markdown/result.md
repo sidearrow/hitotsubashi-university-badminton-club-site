@@ -12,7 +12,7 @@ breadcrumbs:
 
 # 試合結果
 
-[リーグ戦](/result/league)
+[リーグ戦](/league-result)
 
 関東学生バドミントン連盟リーグ戦は年二回、春と秋に開催されます。
 

@@ -1,6 +1,6 @@
 ---
 pageId: result_league
-path: /result/league
+path: /league-result
 title: リーグ戦結果
 description: 関東学生バドミントン連盟リーグ、リーグ戦の結果です
 breadcrumbs:
@@ -19,7 +19,7 @@ breadcrumbs:
 | 年度 | 男子 | 女子 |
 |--|--|--|
 | 2020 春 | 中止 | 中止 |
-| 2019 秋 | 4 部 4 位 | 5 部 4 位 |
+| 2019 秋 | [4 部 4 位](/league-result/2019-01-m) | 5 部 4 位 |
 | 2019 春 | 4 部 5 位 | 5 部 5 位 |
 | 2018 秋 | 5 部 1 位 （昇格） | 5 部 5 位 |
 | 2018 春 | 5 部 2 位 | 5 部 3 位 |
