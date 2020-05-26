@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FirebaseService from '../FirebaseService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { setEventStorageLink } from '../domUtils';
 
 export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
@@ -27,7 +29,7 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
       'inputPassword'
     ) as HTMLInputElement).value;
     setIsNowLoading(true);
-    firebaseService.login(inputPassword).then(v => {
+    firebaseService.login(inputPassword).then((v) => {
       setIsLogin(v);
       setIsLoginFail(!v);
       setIsNowLoading(false);
@@ -38,7 +40,7 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
   };
 
   useEffect(() => {
-    firebaseService.isLogin().then(res => {
+    firebaseService.isLogin().then((res) => {
       setIsNowLoading(false);
       setIsLogin(res);
       if (res) {
@@ -50,7 +52,6 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
   if (isNowLoading) {
     return (
       <div className="text-center">
-        <span className="spinner-grow spinner-grow-sm"></span>
         <span className="ml-2">ログイン情報取得中......</span>
       </div>
     );
@@ -59,10 +60,8 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
   if (isLogin) {
     return (
       <>
-        <div className="text-right">
-          <button className="btn btn-outline-secondary" onClick={handleLogout}>
-            ログアウト
-          </button>
+        <div className="text-right mb-4">
+          <button onClick={handleLogout}>ログアウト</button>
         </div>
         {children}
       </>
@@ -72,34 +71,23 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
   return (
     <>
       <div className="section">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <div className="card">
-              <div className="card-body">
-                <h5>みずとり会 ログイン</h5>
-                <input
-                  className="form-control"
-                  type="password"
-                  id="inputPassword"
-                  placeholder="パスワード"
-                />
-                <div className="invalid-feedback d-block">
-                  {isLoginFail && 'ログインに失敗しました'}
-                </div>
-                <div className="row mt-4 justify-content-center">
-                  <div className="col-md-6 col-8">
-                    <button
-                      className="btn btn-block btn-outline-main"
-                      id="loginButton"
-                      onClick={handleLogin}
-                    >
-                      ログイン
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="flex border-b border-gray-500 py-2 items-center">
+          <input
+            className="appearance-none bg-transparent border-none w-full focus:outline-none"
+            type="password"
+            id="inputPassword"
+            placeholder="パスワード"
+          />
+          <button
+            className="bg-gray-500 hover:bg-gray-700 text-white py-1 px-2 rounded"
+            type="button"
+            onClick={handleLogin}
+          >
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        </div>
+        <div className="text-red-600 mt-2">
+          {isLoginFail && 'ログインに失敗しました'}
         </div>
       </div>
     </>

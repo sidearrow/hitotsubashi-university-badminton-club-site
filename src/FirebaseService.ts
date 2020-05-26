@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
-import config from './config';
+import { config } from './config';
 
 export default class FirebaseService {
   private static app: firebase.app.App | null = null;
@@ -32,7 +32,7 @@ export default class FirebaseService {
   public isLogin(): Promise<boolean> {
     return new Promise((resolve, _) => {
       try {
-        FirebaseService.auth?.onAuthStateChanged(user => {
+        FirebaseService.auth?.onAuthStateChanged((user) => {
           resolve(user?.email === config.mizutoriEmail);
         });
       } catch (e) {

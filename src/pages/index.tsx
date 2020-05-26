@@ -1,47 +1,27 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import { Carousel } from 'react-bootstrap';
+import { Layout } from '../components/Layout';
+import { TwitterEmbed } from '../components/TwitterEmbed';
+import { Container } from '../components/Container';
 
-const imgList = [
-  'files/top-img1.jpg',
-  'files/top-img2.jpg',
-  'files/top-img3.jpg',
-];
-
-const CmpCarousel: React.FC = () => (
-  <div className="container-fluid">
-    <div className="row justify-content-center">
-      <div className="p-0" style={{ maxWidth: '540px' }}>
-        <Carousel>
-          {imgList.map((v, i) => (
-            <Carousel.Item key={i}>
-              <img className="w-100" src={v} />
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      </div>
-    </div>
-  </div>
-);
-
-const IndexPage: React.FC = () => (
-  <Layout title="" description="一橋大学バドミントン部のホームページです">
-    <section>
-      <div style={{ textAlign: 'center' }}>
-        <div style={{ fontSize: '2rem' }}>
-          一橋大学
-          <br />
-          バドミントン部
-        </div>
-        <div style={{ marginTop: '0.5rem' }}>
+const Component: React.FC = () => (
+  <Layout title="" description="">
+    <div className="text-center">
+      <Container>
+        <div className="text-3xl text-gray-900">一橋大学</div>
+        <div className="text-3xl text-gray-900">バドミントン部</div>
+        <div className="text-gray-600 mt-2">
           Hitotsubashi University Badminton Club was established in 1952.
         </div>
-      </div>
-    </section>
-    <section className="mt-5">
-      <CmpCarousel />
+      </Container>
+    </div>
+    <section className="mt-16 mb-8">
+      <Container>
+        <div className="md:w-3/5 mx-auto">
+          <TwitterEmbed />
+        </div>
+      </Container>
     </section>
   </Layout>
 );
 
-export default IndexPage;
+export default Component;
