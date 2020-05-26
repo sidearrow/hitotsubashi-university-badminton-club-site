@@ -28,3 +28,16 @@ export const setEventStorageLink = (): void => {
     });
   });
 };
+
+export const addTableResponsive = (): void => {
+  document.querySelectorAll('.main-content table').forEach(el => {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('table-responsive');
+
+    el.classList.add('table', 'table-bordered');
+    el.querySelector('thead')?.classList.add('alert-secondary');
+
+    el.parentNode?.replaceChild(wrapper, el);
+    wrapper.appendChild(el);
+  });
+};

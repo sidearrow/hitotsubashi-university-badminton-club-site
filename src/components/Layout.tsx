@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from './Head';
 import '../assets/sass/index.scss';
-import { setEventStorageLink } from '../domUtils';
+import { setEventStorageLink, addTableResponsive } from '../domUtils';
 import { CmpNavbar } from './navbar/navbar.cmp';
 import { CmpFooter } from './footer/footer.cmp';
 
@@ -11,6 +11,7 @@ const Layout: React.FC<{
 }> = ({ title, description, children }) => {
   useEffect(() => {
     setEventStorageLink();
+    addTableResponsive();
   }, []);
 
   const styleMainContainer: React.CSSProperties = {
