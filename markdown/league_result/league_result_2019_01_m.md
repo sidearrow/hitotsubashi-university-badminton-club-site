@@ -1,4 +1,5 @@
 ---
+file_name: league_result_2019_01_m
 path: /league-result/2019-01-m
 title: リーグ戦結果 2019 年秋期 男子
 description: リーグ戦結果 2019 年秋期 男子

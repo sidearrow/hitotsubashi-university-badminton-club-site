@@ -35,7 +35,7 @@ export const addTableResponsive = (): void => {
     wrapper.classList.add('table-responsive');
 
     el.classList.add('table', 'table-bordered');
-    el.querySelector('thead')?.classList.add('alert-secondary');
+    el.querySelector('thead')?.classList.add('alert-main');
 
     el.parentNode?.replaceChild(wrapper, el);
     wrapper.appendChild(el);

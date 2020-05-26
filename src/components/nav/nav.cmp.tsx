@@ -11,9 +11,7 @@ export const CmpNav: React.FC = () => (
           <section>
             {v.links?.map((v, i) => (
               <div key={i}>
-                <Link to={v.path} className="navbar-item">
-                  {v.text}
-                </Link>
+                <Link to={v.path}>{v.text}</Link>
               </div>
             ))}
           </section>
