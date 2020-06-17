@@ -53,9 +53,9 @@ description: 三多摩大会のページです
 
 ##### 第 50 回（2015 年度）
 
-[男子シングルスA](/**storage**/santama/santama_2015_mda_re.pdf)
-[男子ダブルスA](/**storage**/santama/santama_2015_mda_re.pdf)
-[男子シングルスB](/**storage**/santama/santama_2015_msb_re.pdf)
-[男子ダブルスB](/**storage**/santama/santama_2015_mdb_re.pdf)
-[女子シングルス](/**storage**/santama/santama_2015_ws_re.pdf)
-[女子ダブルス](/**storage**/santama/santama_2015_wd_re.pdf)
+[男子シングルスA](/**storage**/santama/2015/santama_2015_mda_re.pdf)
+[男子ダブルスA](/**storage**/santama/2015/santama_2015_mda_re.pdf)
+[男子シングルスB](/**storage**/santama/2015/santama_2015_msb_re.pdf)
+[男子ダブルスB](/**storage**/santama/2015/santama_2015_mdb_re.pdf)
+[女子シングルス](/**storage**/santama/2015/santama_2015_ws_re.pdf)
+[女子ダブルス](/**storage**/santama/2015/santama_2015_wd_re.pdf)
