@@ -1,9 +1,11 @@
-# Hitotsubashi University Badminton Club Homepage
+# 一橋大学バドミントン部ホームページ
 
-一橋大学バドミントン部ホームページ
+https://hit-u-badminton.web.app/
 
-- Netlify
-- Firebase Authentication
-- Firebase CloudStorage
-- Gatsby
-- Netlify CMS
+- Firebase
+  - Hosting
+  - Storage
+  - Authentication
+- Next.js
+  - SSG
+- Tailwind CSS
