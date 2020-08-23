@@ -1,4 +1,5 @@
 export const config = {
+  baseUrl: 'https://hit-u-badminton.web.app',
   googleSiteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   mizutoriEmail: process.env.NEXT_PUBLIC_MIZUTORI_EMAIL as string,
   firebase: {
@@ -14,11 +15,5 @@ export const config = {
     github: 'https://github.com/sidearrow/hit-u-bad',
     bbs: 'http://hitotsubashibad.bbs.fc2.com',
     bbsOld: 'http://bbs.mottoki.com/?bbs=ikkyo_bad',
-  },
-  siteMetaData: {
-    siteName: '一橋大学バドミントン部',
-    url: 'https://hit-u-bad.netlify.app',
-    twitterId: 'hit_u_bad',
-    themeColor: '#ac2926',
   },
 };

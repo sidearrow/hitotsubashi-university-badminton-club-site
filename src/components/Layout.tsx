@@ -5,6 +5,7 @@ import { Navbar } from './Navbar';
 import { Breadcrumb, BreadcrumbItems } from './Breadcrumb';
 import { Container } from './Container';
 import { config } from '../config';
+import { useRouter } from 'next/router';
 
 type Props = {
   title: string;
@@ -18,6 +19,9 @@ export const Layout: React.FC<Props> = ({
   description,
   breadcrumbs,
 }) => {
+  const router = useRouter();
+  const canonicalUrl = config.baseUrl + router.asPath;
+
   return (
     <div
       style={{
@@ -50,6 +54,7 @@ export const Layout: React.FC<Props> = ({
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <link rel="canonical" href={canonicalUrl} />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#ac2926" />
