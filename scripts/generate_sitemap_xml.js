@@ -3,7 +3,7 @@ const path = require('path');
 
 const OUT_DIR = path.resolve(path.join(__dirname, '../out'))
 const BASE_URL = 'https://hit-u-badminton.web.app'
-const LAST_MOD = (new Date()).toISOString().split('.')[0] + '+0:00'
+const LAST_MOD = (new Date()).toISOString().split('T')[0]
 
 const TEMPLATE_XML = (urlNodes) => (`
 <?xml version="1.0"?>
