@@ -1,0 +1,3 @@
+Sitemap: https://hit-u-badminton.web.app/sitemap.xml
+User-agent: *
+Allow: /*
