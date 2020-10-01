@@ -17,7 +17,7 @@ export const SantamaPageTemplate: React.FC = ({ children }) => {
                 {eachYear.files.map((f, i) => (
                   <li key={i}>
                     <a
-                      href={`/files/santama/${f.filename}`}
+                      href={`/files/santama/${eachYear.year}/${f.filename}`}
                       target="_blank"
                       rel="noreferrer"
                     >
