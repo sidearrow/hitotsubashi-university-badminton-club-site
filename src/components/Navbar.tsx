@@ -31,7 +31,7 @@ const NavLinkBox: React.FC = ({ children }) => {
 const NAV_LINKS = [
   { text: '部活紹介', path: 'about' },
   { text: '部員紹介', path: 'member' },
-  { text: '大会結果', path: 'result/index' },
+  { text: '大会情報', path: 'tournaments' },
   { text: '三多摩大会', path: 'santama' },
 ];
 

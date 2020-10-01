@@ -3,8 +3,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { parseMarkdown, MarkdownParseResponse } from '../markdownParser';
 import { Layout } from '../components/Layout';
 import { Container } from '../components/Container';
-import { config } from '../config';
 import { AuthGuard } from '../components/AuthGuard';
+import { SantamaPageTemplate } from '../templates/SantamaPageTemplate';
 
 const PATHS = [
   'about',
@@ -12,32 +12,50 @@ const PATHS = [
   'schedule',
   'santama',
   'mizutori',
-  'result/index',
+  'tournaments',
   'result/league',
   'result/tosho',
   'result/sansho',
 ];
 
-type Props = MarkdownParseResponse & { isAuth: boolean };
+type Props = MarkdownParseResponse & { path: string; isAuth: boolean };
+
+const TemplateDispatcher: React.FC<{ path: string; html: string }> = ({
+  path,
+  html,
+}) => {
+  if (path === 'santama') {
+    return (
+      <div className="main-content">
+        <SantamaPageTemplate>
+          <div dangerouslySetInnerHTML={{ __html: html }}></div>
+        </SantamaPageTemplate>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="main-content"
+      dangerouslySetInnerHTML={{ __html: html }}
+    ></div>
+  );
+};
 
 const Component: React.FC<Props> = ({
   title,
   description,
   html,
   breadcrumbs,
+  path,
   isAuth,
 }) => {
-  console.log(isAuth);
-
   return (
     <Layout title={title} description={description} breadcrumbs={breadcrumbs}>
       <Container>
         <div className="pt-8 pb-16">
           <AuthGuard isAuthRequired={isAuth}>
-            <div
-              className="main-content"
-              dangerouslySetInnerHTML={{ __html: html }}
-            ></div>
+            <TemplateDispatcher html={html} path={path} />
           </AuthGuard>
         </div>
       </Container>
@@ -62,6 +80,6 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const res = parseMarkdown(`${path}.md`);
 
   return {
-    props: { ...res, ...{ isAuth: path === 'mizutori' } },
+    props: { ...res, ...{ path: path, isAuth: path === 'mizutori' } },
   };
 };

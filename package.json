@@ -18,7 +18,8 @@
     "next": "9.5.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "tailwindcss": "^1.6.2"
+    "tailwindcss": "^1.6.2",
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "@types/marked": "^1.1.0",

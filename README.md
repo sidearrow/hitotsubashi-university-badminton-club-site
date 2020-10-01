@@ -9,3 +9,11 @@ https://hit-u-badminton.web.app/
 - Next.js
   - SSG
 - Tailwind CSS
+
+## 開発フロー
+
+### Firebase CI 用の Token 発行
+
+```sh
+$ firebase login:ci
+```

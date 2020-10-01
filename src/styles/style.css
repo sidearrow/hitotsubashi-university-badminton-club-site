@@ -13,3 +13,17 @@ body {
 a {
   color: #ac2926;
 }
+
+.button {
+  border: solid 1px transparent;
+  padding: 0.25rem 1rem;
+  margin: 0.25rem 0;
+  background-color: #ac2926;
+  color: white;
+}
+
+.button:hover {
+  border: solid 1px #ac2926;
+  background-color: white;
+  color: #ac2926;
+}
