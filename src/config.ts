@@ -1,13 +1,13 @@
 export const config = {
   baseUrl: 'https://hit-u-badminton.web.app',
-  googleSiteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-  mizutoriEmail: process.env.NEXT_PUBLIC_MIZUTORI_EMAIL as string,
+  googleSiteVerification: 'IgCCQtyvTcRzPpT3YTUw7-0Zw3ef-2lCa6zcj0Mmoig',
+  mizutoriEmail: 'sidearrow1219@gmail.com',
   firebase: {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    apiKey: 'AIzaSyBH3zi_RILIkDvQI0xA8umNP6c0l3OgyOs',
+    authDomain: 'hit-u-badminton.firebaseapp.com',
+    projectId: 'hit-u-badminton',
+    storageBucket: 'hit-u-badminton.appspot.com',
+    appId: '1:126406226583:web:3fbc0ee7153191ece86fd2',
   },
   url: {
     twitter: 'https://twitter.com/hit_u_bad',
