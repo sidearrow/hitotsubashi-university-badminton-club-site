@@ -1,23 +1,11 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { parseMarkdown, MarkdownParseResponse } from '../markdownParser';
 import { Layout } from '../components/Layout';
 import { Container } from '../components/Container';
 import { AuthGuard } from '../components/AuthGuard';
 import { SantamaPageTemplate } from '../templates/SantamaPageTemplate';
 import { MizutoriPageTemplate } from '../templates/MizutoriPageTemplate';
-
-const PATHS = [
-  'about',
-  'member',
-  'schedule',
-  'santama',
-  'mizutori',
-  'tournaments',
-  'result/league',
-  'result/tosho',
-  'result/sansho',
-];
+import { MarkdownParseResponse, markdownUtils } from '../lib/markdownUtils';
 
 type Props = MarkdownParseResponse & { path: string; isAuth: boolean };
 
@@ -66,8 +54,11 @@ const Component: React.FC<Props> = ({
 export default Component;
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = markdownUtils
+    .getPaths()
+    .map((path) => ({ params: { path: path.replace('.md', '').split('/') } }));
   return {
-    paths: PATHS.map((v) => ({ params: { path: v.split('/') } })),
+    paths: paths,
     fallback: false,
   };
 };
@@ -77,7 +68,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     throw new Error();
   }
   const path = ctx.params.path.join('/');
-  const res = parseMarkdown(`${path}.md`);
+  const res = markdownUtils.parseMarkdown(`${path}.md`);
 
   return {
     props: { ...res, ...{ path: path, isAuth: path === 'mizutori' } },
