@@ -32,9 +32,6 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
       setIsLogin(v);
       setIsLoginFail(!v);
       setIsNowLoading(false);
-      if (v) {
-        setEventStorageLink();
-      }
     });
   };
 
