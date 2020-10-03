@@ -6,6 +6,7 @@ import { Breadcrumb, BreadcrumbItems } from './Breadcrumb';
 import { Container } from './Container';
 import { config } from '../config';
 import { useRouter } from 'next/router';
+import { GTAG_SCRIPT } from '../lib/gtag';
 
 type Props = {
   title: string;
@@ -63,6 +64,11 @@ export const Layout: React.FC<Props> = ({
           name="google-site-verification"
           content={config.googleSiteVerification}
         />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${config.gtagId}`}
+        />
+        <script dangerouslySetInnerHTML={{ __html: GTAG_SCRIPT }} />
       </Head>
       <header>
         <Navbar />
