@@ -1,11 +1,11 @@
 ---
 path: /result
-title: 大会一覧
-description: 大会一覧のページです
+title: 大会情報
+description: 参加している大会のページです
 breadcrumbs:
   - text: TOP
     path: /
-  - text: 大会一覧
+  - text: 大会情報
     path: null
 ---
 
@@ -16,7 +16,7 @@ breadcrumbs:
 ## リーグ戦
 
 関東学生バドミントン連盟リーグ戦は年二回、春と秋に開催されます。
-結果は [こちら](/result/league) をご覧ください。
+結果は [こちら](/league-result) をご覧ください。
 
 ## 東商戦
 
@@ -36,4 +36,4 @@ breadcrumbs:
 
 ## 三多摩大会
 
-本学主催の大会です。詳細は [/santama](こちら) をご覧ください。
+本学主催の大会です。詳細は [こちら](/santama) をご覧ください。

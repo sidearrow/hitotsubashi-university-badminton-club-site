@@ -1,10 +1,25 @@
 import fs from 'fs';
 import path from 'path';
 import marked from 'marked';
-
 import matter from 'gray-matter';
 
 const MARKDOWN_DIR = 'content/markdown';
+
+function listPaths(dir: string): string[] {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((dirent) => {
+    if (dirent.isDirectory()) {
+      return listPaths(`${dir}/${dirent.name}`);
+    }
+    if (dirent.isFile()) {
+      return [`${dir}/${dirent.name}`.replace(MARKDOWN_DIR + '/', '')];
+    }
+    return [];
+  });
+}
+
+function getPaths(): string[] {
+  return listPaths(MARKDOWN_DIR);
+}
 
 export type MarkdownParseResponse = {
   title: string;
@@ -13,7 +28,7 @@ export type MarkdownParseResponse = {
   breadcrumbs?: { text: string; path: string | null }[];
 };
 
-export const parseMarkdown = (filepath: string): MarkdownParseResponse => {
+const parseMarkdown = (filepath: string): MarkdownParseResponse => {
   const markdown = fs.readFileSync(path.join(MARKDOWN_DIR, filepath), {
     encoding: 'utf-8',
   });
@@ -43,4 +58,9 @@ export const parseMarkdown = (filepath: string): MarkdownParseResponse => {
   }
 
   return response;
+};
+
+export const markdownUtils = {
+  getPaths: getPaths,
+  parseMarkdown: parseMarkdown,
 };

@@ -29,10 +29,11 @@ const NavLinkBox: React.FC = ({ children }) => {
 };
 
 const NAV_LINKS = [
-  { text: '部活紹介', path: 'about' },
-  { text: '部員紹介', path: 'member' },
-  { text: '大会情報', path: 'tournaments' },
-  { text: '三多摩大会', path: 'santama' },
+  { text: '部活紹介', path: '/about' },
+  { text: '部員紹介', path: '/member' },
+  { text: '大会情報', path: '/tournaments' },
+  { text: '年間スケジュール', path: '/schedule' },
+  { text: '三多摩大会', path: '/santama' },
 ];
 
 const NavContent: React.FC = () => (
@@ -48,15 +49,17 @@ const NavContent: React.FC = () => (
           </a>
         </Link>
       ))}
-      <a href="/mizutori">
-        <NavLinkBox>
-          <div>みずとり会</div>
-          <div>
-            <FontAwesomeIcon icon={faLock} />
-            <FontAwesomeIcon icon={faChevronRight} className="ml-4" />
-          </div>
-        </NavLinkBox>
-      </a>
+      <Link href="/mizutori">
+        <a>
+          <NavLinkBox>
+            <div>みずとり会</div>
+            <div>
+              <FontAwesomeIcon icon={faLock} />
+              <FontAwesomeIcon icon={faChevronRight} className="ml-4" />
+            </div>
+          </NavLinkBox>
+        </a>
+      </Link>
       <a href={config.url.bbs} target="_blank" rel="noreferrer">
         <NavLinkBox>
           <div>掲示板</div>
