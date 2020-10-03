@@ -1,0 +1,613 @@
+[
+  {
+    "year": 2020,
+    "files": [
+      {
+        "fileName": "obmessage_202001.pdf",
+        "lable": "2020年 1月号"
+      },
+      {
+        "fileName": "obmessage_202002.pdf",
+        "lable": "2020年 2月号"
+      },
+      {
+        "fileName": "obmessage_202003.pdf",
+        "lable": "2020年 3月号"
+      },
+      {
+        "fileName": "obmessage_202004.pdf",
+        "lable": "2020年 4月号"
+      },
+      {
+        "fileName": "obmessage_202005.pdf",
+        "lable": "2020年 5月号"
+      },
+      {
+        "fileName": "obmessage_202006.pdf",
+        "lable": "2020年 6月号"
+      },
+      {
+        "fileName": "obmessage_202007.pdf",
+        "lable": "2020年 7月号"
+      },
+      {
+        "fileName": "obmessage_202008.pdf",
+        "lable": "2020年 8月号"
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "files": [
+      {
+        "fileName": "obmessage_201901.pdf",
+        "lable": "2019年 1月号"
+      },
+      {
+        "fileName": "obmessage_201910.pdf",
+        "lable": "2019年 10月号"
+      },
+      {
+        "fileName": "obmessage_201911.pdf",
+        "lable": "2019年 11月号"
+      },
+      {
+        "fileName": "obmessage_201912.pdf",
+        "lable": "2019年 12月号"
+      },
+      {
+        "fileName": "obmessage_201902.pdf",
+        "lable": "2019年 2月号"
+      },
+      {
+        "fileName": "obmessage_201903.pdf",
+        "lable": "2019年 3月号"
+      },
+      {
+        "fileName": "obmessage_201904.pdf",
+        "lable": "2019年 4月号"
+      },
+      {
+        "fileName": "obmessage_201905.pdf",
+        "lable": "2019年 5月号"
+      },
+      {
+        "fileName": "obmessage_201906.pdf",
+        "lable": "2019年 6月号"
+      },
+      {
+        "fileName": "obmessage_201907.pdf",
+        "lable": "2019年 7月号"
+      },
+      {
+        "fileName": "obmessage_201908.pdf",
+        "lable": "2019年 8月号"
+      },
+      {
+        "fileName": "obmessage_201909.pdf",
+        "lable": "2019年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "files": [
+      {
+        "fileName": "obmessage_201801.pdf",
+        "lable": "2018年 1月号"
+      },
+      {
+        "fileName": "obmessage_201810.pdf",
+        "lable": "2018年 10月号"
+      },
+      {
+        "fileName": "obmessage_201812.pdf",
+        "lable": "2018年 12月号"
+      },
+      {
+        "fileName": "obmessage_201802.pdf",
+        "lable": "2018年 2月号"
+      },
+      {
+        "fileName": "obmessage_201803.pdf",
+        "lable": "2018年 3月号"
+      },
+      {
+        "fileName": "obmessage_201804.pdf",
+        "lable": "2018年 4月号"
+      },
+      {
+        "fileName": "obmessage_201805.pdf",
+        "lable": "2018年 5月号"
+      },
+      {
+        "fileName": "obmessage_201806.pdf",
+        "lable": "2018年 6月号"
+      },
+      {
+        "fileName": "obmessage_201807.pdf",
+        "lable": "2018年 7月号"
+      },
+      {
+        "fileName": "obmessage_201808.pdf",
+        "lable": "2018年 8月号"
+      },
+      {
+        "fileName": "obmessage_201809.pdf",
+        "lable": "2018年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "files": [
+      {
+        "fileName": "obmessage_201701.pdf",
+        "lable": "2017年 1月号"
+      },
+      {
+        "fileName": "obmessage_201710.pdf",
+        "lable": "2017年 10月号"
+      },
+      {
+        "fileName": "obmessage_201711.pdf",
+        "lable": "2017年 11月号"
+      },
+      {
+        "fileName": "obmessage_201712.pdf",
+        "lable": "2017年 12月号"
+      },
+      {
+        "fileName": "obmessage_201702.pdf",
+        "lable": "2017年 2月号"
+      },
+      {
+        "fileName": "obmessage_201703.pdf",
+        "lable": "2017年 3月号"
+      },
+      {
+        "fileName": "obmessage_201704.pdf",
+        "lable": "2017年 4月号"
+      },
+      {
+        "fileName": "obmessage_201705.pdf",
+        "lable": "2017年 5月号"
+      },
+      {
+        "fileName": "obmessage_201706.pdf",
+        "lable": "2017年 6月号"
+      },
+      {
+        "fileName": "obmessage_201707.pdf",
+        "lable": "2017年 7月号"
+      },
+      {
+        "fileName": "obmessage_201708.pdf",
+        "lable": "2017年 8月号"
+      },
+      {
+        "fileName": "obmessage_201709.pdf",
+        "lable": "2017年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2016,
+    "files": [
+      {
+        "fileName": "obmessage_201601.pdf",
+        "lable": "2016年 1月号"
+      },
+      {
+        "fileName": "obmessage_201610.pdf",
+        "lable": "2016年 10月号"
+      },
+      {
+        "fileName": "obmessage_201611.pdf",
+        "lable": "2016年 11月号"
+      },
+      {
+        "fileName": "obmessage_201612.pdf",
+        "lable": "2016年 12月号"
+      },
+      {
+        "fileName": "obmessage_201602.pdf",
+        "lable": "2016年 2月号"
+      },
+      {
+        "fileName": "obmessage_201603.pdf",
+        "lable": "2016年 3月号"
+      },
+      {
+        "fileName": "obmessage_201604.pdf",
+        "lable": "2016年 4月号"
+      },
+      {
+        "fileName": "obmessage_201605.pdf",
+        "lable": "2016年 5月号"
+      },
+      {
+        "fileName": "obmessage_201606.pdf",
+        "lable": "2016年 6月号"
+      },
+      {
+        "fileName": "obmessage_201608.pdf",
+        "lable": "2016年 8月号"
+      },
+      {
+        "fileName": "obmessage_201609.pdf",
+        "lable": "2016年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2015,
+    "files": [
+      {
+        "fileName": "obmessage_201501.pdf",
+        "lable": "2015年 1月号"
+      },
+      {
+        "fileName": "obmessage_201510.pdf",
+        "lable": "2015年 10月号"
+      },
+      {
+        "fileName": "obmessage_201511.pdf",
+        "lable": "2015年 11月号"
+      },
+      {
+        "fileName": "obmessage_201512.pdf",
+        "lable": "2015年 12月号"
+      },
+      {
+        "fileName": "obmessage_201502.pdf",
+        "lable": "2015年 2月号"
+      },
+      {
+        "fileName": "obmessage_201503.pdf",
+        "lable": "2015年 3月号"
+      },
+      {
+        "fileName": "obmessage_201504.pdf",
+        "lable": "2015年 4月号"
+      },
+      {
+        "fileName": "obmessage_201505.pdf",
+        "lable": "2015年 5月号"
+      },
+      {
+        "fileName": "obmessage_201506.pdf",
+        "lable": "2015年 6月号"
+      },
+      {
+        "fileName": "obmessage_201507.pdf",
+        "lable": "2015年 7月号"
+      },
+      {
+        "fileName": "obmessage_201508.pdf",
+        "lable": "2015年 8月号"
+      },
+      {
+        "fileName": "obmessage_201509.pdf",
+        "lable": "2015年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2014,
+    "files": [
+      {
+        "fileName": "obmessage_201401.pdf",
+        "lable": "2014年 1月号"
+      },
+      {
+        "fileName": "obmessage_201410.pdf",
+        "lable": "2014年 10月号"
+      },
+      {
+        "fileName": "obmessage_201411.pdf",
+        "lable": "2014年 11月号"
+      },
+      {
+        "fileName": "obmessage_201412.pdf",
+        "lable": "2014年 12月号"
+      },
+      {
+        "fileName": "obmessage_201402.pdf",
+        "lable": "2014年 2月号"
+      },
+      {
+        "fileName": "obmessage_201403.pdf",
+        "lable": "2014年 3月号"
+      },
+      {
+        "fileName": "obmessage_201404.pdf",
+        "lable": "2014年 4月号"
+      },
+      {
+        "fileName": "obmessage_201405.pdf",
+        "lable": "2014年 5月号"
+      },
+      {
+        "fileName": "obmessage_201406.pdf",
+        "lable": "2014年 6月号"
+      },
+      {
+        "fileName": "obmessage_201407.pdf",
+        "lable": "2014年 7月号"
+      },
+      {
+        "fileName": "obmessage_201408.pdf",
+        "lable": "2014年 8月号"
+      },
+      {
+        "fileName": "obmessage_201409.pdf",
+        "lable": "2014年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "files": [
+      {
+        "fileName": "obmessage_201301.html",
+        "lable": "2013年 1月号"
+      },
+      {
+        "fileName": "obmessage_201310.pdf",
+        "lable": "2013年 10月号"
+      },
+      {
+        "fileName": "obmessage_201311.pdf",
+        "lable": "2013年 11月号"
+      },
+      {
+        "fileName": "obmessage_201312.pdf",
+        "lable": "2013年 12月号"
+      },
+      {
+        "fileName": "obmessage_201302.html",
+        "lable": "2013年 2月号"
+      },
+      {
+        "fileName": "obmessage_201303.html",
+        "lable": "2013年 3月号"
+      },
+      {
+        "fileName": "obmessage_201304.html",
+        "lable": "2013年 4月号"
+      },
+      {
+        "fileName": "obmessage_201305.pdf",
+        "lable": "2013年 5月号"
+      },
+      {
+        "fileName": "obmessage_201306.pdf",
+        "lable": "2013年 6月号"
+      },
+      {
+        "fileName": "obmessage_201307.pdf",
+        "lable": "2013年 7月号"
+      },
+      {
+        "fileName": "obmessage_201308.pdf",
+        "lable": "2013年 8月号"
+      },
+      {
+        "fileName": "obmessage_201309.pdf",
+        "lable": "2013年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2012,
+    "files": [
+      {
+        "fileName": "obmessage_201201.html",
+        "lable": "2012年 1月号"
+      },
+      {
+        "fileName": "obmessage_201212.html",
+        "lable": "2012年 12月号"
+      },
+      {
+        "fileName": "obmessage_201202.html",
+        "lable": "2012年 2月号"
+      },
+      {
+        "fileName": "obmessage_201203.html",
+        "lable": "2012年 3月号"
+      },
+      {
+        "fileName": "obmessage_201204.html",
+        "lable": "2012年 4月号"
+      },
+      {
+        "fileName": "obmessage_201205.html",
+        "lable": "2012年 5月号"
+      },
+      {
+        "fileName": "obmessage_201206.html",
+        "lable": "2012年 6月号"
+      },
+      {
+        "fileName": "obmessage_201207.html",
+        "lable": "2012年 7月号"
+      },
+      {
+        "fileName": "obmessage_201208.html",
+        "lable": "2012年 8月号"
+      },
+      {
+        "fileName": "obmessage_201209.html",
+        "lable": "2012年 9月号"
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "files": [
+      {
+        "fileName": "obmessage_201111.html",
+        "lable": "2011年 11月号"
+      },
+      {
+        "fileName": "obmessage_201112.html",
+        "lable": "2011年 12月号"
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "files": [
+      {
+        "fileName": "obmessage_200901.html",
+        "lable": "2009年 1月号"
+      },
+      {
+        "fileName": "obmessage_200902.html",
+        "lable": "2009年 2月号"
+      },
+      {
+        "fileName": "obmessage_200903.html",
+        "lable": "2009年 3月号"
+      },
+      {
+        "fileName": "obmessage_200904.html",
+        "lable": "2009年 4月号"
+      },
+      {
+        "fileName": "obmessage_200905.html",
+        "lable": "2009年 5月号"
+      }
+    ]
+  },
+  {
+    "year": 2008,
+    "files": [
+      {
+        "fileName": "obmessage_200801.html",
+        "lable": "2008年 第1号"
+      },
+      {
+        "fileName": "obmessage_200803.html",
+        "lable": "2008年 第3号"
+      },
+      {
+        "fileName": "obmessage_200804.html",
+        "lable": "2008年 第4号"
+      },
+      {
+        "fileName": "obmessage_200805.html",
+        "lable": "2008年 第5号"
+      },
+      {
+        "fileName": "obmessage_200806.html",
+        "lable": "2008年 第6号"
+      },
+      {
+        "fileName": "obmessage_200807.html",
+        "lable": "2008年 第7号"
+      }
+    ]
+  },
+  {
+    "year": 2007,
+    "files": [
+      {
+        "fileName": "obmessage_200701.html",
+        "lable": "2007年 第1号"
+      },
+      {
+        "fileName": "obmessage_200710.html",
+        "lable": "2007年 第10号"
+      },
+      {
+        "fileName": "obmessage_200711.html",
+        "lable": "2007年 第11号"
+      },
+      {
+        "fileName": "obmessage_200702.html",
+        "lable": "2007年 第2号"
+      },
+      {
+        "fileName": "obmessage_200703.html",
+        "lable": "2007年 第3号"
+      },
+      {
+        "fileName": "obmessage_200704.html",
+        "lable": "2007年 第4号"
+      },
+      {
+        "fileName": "obmessage_200705.html",
+        "lable": "2007年 第5号"
+      },
+      {
+        "fileName": "obmessage_200706.html",
+        "lable": "2007年 第6号"
+      },
+      {
+        "fileName": "obmessage_200707.html",
+        "lable": "2007年 第7号"
+      },
+      {
+        "fileName": "obmessage_200708.html",
+        "lable": "2007年 第8号"
+      },
+      {
+        "fileName": "obmessage_200709.html",
+        "lable": "2007年 第9号"
+      }
+    ]
+  },
+  {
+    "year": 2006,
+    "files": [
+      {
+        "fileName": "obmessage_200608.html",
+        "lable": "2006年 第8号"
+      }
+    ]
+  },
+  {
+    "year": 2005,
+    "files": [
+      {
+        "fileName": "obmessage_200501.html",
+        "lable": "2005年 第1号"
+      },
+      {
+        "fileName": "obmessage_200502.html",
+        "lable": "2005年 第2号"
+      },
+      {
+        "fileName": "obmessage_200503.html",
+        "lable": "2005年 第3号"
+      },
+      {
+        "fileName": "obmessage_200504.html",
+        "lable": "2005年 第4号"
+      },
+      {
+        "fileName": "obmessage_200505.html",
+        "lable": "2005年 第5号"
+      },
+      {
+        "fileName": "obmessage_200506.html",
+        "lable": "2005年 第6号"
+      },
+      {
+        "fileName": "obmessage_200507.html",
+        "lable": "2005年 第7号"
+      },
+      {
+        "fileName": "obmessage_200508.html",
+        "lable": "2005年 第8号"
+      },
+      {
+        "fileName": "obmessage_200509.html",
+        "lable": "2005年 第9号"
+      }
+    ]
+  }
+]

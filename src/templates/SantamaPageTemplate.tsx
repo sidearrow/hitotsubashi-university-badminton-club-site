@@ -2,7 +2,7 @@ import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-import santamaFiles from '../../content/json/santama_files.json';
+import santamaFiles from '../../content/santama_files.json';
 
 export const SantamaPageTemplate: React.FC = ({ children }) => {
   return (

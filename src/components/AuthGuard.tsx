@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import FirebaseService from '../FirebaseService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { setEventStorageLink } from '../domUtils';
 
 export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
   isAuthRequired,
@@ -43,9 +42,6 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
     firebaseService.isLogin().then((res) => {
       setIsNowLoading(false);
       setIsLogin(res);
-      if (res) {
-        setEventStorageLink();
-      }
     });
   }, []);
 

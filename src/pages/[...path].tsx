@@ -5,6 +5,7 @@ import { Layout } from '../components/Layout';
 import { Container } from '../components/Container';
 import { AuthGuard } from '../components/AuthGuard';
 import { SantamaPageTemplate } from '../templates/SantamaPageTemplate';
+import { MizutoriPageTemplate } from '../templates/MizutoriPageTemplate';
 
 const PATHS = [
   'about',
@@ -26,20 +27,17 @@ const TemplateDispatcher: React.FC<{ path: string; html: string }> = ({
 }) => {
   if (path === 'santama') {
     return (
-      <div className="main-content">
-        <SantamaPageTemplate>
-          <div dangerouslySetInnerHTML={{ __html: html }}></div>
-        </SantamaPageTemplate>
-      </div>
+      <SantamaPageTemplate>
+        <div dangerouslySetInnerHTML={{ __html: html }}></div>
+      </SantamaPageTemplate>
     );
   }
 
-  return (
-    <div
-      className="main-content"
-      dangerouslySetInnerHTML={{ __html: html }}
-    ></div>
-  );
+  if (path === 'mizutori') {
+    return <MizutoriPageTemplate />;
+  }
+
+  return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
 };
 
 const Component: React.FC<Props> = ({
@@ -55,7 +53,9 @@ const Component: React.FC<Props> = ({
       <Container>
         <div className="pt-8 pb-16">
           <AuthGuard isAuthRequired={isAuth}>
-            <TemplateDispatcher html={html} path={path} />
+            <div className="main-content">
+              <TemplateDispatcher html={html} path={path} />
+            </div>
           </AuthGuard>
         </div>
       </Container>

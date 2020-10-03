@@ -1,5 +1,7 @@
 # 一橋大学バドミントン部ホームページ
 
+![Deploy](https://github.com/sidearrow/hit-u-badminton-hp/workflows/Deploy/badge.svg)
+
 https://hit-u-badminton.web.app/
 
 - Firebase
