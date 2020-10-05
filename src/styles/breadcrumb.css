@@ -1,9 +1,0 @@
-.breadcrumb {
-  display: flex;
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  content: "/";
-}

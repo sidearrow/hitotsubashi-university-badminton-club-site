@@ -1,3 +1,12 @@
+# v1.0.6
+
+- Organize markdown files
+
+
+# v1.0.5
+
+- Minor fix
+
 # v1.0.4
 
 - Add gtag.js
