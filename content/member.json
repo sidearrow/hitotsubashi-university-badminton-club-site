@@ -1,0 +1,165 @@
+[
+  {
+    "admissionYear": 2017,
+    "faculty": "経済学部",
+    "famliyName": "植木",
+    "firstName": "さやか",
+    "gender": "f",
+    "highschool": "立川（東京）",
+    "postitions": [
+      "元 女子主将",
+      "元 学連係"
+    ]
+  },
+  {
+    "admissionYear": 2017,
+    "faculty": "経済学部",
+    "famliyName": "小山",
+    "firstName": "潤",
+    "gender": "m",
+    "highschool": "春日部（埼玉）",
+    "postitions": [
+      "元 学連係"
+    ]
+  },
+  {
+    "admissionYear": 2017,
+    "faculty": "法学部",
+    "famliyName": "佐藤",
+    "firstName": "和貴",
+    "gender": "m",
+    "highschool": "桜修館中等（東京）",
+    "postitions": [
+      "元 主務"
+    ]
+  },
+  {
+    "admissionYear": 2017,
+    "faculty": "経済学部",
+    "famliyName": "須山",
+    "firstName": "開斗",
+    "gender": "m",
+    "highschool": "湘南（神奈川）",
+    "postitions": [
+      "元 副将",
+      "元 みずとり係"
+    ]
+  },
+  {
+    "admissionYear": 2017,
+    "faculty": "経済学部",
+    "famliyName": "西川",
+    "firstName": "遥",
+    "gender": "f",
+    "highschool": "国分寺（東京）",
+    "postitions": [
+      "元 OB係",
+      "元 HP管理係"
+    ]
+  },
+  {
+    "admissionYear": 2017,
+    "faculty": "法学部",
+    "famliyName": "村山",
+    "firstName": "康平",
+    "gender": "m",
+    "highschool": "長岡（新潟）",
+    "postitions": [
+      "元 主将",
+      "元 OB広報係"
+    ]
+  },
+  {
+    "admissionYear": 2017,
+    "faculty": "経済学部",
+    "famliyName": "森",
+    "firstName": "海渡",
+    "gender": "m",
+    "highschool": "明和（愛知）",
+    "postitions": [
+      "元 会計係"
+    ]
+  },
+  {
+    "admissionYear": 2018,
+    "faculty": "商学部",
+    "famliyName": "大用",
+    "firstName": "智史",
+    "gender": "m",
+    "highschool": "栄光学園（神奈川）",
+    "postitions": [
+      "体育館係",
+      "みずとり係"
+    ]
+  },
+  {
+    "admissionYear": 2018,
+    "faculty": "経済学部",
+    "famliyName": "西上",
+    "firstName": "航太朗",
+    "gender": "m",
+    "highschool": "藤枝東（静岡）",
+    "postitions": [
+      "会計係",
+      "OB広報係",
+      "HP係"
+    ]
+  },
+  {
+    "admissionYear": 2018,
+    "faculty": "商学部",
+    "famliyName": "平松",
+    "firstName": "孝基",
+    "gender": "m",
+    "highschool": "海陽学園（愛知）",
+    "postitions": [
+      "主将",
+      "学連係"
+    ]
+  },
+  {
+    "admissionYear": 2019,
+    "faculty": "商学部",
+    "famliyName": "相吉",
+    "firstName": "玄晴",
+    "gender": "m",
+    "highschool": "国立（東京）",
+    "postitions": []
+  },
+  {
+    "admissionYear": 2019,
+    "faculty": "商学部",
+    "famliyName": "小磯",
+    "firstName": "真生",
+    "gender": "f",
+    "highschool": "東京農大第一（東京）",
+    "postitions": []
+  },
+  {
+    "admissionYear": 2019,
+    "faculty": "経済学部",
+    "famliyName": "徳永",
+    "firstName": "峻介",
+    "gender": "m",
+    "highschool": "熊本（熊本）",
+    "postitions": []
+  },
+  {
+    "admissionYear": 2019,
+    "faculty": "法学部",
+    "famliyName": "福田",
+    "firstName": "佑季",
+    "gender": "f",
+    "highschool": "西京（京都）",
+    "postitions": []
+  },
+  {
+    "admissionYear": 2019,
+    "faculty": "経済学部",
+    "famliyName": "松永",
+    "firstName": "海",
+    "gender": "m",
+    "highschool": "厚木（神奈川）",
+    "postitions": []
+  }
+]
