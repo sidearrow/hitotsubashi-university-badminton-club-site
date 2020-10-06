@@ -4,19 +4,10 @@ import { GetStaticProps } from 'next';
 import { Container } from '../components/Container';
 import { Layout } from '../components/Layout';
 
-import MEMBER_JSON from '../../content/member.json';
-
-type Grade = 1 | 2 | 3 | 4;
-type Member = {
-  grade: Grade;
-  admissionYear: number;
-  faculty: string;
-  famliyName: string;
-  firstName: string;
-  gender: 'm' | 'f';
-  highschool: string;
-  postitions: string[];
-};
+import MEMBER_JSON from '../pageComponents/member/member.json';
+import { MemberCard } from '../pageComponents/member/MemberCard';
+import { Member } from '../pageComponents/member/member';
+import { MemberFilterButtonGroup } from '../pageComponents/member/MemberFilterButtonGroup';
 
 type Props = {
   members: Member[];
@@ -35,32 +26,15 @@ const PageComponent: React.FC<Props> = ({ members }) => {
       <Container>
         <div className="pt-8 pb-16">
           <div className="main-content">
-            <div className="table-scroll">
-              <table>
-                <thead>
-                  <tr>
-                    <th>名前</th>
-                    <th>学年</th>
-                    <th>学部</th>
-                    <th>出身高校</th>
-                    <th>役職</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {members.map((m, i) => (
-                    <tr key={i}>
-                      <td>
-                        {m.famliyName} {m.firstName}
-                      </td>
-                      <td>{m.grade}</td>
-                      <td>{m.faculty}</td>
-                      <td>{m.highschool}</td>
-                      <td>{m.postitions.join(', ')}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <h1>部員情報</h1>
+            <div className="mb-4">
+              <MemberFilterButtonGroup target={1} />
             </div>
+            {members.map((m, i) => (
+              <div className="mb-2" key={i}>
+                <MemberCard {...m} />
+              </div>
+            ))}
           </div>
         </div>
       </Container>
