@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { GetStaticProps } from 'next';
 
 import { Container } from '../components/Container';
@@ -22,35 +22,55 @@ type Props = {
 
 type FilterGrade = 'ALL' | '1' | '2' | '3' | '4';
 
-const PageComponent: React.FC<Props> = ({ members, summary }) => {
-  const labels: { id: string; label: string }[] = (() => {
-    return [
-      { id: 'ALL', label: '' },
-      { id: '1', label: '' },
-      { id: '2', label: '' },
-      { id: '3', label: '' },
-      { id: '4', label: '' },
-    ].map((v) => {
-      v.label = v.id;
-      if (v.id !== 'ALL') {
-        v.label += ' 年生';
-      }
-      v.label += `（男子：${summary[v.id].m} 名 女子：${summary[v.id].f
-        } 名 計：${summary[v.id].sum} 名）`;
-      return v;
-    });
-  })();
+const SummaryLabel: React.FC<{ male: number; female: number; sum: number }> = ({
+  male,
+  female,
+  sum,
+}) => {
+  return (
+    <span>
+      <span className="text-blue-700">
+        <span>男子</span>
+        <span
+          className="inline-block font-mono text-right"
+          style={{ width: '17px' }}
+        >
+          {male}
+        </span>
+      </span>
+      <span className="text-red-700 ml-2">
+        <span>女子</span>
+        <span
+          className="inline-block font-mono text-right"
+          style={{ width: '17px' }}
+        >
+          {female}
+        </span>
+      </span>
+      <span className="ml-2">
+        <span>計</span>
+        <span
+          className="inline-block font-mono text-right"
+          style={{ width: '17px' }}
+        >
+          {sum}
+        </span>
+      </span>
+    </span>
+  );
+};
 
+const PageComponent: React.FC<Props> = ({ members, summary }) => {
   const [targetGrade, setTargetGrade] = useState<string>('ALL');
 
   const filteredMembers = members.filter((m) => {
     return targetGrade === 'ALL' || String(m.grade) === targetGrade;
   });
-  const changeMemberGradeFilterRadiosHandler = (changedGrade: string) => {
-    setTargetGrade(changedGrade);
+  const changeMembersGradeFilterHandler: InputHTMLAttributes<
+    HTMLInputElement
+  >['onChange'] = (e) => {
+    setTargetGrade(e.target.value);
   };
-
-  console.log(summary);
 
   return (
     <Layout
@@ -66,11 +86,33 @@ const PageComponent: React.FC<Props> = ({ members, summary }) => {
           <div className="main-content">
             <h1>部員情報</h1>
             <div className="mb-4">
-              <MemberFilterRadios
-                target={targetGrade}
-                labels={labels}
-                onChange={changeMemberGradeFilterRadiosHandler}
-              />
+              {['ALL', 1, 2, 3, 4].map((v, i) => (
+                <div key={i} className="bg-gray-200 px-2 py-1 my-1">
+                  <label className="inline-flex items-center justify-between w-full">
+                    <span>
+                      <input
+                        type="radio"
+                        className="form-radio"
+                        name="membersGradeFilter"
+                        value={v}
+                        onChange={changeMembersGradeFilterHandler}
+                      />
+                      <span className="ml-2">
+                        <span className="">
+                          {v === 'ALL' ? v : v + ' 年生'}
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <SummaryLabel
+                        male={summary[v].m}
+                        female={summary[v].f}
+                        sum={summary[v].sum}
+                      />
+                    </span>
+                  </label>
+                </div>
+              ))}
             </div>
             {filteredMembers.map((m, i) => (
               <div className="mb-2" key={i}>

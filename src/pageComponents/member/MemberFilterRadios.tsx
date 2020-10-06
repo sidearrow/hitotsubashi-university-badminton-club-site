@@ -15,14 +15,16 @@ export const MemberFilterRadios: React.FC<{
     <div>
       {labels.map((v, i) => (
         <div className="mr-4" key={i}>
-          <input
-            type="radio"
-            name="memberFilter"
-            value={v.id}
-            checked={v.id === target}
-            onChange={changeHandler}
-          />
-          <span className="ml-1">{v.label}</span>
+          <label>
+            <input
+              type="radio"
+              name="memberFilter"
+              value={v.id}
+              checked={v.id === target}
+              onChange={changeHandler}
+            />
+            <span className="ml-1">{v.label}</span>
+          </label>
         </div>
       ))}
     </div>
