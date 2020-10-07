@@ -4,10 +4,9 @@ import { Layout } from '../components/Layout';
 import { Container } from '../components/Container';
 import { AuthGuard } from '../components/AuthGuard';
 import { SantamaPageTemplate } from '../templates/SantamaPageTemplate';
-import { MizutoriPageTemplate } from '../templates/MizutoriPageTemplate';
 import { MarkdownParseResponse, markdownUtils } from '../lib/markdownUtils';
 
-type Props = MarkdownParseResponse & { path: string; isAuth: boolean };
+type Props = MarkdownParseResponse & { path: string };
 
 const TemplateDispatcher: React.FC<{ path: string; html: string }> = ({
   path,
@@ -21,10 +20,6 @@ const TemplateDispatcher: React.FC<{ path: string; html: string }> = ({
     );
   }
 
-  if (path === 'mizutori') {
-    return <MizutoriPageTemplate />;
-  }
-
   return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
 };
 
@@ -34,17 +29,14 @@ const Component: React.FC<Props> = ({
   html,
   breadcrumbs,
   path,
-  isAuth,
 }) => {
   return (
     <Layout title={title} description={description} breadcrumbs={breadcrumbs}>
       <Container>
         <div className="pt-8 pb-16">
-          <AuthGuard isAuthRequired={isAuth}>
-            <div className="main-content">
-              <TemplateDispatcher html={html} path={path} />
-            </div>
-          </AuthGuard>
+          <div className="main-content">
+            <TemplateDispatcher html={html} path={path} />
+          </div>
         </div>
       </Container>
     </Layout>
@@ -71,6 +63,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const res = markdownUtils.parseMarkdown(`${path}.md`);
 
   return {
-    props: { ...res, ...{ path: path, isAuth: path === 'mizutori' } },
+    props: { ...res, ...{ path: path } },
   };
 };
+
+export const config = { amp: true };

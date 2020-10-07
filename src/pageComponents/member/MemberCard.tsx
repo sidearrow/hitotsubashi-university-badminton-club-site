@@ -25,7 +25,7 @@ export const MemberCard: React.FC<Member> = ({
   const nameColorClass = gender === 'm' ? 'text-blue-700' : 'text-red-700';
 
   return (
-    <div className="p-2 rounded border border-gray-400">
+    <>
       <div className="border-b border-gray-400 pb-1 mb-2">
         <span className={`text-lg ${nameColorClass}`}>
           {familyName} {firstName}
@@ -35,6 +35,6 @@ export const MemberCard: React.FC<Member> = ({
       <MemberLable label="学部" value={faculty} />
       <MemberLable label="出身高校" value={highschool} />
       <MemberLable label="役職" value={positions.join(', ')} />
-    </div>
+    </>
   );
 };

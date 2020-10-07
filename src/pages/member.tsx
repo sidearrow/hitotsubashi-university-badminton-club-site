@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useState } from 'react';
+import React from 'react';
 import { GetStaticProps } from 'next';
 
 import { Container } from '../components/Container';
@@ -7,20 +7,20 @@ import { Layout } from '../components/Layout';
 import MEMBER_JSON from '../pageComponents/member/member.json';
 import { MemberCard } from '../pageComponents/member/MemberCard';
 import { Member } from '../pageComponents/member/member';
-import { MemberFilterRadios } from '../pageComponents/member/MemberFilterRadios';
+
+type Grade = 1 | 2 | 3 | 4;
 
 type Props = {
-  members: Member[];
-  summary: {
-    [key: string]: {
+  members: {
+    grade: Grade;
+    members: Member[];
+    summary: {
       m: number;
       f: number;
       sum: number;
     };
-  };
+  }[];
 };
-
-type FilterGrade = 'ALL' | '1' | '2' | '3' | '4';
 
 const SummaryLabel: React.FC<{ male: number; female: number; sum: number }> = ({
   male,
@@ -60,18 +60,7 @@ const SummaryLabel: React.FC<{ male: number; female: number; sum: number }> = ({
   );
 };
 
-const PageComponent: React.FC<Props> = ({ members, summary }) => {
-  const [targetGrade, setTargetGrade] = useState<string>('ALL');
-
-  const filteredMembers = members.filter((m) => {
-    return targetGrade === 'ALL' || String(m.grade) === targetGrade;
-  });
-  const changeMembersGradeFilterHandler: InputHTMLAttributes<
-    HTMLInputElement
-  >['onChange'] = (e) => {
-    setTargetGrade(e.target.value);
-  };
-
+const PageComponent: React.FC<Props> = ({ members }) => {
   return (
     <Layout
       title="部員情報"
@@ -85,39 +74,17 @@ const PageComponent: React.FC<Props> = ({ members, summary }) => {
         <div className="pt-8 pb-16">
           <div className="main-content">
             <h1>部員情報</h1>
-            <div className="mb-4">
-              {['ALL', 1, 2, 3, 4].map((v, i) => (
-                <div key={i} className="bg-gray-200 px-2 py-1 my-1">
-                  <label className="inline-flex items-center justify-between w-full">
-                    <span>
-                      <input
-                        type="radio"
-                        className="form-radio"
-                        name="membersGradeFilter"
-                        value={v}
-                        onChange={changeMembersGradeFilterHandler}
-                      />
-                      <span className="ml-2">
-                        <span className="">
-                          {v === 'ALL' ? v : v + ' 年生'}
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                      <SummaryLabel
-                        male={summary[v].m}
-                        female={summary[v].f}
-                        sum={summary[v].sum}
-                      />
-                    </span>
-                  </label>
-                </div>
-              ))}
-            </div>
-            {filteredMembers.map((m, i) => (
-              <div className="mb-2" key={i}>
-                <MemberCard {...m} />
-              </div>
+            {members.map((v, i) => (
+              <React.Fragment key={i}>
+                <h2>{v.grade} 年生</h2>
+                <section>
+                  {v.members.map((m, j) => (
+                    <div className="mb-4" key={j}>
+                      <MemberCard {...m} />
+                    </div>
+                  ))}
+                </section>
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -128,31 +95,29 @@ const PageComponent: React.FC<Props> = ({ members, summary }) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const YEAR = 2020;
-  const members: Props['members'] = [];
-  const summary: Props['summary'] = (() => {
-    const res: Props['summary'] = {};
-    for (const v of ['1', '2', '3', '4', 'ALL']) {
-      res[v] = { m: 0, f: 0, sum: 0 };
-    }
-    return res;
-  })();
+  const members: Props['members'] = [
+    { grade: 1, members: [], summary: { m: 0, f: 0, sum: 0 } },
+    { grade: 2, members: [], summary: { m: 0, f: 0, sum: 0 } },
+    { grade: 3, members: [], summary: { m: 0, f: 0, sum: 0 } },
+    { grade: 4, members: [], summary: { m: 0, f: 0, sum: 0 } },
+  ];
   for (const member of MEMBER_JSON) {
     const grade = YEAR - member.admissionYear + 1;
     if (grade >= 1 && grade <= 4) {
-      members.push({ ...member, grade: grade } as Member);
+      members[grade - 1].members.push({ ...member, grade: grade } as Member);
       if (member.gender === 'm') {
-        summary['ALL'].m++;
-        summary[grade].m++;
+        members[grade - 1].summary.m++;
       }
       if (member.gender === 'f') {
-        summary['ALL'].f++;
-        summary[grade].f++;
+        members[grade - 1].summary.f++;
       }
-      summary['ALL'].sum++;
-      summary[grade].sum++;
+      members[grade - 1].summary.sum++;
     }
   }
-  return { props: { members: members, summary: summary } };
+
+  return { props: { members: members } };
 };
 
 export default PageComponent;
+
+export const config = { amp: true };
