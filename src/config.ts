@@ -16,5 +16,6 @@ export const CONFIG = {
     github: 'https://github.com/sidearrow/hit-u-bad',
     bbs: 'http://hitotsubashibad.bbs.fc2.com',
     bbsOld: 'http://bbs.mottoki.com/?bbs=ikkyo_bad',
+    map: 'https://goo.gl/maps/QvGQ2cqCUrH6UHCh7',
   },
 };

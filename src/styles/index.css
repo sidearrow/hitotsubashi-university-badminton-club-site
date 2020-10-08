@@ -1,51 +1,46 @@
-@import "../../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import '../../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
+
 body {
   font-size: 14px;
   font-family: Arial, sans-serif;
+  color: theme('colors.gray.700');
 }
+
+/*
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: theme('colors.gray.900');
+}
+*/
 
 a {
   color: #ac2926;
 }
-p {
-  margin-bottom: 1.5rem;
-}
 
 .h1 {
-  font-size: 1.5rem;
-  padding-bottom: 0.3rem;
-  margin-bottom: 2rem;
-  position: relative;
-  border-bottom: 3px solid #696969;
-}
-
-.h1:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 25%;
-  border-bottom: 3px solid #ac2926;
-  margin-bottom: -3px;
+  font-size: 1.6rem;
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 
 .h2 {
   font-size: 1.4rem;
-  margin-top: 3rem;
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px dotted;
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
 }
 
 .h3 {
   font-size: 1.3rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
 }
 
 .h5 {
@@ -102,7 +97,7 @@ th {
 .breadcrumb-item + .breadcrumb-item::before {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  content: "/";
+  content: '/';
 }
 
 ul.timeline {
@@ -111,7 +106,7 @@ ul.timeline {
 }
 
 ul.timeline:before {
-  content: " ";
+  content: ' ';
   background: #d4d9df;
   display: inline-block;
   position: absolute;
@@ -127,7 +122,7 @@ ul.timeline > li {
 }
 
 ul.timeline > li:before {
-  content: " ";
+  content: ' ';
   background: white;
   display: inline-block;
   position: absolute;

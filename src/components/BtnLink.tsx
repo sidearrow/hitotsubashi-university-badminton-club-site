@@ -5,6 +5,7 @@ import {
 } from '@fortawesome/react-fontawesome';
 import { CONFIG } from '../config';
 import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { Button } from './Button';
 
 export const BtnLink: React.FC<{
   href: string;
@@ -12,15 +13,14 @@ export const BtnLink: React.FC<{
   text: string;
 }> = ({ href, icon, text }) => (
   <a href={href} target="_blank" rel="noreferrer">
-    <div
-      className="flex items-center justify-between rounded border-2 px-4 py-2 hover:bg-gray-200"
-      style={{ borderColor: '#ac2926' }}
-    >
-      <span className="text-2xl">
-        <FontAwesomeIcon icon={icon} />
-      </span>
-      <span className="font-serif font-bold">{text}</span>
-    </div>
+    <Button color="gray">
+      <div className="flex items-center justify-between">
+        <span className="text-2xl">
+          <FontAwesomeIcon icon={icon} />
+        </span>
+        <span className="text-lg">{text}</span>
+      </div>
+    </Button>
   </a>
 );
 

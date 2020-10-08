@@ -1,45 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import FirebaseService from '../FirebaseService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  firebaseAuthIsLogin,
+  firebaseAuthLogin,
+  firebaseAuthLogout,
+} from '../lib/firebaseUtils';
 
-export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
-  isAuthRequired,
-  children,
-}) => {
-  if (!isAuthRequired) {
-    return <>{children}</>;
-  }
-
+export const AuthGuard: React.FC = ({ children }) => {
   const [isNowLoading, setIsNowLoading] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
   const [isLoginFail, setIsLoginFail] = useState(false);
-
-  const firebaseService = new FirebaseService();
+  const [inputPassword, setInputPassword] = useState('');
 
   const handleLogout = () => {
-    firebaseService.logout()?.then(() => {
+    (async () => {
+      await firebaseAuthLogout();
       setIsLogin(false);
-    });
+    })();
   };
 
   const handleLogin = () => {
-    const inputPassword = (document.getElementById(
-      'inputPassword'
-    ) as HTMLInputElement).value;
-    setIsNowLoading(true);
-    firebaseService.login(inputPassword).then((v) => {
-      setIsLogin(v);
-      setIsLoginFail(!v);
+    (async () => {
+      setIsNowLoading(true);
+      try {
+        await firebaseAuthLogin(inputPassword);
+        setIsLogin(true);
+        setIsLoginFail(false);
+      } catch {
+        setIsLogin(false);
+        setIsLoginFail(true);
+      }
       setIsNowLoading(false);
-    });
+    })();
   };
 
   useEffect(() => {
-    firebaseService.isLogin().then((res) => {
+    (async () => {
+      setIsLogin(await firebaseAuthIsLogin());
       setIsNowLoading(false);
-      setIsLogin(res);
-    });
+    })();
   }, []);
 
   if (isNowLoading) {
@@ -70,6 +70,10 @@ export const AuthGuard: React.FC<{ isAuthRequired: boolean }> = ({
             type="password"
             id="inputPassword"
             placeholder="パスワード"
+            value={inputPassword}
+            onChange={(e) => {
+              setInputPassword(e.target.value);
+            }}
           />
           <button
             className="bg-gray-500 hover:bg-gray-700 text-white py-1 px-2 rounded"

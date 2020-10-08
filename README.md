@@ -12,7 +12,11 @@ https://hit-u-badminton.web.app/
   - SSG
 - Tailwind CSS
 
-## 開発フロー
+## 開発
+
+```
+$ yarn run dev
+```
 
 ### Firebase CI 用の Token 発行
 

@@ -1,123 +1,109 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GetStaticProps } from 'next';
 
-import { Container } from '../components/Container';
 import { Layout } from '../components/Layout';
+import { microCmsUtil } from '../lib/microCmsUtil';
+import { ContentDebuger } from '../components/ContentDebuger';
 
-import MEMBER_JSON from '../pageComponents/member/member.json';
-import { MemberCard } from '../pageComponents/member/MemberCard';
-import { Member } from '../pageComponents/member/member';
-
-type Grade = 1 | 2 | 3 | 4;
-
-type Props = {
+type Content = {
+  title: string;
+  description: string;
   members: {
-    grade: Grade;
-    members: Member[];
-    summary: {
-      m: number;
-      f: number;
-      sum: number;
-    };
+    grade: number;
+    gradeDisplayName: string;
+    members: {
+      lastName: string;
+      firstName: string;
+      gender: 'm' | 'w';
+      admissionYear: number;
+      faculty: string;
+      highschool: string;
+      position: string[];
+      positionOld: string[];
+    }[];
   }[];
 };
 
-const SummaryLabel: React.FC<{ male: number; female: number; sum: number }> = ({
-  male,
-  female,
-  sum,
+const MemberLable: React.FC<{ label: string; value: string }> = ({
+  label,
+  value,
 }) => {
   return (
-    <span>
-      <span className="text-blue-700">
-        <span>男子</span>
-        <span
-          className="inline-block font-mono text-right"
-          style={{ width: '17px' }}
-        >
-          {male}
-        </span>
-      </span>
-      <span className="text-red-700 ml-2">
-        <span>女子</span>
-        <span
-          className="inline-block font-mono text-right"
-          style={{ width: '17px' }}
-        >
-          {female}
-        </span>
-      </span>
-      <span className="ml-2">
-        <span>計</span>
-        <span
-          className="inline-block font-mono text-right"
-          style={{ width: '17px' }}
-        >
-          {sum}
-        </span>
-      </span>
-    </span>
+    <div className="grid grid-cols-3 mt-1">
+      <div className="bg-gray-400 col-span-1 py-1 px-2">{label}</div>
+      <div className="col-span-2 py-1 px-2">{value}</div>
+    </div>
   );
 };
 
-const PageComponent: React.FC<Props> = ({ members }) => {
+const MemberCard: React.FC<Content['members'][number]['members'][number]> = ({
+  firstName,
+  lastName,
+  gender,
+  faculty,
+  highschool,
+  position,
+  positionOld,
+}) => {
+  const nameColorClass = gender === 'm' ? 'text-blue-700' : 'text-red-700';
+  const positionStr = position
+    .concat(positionOld.map((v) => '元 ' + v))
+    .join('、');
+
   return (
-    <Layout
-      title="部員情報"
-      description="2020 年 4 月現在、私達一橋大学バドミントン部は男子 13 名、女子 4 名の計 17 名で活動しています。"
-      breadcrumbs={[
-        { path: '/', text: 'HOME' },
-        { path: null, text: '部員情報' },
-      ]}
-    >
-      <Container>
-        <div className="pt-8 pb-16">
-          <div className="main-content">
-            <h1 className="h1">部員情報</h1>
-            {members.map((v, i) => (
-              <React.Fragment key={i}>
-                <h2 className="h2">{v.grade} 年生</h2>
-                <section>
-                  {v.members.map((m, j) => (
-                    <div className="mb-4" key={j}>
-                      <MemberCard {...m} />
-                    </div>
-                  ))}
-                </section>
-              </React.Fragment>
+    <>
+      <div className="border-b border-gray-400 pb-1 mb-2">
+        <span className={`text-lg ${nameColorClass}`}>
+          {lastName} {firstName}
+        </span>
+      </div>
+      <MemberLable label="学部" value={faculty} />
+      <MemberLable label="出身高校" value={highschool} />
+      <MemberLable label="役職" value={positionStr} />
+    </>
+  );
+};
+
+const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
+  const title = content.title;
+  const description = content.description;
+  const members = content.members;
+
+  return (
+    <Layout title={title} description={description}>
+      <h1 className="h1">{title}</h1>
+      <div>{description}</div>
+      {members.map((v, i) => (
+        <React.Fragment key={i}>
+          <h2 className="h2">{v.gradeDisplayName}</h2>
+          <section>
+            {v.members.map((m, j) => (
+              <div className="mb-4" key={j}>
+                <MemberCard {...m} />
+              </div>
             ))}
-          </div>
-        </div>
-      </Container>
+          </section>
+        </React.Fragment>
+      ))}
     </Layout>
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const YEAR = 2020;
-  const members: Props['members'] = [
-    { grade: 1, members: [], summary: { m: 0, f: 0, sum: 0 } },
-    { grade: 2, members: [], summary: { m: 0, f: 0, sum: 0 } },
-    { grade: 3, members: [], summary: { m: 0, f: 0, sum: 0 } },
-    { grade: 4, members: [], summary: { m: 0, f: 0, sum: 0 } },
-  ];
-  for (const member of MEMBER_JSON) {
-    const grade = YEAR - member.admissionYear + 1;
-    if (grade >= 1 && grade <= 4) {
-      members[grade - 1].members.push({ ...member, grade: grade } as Member);
-      if (member.gender === 'm') {
-        members[grade - 1].summary.m++;
-      }
-      if (member.gender === 'f') {
-        members[grade - 1].summary.f++;
-      }
-      members[grade - 1].summary.sum++;
-    }
-  }
+const PageComponent: React.FC<{ content: Content }> = ({ content }) => {
+  const [_content, setContent] = useState(content);
+  return (
+    <ContentDebuger content={_content} setContent={setContent}>
+      <MainComponent content={_content} />
+    </ContentDebuger>
+  );
+};
 
-  return { props: { members: members } };
+export const getStaticProps: GetStaticProps<{
+  content: Content;
+}> = async () => {
+  const res = await microCmsUtil.get('/member');
+  const content = JSON.parse(res.content);
+  return { props: { content: content } };
 };
 
 export default PageComponent;
-
-export const config = { amp: true };

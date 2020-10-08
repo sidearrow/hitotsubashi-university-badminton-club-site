@@ -4,11 +4,10 @@ import { useAmp } from 'next/amp';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 import { Breadcrumb, BreadcrumbItems } from './Breadcrumb';
-import { Container } from './Container';
 import { CONFIG } from '../config';
 import { useRouter } from 'next/router';
 import { GTAG_SCRIPT } from '../lib/gtag';
-import { AmpSidebar } from './AmpSidebar';
+import { PreviewDispatcher } from './PreviewDispatcher';
 
 type Props = {
   title: string;
@@ -22,11 +21,6 @@ export const Layout: React.FC<Props> = ({
   description,
   breadcrumbs,
 }) => {
-  const router = useRouter();
-  const canonicalUrl = CONFIG.baseUrl + router.asPath;
-
-  const isAmp = useAmp();
-
   return (
     <>
       <div
@@ -50,21 +44,16 @@ export const Layout: React.FC<Props> = ({
             flexGrow: 1,
             flexShrink: 1,
             flexBasis: 0,
-            paddingTop: '100px',
+            paddingTop: '60px',
+            paddingBottom: '40px',
           }}
         >
-          {breadcrumbs && (
-            <Container>
-              <Breadcrumb items={breadcrumbs} />
-            </Container>
-          )}
-          {children}
+          <div className="mx-auto max-w-screen-sm px-4">{children}</div>
         </main>
         <footer>
           <Footer />
         </footer>
       </div>
-      {isAmp && <AmpSidebar />}
     </>
   );
 };
