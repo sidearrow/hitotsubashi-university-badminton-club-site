@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
-import { config } from './config';
+import { CONFIG } from './config';
 
 export default class FirebaseService {
   private static app: firebase.app.App | null = null;
@@ -10,7 +10,7 @@ export default class FirebaseService {
 
   public constructor() {
     if (typeof window === 'object' && FirebaseService.app === null) {
-      FirebaseService.app = firebase.initializeApp(config.firebase);
+      FirebaseService.app = firebase.initializeApp(CONFIG.firebase);
       FirebaseService.auth = FirebaseService.app.auth();
       FirebaseService.storage = FirebaseService.app.storage();
     }
@@ -19,7 +19,7 @@ export default class FirebaseService {
   public async login(password: string): Promise<boolean> {
     try {
       await FirebaseService.auth?.signInWithEmailAndPassword(
-        config.mizutoriEmail,
+        CONFIG.mizutoriEmail,
         password
       );
     } catch (_) {
@@ -33,7 +33,7 @@ export default class FirebaseService {
     return new Promise((resolve, _) => {
       try {
         FirebaseService.auth?.onAuthStateChanged((user) => {
-          resolve(user?.email === config.mizutoriEmail);
+          resolve(user?.email === CONFIG.mizutoriEmail);
         });
       } catch (e) {
         resolve(false);

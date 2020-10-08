@@ -9,7 +9,7 @@ import Document, {
 
 // @ts-ignore
 import stylecss from '!raw-loader!../styles/bundle.css';
-import { config } from '../config';
+import { CONFIG } from '../config';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -53,12 +53,17 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ac2926" />
           <meta
             name="google-site-verification"
-            content={config.googleSiteVerification}
+            content={CONFIG.googleSiteVerification}
           />
           <script
             async
             custom-element="amp-sidebar"
             src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"
+          ></script>
+          <script
+            async
+            custom-element="amp-twitter"
+            src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"
           ></script>
         </Head>
         <body>

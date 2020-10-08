@@ -1,4 +1,4 @@
-export const config = {
+export const CONFIG = {
   baseUrl: 'https://hit-u-badminton.web.app',
   googleSiteVerification: 'IgCCQtyvTcRzPpT3YTUw7-0Zw3ef-2lCa6zcj0Mmoig',
   gtagId: 'G-Z7RBSZSSKR',
