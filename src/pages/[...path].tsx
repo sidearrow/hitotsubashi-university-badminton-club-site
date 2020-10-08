@@ -2,7 +2,6 @@ import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { Layout } from '../components/Layout';
 import { Container } from '../components/Container';
-import { AuthGuard } from '../components/AuthGuard';
 import { SantamaPageTemplate } from '../templates/SantamaPageTemplate';
 import { MarkdownParseResponse, markdownUtils } from '../lib/markdownUtils';
 

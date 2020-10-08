@@ -5,7 +5,7 @@ import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 import { Breadcrumb, BreadcrumbItems } from './Breadcrumb';
 import { Container } from './Container';
-import { config } from '../config';
+import { CONFIG } from '../config';
 import { useRouter } from 'next/router';
 import { GTAG_SCRIPT } from '../lib/gtag';
 import { AmpSidebar } from './AmpSidebar';
@@ -23,7 +23,7 @@ export const Layout: React.FC<Props> = ({
   breadcrumbs,
 }) => {
   const router = useRouter();
-  const canonicalUrl = config.baseUrl + router.asPath;
+  const canonicalUrl = CONFIG.baseUrl + router.asPath;
 
   const isAmp = useAmp();
 

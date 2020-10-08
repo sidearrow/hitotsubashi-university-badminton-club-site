@@ -43,7 +43,9 @@ const parseMarkdown = (filepath: string): MarkdownParseResponse => {
   renderer.table = (header, body) => {
     return `<div class="table-scroll"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
   };
-
+  renderer.heading = (text, level) => {
+    return `<h${level} class="h${level}">${text}</h${level}>`;
+  };
   marked.setOptions({ renderer: renderer });
   const html = marked(res.content);
 

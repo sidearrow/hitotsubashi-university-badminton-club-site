@@ -73,10 +73,10 @@ const PageComponent: React.FC<Props> = ({ members }) => {
       <Container>
         <div className="pt-8 pb-16">
           <div className="main-content">
-            <h1>部員情報</h1>
+            <h1 className="h1">部員情報</h1>
             {members.map((v, i) => (
               <React.Fragment key={i}>
-                <h2>{v.grade} 年生</h2>
+                <h2 className="h2">{v.grade} 年生</h2>
                 <section>
                   {v.members.map((m, j) => (
                     <div className="mb-4" key={j}>

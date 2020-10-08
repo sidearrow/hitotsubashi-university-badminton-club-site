@@ -11,7 +11,7 @@ export const SantamaPageTemplate: React.FC = ({ children }) => {
       <>
         {santamaFiles.map((eachYear) => (
           <>
-            <h3>{eachYear.label}</h3>
+            <h3 className="h3">{eachYear.label}</h3>
             <div>
               <ul>
                 {eachYear.files.map((f, i) => (

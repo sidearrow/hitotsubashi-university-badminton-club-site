@@ -6,7 +6,9 @@ import {
   faLock,
   faExternalLinkAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import { config } from '../config';
+import { CONFIG } from '../config';
+import { BtnLink, InstagramBtnLink, TwitterBtnLink } from './BtnLink';
+import { headings } from '../pages';
 
 const NavLinkBox: React.FC = ({ children }) => {
   return (
@@ -20,12 +22,6 @@ const NavLinkBox: React.FC = ({ children }) => {
 
 const NAV_LINKS = [
   {
-    text: '部活紹介',
-    path: '/about',
-    icon: <FontAwesomeIcon icon={faChevronRight} />,
-    isTargetBlank: false,
-  },
-  {
     text: '部員紹介',
     path: '/member',
     icon: <FontAwesomeIcon icon={faChevronRight} />,
@@ -34,12 +30,6 @@ const NAV_LINKS = [
   {
     text: '大会情報',
     path: '/tournaments',
-    icon: <FontAwesomeIcon icon={faChevronRight} />,
-    isTargetBlank: false,
-  },
-  {
-    text: '年間スケジュール',
-    path: '/schedule',
     icon: <FontAwesomeIcon icon={faChevronRight} />,
     isTargetBlank: false,
   },
@@ -62,7 +52,7 @@ const NAV_LINKS = [
   },
   {
     text: '掲示板',
-    path: config.url.bbs,
+    path: CONFIG.url.bbs,
     icon: <FontAwesomeIcon icon={faExternalLinkAlt} />,
     isTargetBlank: true,
   },
@@ -118,7 +108,29 @@ export const AmpSidebar: React.FC = () => {
     >
       <div className="w-full h-full bg-white">
         <div className="py-4 text-center">MENU</div>
+        <div className="px-4">
+          <div className="py-1">HOME</div>
+          <div className="pl-2">
+            {(Object.keys(headings) as (keyof typeof headings)[])
+              .filter((k) => k !== 'sns')
+              .map((k) => (
+                <div key={k}>
+                  <Link href={`/#${headings[k].id}`}>
+                    <a>#{headings[k].text}</a>
+                  </Link>
+                </div>
+              ))}
+          </div>
+        </div>
         <NavContent />
+        <div className="py-2">
+          <div className="py-1 px-4">
+            <TwitterBtnLink />
+          </div>
+          <div className="py-1 px-4">
+            <InstagramBtnLink />
+          </div>
+        </div>
       </div>
     </amp-sidebar>
   );
