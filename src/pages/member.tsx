@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { GetStaticProps } from 'next';
 
 import { Layout } from '../components/Layout';
-import { microCmsUtil } from '../lib/microCmsUtil';
-import { ContentDebuger } from '../components/ContentDebuger';
+import content from '../../content/member.json';
 
 type Content = {
   title: string;
@@ -14,7 +13,7 @@ type Content = {
     members: {
       lastName: string;
       firstName: string;
-      gender: 'm' | 'w';
+      gender: string;
       admissionYear: number;
       faculty: string;
       highschool: string;
@@ -90,19 +89,12 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
 };
 
 const PageComponent: React.FC<{ content: Content }> = ({ content }) => {
-  const [_content, setContent] = useState(content);
-  return (
-    <ContentDebuger content={_content} setContent={setContent}>
-      <MainComponent content={_content} />
-    </ContentDebuger>
-  );
+  return <MainComponent content={content} />;
 };
 
 export const getStaticProps: GetStaticProps<{
   content: Content;
 }> = async () => {
-  const res = await microCmsUtil.get('/member');
-  const content = JSON.parse(res.content);
   return { props: { content: content } };
 };
 

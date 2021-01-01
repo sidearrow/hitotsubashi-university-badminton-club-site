@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { Layout } from '../components/Layout';
 import { AuthGuard } from '../components/AuthGuard';
 import { FirebaseStorageLink } from '../components/FirebaseStorageLink';
 import { Button } from '../components/Button';
 import { GetStaticProps } from 'next';
-import { microCmsUtil } from '../lib/microCmsUtil';
-import { ContentDebuger } from '../components/ContentDebuger';
+import content from '../../content/mizutori.json';
 
 type Content = {
   title: string;
@@ -74,19 +73,12 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
 };
 
 const PageComponent: React.FC<{ content: Content }> = ({ content }) => {
-  const [_content, setContent] = useState(content);
-  return (
-    <ContentDebuger content={_content} setContent={setContent}>
-      <MainComponent content={_content} />
-    </ContentDebuger>
-  );
+  return <MainComponent content={content} />;
 };
 
 export const getStaticProps: GetStaticProps<{
   content: Content;
 }> = async () => {
-  const res = await microCmsUtil.get('/mizutori');
-  const content = JSON.parse(res.content);
   return { props: { content: content } };
 };
 

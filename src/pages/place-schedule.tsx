@@ -1,10 +1,9 @@
 import { GetStaticProps } from 'next';
 import React, { useState } from 'react';
-import { ContentDebuger } from '../components/ContentDebuger';
 import { ExternalLink } from '../components/ExternalLink';
 import { Layout } from '../components/Layout';
 import { CONFIG } from '../config';
-import { microCmsUtil } from '../lib/microCmsUtil';
+import content from '../../content/place-schedule.json';
 
 type ScheduleWeekContent = {
   day: string;
@@ -114,18 +113,12 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
 
 const Component: React.FC<{ content: Content }> = ({ content }) => {
   const [_content, setContent] = useState(content);
-  return (
-    <ContentDebuger content={_content} setContent={setContent}>
-      <MainComponent content={_content} />
-    </ContentDebuger>
-  );
+  return <MainComponent content={_content} />;
 };
 
 export const getStaticProps: GetStaticProps<{
   content: Content;
 }> = async () => {
-  const res = await microCmsUtil.get('/place-schedule');
-  const content = JSON.parse(res.content);
   return { props: { content: content } };
 };
 

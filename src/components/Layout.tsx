@@ -1,26 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
-import { useAmp } from 'next/amp';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
-import { Breadcrumb, BreadcrumbItems } from './Breadcrumb';
-import { CONFIG } from '../config';
-import { useRouter } from 'next/router';
-import { GTAG_SCRIPT } from '../lib/gtag';
-import { PreviewDispatcher } from './PreviewDispatcher';
 
 type Props = {
   title: string;
   description: string;
-  breadcrumbs?: BreadcrumbItems;
 };
 
-export const Layout: React.FC<Props> = ({
-  children,
-  title,
-  description,
-  breadcrumbs,
-}) => {
+export const Layout: React.FC<Props> = ({ children, title, description }) => {
   return (
     <>
       <div
