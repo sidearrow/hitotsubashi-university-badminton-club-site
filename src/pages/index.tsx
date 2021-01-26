@@ -1,8 +1,5 @@
 import React from 'react';
 import { Layout } from '../components/Layout';
-import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { CONFIG } from '../config';
-import { BtnLink } from '../components/BtnLink';
 
 const Component: React.FC = () => (
   <Layout title="" description="一橋大学体育会バドミントン部の公式サイト">
@@ -20,16 +17,6 @@ const Component: React.FC = () => (
         </span>
       </div>
     </div>
-    <section className="mt-8">
-      <div className="grid grid-cols-2 gap-2">
-        <BtnLink href={CONFIG.url.twitter} icon={faTwitter} text="Twitter" />
-        <BtnLink
-          href={CONFIG.url.instagram}
-          icon={faInstagram}
-          text="Instagram"
-        />
-      </div>
-    </section>
   </Layout>
 );
 

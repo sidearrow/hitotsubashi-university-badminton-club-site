@@ -2,16 +2,10 @@ import React from 'react';
 
 export type ButtonColor = 'red' | 'blue' | 'gray';
 
-const BORDER_COLOR = {
-  red: 'border-red-700',
-  blue: 'border-blue-700',
-  gray: 'border-gray-700',
-};
-
-const TEXT_COLOR = {
-  red: 'text-red-700',
-  blue: 'text-blue-700',
-  gray: 'text-gray-700',
+const DEFAULT_COLOR = {
+  red: 'bg-red-600',
+  blue: 'bg-blue-600',
+  gray: 'bg-gray-600',
 };
 
 const HOVER_COLOR = {
@@ -26,7 +20,7 @@ export const Button: React.FC<{ color: ButtonColor }> = ({
 }) => {
   return (
     <button
-      className={`w-full rounded px-4 py-1 border ${BORDER_COLOR[color]} ${TEXT_COLOR[color]} ${HOVER_COLOR[color]} hover:text-white`}
+      className={`w-full px-4 py-1 text-white ${HOVER_COLOR[color]} ${DEFAULT_COLOR[color]}`}
     >
       {children}
     </button>

@@ -1,4 +1,3 @@
-import { GetStaticProps } from 'next';
 import React from 'react';
 import { Layout } from '../components/Layout';
 
@@ -8,24 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { FirebaseStorageLink } from '../components/FirebaseStorageLink';
 
-type Content = {
-  title: string;
-  description: string;
-  pastResults: {
-    title: string;
-    content: {
-      title: string;
-      year: number;
-      files: {
-        filename: string;
-        title: string;
-        color: string;
-      }[][];
-    }[];
-  };
-};
+const Component: React.FC = () => {
+  const title = content.title;
+  const description = content.description;
+  const pastResults = content.pastResults;
 
-const Component: React.FC<Content> = ({ title, description, pastResults }) => {
   return (
     <Layout title={title} description={description}>
       <h1 className="h1">{title}</h1>
@@ -43,14 +29,18 @@ const Component: React.FC<Content> = ({ title, description, pastResults }) => {
                   const color = f.color as ButtonColor;
                   return (
                     <div key={i}>
-                      <FirebaseStorageLink storagePath={f.filename}>
+                      <a href={f.filename} target="_blank" rel="noreferrer">
                         <Button color={color}>
-                          {f.title}
-                          <span className="ml-2">
-                            <FontAwesomeIcon icon={faFilePdf} />
-                          </span>
+                          <div className="flex">
+                            <span className="">
+                              <FontAwesomeIcon icon={faFilePdf} />
+                            </span>
+                            <span className="flex-grow text-center">
+                              {f.title}
+                            </span>
+                          </div>
                         </Button>
-                      </FirebaseStorageLink>
+                      </a>
                     </div>
                   );
                 })}
@@ -64,7 +54,3 @@ const Component: React.FC<Content> = ({ title, description, pastResults }) => {
 };
 
 export default Component;
-
-export const getStaticProps: GetStaticProps<Content> = async () => {
-  return { props: content };
-};
