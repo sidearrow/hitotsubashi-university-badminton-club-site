@@ -1,16 +1,11 @@
 import React from 'react';
 import { CONFIG } from '../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faTwitter,
-  faInstagram,
-  faGithub,
-} from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const socailIconLinkList = [
   { icon: faTwitter, href: CONFIG.url.twitter },
   { icon: faInstagram, href: CONFIG.url.instagram },
-  { icon: faGithub, href: CONFIG.url.github },
 ];
 
 export const Footer: React.FC = () => (

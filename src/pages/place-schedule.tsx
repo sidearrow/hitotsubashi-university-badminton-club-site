@@ -95,9 +95,9 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
       <h1 className="h1">{title}</h1>
       <section className="mt-8">
         <h2 className="h2">活動場所</h2>
-        一橋大学 小平国際キャンパス内 体育館
-        <br />
-        <ExternalLink href={CONFIG.url.map}>Google Map</ExternalLink>
+        <ExternalLink href={CONFIG.url.map}>
+          一橋大学 小平国際キャンパス内 体育館
+        </ExternalLink>
       </section>
       <section className="mt-8">
         <h2 className="h2">{scheduleWeek.title}</h2>
