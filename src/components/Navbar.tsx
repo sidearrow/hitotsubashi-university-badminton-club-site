@@ -118,26 +118,30 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="fixed bg-white w-full z-10">
-      <NavbarBox>
-        <div className="flex justify-between items-center">
-          <Link href="/">
-            <a className="text-gray-900 hover:text-gray-600">
-              一橋大学バドミントン部
-            </a>
-          </Link>
-          <button
-            className="text-lg px-2 text-gray-900 hover:text-gray-600"
-            onClick={toggleContent}
-          >
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-        </div>
-      </NavbarBox>
-      {isShowContent && (
+    <div className="fixed w-full z-10">
+      <div style={{ backgroundColor: '#ac2926' }}>
         <NavbarBox>
-          <NavbarContent />
+          <div className="flex justify-between items-center">
+            <Link href="/">
+              <a className="text-lg text-white hover:text-gray-200">
+                一橋大学バドミントン部
+              </a>
+            </Link>
+            <button
+              className="text-lg px-2 text-white hover:text-gray-200"
+              onClick={toggleContent}
+            >
+              <FontAwesomeIcon icon={faBars} />
+            </button>
+          </div>
         </NavbarBox>
+      </div>
+      {isShowContent && (
+        <div className="bg-white">
+          <NavbarBox>
+            <NavbarContent />
+          </NavbarBox>
+        </div>
       )}
     </div>
   );

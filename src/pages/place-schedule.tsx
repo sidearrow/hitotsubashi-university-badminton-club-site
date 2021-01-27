@@ -1,5 +1,4 @@
-import { GetStaticProps } from 'next';
-import React, { useState } from 'react';
+import React from 'react';
 import { ExternalLink } from '../components/ExternalLink';
 import { Layout } from '../components/Layout';
 import { CONFIG } from '../config';
@@ -16,19 +15,6 @@ type ScheduleYearContent = {
   title: string;
   description: string;
 }[];
-
-type Content = {
-  title: string;
-  description: string;
-  scheduleWeek: {
-    title: string;
-    content: ScheduleWeekContent;
-  };
-  scheduleYear: {
-    title: string;
-    content: ScheduleYearContent;
-  };
-};
 
 const Th: React.FC = ({ children }) => (
   <th className="font-bold text-center bg-gray-200 py-2 px-4">{children}</th>
@@ -73,19 +59,21 @@ export const ScheduleYear: React.FC<{ content: ScheduleYearContent }> = ({
   content,
 }) => {
   return (
-    <ul className="timeline">
+    <div>
       {content.map((v, i) => (
-        <li key={i}>
-          <div className="border-b border-gray-400 mb-2">{v.time}</div>
-          <div className="font-bold">{v.title}</div>
-          <div className="text-gray-600 ml-4">{v.description}</div>
-        </li>
+        <div key={i} className="mb-4">
+          <h3>
+            <span className="h3">{v.title}</span>
+            <span className="ml-4">{v.time}</span>
+          </h3>
+          <div className="">{v.description}</div>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 
-const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
+const Component: React.FC = () => {
   const title = content.title;
   const description = content.description;
   const scheduleWeek = content.scheduleWeek;
@@ -109,17 +97,6 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
       </section>
     </Layout>
   );
-};
-
-const Component: React.FC<{ content: Content }> = ({ content }) => {
-  const [_content, setContent] = useState(content);
-  return <MainComponent content={_content} />;
-};
-
-export const getStaticProps: GetStaticProps<{
-  content: Content;
-}> = async () => {
-  return { props: { content: content } };
 };
 
 export default Component;

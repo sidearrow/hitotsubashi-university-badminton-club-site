@@ -6,12 +6,12 @@ export const ExternalLink: React.FC<{ href: string }> = ({
   href,
   children,
 }) => (
-  <span>
+  <span className="inline-flex align-center">
     <a href={href} target="_blank" rel="noreferrer">
       {children}
-      <span className="ml-1">
-        <FontAwesomeIcon icon={faExternalLinkAlt} />
-      </span>
     </a>
+    <span className="ml-2 text-sm text-gray-600">
+      <FontAwesomeIcon icon={faExternalLinkAlt} />
+    </span>
   </span>
 );
