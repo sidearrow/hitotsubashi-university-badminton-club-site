@@ -47,7 +47,7 @@ export const Layout: React.FC<Props> = ({ children, title, description }) => {
           <div className="w-auto h-full bg-white md:sticky top-16 hidden md:block">
             <Menu />
           </div>
-          <div className="flex-grow flex-shrink">
+          <div className="flex-grow flex-shrink w-full">
             {isShowPageHeader && (
               <PageHeader description={description}>{title}</PageHeader>
             )}
