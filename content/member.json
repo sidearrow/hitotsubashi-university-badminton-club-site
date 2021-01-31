@@ -11,7 +11,7 @@
           "firstName": "玄晴",
           "gender": "m",
           "admissionYear": 2019,
-          "faculty": "商学部",
+          "faculty": "商",
           "highschool": "国立（東京）",
           "position": [
             "会計係"
@@ -23,7 +23,7 @@
           "firstName": "真生",
           "gender": "w",
           "admissionYear": 2019,
-          "faculty": "商学部",
+          "faculty": "商",
           "highschool": "東京農大第一（東京）",
           "position": [
             "OB係",
@@ -36,7 +36,7 @@
           "firstName": "大樹",
           "gender": "m",
           "admissionYear": 2019,
-          "faculty": "商学部",
+          "faculty": "商",
           "highschool": "国立（東京）",
           "position": [
             "主務",
@@ -49,7 +49,7 @@
           "firstName": "峻介",
           "gender": "m",
           "admissionYear": 2019,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "熊本（熊本）",
           "position": [
             "主将",
@@ -62,7 +62,7 @@
           "firstName": "佑季",
           "gender": "w",
           "admissionYear": 2019,
-          "faculty": "法学部",
+          "faculty": "法",
           "highschool": "西京（京都）",
           "position": [
             "女子主将",
@@ -77,7 +77,7 @@
           "firstName": "海",
           "gender": "m",
           "admissionYear": 2019,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "厚木（神奈川）",
           "position": [
             "副将",
@@ -96,7 +96,7 @@
           "firstName": "智史",
           "gender": "m",
           "admissionYear": 2018,
-          "faculty": "商学部",
+          "faculty": "商",
           "highschool": "栄光学園（神奈川）",
           "position": [],
           "positionOld": [
@@ -109,7 +109,7 @@
           "firstName": "航太朗",
           "gender": "m",
           "admissionYear": 2018,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "藤枝東（静岡）",
           "position": [],
           "positionOld": [
@@ -123,7 +123,7 @@
           "firstName": "孝基",
           "gender": "m",
           "admissionYear": 2018,
-          "faculty": "商学部",
+          "faculty": "商",
           "highschool": "海陽学園（愛知）",
           "position": [],
           "positionOld": [
@@ -136,7 +136,7 @@
           "firstName": "宏紀",
           "gender": "m",
           "admissionYear": 2018,
-          "faculty": "法学部",
+          "faculty": "法",
           "highschool": "日比谷(東京)",
           "position": [],
           "positionOld": [
@@ -155,7 +155,7 @@
           "firstName": "さやか",
           "gender": "w",
           "admissionYear": 2017,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "立川（東京）",
           "position": [],
           "positionOld": [
@@ -168,7 +168,7 @@
           "firstName": "潤",
           "gender": "m",
           "admissionYear": 2017,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "春日部（埼玉）",
           "position": [],
           "positionOld": [
@@ -180,7 +180,7 @@
           "firstName": "和貴",
           "gender": "m",
           "admissionYear": 2017,
-          "faculty": "法学部",
+          "faculty": "法",
           "highschool": "桜修館中等（東京）",
           "position": [],
           "positionOld": [
@@ -192,7 +192,7 @@
           "firstName": "開斗",
           "gender": "m",
           "admissionYear": 2017,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "湘南（神奈川）",
           "position": [],
           "positionOld": [
@@ -205,7 +205,7 @@
           "firstName": "遥",
           "gender": "w",
           "admissionYear": 2017,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "国分寺（東京）",
           "position": [],
           "positionOld": [
@@ -218,7 +218,7 @@
           "firstName": "康平",
           "gender": "m",
           "admissionYear": 2017,
-          "faculty": "法学部",
+          "faculty": "法",
           "highschool": "長岡（新潟）",
           "position": [],
           "positionOld": [
@@ -231,7 +231,7 @@
           "firstName": "海渡",
           "gender": "m",
           "admissionYear": 2017,
-          "faculty": "経済学部",
+          "faculty": "経",
           "highschool": "明和（愛知）",
           "position": [],
           "positionOld": [

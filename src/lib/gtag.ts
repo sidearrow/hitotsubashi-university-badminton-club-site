@@ -1,8 +1,8 @@
-import { CONFIG } from '../config';
+import { settings } from '../settings';
 
 export const GTAG_SCRIPT = `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${CONFIG.gtagId}');
+gtag('config', '${settings.gtagId}');
 `;

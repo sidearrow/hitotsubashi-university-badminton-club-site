@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GetStaticProps } from 'next';
 
 import { Layout } from '../components/Layout';
 import content from '../../content/member.json';
-import { PageHeader } from '../components/PageHeader';
+import { Table, Td, Th } from '../components/Table';
 
 type Content = {
   title: string;
@@ -30,7 +30,7 @@ const MemberLable: React.FC<{ label: string; value: string }> = ({
 }) => {
   return (
     <div className="grid grid-cols-3 mt-1">
-      <div className="bg-gray-400 col-span-1 py-1 px-2">{label}</div>
+      <div className="bg-gray-200 col-span-1 py-1 px-2">{label}</div>
       <div className="col-span-2 py-1 px-2">{value}</div>
     </div>
   );
@@ -45,17 +45,15 @@ const MemberCard: React.FC<Content['members'][number]['members'][number]> = ({
   position,
   positionOld,
 }) => {
-  const nameColorClass = gender === 'm' ? 'text-blue-700' : 'text-red-700';
+  const nameColorClass = gender === 'm' ? 'border-blue-500' : 'border-red-700';
   const positionStr = position
     .concat(positionOld.map((v) => '元 ' + v))
     .join('、');
 
   return (
     <>
-      <div className="border-b border-gray-400 pb-1 mb-2">
-        <span className={`text-lg ${nameColorClass}`}>
-          {lastName} {firstName}
-        </span>
+      <div className={`border-l-4 ${nameColorClass} pl-2`}>
+        {lastName} {firstName}
       </div>
       <MemberLable label="学部" value={faculty} />
       <MemberLable label="出身高校" value={highschool} />
@@ -71,18 +69,31 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
 
   return (
     <Layout title={title} description={description}>
-      {members.map((v, i) => (
-        <React.Fragment key={i}>
-          <h2 className="h2">{v.gradeDisplayName}</h2>
-          <section>
+      <Table>
+        <thead>
+          <Th>名前</Th>
+          <Th>学部</Th>
+          <Th>出身</Th>
+          <Th>役職</Th>
+        </thead>
+        {members.map((v, i) => (
+          <React.Fragment key={i}>
+            <tr>
+              <Td col={4}>{v.gradeDisplayName}</Td>
+            </tr>
             {v.members.map((m, j) => (
-              <div className="mb-4" key={j}>
-                <MemberCard {...m} />
-              </div>
+              <tr key={j}>
+                <Td>
+                  {m.lastName} {m.firstName}
+                </Td>
+                <Td>{m.faculty}</Td>
+                <Td>{m.highschool}</Td>
+                <Td>{m.position}</Td>
+              </tr>
             ))}
-          </section>
-        </React.Fragment>
-      ))}
+          </React.Fragment>
+        ))}
+      </Table>
     </Layout>
   );
 };

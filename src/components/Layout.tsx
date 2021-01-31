@@ -22,45 +22,40 @@ export const Layout: React.FC<Props> = ({ children, title, description }) => {
   const isShowPageHeader = pathname !== '/';
 
   return (
-    <>
-      <div
-        style={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
+    <div className="flex flex-col min-h-screen">
+      <Head>
+        <title>
+          {title === '' ? title : title + ' | '}一橋大学バドミントン部
+        </title>
+        <meta name="description" content={description} />
+      </Head>
+      <header
+        className="sticky top-0 z-50 bg-white border-b-4 h-16"
+        style={{ borderColor: '#ac2926' }}
       >
-        <Head>
-          <title>
-            {title === '' ? title : title + ' | '}一橋大学バドミントン部
-          </title>
-          <meta name="description" content={description} />
-        </Head>
-        <header className="sticky top-0 z-50 bg-white border-b border-gray-300">
-          <Navbar toggleMenuShow={toggleMenuShow} />
-        </header>
-        <main className="flex-grow flex-shrink relative max-w-screen-lg mx-auto w-full">
-          <div className="md:flex md:flex-row">
-            <div
-              className={
-                'absolute md:static w-full md:w-auto h-full bg-white' +
-                (isMenuShow ? '' : ' hidden md:block')
-              }
-            >
-              <Menu />
-            </div>
-            <div className="flex-grow flex-shrink">
-              {isShowPageHeader && (
-                <PageHeader description={description}>{title}</PageHeader>
-              )}
-              <div className="p-4">{children}</div>
-            </div>
+        <Navbar toggleMenuShow={toggleMenuShow} />
+      </header>
+      <main className="flex-grow flex-shrink relative max-w-screen-lg mx-auto w-full">
+        <div className="md:flex md:flex-row">
+          <div
+            className={
+              'absolute w-full md:w-auto h-full bg-white md:sticky md:top-16' +
+              (isMenuShow ? '' : ' hidden md:block')
+            }
+          >
+            <Menu />
           </div>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
-    </>
+          <div className="flex-grow flex-shrink">
+            {isShowPageHeader && (
+              <PageHeader description={description}>{title}</PageHeader>
+            )}
+            <div className="p-4">{children}</div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   );
 };

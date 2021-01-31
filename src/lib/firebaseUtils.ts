@@ -1,23 +1,23 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/storage';
-import { CONFIG } from '../config';
+import { settings } from '../settings';
 
 if (firebase.apps.length === 0) {
-  firebase.initializeApp(CONFIG.firebase);
+  firebase.initializeApp(settings.firebase);
 }
 const auth = firebase.auth();
 const storage = firebase.storage();
 
 export const firebaseAuthLogin = async (password: string): Promise<void> => {
-  await auth.signInWithEmailAndPassword(CONFIG.mizutoriEmail, password);
+  await auth.signInWithEmailAndPassword(settings.mizutoriEmail, password);
 };
 
 export const firebaseAuthIsLogin = (): Promise<boolean> => {
   return new Promise((resolve) => {
     try {
       auth.onAuthStateChanged((user) => {
-        resolve(user?.email === CONFIG.mizutoriEmail);
+        resolve(user?.email === settings.mizutoriEmail);
       });
     } catch {
       resolve(false);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { CONFIG } from '../config';
+import { settings } from '../settings';
 import { ExternalLink } from './ExternalLink';
 
 const menuItems = [
@@ -37,7 +37,7 @@ type MenuItemProps = {
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, isActive }) => {
   return (
-    <div className={`px-2 py-1 ${isActive ? ' bg-gray-200' : ''}`}>
+    <div className={`px-2 py-1 ${isActive ? ' bg-gray-100' : ''}`}>
       <div>{children}</div>
     </div>
   );
@@ -56,9 +56,6 @@ export const Menu: React.FC = () => {
           </a>
         </Link>
       ))}
-      <MenuItem isActive={false}>
-        <ExternalLink href={CONFIG.url.bbs}>掲示板</ExternalLink>
-      </MenuItem>
     </aside>
   );
 };

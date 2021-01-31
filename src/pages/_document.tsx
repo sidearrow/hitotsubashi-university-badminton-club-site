@@ -1,12 +1,12 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { CONFIG } from '../config';
+import { settings } from '../settings';
 
 class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="ja" className="text-gray-800">
+      <Html lang="ja" className="text-gray-700">
         <Head>
           <meta charSet="utf-8" />
           <link
@@ -32,7 +32,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ac2926" />
           <meta
             name="google-site-verification"
-            content={CONFIG.googleSiteVerification}
+            content={settings.googleSiteVerification}
           />
         </Head>
         <body>
