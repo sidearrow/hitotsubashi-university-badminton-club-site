@@ -2,14 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CONFIG } from '../config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { ExternalLink } from './ExternalLink';
 
 const menuItems = [
-  {
-    text: 'HOME',
-    path: '/',
-  },
   {
     text: '年間スケジュール',
     path: '/annual-schedule',
@@ -23,8 +18,8 @@ const menuItems = [
     path: '/member',
   },
   {
-    text: '大会情報',
-    path: '/tournaments',
+    text: '関東大学リーグ戦結果',
+    path: '/league-result',
   },
   {
     text: '三多摩大会',
@@ -34,17 +29,6 @@ const menuItems = [
     text: 'みずとり会',
     path: '/mizutori',
   },
-  {
-    text: (
-      <>
-        <span>掲示板</span>
-        <span className="ml-2">
-          <FontAwesomeIcon icon={faExternalLinkAlt} />
-        </span>
-      </>
-    ),
-    path: CONFIG.url.bbs,
-  },
 ];
 
 type MenuItemProps = {
@@ -53,7 +37,7 @@ type MenuItemProps = {
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, isActive }) => {
   return (
-    <div className="px-4 py-1">
+    <div className={`px-2 py-1 ${isActive ? ' bg-gray-200' : ''}`}>
       <div>{children}</div>
     </div>
   );
@@ -64,14 +48,17 @@ export const Menu: React.FC = () => {
   const pathname = router.pathname;
 
   return (
-    <aside>
+    <aside className="p-4">
       {menuItems.map((item, i) => (
-        <MenuItem key={i} isActive={item.path === pathname}>
-          <Link href={item.path}>
-            <a>{item.text}</a>
-          </Link>
-        </MenuItem>
+        <Link href={item.path} key={i}>
+          <a>
+            <MenuItem isActive={item.path === pathname}>{item.text}</MenuItem>
+          </a>
+        </Link>
       ))}
+      <MenuItem isActive={false}>
+        <ExternalLink href={CONFIG.url.bbs}>掲示板</ExternalLink>
+      </MenuItem>
     </aside>
   );
 };
