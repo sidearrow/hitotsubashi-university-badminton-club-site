@@ -6,7 +6,7 @@ import { settings } from '../settings';
 class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="ja" className="text-gray-700">
+      <Html lang="ja" className="text-gray-700 h-full">
         <Head>
           <meta charSet="utf-8" />
           <link
@@ -35,7 +35,7 @@ class MyDocument extends Document {
             content={settings.googleSiteVerification}
           />
         </Head>
-        <body>
+        <body className="h-full">
           <Main />
           <NextScript />
         </body>

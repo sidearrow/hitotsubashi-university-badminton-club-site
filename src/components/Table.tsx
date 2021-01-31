@@ -10,21 +10,14 @@ export const Th: React.FC = ({ children }) => (
   <th className="font-bold bg-gray-200 py-1 px-2 border">{children}</th>
 );
 
-type TdProps = {
-  align?: 'center';
-  col?: number;
-};
+type TdProps = React.DetailedHTMLProps<
+  React.TdHTMLAttributes<HTMLTableDataCellElement>,
+  HTMLTableCellElement
+>;
 
-export const Td: React.FC<TdProps> = ({ align, col, children }) => {
-  const classes = ['px-2', 'py-1', 'border'];
-  if (align === 'center') {
-    classes.push('text-center');
-  }
-  col = col || 1;
+export const Td: React.FC<TdProps> = (props) => {
+  const baseClasses = ' px-2 py-1 border';
+  const className = `${props.className || ''} ${baseClasses}`;
 
-  return (
-    <td className={classes.join(' ')} colSpan={col}>
-      {children}
-    </td>
-  );
+  return <td {...props} className={className} />;
 };

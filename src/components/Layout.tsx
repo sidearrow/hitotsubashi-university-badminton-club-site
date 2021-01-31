@@ -22,7 +22,7 @@ export const Layout: React.FC<Props> = ({ children, title, description }) => {
   const isShowPageHeader = pathname !== '/';
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-full">
       <Head>
         <title>
           {title === '' ? title : title + ' | '}一橋大学バドミントン部
@@ -36,13 +36,15 @@ export const Layout: React.FC<Props> = ({ children, title, description }) => {
         <Navbar toggleMenuShow={toggleMenuShow} />
       </header>
       <main className="flex-grow flex-shrink relative max-w-screen-lg mx-auto w-full">
-        <div className="md:flex md:flex-row">
-          <div
-            className={
-              'absolute w-full md:w-auto h-full bg-white md:sticky md:top-16' +
-              (isMenuShow ? '' : ' hidden md:block')
-            }
-          >
+        <div
+          className={`absolute w-full h-full bg-white md:hidden z-50 ${
+            isMenuShow ? '' : ' hidden md:block'
+          }`}
+        >
+          <Menu />
+        </div>
+        <div className={`flex flex-row ${isMenuShow ? 'hidden md:flex' : ''}`}>
+          <div className="w-auto h-full bg-white md:sticky top-16 hidden md:block">
             <Menu />
           </div>
           <div className="flex-grow flex-shrink">

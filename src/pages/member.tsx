@@ -62,6 +62,9 @@ const MemberCard: React.FC<Content['members'][number]['members'][number]> = ({
   );
 };
 
+const createPositionString = (pos: string[], posOld: string[]) =>
+  pos.concat(posOld.map((v) => '元 ' + v)).join('、');
+
 const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
   const title = content.title;
   const description = content.description;
@@ -79,16 +82,22 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
         {members.map((v, i) => (
           <React.Fragment key={i}>
             <tr>
-              <Td col={4}>{v.gradeDisplayName}</Td>
+              <Td colSpan={4}>{v.gradeDisplayName}</Td>
             </tr>
             {v.members.map((m, j) => (
               <tr key={j}>
                 <Td>
-                  {m.lastName} {m.firstName}
+                  <span
+                    className={`pl-2 border-l-4 ${
+                      m.gender === 'm' ? 'border-blue-500' : 'border-red-500'
+                    }`}
+                  >
+                    {m.lastName} {m.firstName}
+                  </span>
                 </Td>
                 <Td>{m.faculty}</Td>
                 <Td>{m.highschool}</Td>
-                <Td>{m.position}</Td>
+                <Td>{createPositionString(m.position, m.positionOld)}</Td>
               </tr>
             ))}
           </React.Fragment>
