@@ -14,7 +14,6 @@ const Component: React.FC = () => {
 
   return (
     <Layout title={title} description={description}>
-      <h1 className="h1">{title}</h1>
       <h2 className="h2">{pastResults.title}</h2>
       <section>
         {pastResults.content.map((eachYear) => (

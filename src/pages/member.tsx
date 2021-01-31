@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 
 import { Layout } from '../components/Layout';
 import content from '../../content/member.json';
+import { PageHeader } from '../components/PageHeader';
 
 type Content = {
   title: string;
@@ -70,8 +71,6 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
 
   return (
     <Layout title={title} description={description}>
-      <h1 className="h1">{title}</h1>
-      <div>{description}</div>
       {members.map((v, i) => (
         <React.Fragment key={i}>
           <h2 className="h2">{v.gradeDisplayName}</h2>

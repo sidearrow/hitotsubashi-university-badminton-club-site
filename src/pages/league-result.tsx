@@ -22,7 +22,6 @@ const Component: React.FC<{ content: Content }> = ({ content }) => {
 
   return (
     <Layout title={title} description={description}>
-      <h1 className="h1">{title}</h1>
       <section>
         <Table>
           <thead>

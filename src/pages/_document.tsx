@@ -6,7 +6,7 @@ import { CONFIG } from '../config';
 class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="ja">
+      <Html lang="ja" className="text-gray-800">
         <Head>
           <meta charSet="utf-8" />
           <link
