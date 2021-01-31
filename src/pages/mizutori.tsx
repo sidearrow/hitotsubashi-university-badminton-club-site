@@ -54,20 +54,16 @@ const MainComponent: React.FC<{ content: Content }> = ({ content }) => {
 
   return (
     <Layout title={title} description={description}>
-      <div className="pt-8 pb-16">
-        <div className="main-content">
-          <h1 className="h1">{title}</h1>
-          <AuthGuard>
-            <section>
-              <FirebaseStorageLink storagePath="/mizutori/mizutorikai-kaisoku.pdf">
-                <Button color="gray">みずとり会会則</Button>
-              </FirebaseStorageLink>
-            </section>
-            <h2 className="h2">{obmessage.title}</h2>
-            <ObMessage obmessages={obmessage.content} />
-          </AuthGuard>
-        </div>
-      </div>
+      <h1 className="h1">{title}</h1>
+      <AuthGuard>
+        <section>
+          <FirebaseStorageLink storagePath="/mizutori/mizutorikai-kaisoku.pdf">
+            <Button color="gray">みずとり会会則</Button>
+          </FirebaseStorageLink>
+        </section>
+        <h2 className="h2">{obmessage.title}</h2>
+        <ObMessage obmessages={obmessage.content} />
+      </AuthGuard>
     </Layout>
   );
 };

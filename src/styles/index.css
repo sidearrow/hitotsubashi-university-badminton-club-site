@@ -5,12 +5,7 @@
 @import '../../node_modules/@fortawesome/fontawesome-svg-core/styles.css';
 
 html {
-  font-size: 14px;
   font-family: Arial, sans-serif;
-}
-
-a {
-  color: #ac2926;
 }
 
 .h1 {
@@ -42,9 +37,7 @@ a {
   margin-bottom: 0.75rem;
 }
 
-.table-scroll {
-  display: block;
-  overflow-x: auto;
+th,
+td {
   white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
 }
