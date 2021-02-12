@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { settings } from '../settings';
-import { ExternalLink } from './ExternalLink';
 
 const menuItems = [
   {
@@ -18,7 +16,7 @@ const menuItems = [
     path: '/member',
   },
   {
-    text: '関東大学リーグ戦結果',
+    text: 'リーグ戦結果',
     path: '/league-result',
   },
   {
@@ -37,8 +35,12 @@ type MenuItemProps = {
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, isActive }) => {
   return (
-    <div className={`px-2 py-1 ${isActive ? ' bg-gray-100' : ''}`}>
-      <div>{children}</div>
+    <div
+      className={`px-4 py-1 whitespace-nowrap ${
+        isActive ? ' bg-gray-100' : ''
+      }`}
+    >
+      {children}
     </div>
   );
 };
