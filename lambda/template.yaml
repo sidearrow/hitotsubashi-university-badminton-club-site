@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  hit-u-badminton-mizutori
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  HitUBadmintonMizutoriFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: hit-u-badminton-mizutori
+      CodeUri: code/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Environment:
+        Variables:
+          SECRET_KEY: !Ref LambdaEnvSecretKey
+          PASSWORD: !Ref LambdaEnvPassword
+          S3_BUCKET_NAME: !Red LambdaEnvS3BucketName
+          STREAM_LOG: 0
+      Events:
+        Login:
+          Type: Api
+          Properties:
+            Path: /login
+            Method: get
+        Check:
+          Type: Api
+          Properties:
+            Path: /check
+            Method: get
+        SignedUrl:
+          Type: Api
+          Properties:
+            Path: /signed-url
+            Method: get
+
+Outputs:
+  HitUBadmintonMizutoriApi:
+    Description: 'API Gateway endpoint URL'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/'
+  HitUBadmintonMizutoriFunction:
+    Description: 'Lambda Function ARN'
+    Value: !GetAtt HitUBadmintonMizutoriFunction.Arn
+  HitUBadmintonMizutoriFunctionIamRole:
+    Description: 'Implicit IAM Role'
+    Value: !GetAtt HitUBadmintonMizutoriFunctionRole.Arn
+
+Parameters:
+  LambdaEnvStreamKey:
+    Type: String
+  LambdaEnvPassword:
+    Type: String
+  LambdaEnvS3BucketName:
+    Type: String
